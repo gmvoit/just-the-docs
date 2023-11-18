@@ -1,3 +1,9 @@
+---
+title: Essentials
+layout: default
+nav_order: 3
+---
+
 <head>
   <title>MathJax tests</title>
   
