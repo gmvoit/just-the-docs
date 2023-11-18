@@ -1,6 +1,7 @@
 ---
 title: Alt Page
-layout: altpage
+layout: default
+navorder: 2
 ---
 
 # Alt Page
