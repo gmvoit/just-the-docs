@@ -1,10 +1,10 @@
 ---
-title: D
+title: Description
 layout: default
 nav_order: 2
 has_children: true
 ---
 
-# Documents
+# Description
 
-These documents describe and define the **ExpCGM** framework for modeling galactic atmospheres
+These pages describe and define the **ExpCGM** framework for modeling galactic atmospheres
