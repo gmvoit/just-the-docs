@@ -14,6 +14,8 @@ Some of the energy coming from a galaxy may enter the halo in thermal form. Anot
 
 Those features of atmospheric expansion are what motivated development of **ExpCGM**, a simple modeling framework for a galaxy's circumgalactic medium (CGM) that explicitly accounts for atmospheric expansion as feedback energy into converts into gravitational potential energy.
 
-This website defines the **ExpCGM** framework, which is part of the [Galactic Atmospheres Project](http://galacticatmospheres.org) 
+This website defines the **ExpCGM** framework, which is part of the [Galactic Atmospheres Project](https://external.ink?to=/galacticatmospheres.org) 
 
 Newcomers should begin with the [Essentials](Essentials) page.
+
+[Opens in new tab](https://external.ink?to=/placeholder.com)
