@@ -1,7 +1,7 @@
 ---
-title: Hom
-layout: home
-nav_order: 1
+title: Just The Docs
+layout: default
+nav_exclude: true
 ---
 
 Go to the [Alt Page](altpage.html)
