@@ -5,7 +5,8 @@ nav_order: 1
 ---
 
 <title>ExpCGM</title> <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> <script> MathJax = { tex: { inlineMath: [['$', '$']], displayMath: [ ['$$','$$'], ["\\(","\\)"] ], processEscapes: true } }; </script> <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"> </script>
-Introduction
+
+# Introduction
 
 How does a gaseous galactic halo respond to energy input from the central galaxy?
 
