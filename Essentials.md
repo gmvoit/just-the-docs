@@ -65,13 +65,13 @@ Many details of an **ExpCGM** atmosphere model hinge on a user's choice for the 
 
 Solving the hydrostatic equilibrium equation for $T(r)$ then yields the temperature profile
 $$T(r) = \frac {2 T_\varphi (r) } {\alpha (r)}$$
-in which the function $T_\varphi (r) \equiv \mu m_p v_{\rm c}^2(r) / 2k$ represents the ***gravitational temperature profile*** for an atmosphere with a mean mass per particle $\mu m_p$ confined by a gravitational potential with a circular velocity profile $v_{\rm c} (r) = ( r d \varphi / dr)^{1/2}$. It is normalized so that $T(r) = T_\varphi (r)$ for $\alpha = 2$ because $P \propto r^{-2}$ is the equilibrium pressure profile of an isothermal atmosphere in a potential well with constant $v_{\rm c}$.
+Here, the function $T_\varphi (r) \equiv \mu m_p v_{\rm c}^2(r) / 2k$ represents the ***gravitational temperature profile*** for an atmosphere with a mean mass per particle $\mu m_p$ confined by a gravitational potential with a circular velocity profile $v_{\rm c} (r) = ( r d \varphi / dr)^{1/2}$. It is normalized so that $T(r) = T_\varphi (r)$ for $\alpha = 2$ because $P \propto r^{-2}$ is the equilibrium pressure profile of an isothermal atmosphere in a potential well with constant $v_{\rm c}$.
 
 ### Density Profile
 
 Given those pressure and temperature profiles, an equilibrium atmosphere's density profile becomes
 $$\rho (r) = P_0 \frac {\alpha (r) f_P (r)} {v_{\rm c}^2(r)}$$
-For example, the gas mass density at the reference radius $r_0$ is simply $\rho_0 = P_0 / (v_c^2 / 2)$ in an atmosphere with the shape function $\alpha = 2$.
+For example, the gas mass density at the reference radius $r_0$ is simply $\rho_0 = P_0 / (v_c^2 / 2)$ in an atmosphere with $P \propto r^{-2}$.
 
 ### Generalized Force Balance
 
@@ -86,7 +86,7 @@ $$\alpha_{\rm eff} (r) \equiv \alpha(r) - \frac {d \ln f_{\rm th}} {d \ln r}$$
 is a ***generalized shape function*** for atmospheric support, accounting for possible dependences of $f_{\rm th}$ on radius. Note that $f_\varphi$ may also depend on radius.
 
 {: .note}
-Some formulations of atmospheric force balance express resistance to gravity in terms of a total pressure $P_{\rm tot} = P / f_{\rm th}$. However, **ExpCGM** explicitly accounts for the thermal pressure contribution using the $f_{\rm th}$ factor so that an equilibrium atmosphere's temperature profile can be inferred directly from force balance considerations and the $f_{\rm th}$ factor.
+Some other formulations of atmospheric force balance express resistance to gravity in terms of a total pressure $P_{\rm tot} = P / f_{\rm th}$. However, **ExpCGM** explicitly accounts for the thermal pressure contribution using the $f_{\rm th}$ factor so that an equilibrium atmosphere's temperature profile can be directly inferred from just force balance considerations and the $f_{\rm th}$ factor.
 
 ## Specific Energy <a name="SpecificEnergy"></a>
 
@@ -134,6 +134,9 @@ Once an equilibrium radius has been determined, the relation
 $$P_0 = \frac {M_{\rm CGM} v_\varphi^2} {4 \pi r_0^3} \frac {1} {I(r_{\rm CGM}/r_0)}$$
 gives the pressure profile's normalization at $r_0$.
 
+{:.note}
+These relationships between $\varepsilon_{\rm CGM}$, $r_{\rm CGM}$, and $P_0$ are the cornerstones of all **ExpCGM** atmosphere models. They depend only on a user's choices for $\varphi(r)$ and $\alpha(r)$ and determine how the atmosphere expands or contracts as its total mass and energy change.
+
 ## A Simple Example <a name="ASimpleExample"></a>
 
 To illustrate how solutions for steady-state atmospheric structure emerge from the **ExpCGM** framework, we will simplify some things. 
@@ -172,6 +175,9 @@ The figure below shows the relationship between $x_{\rm CGM}$ and $\varepsilon_{
 </figure>
 
 Dotted lines in the figure illustrate relationships that are exponentially sensitive to the scaled specific energy $\varepsilon_{\rm CGM} / v_\varphi^2$. Within the range $v_\varphi^2 \lesssim \varepsilon_{\rm CGM} \lesssim 4 v_\varphi^2$ they are similar to the solid and dashed lines. However, the functions describing the atmosphere's equilibrium radius and pressure normalization become even more sensitive than the exponential relationships as $\varepsilon_{\rm CGM}$ surpasses $4 v_\varphi^2$. Consequently, feedback mechanisms capable of adding that much specific energy to a galactic atmosphere drastically lower its density and radiative cooling rate.
+
+{:.note}
+The relationship between $r_{\rm CGM}$ and $\varepsilon_{\rm CGM}$ would be purely exponential for an atmosphere with constant $\alpha$ in a gravitational potential with constant $v_{\rm c}$:  $r_{\rm CGM} = r_0 \exp (\varepsilon_{\rm CGM} / v_{\rm c}^2}$. The relationships in the figure are consequently nearly exponential in the portion of an NFW potential well in which $v_{\rm c}$ is nearly constant. 
 
 ## Turbulent Support <a name="TurbulentSupport"></a>
 
