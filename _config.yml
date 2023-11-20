@@ -2,4 +2,9 @@ title: ExpCGM
 description: A framework for modeling galactic atmospheres
 theme: just-the-docs
 
-url: https://gmvoit.github.io/just-the-docs
+url: https://gmvoit.github.io/ExpCGM
+
+callouts:
+  note:
+    title: Note
+    color: Purple
