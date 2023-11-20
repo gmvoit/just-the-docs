@@ -63,11 +63,13 @@ A real cosmological halo does not have a distinct radius. Cosmological simulatio
 
 Typically, a halo's radius (and consequently its mass) is defined in terms of a contrast factor
 $$\Delta_{\rm c} = \frac {\rho_{\rm halo}} {\rho_{\rm cr}}$$
-relative to the universe's critical density $\rho_{\rm cr} = 3 H^2 (t) / 8 \pi G$, in which $H(t)$ is the Hubble expansion parameter at time $t$. For all suitable definitions of $\Delta_{\rm c}$, the factor
-$$\frac {3 H_0^2 \Omega_\Lambda} {8 \pi G \rho_{\rm halo}} = \frac {\Omega_\Lambda} {\Delta_{\rm c}} \frac {H_0^2} {H^2 (t)}$$
-is less than one percent. 
+relative to the universe's critical density $\rho_{\rm cr} = 3 H^2 (t) / 8 \pi G$, in which $H(t)$ is the Hubble expansion parameter at time $t$. The recommended value for **ExpCGM** models is $\Delta_{\rm c} = 200$.
 
-Neglecting that factor and assuming $R_{\rm halo} \approx R_{\rm ta} / 2$ then gives the approximation
+### Incoming Kinetic Energy
+
+For all suitable definitions of $\Delta_{\rm c}$, the dark-energy factor
+$$\frac {3 H_0^2 \Omega_\Lambda} {8 \pi G \rho_{\rm halo}} = \frac {\Omega_\Lambda} {\Delta_{\rm c}} \frac {H_0^2} {H^2 (t)}$$
+is less than one percent. Neglecting that factor and assuming $R_{\rm halo} \approx R_{\rm ta} / 2$ then gives the approximation
 $$\varepsilon_{\rm kin} (t) \approx \frac {G M_{\rm halo}(t)} {2 R_{\rm halo}}$$
 for the specific kinetic energy of infalling matter at time $t$.
 
