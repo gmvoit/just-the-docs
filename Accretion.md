@@ -49,13 +49,15 @@ The equation of motion for a cosmological spherical shell of radius $R$ containi
 $$\ddot{R} = - \frac {G M} {R^2} + H_0^2 \Omega_\Lambda R$$
 The first term on the right accounts for Newtonian gravity. The second one accounts for dark energy in an expanding universe with a Hubble constant $H_0$ at the present time and in which dark energy has a constant energy density that is $\Omega_\Lambda c^2$ times the current cosmological critical density $\rho_{\rm cr,0} \equiv 3 H_0^2 / 8 \pi G$. 
 
-Integrating the equation of motion gives the shell's specific kinetic energy at radius $R$,
+Integrating a cosmological shell's equation of motion gives its specific kinetic energy at radius $R$:
 $$\frac {\dot{R}^2} {2} = \frac {G M} {R} \left( 1 - \frac {R} {R_{\rm ta}} \right) + \frac {H_0^2 \Omega_\Lambda} {2} R^2 \left( 1 - \frac {R_{\rm ta}^2} {R^2}  \right)$$
-in which the shell's turnaround radius $R_{\rm ta}$ depends on the mass it contains and the time when it accretes onto the galaxy's cosmological halo. 
+The shell expands until the time $t_{\rm ta}$ when it reaches a turnaround radius $R_{\rm ta}$ depending on $t_{\rm ta}$ and the mass it encompasses. It then collapses inward until it accretes onto the galaxy's cosmological halo at a time $t_{\rm coll} \approx 2 t_{\rm ta}$. 
 
-According to this approximation, a shell of matter accreting onto a cosmological halo of mass $M_{\rm halo}(t)$ and radius $R_{\rm halo}$ at time $t$ has a specific kinetic energy
-$$\varepsilon_{\rm kin} (t) = \frac {G M_{\rm halo} (t)} {R_{\rm halo}} \left[ 1 - \frac {R_{\rm halo}} {R_{\rm ta}} - \left( \frac {R_{\rm ta}^3} {R_{\rm halo}^3} - 1 \right) \left( \frac {\Omega_\Lambda \rho_{\rm cr,0}} {\rho_{\rm halo}} \right) \right]$$
-in which $\rho_{\rm halo} (t) \equiv 3 M(t) / 4 \pi R_{\rm halo}^3$ is the halo's mean matter density. 
+### Incoming Kinetic Energy
+
+According to the spherical collapse approximation, infalling matter accreting onto a cosmological halo of mass $M_{\rm halo}$ and radius $R_{\rm halo}$ at time $t$ has a specific kinetic energy
+$$\varepsilon_{\rm kin} (t) = \frac {G M_{\rm halo} (t)} {R_{\rm halo}} \left[ 1 - \frac {R_{\rm halo}} {R_{\rm ta}} - \frac {\Omega_\Lambda \rho_{\rm cr,0}} {\rho_{\rm halo}} \left( \frac {R_{\rm ta}^3} {R_{\rm halo}^3} - 1 \right) \right]$$
+in which $\rho_{\rm halo} (t) \equiv 3 M_{\rm halo} / 4 \pi R_{\rm halo}^3$ is the halo's mean matter density. 
 
 ### Halo Radius
 
@@ -64,8 +66,6 @@ A real cosmological halo does not have a distinct radius. Cosmological simulatio
 Typically, a halo's radius (and consequently its mass) is defined in terms of a contrast factor
 $$\Delta_{\rm c} = \frac {\rho_{\rm halo}} {\rho_{\rm cr}}$$
 relative to the universe's critical density $\rho_{\rm cr} = 3 H^2 (t) / 8 \pi G$, in which $H(t)$ is the Hubble expansion parameter at time $t$. The recommended value for **ExpCGM** models is $\Delta_{\rm c} = 200$.
-
-### Incoming Kinetic Energy
 
 For all suitable definitions of $\Delta_{\rm c}$, the dark-energy factor
 $$\frac {3 H_0^2 \Omega_\Lambda} {8 \pi G \rho_{\rm halo}} = \frac {\Omega_\Lambda} {\Delta_{\rm c}} \frac {H_0^2} {H^2 (t)}$$
