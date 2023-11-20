@@ -2,7 +2,7 @@
 title: Example
 layout: default
 nav_order: 1
-Parent: Notebooks
+parent: Notebooks
 ---
 
 # Notebook Example
