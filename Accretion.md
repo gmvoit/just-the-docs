@@ -26,28 +26,48 @@ parent: Description
 </head>
 
 # Accretion
+{: .no_toc}
+
+This page outlines how the **ExpCGM** framework represents cosmic accretion of atmospheric mass and energy. It employs a spherical collapse assumption to estimate the specific energy of incoming gas. It also accounts for adiabatic gravitational compression of atmospheric gas as the halo's potential well deepens. A user may also wish to account for atmospheric compression caused by the incoming momentum flux. After describing these three aspects of **ExpCGM**, the page concludes with a summary of cosmological atmospheric evolution.
+
+<details closed markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+   {: .text-delta}
+- TOC
+{:toc}  
+</details>
 
 ## Spherical Collapse
 
-One of the energy sources responsible for both atmospheric heating and turbulence is cosmological accretion. Gas that enters a galaxy's atmosphere through cosmological accretion has a specific energy that is often estimated using a spherical collapse approximation. 
+One of the energy sources responsible for both atmospheric heating and turbulence is cosmological accretion. The **ExpCGM** framework estimates this contribution using the classic spherical collapse approximation.
 
 ### Equation of Motion
 
-The equation of motion for a spherical shell of radius $R$ containing a constant mass $M$ is
+The equation of motion for a cosmological spherical shell of radius $R$ containing a constant mass $M$ is
 $$\ddot{R} = - \frac {G M} {R^2} + H_0^2 \Omega_\Lambda R$$
-in an expanding universe with a Hubble constant $H_0$ at the present time and in which dark energy has a constant energy density ($3 H_0^2 / 8 \pi G) \Omega_\Lambda c^2$. Integrating the equation of motion gives the shell's specific kinetic energy at radius $R$,
+The first term on the right accounts for Newtonian gravity. The second one accounts for dark energy in an expanding universe with a Hubble constant $H_0$ at the present time and in which dark energy has a constant energy density ($3 H_0^2 / 8 \pi G) \Omega_\Lambda c^2$. 
+
+Integrating the equation of motion gives the shell's specific kinetic energy at radius $R$,
 $$\frac {\dot{R}^2} {2} = \frac {G M} {R} \left( 1 - \frac {R} {R_{\rm ta}} \right) + \frac {H_0^2 \Omega_\Lambda} {2} R^2 \left( 1 - \frac {R_{\rm ta}^2} {R^2}  \right)$$
-in which the shell's turnaround radius $R_{\rm ta}$ depends on the mass it contains and the time when it accretes onto the galaxy's cosmological halo. According to this approximation, a shell of matter accreting onto a cosmological halo of mass $M_{\rm halo}(t)$ and radius $R_{\rm halo}$ at time $t$ has a specific kinetic energy
+in which the shell's turnaround radius $R_{\rm ta}$ depends on the mass it contains and the time when it accretes onto the galaxy's cosmological halo. 
+
+According to this approximation, a shell of matter accreting onto a cosmological halo of mass $M_{\rm halo}(t)$ and radius $R_{\rm halo}$ at time $t$ has a specific kinetic energy
 $$\varepsilon_{\rm kin} (t) = \frac {G M_{\rm halo} (t)} {R_{\rm halo}} \left[ 1 - \frac {R_{\rm halo}} {R_{\rm ta}} - \left( \frac {R_{\rm ta}^3} {R_{\rm halo}^3} - 1 \right) \left( \frac {3 H_0^2 \Omega_\Lambda} {8 \pi G \rho_{\rm halo}} \right) \right]$$
 in which $\rho_{\rm halo} (t) \equiv 3 M(t) / 4 \pi R_{\rm halo}^3$ is the halo's mean matter density. 
 
 ### Halo Radius
 
-A real cosmological halo does not have a distinct radius. Cosmological simulations show that gravitational scattering converts radial infall into randomly oriented orbital motion over a range of radii in the vicinity of $R_{\rm ta} / 2$. Consequently, there is some freedom to define $R_{\rm halo}$ so that it suits the situation of interest. It is often defined in terms of a contrast factor
+A real cosmological halo does not have a distinct radius. Cosmological simulations show that gravitational scattering converts radial infall into randomly oriented orbital motion over a range of radii in the vicinity of $R_{\rm ta} / 2$. Consequently, there is some freedom to define $R_{\rm halo}$ so that it suits the situation of interest. 
+
+Typically, a halo's radius (and consequently its mass) is defined in terms of a contrast factor
 $$\Delta_{\rm c} = \frac {\rho_{\rm halo}} {\rho_{\rm cr}}$$
 relative to the universe's critical density $\rho_{\rm cr} = 3 H^2 (t) / 8 \pi G$, in which $H(t)$ is the Hubble expansion parameter at time $t$. For all suitable definitions of $\Delta_{\rm c}$, the factor
 $$\frac {3 H_0^2 \Omega_\Lambda} {8 \pi G \rho_{\rm halo}} = \frac {\Omega_\Lambda} {\Delta_{\rm c}} \frac {H_0^2} {H^2 (t)}$$
-is less than one percent. Neglecting that factor and assuming $R_{\rm halo} \approx R_{\rm ta} / 2$ then gives the approximation
+is less than one percent. 
+
+Neglecting that factor and assuming $R_{\rm halo} \approx R_{\rm ta} / 2$ then gives the approximation
 $$\varepsilon_{\rm kin} (t) \approx \frac {G M_{\rm halo}(t)} {2 R_{\rm halo}}$$
 for the specific kinetic energy of infalling matter at time $t$.
 
@@ -55,22 +75,22 @@ for the specific kinetic energy of infalling matter at time $t$.
 
 Another cosmological source of atmospheric heating is adiabatic gravitational compression. Mass that falls through a radius $r$ and remains at smaller radii increases the halo's circular velocity at $r$. None of the infalling matter needs to be baryonic but may consist of baryonic mass in stars. The increase in gravitational force at $r$ compresses the atmospheric gas within $r$, thereby increasing both its temperature and turbulent velocity dispersion, if no support energy is added to offset compression.
 
-To assess the contribution that adiabatic compression makes to the total atmospheric energy ($E_{\rm CGM}$), consider the result of a change $\Delta \varphi$ in the gravitational potential without a compensating change in the atmosphere's pressure, temperature, or density profiles. The total gravitational energy rises by
+To assess the contribution that adiabatic compression makes to the total atmospheric energy $E_{\rm CGM}$, consider the result of a change $\Delta \varphi$ in the gravitational potential without a compensating change in the atmosphere's pressure, temperature, or density profiles. The total gravitational energy rises by
 $$\Delta E_\varphi = \int_0^{r_{\rm CGM}} \Delta \varphi \cdot 4 \pi r^2 \rho dr$$
-while $E_{\rm th}$, $E_{\rm nt}$, and $M_{\rm CGM}$ stay the same (see [Essentials](Essentials) for definitions of symbols). If the change in $\varphi$ comes from an increase of the total mass within $r_{\rm CGM}$, then it will raise the circular velocity there and at smaller radii. Therefore, the change in $E_{\rm CGM} / M_{\rm CGM} v_\varphi^2$ is 
-$$\Delta \left( \frac {E_{\rm CGM}} {M_{\rm CGM} v_\varphi^2} \right) = \left[ \frac {\Delta E_\varphi} {E_\varphi} \frac {E_\varphi} {E_{\rm CGM}} - \frac {\Delta v_\varphi^2} {v_\varphi^2} \right] \frac {E_{\rm CGM}} {M_{\rm CGM} v_\varphi^2}$$
-in which $v_\varphi$ is the normalization of the circular velocity profile.
+while $E_{\rm th}$, $E_{\rm nt}$, and $M_{\rm CGM}$ stay the same (see [Essentials](Essentials) for definitions of symbols). If the change in $\varphi$ comes from an increase of the total mass within $r_{\rm CGM}$, then it raises the circular velocity there and also at smaller radii. The resulting change in the atmosphere's scaled specific energy $\varepsilon_{\rm CGM}/v_\varphi^2$ is 
+$$\Delta \left( \frac {\varepsilon_{\rm CGM}} {v_\varphi^2} \right) = \left[ \frac {\Delta E_\varphi} {E_\varphi} \frac {E_\varphi} {E_{\rm CGM}} - \frac {\Delta v_\varphi^2} {v_\varphi^2} \right] \frac {\varepsilon_{\rm CGM}} {v_\varphi^2}$$
+in which $v_\varphi$ is the normalization of the potential's circular velocity profile.
 
-A simple renormalization of the gravitational potential, proportional to $v_\varphi^2$, causes a decrease in $E_{\rm CGM} / M_{\rm CGM} v_\varphi^2$. That happens because $\Delta E_\varphi / E_\varphi = \Delta v_\varphi^2 / v_\varphi^2$ and $E_\varphi / E_{\rm CGM} < 1$. A change in both the normalization $v_\varphi$ and scale radius $r_{\rm s}$ of the potential well is a slightly more complicated case, giving
+A simple renormalization of the gravitational potential, proportional to $v_\varphi^2$, causes a decrease in $\varepsilon_{\rm CGM}/v_\varphi^2$. That happens because $\Delta E_\varphi / E_\varphi = \Delta v_\varphi^2 / v_\varphi^2$ and $E_\varphi / E_{\rm CGM} < 1$. A change in both the normalization $v_\varphi$ and scale radius $r_{\rm s}$ of the potential well is a slightly more complicated case, giving
 $$\Delta \varphi (x) = \varphi (x) \, \frac {\Delta v_\varphi^2} {v_\varphi^2} - v_c^2(x) \frac {\Delta r_{\rm s}} {r_{\rm s}}$$
 for the change in $\varphi(x)$ at $x = r / r_{\rm s}$. In that case one finds 
 $$\frac {\Delta E_\varphi} {E_\varphi}  = \frac {\Delta v_\varphi^2} {v_\varphi^2} - \frac {\Delta r_{\rm s}} {r_{\rm s}} \int_0^{x_{\rm CGM}} \frac {\alpha (x) f_{\alpha} (x)} {J_\varphi(x_{\rm CGM}) f_{\rm th}(x)} x^2 dx$$ when $\Delta \varphi$ is inserted into the integral for the change in $E_\varphi$. Therefore, increasing both $v_\varphi$ and $r_{\rm s}$ causes an even greater decrease in $E_{\rm CGM} / M_{\rm CGM} v_\varphi^2$ than just an increase of $v_\varphi$. 
 
-In the **ExpCGM** framework, a decrease in $E_{\rm CGM} / M_{\rm CGM} v_\varphi^2$ leads to a decrease in the atmosphere's equilibrium radius $x_{\rm CGM} = r_{\rm CGM} / r_{\rm s}$. The increase in the gravitational potential temporarily causes gravitational forces to exceed pressure forces. Adiabatic compression of the atmosphere then raises its temperature by
+In the **ExpCGM** framework, a decrease in $\varepsilon_{\rm CGM}/v_\varphi^2$ leads to a decrease in the atmosphere's equilibrium radius $x_{\rm CGM} = r_{\rm CGM} / r_{\rm s}$. The increase in the gravitational potential temporarily causes gravitational forces to exceed pressure forces. Adiabatic compression of the atmosphere then raises its temperature by
 $$\Delta T (r) \approx \frac {\Delta v_\varphi^2} {v_\varphi^2} T (r)$$
 so that support energy and gravity come back into force balance. 
 
-Thermal and turbulent energy input associated with the mass accretion that deepens the potential well has little effect on this rise in equilibrium temperature. Instead, the energy that accreting gas adds directly to the atmosphere acts to offset adiabatic contraction of the atmosphere by increasing $E_{\rm CGM} / M_{\rm CGM} v_\varphi^2$ and $x_{\rm CGM}$ while preserving the temperature increase linked to $\Delta v_\varphi^2$.
+Thermal and turbulent energy input associated with the mass accretion that deepens the potential well has little effect on this rise in equilibrium temperature. Instead, the energy that accreting gas adds directly to the atmosphere acts to offset adiabatic contraction of the atmosphere by increasing $\varepsilon_{\rm CGM}$ and $r_{\rm CGM}$ while preserving the temperature increase linked to $\Delta v_\varphi^2$.
 
 ## Incoming Momentum
 
