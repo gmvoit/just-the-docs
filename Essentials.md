@@ -28,7 +28,7 @@ parent: Description
 # ExpCGM Essentials
 {: .no_toc}
 
-This page outlines the essential elements of the **ExpCGM** framework, starting with [force balance](#ForceBalance) and [specific energy](#SpecificEnergy). It then provides [a simple example](#ASimpleExample) illustrating how to produce an **ExpCGM** model atmosphere. Two sections following the example describe how **ExpCGM** accounts for [turbulent support](#TurbulentSupport) and [thermalization](#Thermalization). The page concludes with a section outlining how **ExpCGM** can be used to model [atmospheric evolution](#AtmosphericEvolution).
+This page outlines the essential elements of the **ExpCGM** framework, starting with [force balance](#force-balance-) and [specific energy](#SpecificEnergy). It then provides [a simple example](#ASimpleExample) illustrating how to produce an **ExpCGM** model atmosphere. Two sections following the example describe how **ExpCGM** accounts for [turbulent support](#TurbulentSupport) and [thermalization](#Thermalization). The page concludes with a section outlining how **ExpCGM** can be used to model [atmospheric evolution](#AtmosphericEvolution).
 
 <details closed markdown="block">
   <summary>
@@ -39,7 +39,7 @@ This page outlines the essential elements of the **ExpCGM** framework, starting 
 {:toc}  
 </details>
 
-## Force Balance <a name="ForceBalance"></a>
+## Force Balance 
 
 The foundation of **ExpCGM** is an efficient method for determining the steady-state configuration of a galactic atmosphere having a total gas mass $M_{\rm CGM}$ and a total energy $E_{\rm CGM}$. In this framework, the equilbrium radius $r_{\rm CGM}$ containing the atmospheric gas mass $M_{\rm CGM}$ is a function of $E_{\rm CGM}$. 
 
@@ -57,7 +57,9 @@ are known functions of radius. Integrating the shape function leads to
 $$f_P(r) \equiv \exp \left[ - \int_1^{r/r_0} \alpha (x)  dx \right]$$ 
 which is a dimensionless pressure profile normalized to unity at a reference radius $r_0$. Providing a pressure normalization $P_0$ at $r_0$ then specifies the atmosphere's equilibrium pressure profile:
 $$P(r) = P_0 f_P(r)$$
-Be aware that many details of an atmosphere model within **ExpCGM** hinge on a user's choice for the pressure shape function $\alpha(r)$.
+
+{: .note}
+Many details of an **ExpCGM** atmosphere model hinge on a user's choice for the pressure shape function $\alpha(r)$. That choice represents an assumption about the physical processes responsible for maintaining the pressure profile. See the Pressure Profiles page for more detail.
 
 ### Temperature Profile
 
@@ -69,9 +71,9 @@ in which the function $T_\varphi (r) \equiv \mu m_p v_{\rm c}^2(r) / 2k$ represe
 
 Given those pressure and temperature profiles, an equilibrium atmosphere's density profile becomes
 $$\rho (r) = P_0 \frac {\alpha (r) f_P (r)} {v_{\rm c}^2(r)}$$
-Note that $\rho_0 \equiv \rho(r_0) = P_0 / (v_c^2 / 2)$ for $\alpha = 2$.
+For example, the gas mass density at the reference radius $r_0$ is simply $\rho_0 = P_0 / (v_c^2 / 2)$ in an atmosphere with the shape function $\alpha = 2$.
 
-### Non-Thermal Support
+### Generalized Force Balance
 
 To represent equilibrium atmospheres partially supported by non-thermal energy, the **ExpCGM** framework generalizes hydrostatic equilibrium using the force balance equation
 $$\frac {d} {dr} \frac {P} {f_{\rm th}} = - \rho f_\varphi  \frac {d \varphi} {dr}$$
@@ -83,13 +85,14 @@ in which the function
 $$\alpha_{\rm eff} (r) \equiv \alpha(r) - \frac {d \ln f_{\rm th}} {d \ln r}$$ 
 is a ***generalized shape function*** for atmospheric support, accounting for possible dependences of $f_{\rm th}$ on radius. Note that $f_\varphi$ may also depend on radius.
 
+{: .note}
 Some formulations of atmospheric force balance express resistance to gravity in terms of a total pressure $P_{\rm tot} = P / f_{\rm th}$. However, **ExpCGM** explicitly accounts for the thermal pressure contribution using the $f_{\rm th}$ factor so that an equilibrium atmosphere's temperature profile can be inferred directly from force balance considerations and the $f_{\rm th}$ factor.
 
 ## Specific Energy <a name="SpecificEnergy"></a>
 
-A galactic atmosphere of total mass $M_{\rm CGM}$ expands if its total energy $E_{\rm CGM}$ increases, and it contracts if its total energy declines. The **ExpCGM** framework therefore links a galactic atmosphere's ***equilibrium radius*** $r_{\rm CGM}$ to its ***mean specific energy***
+A galactic atmosphere of total mass $M_{\rm CGM}$ expands if its total energy $E_{\rm CGM}$ increases, and it contracts if its total energy declines. The **ExpCGM** framework therefore links a galactic atmosphere's equilibrium radius $r_{\rm CGM}$ to its ***mean specific energy***
 $$\varepsilon_{\rm CGM} = \frac {E_{\rm CGM}} {M_{\rm CGM}}$$
-The dependence of specific energy on radius can be inverted to obtain the dependence of radius on specific energy. However, some integrals are needed to derive $r_{\rm CGM} ( \varepsilon_{\rm CGM} )$ from the equilibrium profiles of pressure, temperature, and density. 
+The dependence of specific energy on radius can be inverted to obtain the dependence of radius on specific energy. However, several integrals are needed to derive $r_{\rm CGM} ( \varepsilon_{\rm CGM} )$ from the equilibrium profiles of pressure, temperature, and density. 
 
 ### Gas Mass
 
@@ -138,7 +141,7 @@ To illustrate how solutions for steady-state atmospheric structure emerge from t
 ### Power-Law Pressure Profile
 
 First, assume that the atmosphere has a power-law pressure profile (constant $\alpha$), that the atmosphere's support energy is purely thermal ($f_{\rm th} =1$), and that there are no radial forces other than gravity ($f_\varphi =1$). In that case, the pressure, temperature, and density profiles become
-$$P(r) = P_0 \left( \frac {r} {r_0} \right)^{-\alpha}~~~~~~,~~~~~~T(r) = \frac {2 T_\varphi (r)} {\alpha} ~~~~~~,~~~~~~\rho (r) = \frac {\alpha P_0} {v_{\rm c}^2(r)} \left( \frac {r} {r_0} \right)^{-\alpha}$$
+$$P(r) = P_0 \left( \frac {r} {r_0} \right)^{-\alpha}~~~~,~~~~T(r) = \frac {2 T_\varphi (r)} {\alpha} ~~~~,~~~~\rho (r) = \frac {\alpha P_0} {v_{\rm c}^2(r)} \left( \frac {r} {r_0} \right)^{-\alpha}$$
 
 ### NFW Potential Well
 
@@ -186,6 +189,8 @@ Turbulence dissipates into heat on a timescale $t_{\rm diss} \sim \lambda_{\rm d
 
 The previous section's results show that dissipation of turbulent support energy does not change the atmosphere's equilibrium radius or density profile. Turbulent dissipation simply changes $f_{\rm th}$ without altering an equilibrium atmosphere's overall structure. 
 
+### Energy Injection
+
 To track how thermalization of turbulence determines the value of $f_{\rm th}$ in an atmosphere jointly supported by turbulence and thermal energy, the **ExpCGM** framework defines $\dot{E}\_{\rm inj}$ to be the rate at which energy sources inject energy into a galaxy's atmosphere. The timescale $t_{\rm inj} \equiv E_{\rm th} / f_{\rm th} \dot{E}\_{\rm inj}$ for energy input is the time it takes for those sources to inject an amount of energy $\dot{E}\_{\rm inj} t_{\rm inj}$ comparable to the total support energy opposing gravitational compression, which is equal to the thermal energy $E_{\rm th}$ divided by $f_{\rm th}$. That energy input branches into a fraction $f_{\rm inj,th}$ going directly into heat and a complementary fraction $1 - f_{\rm inj,th}$ that initially goes into turbulence. Eventually the turbulence dissipates into heat on the timescale $t_{\rm diss} \equiv (1 - f_{\rm th}) E_{\rm th} / f_{\rm th} \dot{E}\_{\rm diss}$, where $\dot{E}\_{\rm diss}$ is the dissipation rate. Radiative cooling then converts that thermal energy into escaping photons on a timescale $t_{\rm cool} \equiv E_{\rm th} / \dot{E}\_{\rm rad}$, where $\dot{E}_{\rm rad}$ is the radiative loss rate.
 
 Energy input, dissipation, and radiative cooling can all change the fraction $f_{\rm th}$ of support energy in thermal form. Its rate of change can be derived from the overall rate of change in total support energy
@@ -198,7 +203,9 @@ in which $\dot{E}\_{\rm exp}$ is the rate at which atmospheric expansion or cont
 
 The factor $f_{\rm th}$ in front of $\dot{E}\_{\rm exp}$ follows from turbulent energy having the same value of $\gamma - 1$ as thermal energy. 
 
-Combining those two equations leads to
+### Evolution of Thermalization
+
+Combining the equations for the rate of change in $E_{\rm th}$ and the rate of change in $E_{\rm th} / f_{\rm th}$ leads to
 
 <p>$$\frac {E_{\rm th}} {f_{\rm th}} \frac {d f_{\rm th}} {dt} = \dot{E}_{\rm diss} - \left( 1 - f_{\rm th} \right) \dot{E}_{\rm rad} + \left( f_{\rm inj,th} - f_{\rm th} \right) \dot{E}_{\rm inj}$$</p>
 
@@ -230,7 +237,10 @@ A galactic atmosphere gains support energy when feedback energy released from th
   $$\dot{M}_{\rm cool}(r_{\rm gal}) \approx \frac {4 \pi r_{\rm gal}^3 \, \rho (r_{\rm gal})} {t_{\rm cool} (r_{\rm gal})}$$ 
 </p> 
 
-evaluated at the galaxy's outer radius $r_{\rm gal}$. The inflowing mass is subtracted from $M_{\rm CGM}$, and its energy content is subtracted from $E_{\rm CGM}$. A supplementary galaxy model then determines the resulting supply of feedback energy $\dot{E}\_{\rm fb}$ and outflowing gas mass $\dot{M}\_{\rm fb}$. In the ExpCGM framework, radiative cooling can continue to supply gas to the galaxy even if $\dot{E}\_{\rm fb} > \dot{E}\_{\rm rad}$. Instead of shutting off the gas supply by offsetting radiative cooling, feedback energy limits $\dot{M}\_{\rm cool}$ by reducing $\rho (r_{\rm gal})/t_{\rm cool} (r_{\rm gal})$.
+evaluated at the galaxy's outer radius $r_{\rm gal}$. The inflowing mass is subtracted from $M_{\rm CGM}$, and its energy content is subtracted from $E_{\rm CGM}$. A supplementary galaxy model then determines the resulting supply of feedback energy $\dot{E}\_{\rm fb}$ and outflowing gas mass $\dot{M}\_{\rm fb}$. 
+
+{: .note}
+In the **ExpCGM** framework, radiative cooling can continue to supply gas to the galaxy even if $\dot{E}\_{\rm fb} > \dot{E}\_{\rm rad}$. Instead of shutting off the gas supply by offsetting radiative cooling, feedback energy limits $\dot{M}\_{\rm cool}$ by reducing $\rho (r_{\rm gal})/t_{\rm cool} (r_{\rm gal})$.
 
 ### Cosmic Accretion
 
@@ -248,7 +258,7 @@ where $R_{\rm halo}$ is a user-defined radius for the galaxy's dark matter halo 
 
 and depends on both the rate of change $\dot{\varphi} (r)$ in the gravitational potential and the density profile supplied by an equilibrium model for the atmosphere.
 
-### Total Input
+### Total Energy Input
 
 The total input rate for atmospheric energy is therefore
 
