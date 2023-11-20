@@ -1,7 +1,7 @@
 ---
 title: Alt Page
 layout: default
-nav_order: 4
+nav_exclude: true
 ---
 
 # Alt Page
