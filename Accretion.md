@@ -47,14 +47,14 @@ One of the energy sources responsible for both atmospheric heating and turbulenc
 
 The equation of motion for a cosmological spherical shell of radius $R$ containing a constant mass $M$ is
 $$\ddot{R} = - \frac {G M} {R^2} + H_0^2 \Omega_\Lambda R$$
-The first term on the right accounts for Newtonian gravity. The second one accounts for dark energy in an expanding universe with a Hubble constant $H_0$ at the present time and in which dark energy has a constant energy density ($3 H_0^2 / 8 \pi G) \Omega_\Lambda c^2$. 
+The first term on the right accounts for Newtonian gravity. The second one accounts for dark energy in an expanding universe with a Hubble constant $H_0$ at the present time and in which dark energy has a constant energy density that is $\Omega_\Lambda c^2$ times the current cosmological critical density $\rho_{\rm cr,0} \equiv 3 H_0^2 / 8 \pi G$. 
 
 Integrating the equation of motion gives the shell's specific kinetic energy at radius $R$,
 $$\frac {\dot{R}^2} {2} = \frac {G M} {R} \left( 1 - \frac {R} {R_{\rm ta}} \right) + \frac {H_0^2 \Omega_\Lambda} {2} R^2 \left( 1 - \frac {R_{\rm ta}^2} {R^2}  \right)$$
 in which the shell's turnaround radius $R_{\rm ta}$ depends on the mass it contains and the time when it accretes onto the galaxy's cosmological halo. 
 
 According to this approximation, a shell of matter accreting onto a cosmological halo of mass $M_{\rm halo}(t)$ and radius $R_{\rm halo}$ at time $t$ has a specific kinetic energy
-$$\varepsilon_{\rm kin} (t) = \frac {G M_{\rm halo} (t)} {R_{\rm halo}} \left[ 1 - \frac {R_{\rm halo}} {R_{\rm ta}} - \left( \frac {R_{\rm ta}^3} {R_{\rm halo}^3} - 1 \right) \left( \frac {3 H_0^2 \Omega_\Lambda} {8 \pi G \rho_{\rm halo}} \right) \right]$$
+$$\varepsilon_{\rm kin} (t) = \frac {G M_{\rm halo} (t)} {R_{\rm halo}} \left[ 1 - \frac {R_{\rm halo}} {R_{\rm ta}} - \left( \frac {R_{\rm ta}^3} {R_{\rm halo}^3} - 1 \right) \left( \frac {\Omega_\Lambda \rho_{\rm cr,0}} {\rho_{\rm halo}} \right) \right]$$
 in which $\rho_{\rm halo} (t) \equiv 3 M(t) / 4 \pi R_{\rm halo}^3$ is the halo's mean matter density. 
 
 ### Halo Radius
