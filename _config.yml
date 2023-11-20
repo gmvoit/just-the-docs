@@ -4,7 +4,3 @@ theme: just-the-docs
 
 url: https://gmvoit.github.io/ExpCGM
 
-callouts:
-  note:
-    title: Note
-    color: purple
