@@ -32,9 +32,9 @@ This page outlines the two most essential elements of the **ExpCGM** framework, 
 
 <details open markdown="block">
   <summary>
-    ## Table of contents
-   {: .no_toc .text-delta}
+    Table of contents
   </summary>
+   {: .text-delta}
 - TOC
 {:toc}  
 </details>
