@@ -1,5 +1,5 @@
 ---
-title: Home
+title: Hom
 layout: home
 nav_order: 1
 ---
