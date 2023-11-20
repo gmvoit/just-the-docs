@@ -7,4 +7,4 @@ has_children: true
 
 # Description
 
-These pages describe and define the **ExpCGM** framework for modeling galactic atmospheres
+These pages define and describe the **ExpCGM** framework for modeling galactic atmospheres
