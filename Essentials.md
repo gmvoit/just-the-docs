@@ -27,15 +27,20 @@ nav_order: 2
 # ExpCGM Essentials
 {: .no_toc}
 
+This page outlines the two most essential elements of the **ExpCGM** framework, [***force balance***](#ForceBalance) and [***specific energy***](#SpecificEnergy). It then provides [a simple example](#ASimpleExample) illustrating how to produce an **ExpCGM** model atmosphere. Two sections following the example describe how **ExpCGM** accounts for [turbulent support](#TurbulentSupport) and [thermalization](#Thermalization). The page concludes with a section outlining how **ExpCGM** can be used to model [atmospheric evolution](#AtmosphericEvolution).
+
 ## Table of contents
 {: .no_toc .text-delta}
 
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+   {: text-delta}
 - TOC
 {:toc}  
-
-This page outlines the two most essential elements of the **ExpCGM** framework, [***force balance***](#ForceBalance) and [***specific energy***](#SpecificEnergy). It then provides [a simple example](#ASimpleExample) illustrating how to produce an **ExpCGM** model atmosphere. Two sections following the example describe how **ExpCGM** accounts for [turbulent support](#TurbulentSupport) and [thermalization](#Thermalization). The page concludes with a section outlining how **ExpCGM** can be used to model [atmospheric evolution](#AtmosphericEvolution).
-
-
+</details>
 
 ## Force Balance <a name="ForceBalance"></a>
 
