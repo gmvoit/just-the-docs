@@ -10,17 +10,17 @@ parent: Description
 ## Binding Energy
 
 An atmosphere's binding energy depends on how its support energy compares with the depth of the potential well confining it. 
-According to the **ExpCGM** framework, the specific support energy of atmospheric gas at radius $r$ is
-$$\frac {3} {2} \frac {P / f_{\rm th}} {\rho} =  \frac {3 f_\varphi} {2 \alpha_{\rm eff}}  v_{\rm c}^2 (r)$$
-when a combination of thermal and turbulent energy supports a steady-state galactic atmosphere. (See the [Essentials](Essentials) page for an explanation and definitions of these symbols.) If there are other forms of support energy, then the leading numerical coefficient (3/2) may be different. 
-
-The specific gravitational binding energy of the gas at radius $r$ is
+According to the **ExpCGM** framework, the specific support energy of a gas layer at radius $r$ is
+$$\frac {3} {2} \frac {P} {f_{\rm th} \rho} =  \frac {3 f_\varphi} {2 \alpha_{\rm eff}}  v_{\rm c}^2 (r)$$
+when a combination of thermal and turbulent energy supports a steady-state galactic atmosphere. (See the [Essentials](Essentials) page for an explanation and definitions of the symbols.) The specific gravitational binding energy of that gas layer is
 $$\epsilon_{\rm bind} (r) = \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) v_{\rm c}^2 (r) + \varphi(r) - \varphi_\infty$$
-in which $\varphi(r)$ is the gravitational potential and $\varphi_\infty$ is its limit as $r \rightarrow \infty$. A gas layer at $r$ is bound to the potential if
+in which $\varphi(r)$ is the gravitational potential and $\varphi_\infty$ is its limit as $r \rightarrow \infty$. A gas layer at $r$ is therefore bound to the potential if
 $$\alpha_{\rm eff}(r) > \frac {3 f_\varphi} {2} \frac {v_{\rm c}^2(r)} {\varphi_\infty - \varphi(r)}$$
 Otherwise, the pressure of overlying atmospheric layers external to $r$ needs to confine that layer.
 
-To see how gravity and external pressure jointly confine atmospheric gas in the \textsc{ExpCGM} framework, consider an NFW potential well 
+### An NFW Example
+
+To see how gravity and external pressure jointly confine atmospheric gas in the **ExpCGM** framework, consider an NFW potential well 
 $$\varphi_{\rm NFW} (x) = A_{\rm NFW} v_\varphi^2 \left[ 1 - \frac {\ln (1 + x)} {x} \right]$$
 with the normalization factor $A_{\rm NFW} = 4.625$. The parameter $v_\varphi$ is then the maximum value attained by the potential's circular velocity profile 
 $$v_{\rm c}^2 (x) = A_{\rm NFW} v_\varphi^2 \left[ \frac {\ln (1 + x)} {x} - \frac {1} {1 + x} \right]$$
