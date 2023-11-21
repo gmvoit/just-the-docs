@@ -28,7 +28,7 @@ parent: Description
 # Essentials
 {: .no_toc}
 
-This page outlines the essential elements of the **ExpCGM** framework, starting with [force balance](#force-balance-) and [specific energy](#specific-energy-). It then provides [a simple example](#ASimpleExample) illustrating how to produce an **ExpCGM** model atmosphere. Two sections following the example describe how **ExpCGM** accounts for [turbulent support](#TurbulentSupport) and [thermalization](#Thermalization). The page concludes with a section outlining how **ExpCGM** can be used to model [atmospheric evolution](#AtmosphericEvolution).
+This page outlines the essential elements of the **ExpCGM** framework, starting with force balance and atmospheric specific energy. It then provides a simple example illustrating how to produce an **ExpCGM** model atmosphere. Two sections following the example describe how **ExpCGM** accounts for turbulent support and thermalization of atmospheric energy. The page concludes with a section outlining how **ExpCGM** can be used to model atmospheric evolution.
 
 <details closed markdown="block">
   <summary>
@@ -59,7 +59,7 @@ which is a dimensionless pressure profile normalized to unity at a reference rad
 $$P(r) = P_0 f_P(r)$$
 
 {: .note}
-Many details of an **ExpCGM** atmosphere model hinge on a user's choice for the pressure shape function $\alpha(r)$. That choice represents an assumption about the physical processes responsible for maintaining the pressure profile. See the Pressure Profiles page for more detail.
+Many details of an **ExpCGM** atmosphere model hinge on a user's choice for the pressure shape function $\alpha(r)$. That choice represents an assumption about the physical processes responsible for maintaining the pressure profile. See the [Pressure Profiles](PressureProfiles) page for more detail.
 
 ### Temperature Profile
 
