@@ -25,7 +25,7 @@ parent: Description
   </script>
 </head>
 
-# ExpCGM Essentials
+# Essentials
 {: .no_toc}
 
 This page outlines the essential elements of the **ExpCGM** framework, starting with [force balance](#force-balance-) and [specific energy](#specific-energy-). It then provides [a simple example](#ASimpleExample) illustrating how to produce an **ExpCGM** model atmosphere. Two sections following the example describe how **ExpCGM** accounts for [turbulent support](#TurbulentSupport) and [thermalization](#Thermalization). The page concludes with a section outlining how **ExpCGM** can be used to model [atmospheric evolution](#AtmosphericEvolution).
