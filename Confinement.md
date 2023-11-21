@@ -13,7 +13,7 @@ An atmosphere's binding energy depends on how its support energy compares with t
 According to the **ExpCGM** framework, the specific support energy of a gas layer at radius $r$ is
 $$\frac {3} {2} \frac {P} {f_{\rm th} \rho} =  \frac {3 f_\varphi} {2 \alpha_{\rm eff}}  v_{\rm c}^2 (r)$$
 when a combination of thermal and turbulent energy supports a steady-state galactic atmosphere. (See the [Essentials](Essentials) page for an explanation and definitions of the symbols.) The specific gravitational binding energy of that gas layer is
-$$\epsilon_{\rm bind} (r) = \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) v_{\rm c}^2 (r) + \varphi(r) - \varphi_\infty$$
+$$\varepsilon_{\rm bind} (r) = \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) v_{\rm c}^2 (r) + \varphi(r) - \varphi_\infty$$
 in which $\varphi(r)$ is the gravitational potential and $\varphi_\infty$ is its limit as $r \rightarrow \infty$. A gas layer at $r$ is therefore bound to the potential if
 $$\alpha_{\rm eff}(r) > \frac {3 f_\varphi} {2} \frac {v_{\rm c}^2(r)} {\varphi_\infty - \varphi(r)}$$
 Otherwise, the pressure of overlying atmospheric layers external to $r$ needs to confine that layer.
@@ -24,11 +24,12 @@ To see how gravity and external pressure jointly confine atmospheric gas in the 
 $$\varphi_{\rm NFW} (x) = A_{\rm NFW} v_\varphi^2 \left[ 1 - \frac {\ln (1 + x)} {x} \right]$$
 with the normalization factor $A_{\rm NFW} = 4.625$. The parameter $v_\varphi$ is then the maximum value attained by the potential's circular velocity profile 
 $$v_{\rm c}^2 (x) = A_{\rm NFW} v_\varphi^2 \left[ \frac {\ln (1 + x)} {x} - \frac {1} {1 + x} \right]$$
-which reaches $v_\varphi^2$ at $r = 2.163 r_{\rm s}$. Circular velocity is nearly constant with radius near that peak but gradually declines at $r \gg r_{\rm s}$. Because of that decline, the value of $\varphi_\infty$ is finite.
-
-In an NFW potential well, the condition for purely gravitational confinement (with $f_\varphi = 1$) reduces to
+which reaches $v_\varphi^2$ at $r = 2.163 r_{\rm s}$. Circular velocity is nearly constant with radius near that peak but gradually declines at $r \gg r_{\rm s}$. Because of that decline, the value of $\varphi_\infty$ is finite. The condition for purely gravitational confinement (with $f_\varphi = 1$) in an NFW potential well therefore reduces to
 $$\alpha_{\rm eff} > \frac {3} {2} \left[ 1 - \frac {x} { (1 + x) \ln (1 + x) } \right]$$
-Notice that $\alpha_{\rm eff} = 3/2$ is a critical value for gravitational confinement: 
+
+### Critical Confinement
+
+Notice that $\alpha_{\rm eff} = 3/2$ is a critical value for gravitational confinement of atmospheres in which the ratio of support energy density to total pressure is 3/2: 
 
 * All layers having $\alpha_{\rm eff} > 3/2$ are gravitationally bound, because each layer's specific support energy $3 v_{\rm c}^2(r) / 2 \alpha_{\rm eff} (r)$ is less than the specific energy $v_{\rm c}^2(r) = G M_r / r$ required to escape the gravitational attraction of the total mass $M_r$ within $r$. (This general result does not depend on the details of $\varphi$.)
 
