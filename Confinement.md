@@ -119,7 +119,7 @@ $$\varphi_{\rm ext} (r) = f_{\rm acc} \left( \frac {G M_{\rm halo}} {R_{\rm halo
 It can be estimated using the approximation $v_{\rm acc} \approx (G M_{\rm halo} / 2 R_{\rm halo} )^{1/2}$ that comes from spherical collapse, giving
 
 <p>
-  $$f_{\rm acc} \approx 2 \left( \frac {\rho_{\rm cr}} {\rho_{\rm halo}} \right)^{1/2} \frac {\dot{M}_{\rm halo}} {H M_{\rm halo}}
+  $$f_{\rm acc} \approx 2 \left( \frac {\rho_{\rm cr}} {\rho_{\rm halo}} \right)^{1/2} \frac {\dot{M}_{\rm halo}} {H M_{\rm halo}}$$
 </p>
 
 
