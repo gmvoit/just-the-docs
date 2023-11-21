@@ -96,7 +96,7 @@ $$\Delta T (r) \approx \frac {\Delta v_\varphi^2} {v_\varphi^2} T (r)$$
 so that support energy and gravity come back into force balance. 
 
 {: .note}
-Thermal and turbulent energy input associated with the mass accretion that deepens the potential well has little effect on the atmosphere's equilibrium temperature, which is determined by $v_{\rm c}(r)$ and $\alpha(r)$. Instead, the energy that accreting gas adds directly to the atmosphere offsets adiabatic contraction of the atmosphere by increasing $\varepsilon_{\rm CGM}$ and $r_{\rm CGM}$ while preserving the temperature increase linked to $\Delta v_\varphi^2$.
+Thermal and turbulent energy input associated with mass accretion that deepens the potential well has little effect on the atmosphere's equilibrium temperature, because $T(r)$ in the **ExpCGM** framework is determined by $v_{\rm c}(r)$ and $\alpha(r)$. Instead, energy input that accreting gas adds directly to the atmosphere offsets adiabatic contraction by increasing $\varepsilon_{\rm CGM}$ and $r_{\rm CGM}$ without changing the atmosphere's equilibrium temperature.
 
 ## Incoming Momentum
 
@@ -107,9 +107,13 @@ $$( \rho v^2 )_{\rm acc} = \frac {\dot{M}_{\rm acc} (R_{\rm acc})} { 4 \pi R_{\r
 </p>
 
 
-where $\dot{M}\_{\rm acc} = \zeta f_{\rm b} \dot{M}\_{\rm halo}$ is the gas mass accretion rate, $\dot{M}\_{\rm halo}$ is the total mass accretion rate, $f_{\rm b}$ is the cosmic baryonic mass fraction, $\zeta \leq 1$ is a ``preventative feedback" factor accounting for phenomena that reduce the ratio of gas mass accretion to total mass accretion, and $v_{\rm acc} =  v_c (R_{\rm acc}) \cdot ( 1 - R_{\rm acc} / R_{\rm ta} )^{1/2}$ is the accretion speed of a mass shell that turned around at radius $R_{\rm ta}$. Momentum conservation requires that $P + \rho v^2$ be constant across the shock front (in the frame of that front), meaning that there is a boundary condition to be applied to the atmosphere's pressure profile. 
+where $\dot{M}\_{\rm acc} = \zeta f_{\rm b} \dot{M}\_{\rm halo}$ is the gas mass accretion rate, $\dot{M}\_{\rm halo}$ is the total mass accretion rate, $f_{\rm b}$ is the cosmic baryonic mass fraction, $\zeta \leq 1$ is a ``preventative feedback" factor accounting for phenomena that reduce the ratio of gas mass accretion to total mass accretion, and $v_{\rm acc} \approx  v_c (R_{\rm acc}) \cdot ( 1 - R_{\rm acc} / R_{\rm ta} )^{1/2}$ is the accretion speed of a mass shell that turned around at radius $R_{\rm ta}$. Momentum conservation requires that $P + \rho v^2$ be constant across the shock front (in the frame of that front), meaning that incoming momentum applies a boundary condition on the atmosphere's pressure profile. 
+
+### Asymmetric Accretion
 
 The difficulty with applying that boundary condition is cosmological accretion's lack of spherical symmetry. Much of the gas entering a galaxy's atmosphere streams in along cosmological filaments or plunges in along with merging subhalos. The gas associated with filaments and subhalos tends to be much denser than the ambient gas of a halo's outer atmosphere and is unimpeded by it. Meanwhile, ambient atmospheric gas that is rising outward can proceed along pathways posing less resistance. Nevertheless, the accreting gas must slow down somewhere in the atmosphere by shedding its infalling momentum and exerting an inward force.
+
+### Force Balance Modification
 
 In the spherically symmetric **ExpCGM** framework, the effects of incoming momentum on the pressure gradient can be included by adding an accretion term to the force balance equation, giving
 
@@ -131,6 +135,8 @@ Note that $\rho v_{\rm c}^2 = P_0 [ \alpha_{\rm eff} (r) f_\alpha (r) / f_\varph
 
 Momentum transfer that happens within a narrow range of radii, as in a spherical accretion shock, leads to a sharp pressure jump, but momentum transfer spread over a broad range of radii has a less pronounced effect on the pressure gradient.  If the accreting gas deposits its momentum over a broad region, then the logarithmic derivative of $\dot{M}\_{\rm acc}$ in the expression for $f_\varphi$ will be of order unity. The magnitude of the accretion-dependent term then depends on how the inward mass flux $(\rho v^2)\_{\rm acc}$ at radius $r$ compares with the value of $\rho v_{\rm c}^2 = \alpha_{\rm eff} P / f_{\rm th}$ in the ambient atmosphere. The correction for incoming momentum is therefore more important in low-density atmospheres that have significantly expanded in response to central energy input than in uninflated atmospheres: High-density accreting gas penetrates more deeply into expanded atmospheres before slowing down, and its inward momentum flux is a larger fraction of $\rho v_{\rm c}^2$.
 
+### Deceleration Zone
+
 Implementation of this correction requires guidance from numerical simulations. What's needed is an approximate power-law dependence of the gas inflow rate $\dot{M}\_{\rm acc} = 4 \pi r^2 (\rho v)\_{\rm acc}$ on radius. Suppose that $r_{\rm dec}$ is the outer radius of the deceleration zone, that $\dot{M}\_{\rm acc} \propto r^\eta$ within $r_{\rm dec}$, and that $v_{\rm acc} \approx v_{\rm c}$ is approximately constant with radius. In that case, we find
 
 <p>
@@ -139,14 +145,20 @@ $$f_\varphi \approx 1 + \eta \left[ \frac { \dot{M}_{\rm acc} (R_{\rm acc})} {4 
 
 in which the magnitude of the factor in square brackets is similar to the ratio of the gas mass entering $r_{\rm dec}$ during a dynamical time $r_{\rm dec} / v_{\rm c}$ to the gas mass currently within $r_{\rm dec}$. If the atmosphere's state is quasi-steady, then $(\rho v^2)\_{\rm acc} \sim \rho v_{\rm c}^2$ corresponds to a situation in which ambient gas at $r_{\rm dec}$ is flowing outward at a speed similar to the inflow speed of accreting gas. A smaller correction to purely gravitational force balance corresponds to an outflow speed that is small compared with $v_{\rm c}$. 
 
-If the effects of momentum transfer are locally significant compared to pressure support, then a choice must be made about how to represent the response of the atmosphere's pressure profile to the additional confinement. According to the default \textsc{ExpCGM} prescription, the shape function for support energy (i.e. $\alpha$ or $\alpha_{\rm eff}$) is chosen by the user. An approximate accretion-corrected temperature profile 
+### Accretion-Corrected Temperature
+
+If the effects of momentum transfer are locally significant compared to pressure support, then a choice must be made about how to represent the response of the atmosphere's pressure profile to the additional confinement. In the **ExpCGM** framework, the shape function for support energy (i.e. $\alpha$ or $\alpha_{\rm eff}$) is chosen by the user. To account for incoming momentum, **ExpCGM** users can also opt for an approximate accretion-corrected temperature profile 
 
 <p>
     $$T(r) \approx \frac {2 f_{\rm th} (r)} {\alpha_{\rm eff}(r)} \left[ 1 + \eta \frac { \dot{M}_{\rm acc} (R_{\rm acc})} {4 \pi r_{\rm dec}^2 \rho (r) v_{\rm c} (r)} \left( \frac {r} {r_{\rm dec}} \right)^\eta \right] T_\varphi (r)$$
 </p>
 
 
-follows from that choice, and $\rho (r)$ follows from $P(r)$ and $T(r)$. Some iteration may be needed to obtain a self-consistent solution for $T(r)$, because $\rho (r)$ is part of the correction. However, if the accreting gas decelerates over a narrow range of radii, then its confining effects on the pressure profile may better represented as a discontinuity in the pressure profile at $r_{\rm dec}$:
+in which $\rho (r)$ follows from $P(r)$ and $T(r)$. Some iteration may be needed to obtain a self-consistent solution for $T(r)$, because $\rho (r)$ is part of the correction. 
+
+### Pressure Jump
+
+If the accreting gas decelerates over a narrow range of radii, then its confining effects on the pressure profile may better represented as a discontinuity in the pressure profile at $r_{\rm dec}$:
 
 <p>
     $$\Delta \left( \frac {P} {f_{\rm th}} \right) \approx - \frac {\dot{M}_{\rm acc} v_{\rm acc}} { 4 \pi r_{\rm dec}^2}$$
@@ -161,6 +173,9 @@ The chosen shape function and potential well can continue to determine the produ
 
 
 consistent with the pressure jump at $r_{\rm dec}$.
+
+{: .note}
+In the limit of a sharp pressure jump, the equilibrium temperature profile in **ExpCGM** is continuous across the pressure discontinuity as long as $\alpha(r)$ is continuous. Only the pressure normalization changes.
 
 ## Cosmological Evolution
 
