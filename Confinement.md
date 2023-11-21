@@ -11,8 +11,10 @@ parent: Description
 
 An atmosphere's binding energy depends on how its support energy compares with the depth of the potential well confining it. 
 According to the **ExpCGM** framework, the specific support energy of atmospheric gas at radius $r$ is
-$$\frac {3} {2} \left( \frac {P} {f_{\rm th} \rho} \right) = \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) v_{\rm c}^2 (r)$$
-when a combination of thermal and turbulent energy supports a steady-state galactic atmosphere. (See the [Essentials](Essentials) page for an explanation and definitions of these symbols.) If there are other forms of support energy, then the leading numerical coefficient (3/2) may be different. The specific gravitational binding energy of the gas at radius $r$ is
+$$\frac {3} {2} \frac {P / f_{\rm th}} {\rho} =  \frac {3 f_\varphi} {2 \alpha_{\rm eff}}  v_{\rm c}^2 (r)$$
+when a combination of thermal and turbulent energy supports a steady-state galactic atmosphere. (See the [Essentials](Essentials) page for an explanation and definitions of these symbols.) If there are other forms of support energy, then the leading numerical coefficient (3/2) may be different. 
+
+The specific gravitational binding energy of the gas at radius $r$ is
 $$\epsilon_{\rm bind} (r) = \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) v_{\rm c}^2 (r) + \varphi(r) - \varphi_\infty$$
 in which $\varphi(r)$ is the gravitational potential and $\varphi_\infty$ is its limit as $r \rightarrow \infty$. A gas layer at $r$ is bound to the potential if
 $$\alpha_{\rm eff}(r) > \frac {3 f_\varphi} {2} \frac {v_{\rm c}^2(r)} {\varphi_\infty - \varphi(r)}$$
