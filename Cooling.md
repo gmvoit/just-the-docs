@@ -25,7 +25,7 @@ parent: Description
 </head>
 
 # Cooling
-{: notoc}
+{: no toc}
 
 <details closed markdown="block">
   <summary>
@@ -48,33 +48,33 @@ called the ***cooling time***. However, the atmosphere's temperature does not ne
 $$T \approx \left( \frac {2 f_{\rm th}} {\alpha_{\rm eff}} \right) T_\varphi  = \left( \frac {\mu m_p f_{\rm th}} {\alpha_{\rm eff} k} \right) v_{\rm c}^2$$
 in the **ExpCGM** framework (see the [Essentials](Essentials) page for an explanation and definitions of symbols). Radiative losses therefore reduce an atmosphere's ***specific entropy*** more directly than they reduce its temperature.
 
-\section{Specific Entropy}
+## Specific Entropy
 
 According to the first law of thermodynamics, the total entropy $S$ within a volume $V$ of radiatively cooling atmospheric gas declines as 
 $$T \frac {dS} {dt} = \frac {dU} {dt} \: + \: P \frac {dV} {dt} = - \frac {U} {t_{\rm cool}}$$
 In an atmosphere of non-relativistic particles, the thermal energy is $U = 3PV/2$, and so
-$$\frac {T} {PV} \frac {dS} {dt}  = \frac {5} {2} \frac {1} {V} \frac {dV} {dt} + \frac {3} {2} \frac {1} {P} \frac {dP} {dt} = \frac {3} {2} \frac {d} {dt} \ln (P V^{5/3} ) = - \frac {3} {2} \frac {1} {t_{\rm cool}}$$
+$$\frac {T} {PV} \frac {dS} {dt} ~=~ \frac {5} {2} \frac {1} {V} \frac {dV} {dt} + \frac {3} {2} \frac {1} {P} \frac {dP} {dt} ~=~ \frac {3} {2} \frac {d} {dt} \ln (P V^{5/3} ) ~=~ - \frac {3} {2} \frac {1} {t_{\rm cool}}$$
 If the atmosphere is not cooling ($t_{\rm cool} \rightarrow \infty$), then the quantity $K = P \rho^{-5/3}$ does not change, giving atmospheric gas a ***polytropic equation of state***
 $$P = K \rho^{\gamma}$$
 with $\gamma = 5/3$. Changes in the logarithm of this constant of proportionality,
 $$\Delta \ln K = \frac {2} {3} \frac {\Delta S} {k(nV)}$$
-are directly proportional to changes in the specific entropy $S / (nV)$. Therefore, $K$ specifies the \textit{adiabat} of a sample of atmospheric gas and
+are directly proportional to changes in the specific entropy $S / (nV)$. Therefore, $K$ specifies the *adiabat* of a sample of atmospheric gas and
 $$\frac {d \ln K} {dt} = - \frac {1} {t_{\rm cool}}$$
-specifies how radiative cooling changes the adiabat of that sample.
+determines how radiative cooling changes the adiabat of that sample.
 
-In the scientific literature on galactic atmospheres, the quantity $K$ is often loosely called the "entropy" of atmospheric gas, when in fact it is logarithm of specific entropy. It is also specified using a variety of units that may seem to be incompatible with each other. However, the units of $K$ have no operational significance, as they correspond to a normalization factor that vanishes when differences in $\ln K$ are assessed. Only \textit{changes} in $\ln K$ have physical meaning. One is therefore free to choose a custom set of units for $K$ tailored to the observations used to measure it.  
+In the scientific literature on galactic atmospheres, the quantity $K$ is often loosely called the "entropy" of atmospheric gas, when in fact it is logarithm of specific entropy. It is also specified using a variety of units that may seem to be incompatible with each other. However, the units of $K$ have no operational significance, as they correspond to a normalization factor that vanishes when differences in $\ln K$ are assessed. Only *changes* in $\ln K$ have physical meaning. One is therefore free to choose units for $K$ that are tailored to the observations used to measure it.  
 
 ## Cooling Flows
 
-Uncompensated cooling causes a galactic atmosphere to contract, resulting in a \textit{cooling flow} with an inward mass flux
+Uncompensated cooling causes a galactic atmosphere to contract, resulting in a ***cooling flow*** with an inward mass flux
 
 <p>
   $$\dot{M}_{\rm cool} = 4 \pi r^2 \rho v_{\rm in} = \frac {4 \pi r^3 \rho} {t_{\rm flow}}$$
 </p>
 
 
-where $t_{\rm flow} = r / v_{\rm in}$ is the inflow timescale corresponding to the inflow speed $v_{\rm in} = - dr/dt$. That flow time is related to the cooling time via
-$$\alpha_K \equiv \frac {d \ln K} {d \ln r} = r \left( \frac {dt} {dr} \right)^{-1} \frac {d \ln K} {d t} = - t_{\rm flow} \frac {d \ln K} {d t} = \frac {t_{\rm flow}} {t_{\rm cool}}$$
+in which $t_{\rm flow} = r / v_{\rm in}$ is the inflow timescale corresponding to the inflow speed $v_{\rm in} = - dr/dt$. That flow time is related to the cooling time via
+$$\alpha_K \equiv \frac {d \ln K} {d \ln r} ~=~ r \left( \frac {dt} {dr} \right)^{-1} \frac {d \ln K} {d t} ~=~ - t_{\rm flow} \frac {d \ln K} {d t} ~=~ \frac {t_{\rm flow}} {t_{\rm cool}}$$
 Therefore, the equation
 
 <p>
@@ -85,7 +85,7 @@ Therefore, the equation
 represents the expected cooling flow rate at radius $r$.
 
 It is an *expected* cooling flow rate because we have not yet established whether $\dot{M}\_{\rm cool}$ is a *steady* cooling flow rate. The steadiness of $\dot{M}\_{\rm cool}$ depends on whether the inflow rate is constant with radius. It can be approximately constant with radius in an atmosphere with $P \propto r^{-\alpha}$ if
-$$\frac {r^3 \rho} {t_{\rm cool}} \propto r^3 P^2 \left[ \frac {\Lambda (T)} {T^3} \right] \propto r^{3-2 \alpha} \left[ \frac {\Lambda (T)} {T^3} \right]$$
+$$\frac {r^3 \rho} {t_{\rm cool}} ~\propto~ r^3 P^2 \left[ \frac {\Lambda (T)} {T^3} \right] ~\propto~ r^{3-2 \alpha} \left[ \frac {\Lambda (T)} {T^3} \right]$$
 is approximately constant with radius. Therefore, a steady cooling flow in an isothermal gravitational potential (with constant $v_{\rm c}^2$) has $\alpha \approx 3/2$, because gravitational compression assures that $T$ remains approximately constant with radius. If those conditions apply, then combining $K(r) \propto P^{-2/3} T^{5/3}$ and $\alpha \approx 3/2$ gives $\alpha_K \approx 1$ and 
 
 <p>
@@ -135,9 +135,9 @@ Assuming homogeneous gas at each radius then gives
 </p>
 
 
-after making the substitutions $P(r) = P_0 f_\alpha (r / r_0)$ and $r_{\rm CGM} = r_0 x_{\rm CGM}$ (see \textbf{\textsc{ExpCGM:} The Essentials} for definitions of symbols). The temperature-dependent factor in square brackets is approximately constant with radius in a nearly isothermal potential well. Therefore, the pressure profile's shape function $\alpha (r)$, from which $f_\alpha (x)$ is derived, determines how radiative losses are distributed as a function of radius.
+after making the substitutions $P(r) = P_0 f_\alpha (r / r_0)$ and $r_{\rm CGM} = r_0 x_{\rm CGM}$ (see the [Essentials](Essentials) page for definitions of symbols). The temperature-dependent factor in square brackets is approximately constant with radius in a nearly isothermal potential well. Therefore, the pressure profile's shape function $\alpha (r)$, from which $f_\alpha (x)$ is derived, determines how radiative losses are distributed as a function of radius.
 
-Notice that the integral for $\dot{E}_{\rm rad}$ diverges at small $r$ for $f_\alpha (x) = x^{-\alpha}$ and $\alpha \geq 3/2$, if the factor in brackets is a constant or declining function of radius. In that case, something needs to be done to truncate the integral at small radii. One option is to truncate the integral at $r_{\rm gal}$. Another is to use a shape function with some curvature, so that $\alpha < 3/2$ at $r \ll r_0$ and $\alpha > 3/2$ at $r \gg r_0$ (see the [Pressure Profiles]{PressureProfiles) page for more shape function options). Observations of galaxy clusters and groups show that their pressure profiles do indeed have shape functions with the curvature properties necessary for $\dot{E}_{\rm rad}$ in a homogeneous atmosphere to converge at both small and large $r$.
+Notice that the integral for $\dot{E}\_{\rm rad}$ diverges at small $r$ for $f_\alpha (x) = x^{-\alpha}$ and $\alpha \geq 3/2$, if the factor in brackets is a constant or declining function of radius. In that case, something needs to be done to truncate the integral at small radii. One option is to truncate the integral at $r_{\rm gal}$. Another is to use a shape function with some curvature, so that $\alpha < 3/2$ at $r \ll r_0$ and $\alpha > 3/2$ at $r \gg r_0$ (see the [Pressure Profiles]{PressureProfiles) page for more shape function options). Observations of galaxy clusters and groups show that their pressure profiles do indeed have shape functions with the curvature properties necessary for $\dot{E}_{\rm rad}$ in a homogeneous atmosphere to converge at both small and large $r$.
 
 An inhomogeneous atmosphere has density fluctuations that boost $\dot{E}\_{\rm rad}$ above expectations for a homogeneous atmosphere. Assuming isobaric log-normal density fluctuations with a dispersion $\sigma_{\ln \rho}$ that is independent of radius leads to a boost factor
 $$f_{\rm rad} \approx ( 2- \lambda ) \sigma_{\ln \rho}$$
