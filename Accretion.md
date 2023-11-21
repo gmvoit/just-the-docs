@@ -95,7 +95,8 @@ In the **ExpCGM** framework, a decrease in $\varepsilon_{\rm CGM}/v_\varphi^2$ l
 $$\Delta T (r) \approx \frac {\Delta v_\varphi^2} {v_\varphi^2} T (r)$$
 so that support energy and gravity come back into force balance. 
 
-Thermal and turbulent energy input associated with the mass accretion that deepens the potential well has little effect on this rise in the atmosphere's equilibrium temperature, which is determined by $v_{\rm c}(r)$ and $\alpha(r)$. Instead, the energy that accreting gas adds directly to the atmosphere acts to offset adiabatic contraction of the atmosphere by increasing $\varepsilon_{\rm CGM}$ and $r_{\rm CGM}$ while preserving the temperature increase linked to $\Delta v_\varphi^2$.
+{: .note}
+Thermal and turbulent energy input associated with the mass accretion that deepens the potential well has little effect on the atmosphere's equilibrium temperature, which is determined by $v_{\rm c}(r)$ and $\alpha(r)$. Instead, the energy that accreting gas adds directly to the atmosphere offsets adiabatic contraction of the atmosphere by increasing $\varepsilon_{\rm CGM}$ and $r_{\rm CGM}$ while preserving the temperature increase linked to $\Delta v_\varphi^2$.
 
 ## Incoming Momentum
 
