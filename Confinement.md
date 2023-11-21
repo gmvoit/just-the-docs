@@ -33,42 +33,48 @@ According to the **ExpCGM** framework, the specific support energy of a gas laye
 $$\frac {3} {2} \frac {P} {f_{\rm th} \rho} =  \frac {3 f_\varphi} {2 \alpha_{\rm eff}}  v_{\rm c}^2 (r)$$
 when a combination of thermal and turbulent energy supports a steady-state galactic atmosphere. (See the [Essentials](Essentials) page for an explanation and definitions of the symbols.) The specific gravitational binding energy of that gas layer is
 $$\varepsilon_{\rm bind} (r) = \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) v_{\rm c}^2 (r) + \varphi(r) - \varphi_\infty$$
-in which $\varphi(r)$ is the gravitational potential and $\varphi_\infty$ is its limit as $r \rightarrow \infty$. A gas layer at $r$ is therefore bound to the potential if
+in which $\varphi(r)$ is the gravitational potential and $\varphi_\infty$ is its limit as $r \rightarrow \infty$. The layer $r$ is therefore bound to the potential if
 $$\alpha_{\rm eff}(r) > \frac {3 f_\varphi} {2} \frac {v_{\rm c}^2(r)} {\varphi_\infty - \varphi(r)}$$
-Otherwise, the pressure of overlying atmospheric layers external to $r$ needs to confine that layer.
+Otherwise, pressure applied by overlying atmospheric layers external to $r$ needs to confine that layer.
 
 ### An NFW Example
 
 To see how gravity and external pressure jointly confine atmospheric gas in the **ExpCGM** framework, consider an NFW potential well 
 $$\varphi_{\rm NFW} (x) = A_{\rm NFW} v_\varphi^2 \left[ 1 - \frac {\ln (1 + x)} {x} \right]$$
-with the normalization factor $A_{\rm NFW} = 4.625$. The parameter $v_\varphi$ is then the maximum value attained by the potential's circular velocity profile 
+in which $x = r / r_{\rm s}$ expresses radius in units of the potential's scale radius $r_{\rm s}$ and $A_{\rm NFW} = 4.625$ is a normalization factor. The parameter $v_\varphi$ is then the maximum value attained by the potential's circular velocity profile 
 $$v_{\rm c}^2 (x) = A_{\rm NFW} v_\varphi^2 \left[ \frac {\ln (1 + x)} {x} - \frac {1} {1 + x} \right]$$
 which reaches $v_\varphi^2$ at $r = 2.163 r_{\rm s}$. Circular velocity is nearly constant with radius near that peak but gradually declines at $r \gg r_{\rm s}$. Because of that decline, the value of $\varphi_\infty$ is finite. The condition for purely gravitational confinement (with $f_\varphi = 1$) in an NFW potential well therefore reduces to
 $$\alpha_{\rm eff} > \frac {3} {2} \left[ 1 - \frac {x} { (1 + x) \ln (1 + x) } \right]$$
+Layers with smaller values of $\alpha_{\rm eff}$ need to be confined by overlying layers, meaning that the outermost layers of a gravitationally confined atmosphere need to have $\alpha_{\rm eff} > 3/2$.
 
 ### Critical Confinement
 
-Notice that $\alpha_{\rm eff} = 3/2$ is a critical value for gravitational confinement of atmospheres in which the ratio of support energy density to total pressure is 3/2: 
+More generally, $\alpha_{\rm eff} = 3/2$ is a critical value for gravitational confinement of atmospheres in which the ratio of support energy density to total pressure is 3/2, for the following reasons: 
 
 * All layers having $\alpha_{\rm eff} > 3/2$ are gravitationally bound, because each layer's specific support energy $3 v_{\rm c}^2(r) / 2 \alpha_{\rm eff} (r)$ is less than the specific energy $v_{\rm c}^2(r) = G M_r / r$ required to escape the gravitational attraction of the total mass $M_r$ within $r$. (This general result does not depend on the details of $\varphi$.)
 
-* Gravitational confinement at small radii ($r \ll r_{\rm s}$) does not depend on $\alpha_{\rm eff}$ because $v_{\rm c}^2 \ll \varphi_\infty$. (This result applies to potential wells in which $v_c^2$ goes to zero as $r \rightarrow 0$, as in the NFW potential.) 
+* Gravitational confinement at small radii ($r \ll r_{\rm s}$) does not depend on $\alpha_{\rm eff}$ in potential wells with $v_{\rm c}^2 \ll \varphi_\infty$ at small radii. (This result applies to potential wells in which $v_c^2$ goes to zero as $r \rightarrow 0$, as in the NFW potential.) 
 
 * Atmospheric layers that have $\alpha_{\rm eff} < 3/2$ can be pressure confined by the weight of overlying layers, but the pressure profile must steepen to $\alpha_{\rm eff} > 3/2$ at larger radii in order for the entire atmosphere to be gravitationally confined.
 
 * An atmosphere with $\alpha_{\rm eff} < 3/2$ near its outer boundary needs to be confined by external pressure forces.
 
-If the radial gradient of the thermal support fraction $f_{\rm th}$ is insignificant, then $\alpha$ replaces $\alpha_{\rm eff}$ in this bullet list. The atmospheres of galaxy clusters appear to abide by the constraints listed above, since observations of their thermal pressure profiles (e.g., Pointecouteau et al. 2021, A&A, 651, A73) show that $\alpha \lesssim 1$ at $r \ll r_{\rm s}$ and $\alpha > 2$ at $r \gg r_{\rm s}$. 
+If the radial gradient of the thermal support fraction $f_{\rm th}$ is insignificant, then $\alpha$ replaces $\alpha_{\rm eff}$ in this bullet list. 
 
-In the **ExpCGM** framework, raising an atmosphere's mean specific energy to $\varepsilon_{\rm CGM} > \varphi_\infty$ restricts the set of pressure profiles that can be in a static equilibrium configuration. For example, the maximum value of mean specific energy in an atmosphere with $\alpha_{\rm eff} > 3/2$ cannot exceed $\varphi_\infty$, which is $4.625 v_\varphi^2$ in an NFW potential. Energy input comparable to $M_{\rm CGM} v_\varphi^2$ can exponentially expand the atmosphere, but energy input that raises $\varepsilon_{\rm CGM}$ to $\varphi_\infty$ drives the atmosphere's radius to infinity and its pressure normalization to zero. In that limit, the assumption of gravitational confinement for $\alpha_{\rm eff} > 3/2$ is somewhat artificial but is still useful for quantifying the connection between an atmosphere's specific energy $\varpesilon_{\rm CGM}$ and its pressure normalization factor $P_0$.
+{: .note}
+The atmospheres of galaxy clusters appear to abide by the constraints listed above, since observations of their thermal pressure profiles (e.g., Pointecouteau et al. 2021, A&A, 651, A73) show that $\alpha \lesssim 1$ at $r \ll r_{\rm s}$ and $\alpha > 2$ at $r \gg r_{\rm s}$. 
+
+### Marginal Binding
+
+In the **ExpCGM** framework, raising an atmosphere's mean specific energy to $\varepsilon_{\rm CGM} > \varphi_\infty$ restricts the set of pressure profiles that can be in a static equilibrium configuration. For example, the maximum value of mean specific energy in an atmosphere with $\alpha_{\rm eff} > 3/2$ cannot exceed $\varphi_\infty$, which is $4.625 v_\varphi^2$ in an NFW potential. Energy input comparable to $M_{\rm CGM} v_\varphi^2$ can exponentially expand the atmosphere, but energy input that raises $\varepsilon_{\rm CGM}$ to $\varphi_\infty$ drives the atmosphere's radius to infinity and its pressure normalization to zero. In that limit, the assumption of gravitational confinement for $\alpha_{\rm eff} > 3/2$ is somewhat artificial but can still be useful for quantifying the connection between an atmosphere's specific energy $\varepsilon_{\rm CGM}$ and its pressure normalization factor $P_0$.
 
 ## Evolving Potential
 
 The previous section used an NFW profile to represent the potential well of a virialized dark matter halo and found a limiting specific energy $\varphi_\infty \approx 4.6 v_\varphi^2$ for a gravitationally bound atmosphere. However, cosmological halos evolve with time, and the specific energy required to escape an evolving halo can be substantially larger than $4.6 v_\varphi^2$.
 
-Specifying the gravitational potential that binds the matter near the outer radius of a cosmological halo ($R_{\rm halo}$) turns out to be a subtle business. Naively, the specific energy required to raise gas at $R_{\rm halo}$ out of the halo's potential well would seem to be $v_{\rm c}^2 (R_{\rm halo}) = G M_{\rm halo} / R_{\rm halo}$, but that part of the gravitational potential accounts only for the matter currently within $R_{\rm halo}$ and ignores matter at larger radii that has yet to fall into the halo. Therefore, we need to consider the halo's \textit{entire} accretion history in order to determine the energy input required for permanent unbinding of its atmosphere. 
+Specifying the gravitational potential that binds the matter near the outer radius of a cosmological halo ($R_{\rm halo}$) turns out to be a subtle business. Naively, the specific energy required to raise gas at $R_{\rm halo}$ out of the halo's potential well would seem to be $v_{\rm c}^2 (R_{\rm halo}) = G M_{\rm halo} / R_{\rm halo}$, but that part of the gravitational potential accounts only for the matter currently within $R_{\rm halo}$ and ignores matter at larger radii that has yet to fall into the halo. Therefore, we need to consider the halo's *entire* accretion history in order to determine the energy input required for permanent unbinding of its atmosphere. 
 
-In the idealized spherical collapse model (see \textbf{\textsc{ExpCGM:} Accretion}), there is a marginally bound shell containing a mass $M_\infty$ that asymptotically approaches a radius
+In the idealized spherical collapse model (see the [Accretion](Accretion) page), there is a marginally bound shell containing a mass $M_\infty$ that asymptotically approaches a radius
 $$R_\infty = \left( \frac {G M_\infty} {H_0^2 \Omega_\Lambda} \right)^{1/3}$$
 as $t \rightarrow \infty$. All of the shells within the marginally bound shell's radius are gravitationally bound and ultimately collapse toward $R = 0$. Ideally, the zero point of the overall gravitational potential should result in zero binding energy for the marginally bound shell. However, both $M_\infty$ and $R_\infty$ may be far larger than $M_{\rm halo}$ and $R_{\rm halo}$, as they usually correspond to the mass and radius of the supercluster of galaxies to which the galaxy of interest belongs.
 
