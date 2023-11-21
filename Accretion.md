@@ -28,7 +28,7 @@ parent: Description
 # Accretion
 {: .no_toc}
 
-This page outlines how the **ExpCGM** framework represents cosmic accretion of atmospheric mass and energy. It employs a spherical collapse assumption to estimate the specific energy of incoming gas. It also accounts for adiabatic gravitational compression of atmospheric gas as the halo's potential well deepens. A user may also wish to account for atmospheric compression caused by the incoming momentum flux. After describing these three aspects of **ExpCGM**, the page concludes with a summary of cosmological atmospheric evolution.
+This page outlines how the **ExpCGM** framework incorporates cosmic accretion of atmospheric mass and energy. It employs a spherical collapse assumption to estimate the specific energy of incoming gas. It also accounts for gravitational compression of atmospheric gas as the confining halo's potential well deepens. A user may also wish to account for atmospheric compression caused by the incoming momentum flux. After describing these three aspects of **ExpCGM**, the page concludes with a summary of cosmological atmospheric evolution.
 
 <details closed markdown="block">
   <summary>
@@ -41,37 +41,40 @@ This page outlines how the **ExpCGM** framework represents cosmic accretion of a
 
 ## Spherical Collapse
 
-One of the energy sources responsible for both atmospheric heating and turbulence is cosmological accretion. The **ExpCGM** framework estimates this contribution using the classic spherical collapse approximation.
+One of the energy sources responsible for both atmospheric heating and turbulence is cosmological accretion. The **ExpCGM** framework handles this contribution using the classic spherical collapse approximation.
 
 ### Equation of Motion
 
-The equation of motion for a cosmological spherical shell of radius $R$ containing a constant mass $M$ is
+The equation of motion for a cosmological spherical shell of radius $R$ surrounding a constant mass $M$ is
 $$\ddot{R} = - \frac {G M} {R^2} + H_0^2 \Omega_\Lambda R$$
-The first term on the right accounts for Newtonian gravity. The second one accounts for dark energy in an expanding universe with a Hubble constant $H_0$ at the present time and in which dark energy has a constant energy density that is $\Omega_\Lambda c^2$ times the current cosmological critical density $\rho_{\rm cr,0} \equiv 3 H_0^2 / 8 \pi G$. 
+The first term on the right accounts for Newtonian gravity. The second one accounts for dark energy in an expanding universe with a Hubble constant $H_0$ at the present time. It assumes that dark energy has a constant energy density $\Omega_\Lambda c^2$ times the current cosmological critical density $\rho_{\rm cr,0} \equiv 3 H_0^2 / 8 \pi G$. 
 
-Integrating a cosmological shell's equation of motion gives its specific kinetic energy at radius $R$:
+Multiplying that equation of motion by $\dot{R}$ and integrating over time gives the specific kinetic energy of a cosmological shell of radius $R$:
 $$\frac {\dot{R}^2} {2} = \frac {G M} {R} \left( 1 - \frac {R} {R_{\rm ta}} \right) + \frac {H_0^2 \Omega_\Lambda} {2} R^2 \left( 1 - \frac {R_{\rm ta}^2} {R^2}  \right)$$
-The shell expands until the time $t_{\rm ta}$ when it reaches a turnaround radius $R_{\rm ta}$ depending on $t_{\rm ta}$ and the mass it encompasses. It then collapses inward until it accretes onto the galaxy's cosmological halo at a time $t_{\rm coll} \approx 2 t_{\rm ta}$. 
+The terms containing the shell's turnaround radius $R_{\rm ta}$ (at which $\dot{R} = 0$) come from the constant of integration. The shell expands until it reaches $R_{\rm ta}$ at a turnaround time $t_{\rm ta}$. It then falls inward until it accretes onto the galaxy's cosmological halo at a collapse time $t_{\rm coll} \approx 2 t_{\rm ta}$. 
 
 ### Incoming Kinetic Energy
 
 According to the spherical collapse approximation, infalling matter accreting onto a cosmological halo of mass $M_{\rm halo}$ and radius $R_{\rm halo}$ at time $t$ has a specific kinetic energy
-$$\varepsilon_{\rm kin} (t) = \frac {G M_{\rm halo} (t)} {R_{\rm halo}} \left[ 1 - \frac {R_{\rm halo}} {R_{\rm ta}} - \frac {\Omega_\Lambda \rho_{\rm cr,0}} {\rho_{\rm halo}} \left( \frac {R_{\rm ta}^3} {R_{\rm halo}^3} - 1 \right) \right]$$
-in which $\rho_{\rm halo} (t) \equiv 3 M_{\rm halo} / 4 \pi R_{\rm halo}^3$ is the halo's mean matter density. 
+$$\varepsilon_{\rm kin} (t) = \frac {G M_{\rm halo}} {R_{\rm halo}} \left[ 1 - \frac {R_{\rm halo}} {R_{\rm ta}} - \frac {\Omega_\Lambda \rho_{\rm cr,0}} {\rho_{\rm halo}} \left( \frac {R_{\rm ta}^3} {R_{\rm halo}^3} - 1 \right) \right]$$
+The quantity $\rho_{\rm halo} \equiv 3 M_{\rm halo} / 4 \pi R_{\rm halo}^3$ in this expression is the halo's mean matter density at time $t$. 
 
 ### Halo Radius
 
 A real cosmological halo does not have a distinct radius. Cosmological simulations show that gravitational scattering converts radial infall into randomly oriented orbital motion over a range of radii in the vicinity of $R_{\rm ta} / 2$. Consequently, there is some freedom to define $R_{\rm halo}$ so that it suits the situation of interest. 
 
 Typically, a halo's radius (and consequently its mass) is defined in terms of a contrast factor
-$$\Delta_{\rm c} = \frac {\rho_{\rm halo}} {\rho_{\rm cr}}$$
-relative to the universe's critical density $\rho_{\rm cr} = 3 H^2 (t) / 8 \pi G$, in which $H(t)$ is the Hubble expansion parameter at time $t$. The recommended value for **ExpCGM** models is $\Delta_{\rm c} = 200$.
+$$\Delta_{\rm c} = \frac {\rho_{\rm halo}} {\rho_{\rm cr}(t)}$$
+relative to the universe's critical density $\rho_{\rm cr}(t) = 3 H^2 (t) / 8 \pi G$, in which $H(t)$ is the Hubble expansion parameter at time $t$. The recommended value for **ExpCGM** models is $\Delta_{\rm c} = 200$.
 
-For all suitable definitions of $\Delta_{\rm c}$, the dark-energy factor
-$$\frac {3 H_0^2 \Omega_\Lambda} {8 \pi G \rho_{\rm halo}} = \frac {\Omega_\Lambda} {\Delta_{\rm c}} \frac {H_0^2} {H^2 (t)}$$
+For all suitable definitions of $\Delta_{\rm c}$, the dark-energy correction factor
+$$\frac {\Omega_\Lambda \rho_{\rm cr,0}} {\rho_{\rm cr}(t)} = \frac {\Omega_\Lambda} {\Delta_{\rm c}} \frac {H_0^2} {H^2 (t)}$$
 is less than one percent. Neglecting that factor and assuming $R_{\rm halo} \approx R_{\rm ta} / 2$ then gives the approximation
 $$\varepsilon_{\rm kin} (t) \approx \frac {G M_{\rm halo}(t)} {2 R_{\rm halo}}$$
 for the specific kinetic energy of infalling matter at time $t$.
+
+{: .note}
+Accounting for the gravitational potential energy of incoming matter requires a more subtle approach because the **ExpCGM** framework places the zero point of the gravitational potential in the vicinity of the central galaxy. For instance, the simple example on the [Essentials](Essentials) page puts it at $r=0$ in an NFW gravitational potential. The specific gravitational potential energy of incoming matter, $\varphi(R_{\rm halo})$, therefore depends on the relationship between $R_{\rm halo}$ and the potential well's scale radius $r_{\rm s}$. See the [Confinement](Confinement) page for more detail on how **ExpCGM** handles incoming gravitational potential energy.
 
 ## Adiabatic Compression
 
