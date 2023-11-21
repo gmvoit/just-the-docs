@@ -25,7 +25,7 @@ parent: Description
 </head>
 
 # Cooling
-{: no toc}
+{: .notoc}
 
 <details closed markdown="block">
   <summary>
@@ -38,7 +38,7 @@ parent: Description
 
 ## Cooling Time
 
-Collisional excitation of photons removes thermal energy from a galaxy's atmosphere, allowing it to contract. The rate of energy emission per unit volume is proportional to $\rho^2$, because collisional excitation depends on two-particle collisions. In an atmosphere with a well-defined temperature, it is also proportional to $\Lambda (T)$, a \textit{cooling function} that depends on temperature, because $T$ determines both the ionization state of the atmosphere and the speeds of the colliding particles.\footnote{If the atmosphere's density is low enough, ionizing background radiation can alter $\Lambda (T)$ by further raising the atmosphere's ionization state.}
+Collisional excitation of photons removes thermal energy from a galaxy's atmosphere, allowing it to contract. The rate of energy emission per unit volume is proportional to $\rho^2$, because collisional excitation depends on two-particle collisions. In an atmosphere with a well-defined temperature, it is also proportional to $\Lambda (T)$, a ***cooling function*** that depends on temperature, because $T$ determines both the ionization state of the atmosphere and the speeds of the colliding particles.
 
 The cooling function $\Lambda (T)$ is usually defined in terms of the electron density $n_e$ and the ion density $n_i$ (or the proton density $n_p$), so that 
 $$n_e n_i \Lambda (T)$$
@@ -47,6 +47,8 @@ $$t_{\rm cool} \equiv \frac {3} {2} \frac {P} {n_e n_i \Lambda (T)} \approx \fra
 called the ***cooling time***. However, the atmosphere's temperature does not necessarily decline on that timescale. If $t_{\rm cool}$ is longer than the atmosphere's dynamical timescale ($\sim r / v_{\rm c})$, then gravitational compression keeps the atmosphere's temperature approximately constant, close to
 $$T \approx \left( \frac {2 f_{\rm th}} {\alpha_{\rm eff}} \right) T_\varphi  = \left( \frac {\mu m_p f_{\rm th}} {\alpha_{\rm eff} k} \right) v_{\rm c}^2$$
 in the **ExpCGM** framework (see the [Essentials](Essentials) page for an explanation and definitions of symbols). Radiative losses therefore reduce an atmosphere's ***specific entropy*** more directly than they reduce its temperature.
+
+{: .note} If the atmosphere's density is low enough, ionizing background radiation can alter $\Lambda (T)$ by further raising the atmosphere's ionization state.
 
 ## Specific Entropy
 
