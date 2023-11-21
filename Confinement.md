@@ -25,7 +25,7 @@ parent: Description
 </head>
 
 # Confinement
-{: .notoc}
+{: .no_toc}
 
 <details closed markdown="block">
   <summary>
