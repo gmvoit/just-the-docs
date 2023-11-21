@@ -62,11 +62,14 @@ More generally, $\alpha_{\rm eff} = 3/2$ is a critical value for gravitational c
 If the radial gradient of the thermal support fraction $f_{\rm th}$ is insignificant, then $\alpha$ replaces $\alpha_{\rm eff}$ in this bullet list. 
 
 {: .note}
-The atmospheres of galaxy clusters appear to abide by the constraints listed above, since observations of their thermal pressure profiles (e.g., Pointecouteau et al. 2021, A&A, 651, A73) show that $\alpha \lesssim 1$ at $r \ll r_{\rm s}$ and $\alpha > 2$ at $r \gg r_{\rm s}$. 
+The atmospheres of galaxy clusters appear to abide by the constraints listed above, since observations of their thermal pressure profiles show that $\alpha \lesssim 1$ at $r \ll r_{\rm s}$ and $\alpha > 2$ at $r \gg r_{\rm s}$ (e.g., Pointecouteau et al. 2021, A&A, 651, A73). 
 
 ### Marginal Binding
 
-In the **ExpCGM** framework, raising an atmosphere's mean specific energy to $\varepsilon_{\rm CGM} > \varphi_\infty$ restricts the set of pressure profiles that can be in a static equilibrium configuration. For example, the maximum value of mean specific energy in an atmosphere with $\alpha_{\rm eff} > 3/2$ cannot exceed $\varphi_\infty$, which is $4.625 v_\varphi^2$ in an NFW potential. Energy input comparable to $M_{\rm CGM} v_\varphi^2$ can exponentially expand the atmosphere, but energy input that raises $\varepsilon_{\rm CGM}$ to $\varphi_\infty$ drives the atmosphere's radius to infinity and its pressure normalization to zero. In that limit, the assumption of gravitational confinement for $\alpha_{\rm eff} > 3/2$ is somewhat artificial but can still be useful for quantifying the connection between an atmosphere's specific energy $\varepsilon_{\rm CGM}$ and its pressure normalization factor $P_0$.
+In the **ExpCGM** framework, raising an atmosphere's mean specific energy to $\varepsilon_{\rm CGM} > \varphi_\infty$ restricts the set of pressure profiles that can be in a static equilibrium configuration. For example, the maximum value of mean specific energy in an atmosphere with $\alpha_{\rm eff} > 3/2$ cannot exceed $\varphi_\infty$, which is $4.625 v_\varphi^2$ in an NFW potential. Energy input comparable to $M_{\rm CGM} v_\varphi^2$ can exponentially expand the atmosphere, but energy input that raises $\varepsilon_{\rm CGM}$ to $\varphi_\infty$ drives the atmosphere's radius to infinity and its pressure normalization to zero. 
+
+{: .note}
+As $\varepsilon_{\rm CGM}$ approaches $\varphi_\infty$, the assumption of gravitational confinement for $\alpha_{\rm eff} > 3/2$ becomes somewhat artificial but the associated **ExpCGM** model still be useful for quantifying the connection between an atmosphere's specific energy $\varepsilon_{\rm CGM}$ and its pressure normalization factor $P_0$.
 
 ## Evolving Potential
 
@@ -94,7 +97,7 @@ To account for atmospheric confinement by matter extending beyond the halo, the 
 $$\varphi_{\rm ext} (r) = 2 \pi G \rho_{\rm ext} R_{\rm halo}^2 \left( \frac {r} {R_{\rm halo}} - 1 \right) \left( 1 - \frac {R_{\rm halo}} {r} \right) $$
 that results from assuming $\rho_M (r) = \rho_{\rm ext} (r/R_{\rm halo})^{-1}$ outside of $R_{\rm halo}$.
 
-### Normalization Factor
+### Normalization Parameter
 
 The extended potential's density normalization factor $\rho_{\rm ext}$ is linked to the halo's mass accretion rate. Assuming that $\rho_{\rm ext}$ corresponds to matter that is currently accreting onto the halo gives $\rho_{\rm ext} = \dot{M}\_{\rm halo} / 4 \pi R_{\rm halo}^2 v_{\rm acc}$ and
 
