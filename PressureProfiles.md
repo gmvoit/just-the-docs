@@ -42,7 +42,7 @@ To construct an equilibrium atmospheric model in the **ExpCGM** framework, users
 
 The simplest **ExpCGM** pressure profiles are pure power laws, with
 $$P(r) = P_0 \left( \frac {r} {r_0} \right)^{-\alpha}$$
-However, not all values of $\alpha$ are physically justifiable. For example, an atmosphere with $\alpha = 3/2$ everywhere is only marginally bound to its halo (see the [Confinement](Confinement) page for an explanation). Atmospheres that have $\alpha < 3/2$ at all radii must therefore be confined by external pressure forces.
+However, not all values of $\alpha$ are physically justifiable. For example, an atmosphere with $\alpha = 3/2$ everywhere is only marginally bound to its halo (see the [Confinement](Confinement) page for an explanation). Galactic atmospheres that have $\alpha < 3/2$ at all radii must therefore be confined by external pressure forces.
 
 {: .note}
 For many applications, a power-law pressure profile with constant $\alpha$ might be all that an **ExpCGM** user needs.
@@ -58,15 +58,15 @@ Observations of galaxy clusters show a greater dispersion in $\alpha_{\rm in}$ t
 
 ## Entropy-Based Profiles
 
-A more sophisticated approach to specifying atmospheric pressure profiles, developed to account for radiative cooling and feedback energy, focuses on the normalization factor $K$ of the polytropic equation of state $P = K \rho^\gamma$ relating $P$ to $\rho$. The quantity $K$ is sometimes called the atmosphere's "entropy" because changes in $\ln K$ are directly proportional to changes in specific entropy (see the [Cooling](Cooling) page). 
+A more sophisticated approach to specifying atmospheric pressure profiles focuses on the normalization factor $K$ of the polytropic equation of state $P = K \rho^\gamma$ relating $P$ to $\rho$. The quantity $K$ is sometimes called the atmosphere's "entropy" because changes in $\ln K$ are directly proportional to changes in specific entropy (see the [Cooling](Cooling) page). 
 
 Entropy-based methods separate a pressure profile's shape function into two terms
 $$\alpha (r) = \frac {3} {2} \frac {d \ln K} {d \ln r} - \frac {5} {2} \frac {d \ln T} {d \ln r}$$
-representing how an atmosphere's entropy and temperature gradients combine to produce the shape function for thermal pressure in a $\gamma = 5/3$ atmosphere (which has $P \propto T^{5/2} K^{-3/2}$).
+representing how an atmosphere's entropy and temperature gradients combine to produce the shape function for thermal pressure in an atmosphere with $\gamma = 5/3$, meaning that $P \propto T^{5/2} K^{-3/2}$.
 
-### Entropy Power Law
+### Nearly Isothermal Regions
 
-This decomposition into an entropy part and a temperature part is particularly useful if the entropy profile's shape function
+Decomposition of the pressure shape function into an entropy term and a temperature term is particularly useful if the entropy profile's shape function
 $$\alpha_K (r) \equiv \frac {d \ln K} {d \ln r}$$
 is approximately constant, as is often the case. Both cosmological simulations and observations of galaxy clusters are consistent with $\alpha_K \approx 1.1 - 1.2$ outside a cluster's central regions. A cosmological galactic atmosphere should therefore have $\alpha \approx 1.7$ in regions that are nearly isothermal. However, both deviations from isothermality and non-cosmological changes in $\alpha_K$ result in deviations from $\alpha \approx 1.7$. 
 
@@ -81,15 +81,16 @@ $$T(r) = \left( \frac {\mu m_p} {k} \right)
                         {\alpha_{\rm eff}}$$
 in which $\alpha_{\rm eff} = \alpha + (d \ln f_{\rm th} / d \ln r)$. 
 
-Three of the non-constant factors on the right-hand side of equation (\ref{eq:TemperatureProfile}) can contribute to the decline in $T(r)$: 
+Three factors on the right-hand side of equation for $T(r)$ can contribute to the temperature decline: 
 
 * **Declining Circular Velocity.** The circular velocity of a cosmological halo declines with radius in its outer parts, and so the atmosphere's equilibrium gas temperature $T$ decreases in proportion to $v_{\rm c}^2$.
 
+* **Declining Thermalization.** Everything that happens in a galaxy's atmosphere happens more slowly at larger radii than at smaller radii because of the longer dynamical time ($\sim r / v_{\rm c}$) at larger radii. That includes thermalization of the kinetic energy of accreting gas. Consequently, the fraction $f_{\rm th}$ of atmospheric support provided by thermal pressure declines at large radii, enhancing the decline in $T(r)$ that stems from a decline in $v_{\rm c}^2(r)$.
+
 * **Declining Momentum Confinement.** As accreting gas slows down and becomes incorporated into a galaxy's atmosphere, it transfers its inward momentum to the atmosphere and assists gravitational confinement, so that $f_\varphi > 1$ (see the [Accretion](Accretion) page). In the deceleration zone where momentum transfer occurs, the extra confinement can boost $T(r)$, perhaps partially offsetting the decline in $v_c^2 (r)$ with radius. However, in the outer parts of the deceleration zone, where the extra confinement lessens (and $f_\varphi$ decreases), the decline in $T(r)$ is even greater than it would otherwise be.
 
-* **Declining Thermalization.** Everything that happens in a galaxy's atmosphere happens more slowly at larger radii than at smaller radii because of the longer dynamical time ($\sim r / v_{\rm c}$) at larger radii. That includes thermalization of the kinetic energy of accreting gas. Consequently, the fraction $f_{\rm th}$ of atmospheric support provided by thermal pressure declines at large radii, enhancing the decline in $T(r)$ coming from $v_{\rm c}^2(r)$.
-
-The fourth non-constant factor ($\alpha_{\rm eff}$) depends on changes in the other three and is less consequential.
+{: .note}
+The generalized shape function $\alpha_{\rm eff}$ may also increase with radius because of declines in $v_{\rm c}^2$, $f_{\rm th}$, and $f_\varphi$.
 
 ### Approximate Cosmological Profile
 
