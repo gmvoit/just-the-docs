@@ -75,7 +75,7 @@ is approximately constant, as is often the case. Both cosmological simulations a
 At large radii a cosmological atmosphere's thermal pressure profile has $\alpha > 1.7$ because of a radial decline in atmospheric temperature. In the **ExpCGM** framework, an atmosphere's equilibrium temperature follows from the force balance equation
 $$\frac {d} {dr} \frac {P} {f_{\rm th}} = - \rho f_\varphi \frac {v_{\rm c}^2} {r}$$
 in which $f_{\rm th}$ is the fraction of total support that thermal pressure $P$ provides and $f_\varphi$ accounts for modifications to purely gravitational compression (see the [Essentials](Essentials) page). That equilibrium temperature profile is
-$$T(r) = \left( \frac {\mu m_p} {k} \right)
+  $$T(r) = \left( \frac {\mu m_p} {k} \right)
                 \frac {f_{\rm th} f_\varphi v_{\rm c}^2} 
                         {\alpha_{\rm eff}}$$
 in which $\alpha_{\rm eff} = \alpha + (d \ln f_{\rm th} / d \ln r)$. 
@@ -99,14 +99,14 @@ to represent a cosmological atmosphere. It is designed to have $\alpha \approx 1
 
 ## Entropy Modification
 
-Entropy-based methods for determining $\alpha (r)$ are particularly useful for characterizing non-cosmological processes, such as radiative cooling and energy input from the central galaxy, because those energy sinks and sources modify the entropy profile that would otherwise result from cosmological structure formation. 
+Entropy-based methods for determining $\alpha (r)$ are particularly useful for characterizing non-cosmological processes, such as radiative cooling and feedback energy input from the central galaxy, because those energy sinks and sources modify the entropy profile that would otherwise result from cosmological structure formation. 
 
 The **ExpCGM** framework includes three physically justifiable non-cosmological modifications of $\alpha_K$ that users may wish to implement.
 
 ### Cooling Flow Profile 
 
 The central regions of a galactic atmosphere generally have a radiative cooling time $t_{\rm cool}$ that is less than the universe's age. If heat input from the central galaxy falls short of replacing the energy lost to radiation, the central gas loses entropy and sinks into the central galaxy on a timescale $\sim t_{\rm cool}$. If that flow of gas is homogeneous, it is called a *cooling flow*. Its characteristic entropy gradient follows from the relationship
-$$\alpha_K = \frac {d \ln K} {d \ln r} = - t_{\rm flow} \frac {d \ln K} {d t} = \frac {t_{\rm flow}} {t_{\rm cool}}$$
+  $$\alpha_K = \frac {d \ln K} {d \ln r} = - t_{\rm flow} \frac {d \ln K} {d t} = \frac {t_{\rm flow}} {t_{\rm cool}}$$
 in which $t_{\rm flow} \equiv r / v_{\rm in}$ is the inflow timescale corresponding to the inflow speed $v_{\rm in} = - dr/dt$ of the cooling flow (see the [Cooling](Cooling) page for a more complete explanation). 
 
 Gravitational compression in a potential well that is nearly isothermal keeps the temperature of homogeneous radiating gas nearly constant as it flows inward. The gas is "cooling" because its specific entropy is declining, even though its temperature is not changing very much. The cooling flow carries gas inward at the rate
@@ -125,7 +125,7 @@ The shape function approximation $\alpha_{\rm cool} \approx 1.5$ for a steady an
 
 ### Isentropic Core
 
-At the other extreme from a pure cooling flow is centralized heat input that greatly exceeds radiative cooling. Under those conditions, heating raises the atmosphere's central entropy level, causing convection wherever $\alpha_K$ drops below zero. Convection then maintains $\alpha_K$ near zero, leading to development of an isentropic core with a constant entropy level. 
+At the other extreme from a pure cooling flow is centralized heat input that greatly exceeds radiative cooling. Under those conditions, heating raises the atmosphere's central entropy level, causing convection wherever the radial entropy gradient becomes negative. Convection then maintains $\alpha_K$ near zero, leading to development of an isentropic core with a constant entropy level. 
 
 #### Isentropic Shape Function
 
@@ -138,17 +138,17 @@ Isentropic gas with the equation of state $P = K \rho^{5/3}$ has $T \propto P^{2
 
 in which $T_\varphi (r)$ is the gravitational temperature profile defined on the [Essentials](Essentials) page. Integrating this equation gives
 $$T(r) = T_{\rm core} + \frac {4} {5}\int_r^{r_{\rm core}} T_\varphi (r) \frac {dr} {r}$$
-where $r_{\rm core}$ is the outer radius of the isentropic region and $T_{\rm core} = T(r_{\rm core})$ is the atmospheric temperature at that radius. 
+The ***core radius*** parameter $r_{\rm core}$ is the outer radius of the isentropic region, and $T_{\rm core} = T(r_{\rm core})$ is the atmospheric temperature at that radius. 
 
 Inserting $T(r)$ into the equation
 $$\alpha (r) = 2 \frac {T_\varphi (r)} {T(r)}$$
-then gives the pressure profile's shape function at $r < r_{\rm core}$. That equation reduces to
+then gives the pressure profile's shape function at $r < r_{\rm core}$. It reduces to
 $$\alpha (r) \approx \frac {2 T_\varphi (r)} {T_{\rm core} + 0.8 T_\varphi (r) \cdot \ln (r_{\rm core}/r) }$$
-for an approximately isothermal potential well.
+in a potential well that is approximately isothermal.
 
-#### Core Radius
+#### Central Heating
 
-The core radius of the isentropic region depends on how the amount $\Delta Q$ of central heating compares with the cumulative thermal energy profile preceding the heating event. Heating of gas at temperature $T$ raises its entropy $S$ by
+The core radius of the isentropic region depends on how the amount $\Delta Q$ of central heating compares with the atmosphere's cumulative thermal energy profile preceding the heating event. Heating of gas at temperature $T$ raises its entropy $S$ by
 
 <p>
   $$\Delta \ln K ~=~ \frac {2} {3k} \left( \frac {\mu m_p} {M_{\rm gas}} \right) \Delta S  ~=~ \frac {2} {3} \left( \frac {\mu m_p} {M_{\rm gas}} \right) \frac {\Delta Q} {k T}$$
@@ -158,6 +158,8 @@ The core radius of the isentropic region depends on how the amount $\Delta Q$ of
 where $M_{\rm gas}$ is the mass of heated gas, and the numerical factor 2/3 pertains to a gas with a thermal energy density of $3P/2$ (see the [Cooling](Cooling) page). Centralized thermalization of the energy $\Delta Q$ therefore produces an isentropic core out to a radius $r_{\rm core}$ containing a gas mass
 $$M_{\rm gas} \sim \frac {2} {3} \left( \frac {\mu m_p} {k T_\varphi} \right) \Delta Q$$
 In other words, the isentropic region consists of gas that had an original thermal energy content ($\sim 3 k T_\varphi /2$ per particle) comparable to the energy input $\Delta Q$.
+
+#### Core Radius Approximation
 
 To estimate $r_{\rm core}$, consider an atmosphere with a pressure profile that is initially a pure power law: $P = P_0 (r / r_0)^{-\alpha_0}$. The cumulative thermal energy profile of that atmosphere is
 $$E_{\rm th} (r) = 4 \pi r_0^3 P_0 \int_0^{r/r_0} x^{2 - \alpha_0} dx
@@ -169,9 +171,12 @@ and the new shape function at $r < r_{\rm core}$ after the central heating event
 $$\alpha (r) \approx \frac {\alpha_0} { 1 + 0.4 \, \alpha_0 \,  \ln (r_{\rm core}/r) }$$
 Similar estimates can be made for more complicated initial pressure profiles.
 
-Notice that centralized heating can greatly reduce the rate at which a cooling flow feeds gas into a galaxy. If the galaxy's outer radius $r_{\rm gal}$ is much smaller than the radius of the newly isentropic core, then $\dot{M}\_{\rm cool} (r_{\rm gal})$ drops by a factor $\sim (r_{\rm core} / r_{\rm gal})^{2 \alpha_0}$. However, the isentropic core is more prone to runaway thermal instability than a stratified atmosphere, because buoyancy cannot suppress development of a multiphase medium there (see the [Multiphase Gas](MultiphaseGas) page). 
+#### Reduced Cooling
 
-There is also an important caveat to keep in mind: Centralized heating of an atmosphere that is not spherically symmetric does not necessarily produce an isentropic core, especially if the heated gas escapes along low-density channels with a collective solid angle substantially less than $4 \pi$. For example, a rotating cooling flow naturally forms a cold, high-density disk inside of where its rotation speed approaches the potential's circular velocity (see the [Rotation](Rotation) page).  Heat input near the center of that disk tends to drive a bipolar outflow along the disk's rotation axis without significantly affecting the disk. It can therefore drive atmospheric circulation, in which the gas inflow through the rotating cooling flow roughly balances the bipolar gas outflow driven by central heating, when averaged over long time periods.
+Centralized heating can greatly reduce the rate at which a cooling flow feeds gas into a galaxy. If the galaxy's outer radius $r_{\rm gal}$ is much smaller than the radius of the newly isentropic core, then $\dot{M}\_{\rm cool} (r_{\rm gal})$ drops by a factor $\sim (r_{\rm core} / r_{\rm gal})^{2 \alpha_0}$. However, the isentropic core is more prone to runaway thermal instability than a stratified atmosphere, because buoyancy cannot suppress development of a multiphase medium there (see the [Thermal Instability](ThermalInstability) page). 
+
+{: .note}
+A caveat: Centralized heating of an atmosphere that is not spherically symmetric does not necessarily produce an isentropic core, especially if the heated gas escapes along low-density channels with a collective solid angle substantially less than $4 \pi$. For example, a rotating cooling flow naturally forms a cold, high-density disk inside of where its rotation speed approaches the potential's circular velocity (see the [Rotation](Rotation) page).  Heat input near the center of that disk tends to drive a bipolar outflow along the disk's rotation axis without significantly affecting the disk. It can therefore drive atmospheric circulation, in which the gas inflow through the rotating cooling flow roughly balances the bipolar gas outflow driven by central heating, when averaged over long time periods.
 
 ### Precipitation Limited Profiles
 
