@@ -187,13 +187,13 @@ Numerical simulations suggest that such an atmosphere is in a marginally stable 
 
 Observations show that $\min (t_{\rm cool}/t_{\rm ff}) \sim 10$ is the typical lower limit for the ratio of cooling time to freefall time in galaxy clusters and groups. A plausible explanation for this minimum ratio is that "precipitation" of dense clouds out of the ambient medium may be exponentially sensitive to $t_{\rm cool}/t_{\rm ff}$ in the range $3 \lesssim t_{\rm cool}/t_{\rm ff} \lesssim 20$. According to that hypothesis, an atmosphere at the low end of the range is overly prone to formation of cold clouds that rain down upon the central galaxy and fuel energetic feedback that expands the atmosphere and raises the value of $t_{\rm cool}$. The **ExpCGM** framework therefore calls pressure profiles with $\alpha \approx 1$ and $t_{\rm cool}/t_{\rm ff} \sim 10$ at small radii ***precipitation limited.*** 
 
-There are at least three options for imposing a precipitation limit on a cosmological entropy profile to obtain a precipitation-limited shape function:
+There are at least two options for imposing a precipitation limit on a cosmological entropy profile to obtain a precipitation-limited shape function:
 
 * **Linked Normalization.** The simplest method forces a shape function that is cosmological at large radii to morph into a pressure profile with an approximately constant $t_{\rm cool} / t_{\rm ff}$ ratio at small radii. That can be done by setting $\alpha_{\rm in} = 1$ in the formula for a cosmological shape function or by modifying the formula's simplified version, so that 
   $$\alpha (r) \approx 1 + 0.7 \left( \frac {2 r / r_{\rm max}} { 1 + r / r_{\rm max} } \right)$$
 If this method is used, increases in $E_{\rm CGM}$ change the pressure profile's normalization factor $P_0$ without changing its shape function, meaning that the pressure normalization of the inner region, which may be limited by precipitation, is *linked* to the normalization of the outer region, where the shape function's slope is cosmological.  The method implicitly assumes that feedback energy input is evenly spread over the entire atmosphere, so that $K(r)$ rises by the same factor at all radii.
 
-* **Unlinked Normalization.** This method is based on representing a halo's precipitation-limited entropy profile with two power laws. The first is a cosmological entropy profile with 
+* **Unlinked Normalization.** This more complex method represents a halo's precipitation-limited entropy profile with two power laws. The first is a cosmological entropy profile with 
   $$K_{\rm c} (r) = K_{\rm c,0} \left( \frac {r} {r_0} \right)^{1.1}$$
 in which the normalization factor $K_{\rm c,0}$ comes from cosmological numerical simulations.
 The second expresses the precipitation limit in terms of
@@ -210,6 +210,8 @@ for the pressure shape function. Users who do not want to neglect the temperatur
                                 \frac {y} {1+y}$$
 which reduces to the *Simplified Cosmological Profile* above in the limit $K_{\rm c,0} \gg K_{\rm p,0}$.
 
+{: .note}
+A potential complication with the *Unlinked Normalization* method is that $K_{\rm p,0}$ depends on $T$, and the equilibrium value of $T$ is determined by the shape function $\alpha$ that one wants to calculate. That complication can be mitigated if $T$ depends only weakly on $r$, in which case $\alpha \approx 1$ and $kT \approx \mu m_p v_{\rm c}^2$ for $K \approx K_{\rm p}$. However, an iterative solution for $K_{\rm p,0}$ may be necessary if the atmosphere's temperature gradient is significant.
 
 ## Evolving the Shape Function
 
