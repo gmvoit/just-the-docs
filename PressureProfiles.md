@@ -208,7 +208,7 @@ for the pressure shape function. Users who do not want to neglect the temperatur
   $$\alpha (r) \approx \frac {1} {1+y} + 1.7 \left( \frac {2 r / r_{\rm max}} 
                                 { 1 + r / r_{\rm max}} \right)
                                 \frac {y} {1+y}$$
-which reduces to *Simplified Cosmological Profile* above in the limit $K_{\rm c,0} \gg K_{\rm p,0}$.
+which reduces to the *Simplified Cosmological Profile* above in the limit $K_{\rm c,0} \gg K_{\rm p,0}$.
   
 ## Evolving the Shape Function
 
