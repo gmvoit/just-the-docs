@@ -99,7 +99,7 @@ to represent a cosmological atmosphere. It is designed to have $\alpha \approx 1
 
 ## Entropy Modification
 
-Entropy-based methods for determining $\alpha (r)$ are most useful for characterizing non-cosmological processes, such as radiative cooling and energy input from the central galaxy. Those energy sinks and sources alter the pressure profile's shape function $\alpha (r)$ by modifying the entropy profile that would otherwise result from cosmological structure formation. 
+Entropy-based methods for determining $\alpha (r)$ are particularly useful for characterizing non-cosmological processes, such as radiative cooling and energy input from the central galaxy, because those energy sinks and sources modify the entropy profile that would otherwise result from cosmological structure formation. 
 
 The next three sections outline three physically justifiable non-cosmological modifications of $\alpha_K$ that users of the **ExpCGM** framework may wish to implement.
 
