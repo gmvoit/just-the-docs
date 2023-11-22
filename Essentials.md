@@ -82,7 +82,7 @@ The ***thermalization fraction*** $f_{\rm th}$ represents the proportion that th
 With those generalizations, the equilibrium temperature and density profiles become 
 $$T(r) = \frac {2 f_{\rm th} f_\varphi} {\alpha_{\rm eff} (r)} ~T_\varphi (r)~~~~~~,~~~~~~\rho (r) = P_0 \frac {\alpha_{\rm eff} (r) f_P (r)}{f_{\rm th} f_\varphi v_{\rm c}^2(r)}$$ 
 in which the function 
-$$\alpha_{\rm eff} (r) \equiv \alpha(r) - \frac {d \ln f_{\rm th}} {d \ln r}$$ 
+$$\alpha_{\rm eff} (r) \equiv \alpha(r) + \frac {d \ln f_{\rm th}} {d \ln r}$$ 
 is a ***generalized shape function*** for atmospheric support, accounting for possible dependences of $f_{\rm th}$ on radius. Note that $f_\varphi$ may also depend on radius.
 
 {: .note}
