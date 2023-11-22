@@ -91,13 +91,15 @@ Three of the non-constant factors on the right-hand side of equation (\ref{eq:Te
 
 The fourth non-constant factor ($\alpha_{\rm eff}$) depends on changes in the other three and is less consequential.
 
+### Approximate Cosmological Profile
+
 In principle, users of the **ExpCGM** framework can specify $v_{\rm c}^2 (r)$, $f_{\rm th} (r)$, and $f_\varphi (r)$ and then derive $\alpha (r)$ from that information. However, that approach is needlessly complex, given the guidance that observations and simulations provide about $\alpha (r)$ in cosmological atmospheres. If the confining halo is represented by an NFW potential well with a scale radius $r_{\rm s}$, the simplest approach is to use the shape function approximation
 $$\alpha (r) \approx {1.7} \left( \frac {2 r / r_{\rm max}} {1 + r/r_{\rm max}} \right)$$
-to represent a cosmological atmosphere. It is designed to have $\alpha \approx 1.7$ near the radius $r_{\rm max} = 2.163 r_{\rm s}$, where $v_{\rm c}^2 (r)$ peaks, because that is where the atmosphere is closest to being isothermal, and its asymptotic values at large and small $r$ are inspired by fits to equation (eq:AlphaFit).
-
-Therefore, entropy-based methods for determining $\alpha (r)$ are more useful for characterizing non-cosmological processes, such as radiative cooling and energy input from the central galaxy. Those energy sinks and sources alter the pressure profile's shape function $\alpha (r)$ by modifying the entropy profile that would otherwise result from cosmological structure formation. 
+to represent a cosmological atmosphere. It is designed to have $\alpha \approx 1.7$ near the radius $r_{\rm max} = 2.163 r_{\rm s}$, where $v_{\rm c}^2 (r)$ peaks, because that is where the atmosphere is closest to being isothermal, and its asymptotic values at large and small $r$ are inspired by fits to galaxy-cluster observations.
 
 ## Entropy Modification
+
+Entropy-based methods for determining $\alpha (r)$ are most useful for characterizing non-cosmological processes, such as radiative cooling and energy input from the central galaxy. Those energy sinks and sources alter the pressure profile's shape function $\alpha (r)$ by modifying the entropy profile that would otherwise result from cosmological structure formation. 
 
 The next three sections outline three physically justifiable non-cosmological modifications of $\alpha_K$ that users of the **ExpCGM** framework may wish to implement.
 
