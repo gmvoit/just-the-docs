@@ -115,7 +115,12 @@ At the other extreme from a pure cooling flow is centralized heat input that gre
 ### Isentropic Shape Function
 
 Isentropic gas with the equation of state $P = K \rho^{5/3}$ has $T \propto P^{2/5}$. The temperature profile of a hydrostatic isentropic core therefore satisfies
-$$\frac {dT} {d \ln r} ~=~ - \frac {2} {5} \frac {\mu m_p v_{\rm c}^2 (r)} {k} ~=~ - \frac {4} {5} T_\varphi (r)$$ 
+
+<p>
+  $$\frac {dT} {d \ln r} ~=~ - \frac {2} {5} \frac {\mu m_p v_{\rm c}^2 (r)} {k} ~=~ - \frac {4} {5} T_\varphi (r)$$ 
+</p>
+
+
 in which $T_\varphi (r)$ is the gravitational temperature profile defined on the [Essentials](Essentials) page. Integrating this equation gives
 $$T(r) = T_{\rm core} + \frac {4} {5}\int_r^{r_{\rm core}} T_\varphi (r) \frac {dr} {r}$$
 where $r_{\rm core}$ is the outer radius of the isentropic region and $T_{\rm core} = T(r_{\rm core})$ is the atmospheric temperature at that radius. 
