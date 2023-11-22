@@ -40,7 +40,7 @@ To construct an equilibrium atmospheric model in the **ExpCGM** framework, users
 
 ## Power Laws
 
-The simplest pressure profiles are pure power laws, with
+The simplest **ExpCGM** pressure profiles are pure power laws, with
 $$P(r) = P_0 \left( \frac {r} {r_0} \right)^{-\alpha}$$
 However, not all values of $\alpha$ are physically justifiable. For example, an atmosphere with $\alpha = 3/2$ everywhere is only marginally bound to its halo (see the [Confinement](Confinement) page for an explanation). Atmospheres that have $\alpha < 3/2$ at all radii must therefore be confined by external pressure forces.
 
