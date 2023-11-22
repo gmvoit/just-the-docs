@@ -88,13 +88,10 @@ Three factors on the right-hand side of equation for $T(r)$ contribute to the te
 
 * **Declining Momentum Confinement.** As accreting gas slows down and becomes incorporated into a galaxy's atmosphere, it transfers its inward momentum to the atmosphere and assists gravitational confinement, so that $f_\varphi > 1$ (see the [Accretion](Accretion) page). In the deceleration zone where momentum transfer occurs, the extra confinement can boost $T(r)$, perhaps partially offsetting the decline in $v_c^2 (r)$ with radius. However, $f_\varphi$ decreases in the outer parts of the deceleration zone, where the extra confinement lessens, making the decline in $T(r)$ is greater than it would otherwise be.
 
-{: .note}
-The generalized shape function $\alpha_{\rm eff}$ may also increase with radius because of declines in $v_{\rm c}^2$, $f_{\rm th}$, and $f_\varphi$.
-
 ### Simplified Cosmological Profile
 
 A simple entropy-based method that automatically reproduces a temperature decline at large radii is to use the shape function approximation
-$$\alpha (r) \approx {1.7} \left( \frac {2 r / r_{\rm max}} {1 + r/r_{\rm max}} \right)$$
+  $$\alpha (r) \approx {1.7} \left( \frac {2 r / r_{\rm max}} {1 + r/r_{\rm max}} \right)$$
 to represent a cosmological atmosphere. It is designed to have $\alpha \approx 1.7$ near the radius $r_{\rm max} = 2.163 r_{\rm s}$, where $v_{\rm c}^2 (r)$ peaks in an NFW gravitational potential with scale radius $r_{\rm s}$. Coupling that approximation with a power-law entropy profile having $\alpha_K \approx 1.1$ ensures a nearly isothermal temperature profile in the vicinity of $r_{\rm max}$, where the gravitational potential is nearly isothermal, and produces a temperature decline resembling those observed at larger radii. Also, the asymptotic values of $\alpha(r)$ at large and small radii are similar to the values measured from galaxy-cluster observations.
 
 ## Entropy Modification
