@@ -193,10 +193,10 @@ There are at least three options for imposing a precipitation limit on a cosmolo
   $$\alpha (r) \approx 1 + 0.7 \left( \frac {2 r / r_{\rm max}} { 1 + r / r_{\rm max} } \right)$$
 If this method is used, increases in $E_{\rm CGM}$ change the pressure profile's normalization factor $P_0$ without changing its shape function, meaning that the pressure normalization of the inner region, which may be limited by precipitation, is *linked* to the normalization of the outer region, where the shape function's slope is cosmological.  The method implicitly assumes that feedback energy input is evenly spread over the entire atmosphere, so that $K(r)$ rises by the same factor at all radii.
 
-* **Unlinked Normalization.** This method is based on representing a halo's precipitation-limited entropy profile with the power law
-  $$K_{\rm pre} (r) = K_{{\rm pre},0} \left( \frac {r} {r_0} \right)^{2/3}$$
-and its cosmological entropy profile that has 
-  $$ K_{\rm cos} (r) = K_{{\rm cos},0} \left( \frac {r} {r_0} \right)^{11/10}$$
+* **Unlinked Normalization.** This method is based on representing a halo's precipitation-limited entropy profile with two power laws. The first is a cosmological entropy profile with 
+  $$ K_{\rm cos} (r) = K_{{\rm cos},0} \left( \frac {r} {r_0} \right)^{1.1}$$
+The second expresses the precipitation limit in terms of
+  $$K_{\rm precip} (r) = K_{{\rm precip},0} \left( \frac {r} {r_0} \right)^{2/3}$$
 
 ## Evolving the Shape Function
 
