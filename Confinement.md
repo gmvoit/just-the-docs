@@ -27,6 +27,10 @@ parent: Description
 # Confinement
 {: .no_toc}
 
+Many models for galactic atmospheres do not include gas outside the halo's radius ($R_{\rm halo}$) and treat atmospheric gas pushed beyond $R_{\rm halo}$ as though it has become unbound. The **ExpCGM** framework is designed to rectify that shortcoming.
+
+The page explains how **ExpCGM** models gravitational confinement of a galaxy's atmosphere. Its first section outlines the relationship between gravitational confinement and a pressure profile's shape function, using the NFW gravitational potential as an example. The next section explains why atmospheric gas pushed beyond $R_{\rm halo}$ is never truly unbound, because of the additional mass outside of $R_{\rm halo}$. The concluding section presents a model for gravitational confinement that includes the mass beyond $R_{\rm halo}$ and relates it to the halo's mass accretion rate.  That extension to the halo's potential well changes the relationships between an atmosphere mean specific energy $\varepsilon_{\rm CGM}$, its equilibrium radius $r_{\rm CGM}$, and its pressure normalization $P_{\rm CGM}$, and the change is greatest at early times, when the halo's accretion rate is especially large.
+
 <details closed markdown="block">
   <summary>
     Table of contents
