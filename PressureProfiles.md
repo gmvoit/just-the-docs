@@ -50,7 +50,7 @@ For many applications, a power-law pressure profile with constant $\alpha$ might
 ## Cosmological Profiles
 
 Cosmological structure formation produces pressure profiles in which $\alpha (r)$ increases with radius. Both observations and numerical simulations of galaxy clusters show that their pressure profiles are flatter than $\alpha = 3/2$ at small radii and steeper than $\alpha = 3/2$ at large radii. As a result, the cosmological pressure profiles of galaxy clusters are often represented with a fitting formula equivalent to the shape function
-$$\alpha (r) = \alpha_{\rm in} + \left( \alpha_{\rm out} - \alpha_{\rm in} \right) \left[ \frac {(r / r_{\rm tr})^{\alpha_{\rm tr}}} { 1 +(r / r_{\rm tr})^{\alpha_{\rm tr}}} \right]$$
+  $$\alpha (r) = \alpha_{\rm in} + \left( \alpha_{\rm out} - \alpha_{\rm in} \right) \left[ \frac {(r / r_{\rm tr})^{\alpha_{\rm tr}}} { 1 +(r / r_{\rm tr})^{\alpha_{\rm tr}}} \right]$$
 The parameter $r_{\rm tr}$ is a transitional radius for the profile's slope that is approximately twice the scale radius $r_{\rm s}$ of an NFW fit to the halo's gravitational potential. The other parameters represent the pressure profile's power-law slope in the appropriate limits. Fits to observations of thermal pressure profiles in galaxy clusters give an inner slope $\alpha_{\rm in} \approx 0.3$, an outer slope $\alpha_{\rm out} \approx 4.3$, and $\alpha_{\rm tr} \approx 1.1$. 
 
 {: .note}
@@ -61,13 +61,13 @@ Observations of galaxy clusters show a greater dispersion in $\alpha_{\rm in}$ t
 A more sophisticated approach to specifying atmospheric pressure profiles focuses on the normalization factor $K$ of the polytropic equation of state $P = K \rho^\gamma$ relating $P$ to $\rho$. The quantity $K$ is sometimes called the atmosphere's "entropy" because changes in $\ln K$ are directly proportional to changes in specific entropy (see the [Cooling](Cooling) page). 
 
 Entropy-based methods separate a pressure profile's shape function into two terms
-$$\alpha (r) = \frac {3} {2} \frac {d \ln K} {d \ln r} - \frac {5} {2} \frac {d \ln T} {d \ln r}$$
+  $$\alpha (r) = \frac {3} {2} \frac {d \ln K} {d \ln r} - \frac {5} {2} \frac {d \ln T} {d \ln r}$$
 representing how an atmosphere's entropy and temperature gradients combine to produce the shape function for thermal pressure in an atmosphere with $\gamma = 5/3$, meaning that $P \propto T^{5/2} K^{-3/2}$.
 
 ### Nearly Isothermal Regions
 
 Decomposition of the pressure shape function into an entropy term and a temperature term is particularly useful if the entropy profile's shape function
-$$\alpha_K (r) \equiv \frac {d \ln K} {d \ln r}$$
+  $$\alpha_K (r) \equiv \frac {d \ln K} {d \ln r}$$
 is approximately constant, as is often the case. Both cosmological simulations and observations of galaxy clusters are consistent with $\alpha_K \approx 1.1 - 1.2$ outside a cluster's central regions. A cosmological galactic atmosphere should therefore have $\alpha \approx 1.7$ in regions that are nearly isothermal. However, both deviations from isothermality and non-cosmological changes in $\alpha_K$ can result in deviations from $\alpha \approx 1.7$. 
 
 ### Outer Temperature Decline
@@ -137,10 +137,9 @@ in which $T_\varphi (r)$ is the gravitational temperature profile defined on the
 $$T(r) = T_{\rm core} + \frac {4} {5}\int_r^{r_{\rm core}} T_\varphi (r) \frac {dr} {r}$$
 The ***core radius*** parameter $r_{\rm core}$ is the outer radius of the isentropic region, and $T_{\rm core} = T(r_{\rm core})$ is the atmospheric temperature at that radius. 
 
-Inserting $T(r)$ into the equation
-$$\alpha (r) = 2 \frac {T_\varphi (r)} {T(r)}$$
+Inserting $T(r)$ into the equation $\alpha (r) = 2 \frac {T_\varphi (r)} {T(r)}$
 then gives the pressure profile's shape function at $r < r_{\rm core}$. It reduces to
-$$\alpha (r) \approx \frac {2 T_\varphi (r)} {T_{\rm core} + 0.8 T_\varphi (r) \cdot \ln (r_{\rm core}/r) }$$
+  $$\alpha (r) \approx \frac {2 T_\varphi (r)} {T_{\rm core} + 0.8 T_\varphi (r) \cdot \ln (r_{\rm core}/r) }$$
 in a potential well that is approximately isothermal.
 
 #### Central Heating
@@ -153,19 +152,19 @@ The core radius of the isentropic region depends on how the amount $\Delta Q$ of
 
 
 where $M_{\rm gas}$ is the mass of heated gas, and the numerical factor 2/3 pertains to a gas with a thermal energy density of $3P/2$ (see the [Cooling](Cooling) page). Centralized thermalization of the energy $\Delta Q$ therefore produces an isentropic core out to a radius $r_{\rm core}$ containing a gas mass
-$$M_{\rm gas} \sim \frac {2} {3} \left( \frac {\mu m_p} {k T_\varphi} \right) \Delta Q$$
+  $$M_{\rm gas} \sim \frac {2} {3} \left( \frac {\mu m_p} {k T_\varphi} \right) \Delta Q$$
 In other words, the isentropic region consists of gas that had an original thermal energy content ($\sim 3 k T_\varphi /2$ per particle) comparable to the energy input $\Delta Q$.
 
 #### Core Radius Approximation
 
 To estimate $r_{\rm core}$, consider an atmosphere with a pressure profile that is initially a pure power law: $P = P_0 (r / r_0)^{-\alpha_0}$. The cumulative thermal energy profile of that atmosphere is
-$$E_{\rm th} (r) = 4 \pi r_0^3 P_0 \int_0^{r/r_0} x^{2 - \alpha_0} dx
+  $$E_{\rm th} (r) = 4 \pi r_0^3 P_0 \int_0^{r/r_0} x^{2 - \alpha_0} dx
                    = \frac {4 \pi r_0^3 P_0} {3 - \alpha_0} 
                         \left( \frac {r} {r_0} \right)^{3 - \alpha_0}$$
 The relationship $E_{\rm th} (r_{\rm core}) \approx \Delta Q$ then implies
-$$r_{\rm core} \approx \: r_0 \times \left[ \frac {( 3 - \alpha_0) \Delta Q} {4 \pi r_0^3 P_0} \right]^{1/ (3 - \alpha_0)}$$
+  $$r_{\rm core} \approx \: r_0 \times \left[ \frac {( 3 - \alpha_0) \Delta Q} {4 \pi r_0^3 P_0} \right]^{1/ (3 - \alpha_0)}$$
 and the new shape function at $r < r_{\rm core}$ after the central heating event is
-$$\alpha (r) \approx \frac {\alpha_0} { 1 + 0.4 \, \alpha_0 \,  \ln (r_{\rm core}/r) }$$
+  $$\alpha (r) \approx \frac {\alpha_0} { 1 + 0.4 \, \alpha_0 \,  \ln (r_{\rm core}/r) }$$
 Similar estimates can be made for more complicated initial pressure profiles.
 
 #### Reduced Cooling
