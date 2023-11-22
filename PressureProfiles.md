@@ -209,7 +209,8 @@ for the pressure shape function. Users who do not want to neglect the temperatur
                                 { 1 + r / r_{\rm max}} \right)
                                 \frac {y} {1+y}$$
 which reduces to the *Simplified Cosmological Profile* above in the limit $K_{\rm c,0} \gg K_{\rm p,0}$.
-  
+
+
 ## Evolving the Shape Function
 
 The primary motivation for having multiple options for $\alpha (r)$ is that the spatial distribution of feedback energy input within a galaxy's atmosphere remains unknown. Comparisons of the different options with both observations and numerical simulations will eventually show which options most faithfully represent various modes of feedback energy input. Also, an atmosphere's shape function may evolve with time as feedback modes and the radial profile of energy input change.
