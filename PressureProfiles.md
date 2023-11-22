@@ -68,35 +68,34 @@ representing how an atmosphere's entropy and temperature gradients combine to pr
 
 Decomposition of the pressure shape function into an entropy term and a temperature term is particularly useful if the entropy profile's shape function
 $$\alpha_K (r) \equiv \frac {d \ln K} {d \ln r}$$
-is approximately constant, as is often the case. Both cosmological simulations and observations of galaxy clusters are consistent with $\alpha_K \approx 1.1 - 1.2$ outside a cluster's central regions. A cosmological galactic atmosphere should therefore have $\alpha \approx 1.7$ in regions that are nearly isothermal. However, both deviations from isothermality and non-cosmological changes in $\alpha_K$ result in deviations from $\alpha \approx 1.7$. 
+is approximately constant, as is often the case. Both cosmological simulations and observations of galaxy clusters are consistent with $\alpha_K \approx 1.1 - 1.2$ outside a cluster's central regions. A cosmological galactic atmosphere should therefore have $\alpha \approx 1.7$ in regions that are nearly isothermal. However, both deviations from isothermality and non-cosmological changes in $\alpha_K$ can result in deviations from $\alpha \approx 1.7$. 
 
 ### Outer Temperature Decline
 
-The steepening at large radii of a cosmological atmosphere's thermal pressure profile beyond $\alpha \approx 1.7$ results from a radial decline in atmospheric temperature. In the **ExpCGM** framework, an atmosphere's equilibrium temperature follows from the force balance equation
-$$\frac {d} {dr} \frac {P} {f_{\rm th}} 
-        = - \rho f_\varphi \frac {v_{\rm c}^2} {r}$$
-in which $f_{\rm th}$ is the fraction of total support that thermal pressure $P$ provides and $f_\varphi$ accounts for modifications to purely gravitational compression. That equilibrium temperature profile is
+At large radii a cosmological atmosphere's thermal pressure profile has $\alpha > 1.7$ because of a radial decline in atmospheric temperature. In the **ExpCGM** framework, an atmosphere's equilibrium temperature follows from the force balance equation
+$$\frac {d} {dr} \frac {P} {f_{\rm th}} = - \rho f_\varphi \frac {v_{\rm c}^2} {r}$$
+in which $f_{\rm th}$ is the fraction of total support that thermal pressure $P$ provides and $f_\varphi$ accounts for modifications to purely gravitational compression (see the [Essentials](Essentials) page). That equilibrium temperature profile is
 $$T(r) = \left( \frac {\mu m_p} {k} \right)
                 \frac {f_{\rm th} f_\varphi v_{\rm c}^2} 
                         {\alpha_{\rm eff}}$$
 in which $\alpha_{\rm eff} = \alpha + (d \ln f_{\rm th} / d \ln r)$. 
 
-Three factors on the right-hand side of equation for $T(r)$ can contribute to the temperature decline: 
+Three factors on the right-hand side of equation for $T(r)$ contribute to the temperature decline: 
 
 * **Declining Circular Velocity.** The circular velocity of a cosmological halo declines with radius in its outer parts, and so the atmosphere's equilibrium gas temperature $T$ decreases in proportion to $v_{\rm c}^2$.
 
 * **Declining Thermalization.** Everything that happens in a galaxy's atmosphere happens more slowly at larger radii than at smaller radii because of the longer dynamical time ($\sim r / v_{\rm c}$) at larger radii. That includes thermalization of the kinetic energy of accreting gas. Consequently, the fraction $f_{\rm th}$ of atmospheric support provided by thermal pressure declines at large radii, enhancing the decline in $T(r)$ that stems from a decline in $v_{\rm c}^2(r)$.
 
-* **Declining Momentum Confinement.** As accreting gas slows down and becomes incorporated into a galaxy's atmosphere, it transfers its inward momentum to the atmosphere and assists gravitational confinement, so that $f_\varphi > 1$ (see the [Accretion](Accretion) page). In the deceleration zone where momentum transfer occurs, the extra confinement can boost $T(r)$, perhaps partially offsetting the decline in $v_c^2 (r)$ with radius. However, in the outer parts of the deceleration zone, where the extra confinement lessens (and $f_\varphi$ decreases), the decline in $T(r)$ is even greater than it would otherwise be.
+* **Declining Momentum Confinement.** As accreting gas slows down and becomes incorporated into a galaxy's atmosphere, it transfers its inward momentum to the atmosphere and assists gravitational confinement, so that $f_\varphi > 1$ (see the [Accretion](Accretion) page). In the deceleration zone where momentum transfer occurs, the extra confinement can boost $T(r)$, perhaps partially offsetting the decline in $v_c^2 (r)$ with radius. However, $f_\varphi$ decreases in the outer parts of the deceleration zone, where the extra confinement lessens, making the decline in $T(r)$ is greater than it would otherwise be.
 
 {: .note}
 The generalized shape function $\alpha_{\rm eff}$ may also increase with radius because of declines in $v_{\rm c}^2$, $f_{\rm th}$, and $f_\varphi$.
 
-### Approximate Cosmological Profile
+### Simplified Cosmological Profile
 
-In principle, users of the **ExpCGM** framework can specify $v_{\rm c}^2 (r)$, $f_{\rm th} (r)$, and $f_\varphi (r)$ and then derive $\alpha (r)$ from that information. However, that approach is needlessly complex, given the guidance that observations and simulations provide about $\alpha (r)$ in cosmological atmospheres. If the confining halo is represented by an NFW potential well with a scale radius $r_{\rm s}$, the simplest approach is to use the shape function approximation
+A simple entropy-based method that automatically reproduces a temperature decline at large radii is to use the shape function approximation
 $$\alpha (r) \approx {1.7} \left( \frac {2 r / r_{\rm max}} {1 + r/r_{\rm max}} \right)$$
-to represent a cosmological atmosphere. It is designed to have $\alpha \approx 1.7$ near the radius $r_{\rm max} = 2.163 r_{\rm s}$, where $v_{\rm c}^2 (r)$ peaks, because that is where the atmosphere is closest to being isothermal, and its asymptotic values at large and small $r$ are inspired by fits to galaxy-cluster observations.
+to represent a cosmological atmosphere. It is designed to have $\alpha \approx 1.7$ near the radius $r_{\rm max} = 2.163 r_{\rm s}$, where $v_{\rm c}^2 (r)$ peaks in an NFW gravitational potential with scale radius $r_{\rm s}$. Coupling that approximation with a power-law entropy profile having $\alpha_K \approx 1.1$ ensures a nearly isothermal temperature profile in the vicinity of $r_{\rm max}$, where the gravitational potential is nearly isothermal, and produces a temperature decline resembling those observed at larger radii. Also, the asymptotic values of $\alpha(r)$ at large and small radii are similar to the values measured from galaxy-cluster observations.
 
 ## Entropy Modification
 
