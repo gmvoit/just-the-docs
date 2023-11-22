@@ -179,4 +179,14 @@ A caveat: Centralized heating of an atmosphere that is not spherically symmetric
 
 ### Precipitation Limited Profiles
 
+Observations of galaxy groups and clusters with a short central cooling time ($t_{\rm cool} \lesssim 1 \, {\rm Gyr}$) show that the shape functions of their central pressure profiles ($r \lesssim 20 {\rm kpc}$) are in between expectations for a pure cooling flow ($\alpha \approx 3/2$) and centralized heating ($\alpha < 1$). Neither heating nor cooling dominates. Instead, interplay between heating and cooling appears to be suspending the atmosphere in a quasi-steady state.
+
+One observed characteristic of that seemingly quasisteady atmospheric state is a constant ratio of cooling time to dynamical time, as represented by a freefall time $t_{\rm ff} \equiv (2 r / g)^{1/2}$ based on the local gravitational acceleration $g$. In a nearly isothermal potential (with $t_{\rm ff} \propto r$), a constant $t_{\rm cool}/t_{\rm ff}$ ratio implies $\rho \propto t_{\rm cool}^{-1} \propto r^{-1}$, because the atmosphere's temperature remains approximately constant with radius. The shape function for a pressure profile in that state is $\alpha \approx 1$.
+
+Numerical simulations suggest that such an atmosphere is in a marginally stable state with properties shaped by susceptibilty to condensation. If $t_{\rm cool}/t_{\rm ff} < 1$, then atmospheric gas can cool and condense faster than it can fall to the center of the potential well. It is therefore prone to forming a *multiphase medium* consisting of volume-filling gas (at temperature $T \sim T_\varphi$) containing much cooler embedded clouds ($T \ll T_\varphi$) that can be orders of magnitude denser (for a more extensive description, see the [Multiphase Gas](MultiphaseGas) page). 
+
+Observations show that $\min (t_{\rm cool}/t_{\rm ff}) \sim 10$ is the typical lower limit for the ratio of cooling time to freefall time in galaxy clusters and groups. A plausible explanation for this minimum ratio is that "precipitation" of dense clouds out of the ambient medium may be exponentially sensitive to $t_{\rm cool}/t_{\rm ff}$ in the range $3 \lesssim t_{\rm cool}/t_{\rm ff} \lesssim 20$. According to that hypothesis, an atmosphere at the low end of the range is overly prone to formation of cold clouds that rain down upon the central galaxy and fuel energetic feedback that expands the atmosphere and raises the value of $t_{\rm cool}$.
+
+The **ExpCGM** framework therefore calls pressure profiles with $\alpha \approx 1$ and $t_{\rm cool}/t_{\rm ff} \sim 10$ at small radii ***precipitation limited.*** There are at least three options for imposing a precipitation limit on a cosmological entropy profile:
+
 ## Evolving the Shape Function
