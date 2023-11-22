@@ -100,7 +100,7 @@ to represent a cosmological atmosphere. It is designed to have $\alpha \approx 1
 
 Entropy-based methods for determining $\alpha (r)$ are particularly useful for characterizing non-cosmological processes, such as radiative cooling and feedback energy input from the central galaxy, because those energy sinks and sources modify the entropy profile that would otherwise result from cosmological structure formation. 
 
-The **ExpCGM** framework includes three physically justifiable non-cosmological modifications of $\alpha_K$ that users may wish to implement.
+The **ExpCGM** framework includes three physically justifiable non-cosmological modifications of $\alpha_K$ that users may wish to implement:
 
 ### Cooling Flow Profile 
 
@@ -118,8 +118,9 @@ Gravitational compression in a potential well that is nearly isothermal keeps th
 </p>
 
 
-A steady cooling flow, in which $\dot{M}\_{\rm cool}$ does not depend on radius, therefore has $\rho / t_{\rm cool} \propto r^3$. In a nearly isothermal potential well that maintains a nearly constant atmospheric temperature, one then finds $t_{\rm cool} \propto \rho^{-1}$, implying that $P (r) \propto \rho (r) \propto r^{-3/2}$ in a steady cooling flow.
+A steady cooling flow, in which $\dot{M}\_{\rm cool}$ does not depend on radius, therefore has $\rho / t_{\rm cool} \propto r^3$. In a nearly isothermal potential well that maintains a nearly constant atmospheric temperature, one then finds $t_{\rm cool} \propto \rho^{-1}$, implying that $P (r) \propto \rho (r) \propto r^{-3/2}$ and $\alpha \approx 1.5$ in a steady cooling flow.
 
+{: .note}
 The shape function approximation $\alpha_{\rm cool} \approx 1.5$ for a steady and nearly isothermal cooling flow has a numerical value similar to the power-law index $\alpha \approx 1.7$ describing the nearly isothermal parts of a cosmological atmosphere, but it has a completely different physical origin. In an **ExpCGM** atmospheric model, using $\alpha_{\rm cool} \approx 1.5$ is justified at radii where $t_{\rm cool}$ is much shorter than the universe's age and within which radiative cooling greatly exceeds feedback energy input. However, the cooling flow is likely to become inhomogeneous where $t_{\rm cool}$ drops below the atmosphere's dynamical time ($\sim r / v_{\rm c}$), calling for a different approach to specifying $\alpha$.
 
 ### Isentropic Core
