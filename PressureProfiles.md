@@ -29,7 +29,7 @@ parent: Description
 
 All galactic atmosphere models in the **ExpCGM** framework depend on a user-specified shape function $\alpha (r) \equiv - d \ln P / d \ln r$ for the thermal pressure profile. The framework then determines how the normalization of that pressure profile responds to changes in atmospheric mass and energy. Users therefore need to consider the physical conditions they are intending to model when specifying $\alpha (r)$.
 
-This page is a user's guide to choosing shape functions. Its first section discusses the simplest choices, which are constant values of $\alpha$. It second section presents a shape-function formula for purely cosmological atmospheres. The section that follows introduces entropy-based methods for specifying $\alpha (r)$, and the next one outlines the characteristic shape functions of cooling flows, isentropic cores, and precipitation-limited atmospheres. The concluding section discusses how the **ExpCGM** framework handles an evolving shape function.
+This page is an **ExpCGM** user's guide to choosing those shape functions. Its first section discusses the simplest choices, which are constant values of $\alpha$. It second section presents a shape-function formula for purely cosmological atmospheres. The section that follows introduces entropy-based methods for specifying $\alpha (r)$, and the next one outlines the characteristic shape functions of cooling flows, isentropic cores, and precipitation-limited atmospheres. The concluding section discusses how the **ExpCGM** framework handles an evolving shape function.
 
 <details closed markdown="block">
   <summary>
