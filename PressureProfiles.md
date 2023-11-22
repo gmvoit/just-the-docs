@@ -194,7 +194,7 @@ There are at least three options for imposing a precipitation limit on a cosmolo
 If this method is used, increases in $E_{\rm CGM}$ change the pressure profile's normalization factor $P_0$ without changing its shape function, meaning that the pressure normalization of the inner region, which may be limited by precipitation, is *linked* to the normalization of the outer region, where the shape function's slope is cosmological.  The method implicitly assumes that feedback energy input is evenly spread over the entire atmosphere, so that $K(r)$ rises by the same factor at all radii.
 
 * **Unlinked Normalization.** This method is based on representing a halo's precipitation-limited entropy profile with two power laws. The first is a cosmological entropy profile with 
-  $$K_{\rm c} (r) = K_{{\rm c},0} \left( \frac {r} {r_0} \right)^{1.1}$$
+  $$K_{\rm c} (r) = K_{\rm c,0} \left( \frac {r} {r_0} \right)^{1.1}$$
 The second expresses the precipitation limit in terms of
 
 ## Evolving the Shape Function
