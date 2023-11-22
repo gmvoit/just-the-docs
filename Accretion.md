@@ -185,7 +185,7 @@ To summarize how accretion of both gas mass and total mass affects the cosmologi
 Cosmological structure formation brings gas into a halo of mass $M_{\rm halo}$ and radius $R_{\rm halo}$ with a specific kinetic energy 
 $$\varepsilon_{\rm kin} \approx \frac {G M_{\rm halo}} {2 R_{\rm halo}} = \frac {v_{\rm c}^2 (R_{\rm halo})} {2}$$
 Users of the **ExpCGM** framework are free to choose the density contrast factor $\Delta_{\rm c}$ that defines $R_{\rm halo}$ and relates it to the turnaround radius $R_{\rm ta}$ of matter that accretes through $R_{\rm halo}$ at time $t$. Once that choice has been made, users can apply the more precise expression
-$$\varepsilon_{\rm kin} (t) = \frac {G M(t)} {R_{\rm halo}} \left[ 1 - \frac {R_{\rm halo}} {R_{\rm ta}} - \frac {\Omega_\Lambda \rho_{\rm cr,0}} {\rho_{\rm halo}} \right) \left( \frac {R_{\rm ta}^3} {R_{\rm halo}^3} - 1 \right)  \right]$$
+$$\varepsilon_{\rm kin} (t) = \frac {G M(t)} {R_{\rm halo}} \left[ 1 - \frac {R_{\rm halo}} {R_{\rm ta}} - \frac {\Omega_\Lambda \rho_{\rm cr,0}} {\rho_{\rm halo}} \left( \frac {R_{\rm ta}^3} {R_{\rm halo}^3} - 1 \right)  \right]$$
 for the specific kinetic energy of accreting gas. The baseline framework does not account for any thermal energy the accreting gas might have prior to passing within $R_{\rm halo}$.
 
 * **Adiabatic Compression.**
