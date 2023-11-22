@@ -40,19 +40,25 @@ To construct an equilibrium atmospheric model in the **ExpCGM** framework, users
 
 ## Power Laws
 
-The simplest physically justifiable pressure profiles are pure power laws, with
+The simplest pressure profiles are pure power laws, with
 $$P(r) = P_0 \left( \frac {r} {r_0} \right)^{-\alpha}$$
-and $\alpha \gtrsim 3/2$. An atmosphere with $\alpha = 3/2$ is only marginally bound to its halo, and atmospheric layers with $\alpha < 3/2$ may not be gravitationally bound (see the [Confinement](Confinement) page for an explanation). Consequently, external pressure forces must somehow confine galactic atmospheres that have $\alpha < 3/2$ at all radii. 
+However, not all values of $\alpha$ are physically justifiable. For example, an atmosphere with $\alpha = 3/2$ everywhere is only marginally bound to its halo (see the [Confinement](Confinement) page for an explanation). Atmospheres that have $\alpha < 3/2$ at all radii must therefore be confined by external pressure forces.
+
+{: .note}
+For many applications, a power-law pressure profile with constant $\alpha$ might be all that an **ExpCGM** user needs.
 
 ## Cosmological Profiles
 
-Cosmological structure formation shapes the large-scale properties of galaxy-cluster atmospheres. Both observations and numerical simulations of galaxy clusters show that their cosmologically-determined pressure profiles are not pure power laws, especially at large radii. Typically, the shape functions of those pressure profiles are flatter than $\alpha = 3/2$ at small radii and steeper than $\alpha = 3/2$ at large radii. As a result, the cosmological pressure profiles of galaxy clusters are often represented with a fitting formula equivalent to the shape function
+Cosmological structure formation produces pressure profiles in which $\alpha (r)$ increases with radius. Both observations and numerical simulations of galaxy clusters show that their pressure profiles are flatter than $\alpha = 3/2$ at small radii and steeper than $\alpha = 3/2$ at large radii. As a result, the cosmological pressure profiles of galaxy clusters are often represented with a fitting formula equivalent to the shape function
 $$\alpha (r) = \alpha_{\rm in} + \left( \alpha_{\rm out} - \alpha_{\rm in} \right) \left[ \frac {(r / r_{\rm tr})^{\alpha_{\rm tr}}} { 1 +(r / r_{\rm tr})^{\alpha_{\rm tr}}} \right]$$
-The parameter $r_{\rm tr}$ is a transitional radius for the profile's slope that is approximately twice the scale radius $r_{\rm s}$ of an NFW fit to the halo's gravitational potential. The other parameters represent the pressure profile's power-law slope in the appropriate limits. Fits to observations of thermal pressure in galaxy clusters give an inner slope $\alpha_{\rm in} \approx 0.3$, an outer slope $\alpha_{\rm out} \approx 4.3$, and $\alpha_{\rm tr} \approx 1.1$. 
+The parameter $r_{\rm tr}$ is a transitional radius for the profile's slope that is approximately twice the scale radius $r_{\rm s}$ of an NFW fit to the halo's gravitational potential. The other parameters represent the pressure profile's power-law slope in the appropriate limits. Fits to observations of thermal pressure profiles in galaxy clusters give an inner slope $\alpha_{\rm in} \approx 0.3$, an outer slope $\alpha_{\rm out} \approx 4.3$, and $\alpha_{\rm tr} \approx 1.1$. 
+
+{: .note}
+Observations of galaxy clusters show a greater dispersion in $\alpha_{\rm in}$ than in $\alpha_{\rm out}$, presumably because the inner parts of a galaxy cluster's atmosphere respond more strongly to radiative cooling and outbursts of feedback energy from the central galaxy.
 
 ## Entropy-Based Profiles
 
-Another approach to specifying cosmological pressure profiles, also useful for modifying them, focuses on the normalization factor $K$ of the polytropic equation of state $P = K \rho^\gamma$ relating $P$ to $\rho$. The quantity $K$ is sometimes called the atmosphere's ``entropy" because changes in $\ln K$ are directly proportional to changes in specific entropy (see the [Cooling](Cooling) page). A pressure profile's shape function can therefore be separated into two terms
+Another approach to specifying cosmological pressure profiles, also useful for modifying them, focuses on the normalization factor $K$ of the polytropic equation of state $P = K \rho^\gamma$ relating $P$ to $\rho$. The quantity $K$ is sometimes called the atmosphere's "entropy" because changes in $\ln K$ are directly proportional to changes in specific entropy (see the [Cooling](Cooling) page). A pressure profile's shape function can therefore be separated into two terms
 $$\alpha (r) = \frac {3} {2} \frac {d \ln K} {d \ln r} 
         - \frac {5} {2} \frac {d \ln T} {d \ln r}$$
 representing how an atmosphere's entropy and temperature gradients combine to produce the shape function for thermal pressure in a $\gamma = 5/3$ atmosphere (which has $P \propto T^{5/2} K^{-3/2}$).
