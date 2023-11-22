@@ -196,7 +196,6 @@ If this method is used, increases in $E_{\rm CGM}$ change the pressure profile's
 * **Unlinked Normalization.** This method is based on representing a halo's precipitation-limited entropy profile with two power laws. The first is a cosmological entropy profile with 
   $$ K_{\rm cos} (r) = K_{{\rm cos},0} \left( \frac {r} {r_0} \right)^{1.1}$$
 The second expresses the precipitation limit in terms of
-  $$K_{\rm precip} (r) = K_{{\rm precip},0} \left( \frac {r} {r_0} \right)^{2/3}$$
 
 ## Evolving the Shape Function
 
