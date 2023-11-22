@@ -58,14 +58,19 @@ Observations of galaxy clusters show a greater dispersion in $\alpha_{\rm in}$ t
 
 ## Entropy-Based Profiles
 
-Another approach to specifying cosmological pressure profiles, also useful for modifying them, focuses on the normalization factor $K$ of the polytropic equation of state $P = K \rho^\gamma$ relating $P$ to $\rho$. The quantity $K$ is sometimes called the atmosphere's "entropy" because changes in $\ln K$ are directly proportional to changes in specific entropy (see the [Cooling](Cooling) page). A pressure profile's shape function can therefore be separated into two terms
-$$\alpha (r) = \frac {3} {2} \frac {d \ln K} {d \ln r} 
-        - \frac {5} {2} \frac {d \ln T} {d \ln r}$$
+A more sophisticated approach to specifying atmospheric pressure profiles, developed to account for radiative cooling and feedback energy, focuses on the normalization factor $K$ of the polytropic equation of state $P = K \rho^\gamma$ relating $P$ to $\rho$. The quantity $K$ is sometimes called the atmosphere's "entropy" because changes in $\ln K$ are directly proportional to changes in specific entropy (see the [Cooling](Cooling) page). 
+
+Entropy-based methods separate a pressure profile's shape function into two terms
+$$\alpha (r) = \frac {3} {2} \frac {d \ln K} {d \ln r} - \frac {5} {2} \frac {d \ln T} {d \ln r}$$
 representing how an atmosphere's entropy and temperature gradients combine to produce the shape function for thermal pressure in a $\gamma = 5/3$ atmosphere (which has $P \propto T^{5/2} K^{-3/2}$).
+
+### Entropy Power Law
 
 This decomposition into an entropy part and a temperature part is particularly useful if the entropy profile's shape function
 $$\alpha_K (r) \equiv \frac {d \ln K} {d \ln r}$$
-is approximately constant, as is often the case. Both cosmological simulations and observations of galaxy clusters are consistent with $\alpha_K \approx 1.1 - 1.2$ outside a cluster's central regions. A cosmological galactic atmosphere should therefore have $\alpha \approx 1.7$ in regions that are nearly isothermal. However, both deviations from isothermality and changes in $\alpha_K$ result in deviations from $\alpha \approx 1.7$. 
+is approximately constant, as is often the case. Both cosmological simulations and observations of galaxy clusters are consistent with $\alpha_K \approx 1.1 - 1.2$ outside a cluster's central regions. A cosmological galactic atmosphere should therefore have $\alpha \approx 1.7$ in regions that are nearly isothermal. However, both deviations from isothermality and non-cosmological changes in $\alpha_K$ result in deviations from $\alpha \approx 1.7$. 
+
+### Outer Temperature Decline
 
 The steepening at large radii of a cosmological atmosphere's thermal pressure profile beyond $\alpha \approx 1.7$ results from a radial decline in atmospheric temperature. In the **ExpCGM** framework, an atmosphere's equilibrium temperature follows from the force balance equation
 $$\frac {d} {dr} \frac {P} {f_{\rm th}} 
@@ -92,9 +97,11 @@ to represent a cosmological atmosphere. It is designed to have $\alpha \approx 1
 
 Therefore, entropy-based methods for determining $\alpha (r)$ are more useful for characterizing non-cosmological processes, such as radiative cooling and energy input from the central galaxy. Those energy sinks and sources alter the pressure profile's shape function $\alpha (r)$ by modifying the entropy profile that would otherwise result from cosmological structure formation. 
 
+## Entropy Modification
+
 The next three sections outline three physically justifiable non-cosmological modifications of $\alpha_K$ that users of the **ExpCGM** framework may wish to implement.
 
-## Cooling Flow Profile 
+### Cooling Flow Profile 
 
 The central regions of a galactic atmosphere generally have a radiative cooling time $t_{\rm cool}$ that is less than the universe's age. If heat input from the central galaxy falls short of replacing the energy lost to radiation, the central gas loses entropy and sinks into the central galaxy on a timescale $\sim t_{\rm cool}$. If the flow of gas is homogeneous, it is called a *cooling flow*. Its characteristic entropy gradient follows from the relationship
 $$\alpha_K = \frac {d \ln K} {d \ln r} = - t_{\rm flow} \frac {d \ln K} {d t} = \frac {t_{\rm flow}} {t_{\rm cool}}$$
@@ -114,11 +121,11 @@ A steady cooling flow, in which $\dot{M}\_{\rm cool}$ does not depend on radius,
 
 The shape function approximation $\alpha_{\rm cool} \approx 1.5$ for a steady and nearly isothermal cooling flow has a numerical value similar to the power-law index $\alpha \approx 1.7$ describing the nearly isothermal parts of a cosmological atmosphere, but it has a completely different physical origin. In an **ExpCGM** atmospheric model, using $\alpha_{\rm cool} \approx 1.5$ is justified at radii where $t_{\rm cool}$ is much shorter than the universe's age and within which radiative cooling greatly exceeds feedback energy input. However, the cooling flow is likely to become inhomogeneous where $t_{\rm cool}$ drops below the atmosphere's dynamical time ($\sim r / v_{\rm c}$), calling for a different approach to specifying $\alpha$.
 
-## Isentropic Core
+### Isentropic Core
 
 At the other extreme from a pure cooling flow is centralized heat input that greatly exceeds radiative cooling. Under those conditions, heating raises the atmosphere's central entropy level, causing convection wherever $\alpha_K$ drops below zero. Convection then maintains $\alpha_K$ near zero, leading to development of an isentropic core with a constant entropy level. 
 
-### Isentropic Shape Function
+#### Isentropic Shape Function
 
 Isentropic gas with the equation of state $P = K \rho^{5/3}$ has $T \propto P^{2/5}$. The temperature profile of a hydrostatic isentropic core therefore satisfies
 
@@ -137,7 +144,7 @@ then gives the pressure profile's shape function at $r < r_{\rm core}$. That equ
 $$\alpha (r) \approx \frac {2 T_\varphi (r)} {T_{\rm core} + 0.8 T_\varphi (r) \cdot \ln (r_{\rm core}/r) }$$
 for an approximately isothermal potential well.
 
-### Core Radius
+#### Core Radius
 
 The core radius of the isentropic region depends on how the amount $\Delta Q$ of central heating compares with the cumulative thermal energy profile preceding the heating event. Heating of gas at temperature $T$ raises its entropy $S$ by
 
@@ -164,6 +171,6 @@ Notice that centralized heating can greatly reduce the rate at which a cooling f
 
 There is also an important caveat to keep in mind: Centralized heating of an atmosphere that is not spherically symmetric does not necessarily produce an isentropic core, especially if the heated gas escapes along low-density channels with a collective solid angle substantially less than $4 \pi$. For example, a rotating cooling flow naturally forms a cold, high-density disk inside of where its rotation speed approaches the potential's circular velocity (see the [Rotation](Rotation) page).  Heat input near the center of that disk tends to drive a bipolar outflow along the disk's rotation axis without significantly affecting the disk. It can therefore drive atmospheric circulation, in which the gas inflow through the rotating cooling flow roughly balances the bipolar gas outflow driven by central heating, when averaged over long time periods.
 
-## Precipitation Limited Profiles
+### Precipitation Limited Profiles
 
 ## Evolving the Shape Function
