@@ -187,7 +187,7 @@ Numerical simulations suggest that such an atmosphere is in a marginally stable 
 
 Observations show that $\min (t_{\rm cool}/t_{\rm ff}) \sim 10$ is the typical lower limit for the ratio of cooling time to freefall time in galaxy clusters and groups. A plausible explanation for this minimum ratio is that "precipitation" of dense clouds out of the ambient medium may be exponentially sensitive to $t_{\rm cool}/t_{\rm ff}$ in the range $3 \lesssim t_{\rm cool}/t_{\rm ff} \lesssim 20$. According to that hypothesis, an atmosphere at the low end of the range is overly prone to formation of cold clouds that rain down upon the central galaxy and fuel energetic feedback that expands the atmosphere and raises the value of $t_{\rm cool}$. The **ExpCGM** framework therefore calls pressure profiles with $\alpha \approx 1$ and $t_{\rm cool}/t_{\rm ff} \sim 10$ at small radii ***precipitation limited.*** 
 
-There are at least three options for imposing a precipitation limit on a cosmological entropy profile:
+There are at least three options for imposing a precipitation limit on a cosmological entropy profile to obtain a precipitation-limited shape function:
 
 * **Linked Normalization.** The simplest method forces a shape function that is cosmological at large radii to morph into a pressure profile with an approximately constant $t_{\rm cool} / t_{\rm ff}$ ratio at small radii. That can be done by setting $\alpha_{\rm in} = 1$ in the formula for a cosmological shape function or by modifying the formula's simplified version, so that 
   $$\alpha (r) \approx 1 + 0.7 \left( \frac {2 r / r_{\rm max}} { 1 + r / r_{\rm max} } \right)$$
@@ -196,7 +196,10 @@ If this method is used, increases in $E_{\rm CGM}$ change the pressure profile's
 * **Unlinked Normalization.** This method is based on representing a halo's precipitation-limited entropy profile with two power laws. The first is a cosmological entropy profile with 
   $$K_{\rm c} (r) = K_{\rm c,0} \left( \frac {r} {r_0} \right)^{1.1}$$
 The second expresses the precipitation limit in terms of
-
+  $$K_{\rm p} (r) = K_{\rm p,0} \left( \frac {r} {r_0} \right)^{2/3}$$
+The normalization factor $K_{\rm p,0}$ corresponds to a limiting $t_{\rm cool}/t_{\rm ff}$ ratio, and simulations of cosmological structure formation determine the normalization factor $K_{\rm c,0}$. The two normalization factors are *unlinked* in the sense that feedback energy input from the central galaxy raises $K_{\rm p}$ but not $K_{\rm c}$. Summing the cosmological and precipitation limited entropy profiles then gives the combined profile
+  $$K(r) = K_{\rm p,0} \left( \frac {r} {r_0} \right)^{2/3} + K_{\rm c,0} \left( \frac {r} {r_0} \right)^{1.1}$$
+  
 ## Evolving the Shape Function
 
 The primary motivation for having multiple options for $\alpha (r)$ is that the spatial distribution of feedback energy input within a galaxy's atmosphere remains unknown. Comparisons of the different options with both observations and numerical simulations will eventually show which options most faithfully represent various modes of feedback energy input. Also, an atmosphere's shape function may evolve with time as feedback modes and the radial profile of energy input change.
