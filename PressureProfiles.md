@@ -179,7 +179,7 @@ A caveat: Centralized heating of an atmosphere that is not spherically symmetric
 
 ### Precipitation Limited Profiles
 
-Observations of galaxy groups and clusters with a short central cooling time ($t_{\rm cool} \lesssim 1 \, {\rm Gyr}$) show that the shape functions of their central pressure profiles ($r \lesssim 20 {\rm kpc}$) are in between expectations for a pure cooling flow ($\alpha \approx 3/2$) and centralized heating ($\alpha < 1$). Neither heating nor cooling dominates. Instead, interplay between heating and cooling appears to be suspending the atmosphere in a quasi-steady state.
+Observations of galaxy groups and clusters with a short central cooling time ($t_{\rm cool} \lesssim 1 ~{\rm Gyr}$) show that the shape functions of their central pressure profiles ($r \lesssim 20~{\rm kpc}$) are in between expectations for a pure cooling flow ($\alpha \approx 3/2$) and centralized heating ($\alpha < 1$). Neither heating nor cooling dominates. Instead, interplay between heating and cooling appears to be suspending the atmosphere in a quasi-steady state.
 
 One observed characteristic of that seemingly quasisteady atmospheric state is a constant ratio of cooling time to dynamical time, as represented by a freefall time $t_{\rm ff} \equiv (2 r / g)^{1/2}$ based on the local gravitational acceleration $g$. In a nearly isothermal potential (with $t_{\rm ff} \propto r$), a constant $t_{\rm cool}/t_{\rm ff}$ ratio implies $\rho \propto t_{\rm cool}^{-1} \propto r^{-1}$, because the atmosphere's temperature remains approximately constant with radius. The shape function for a pressure profile in that state is $\alpha \approx 1$.
 
@@ -188,5 +188,10 @@ Numerical simulations suggest that such an atmosphere is in a marginally stable 
 Observations show that $\min (t_{\rm cool}/t_{\rm ff}) \sim 10$ is the typical lower limit for the ratio of cooling time to freefall time in galaxy clusters and groups. A plausible explanation for this minimum ratio is that "precipitation" of dense clouds out of the ambient medium may be exponentially sensitive to $t_{\rm cool}/t_{\rm ff}$ in the range $3 \lesssim t_{\rm cool}/t_{\rm ff} \lesssim 20$. According to that hypothesis, an atmosphere at the low end of the range is overly prone to formation of cold clouds that rain down upon the central galaxy and fuel energetic feedback that expands the atmosphere and raises the value of $t_{\rm cool}$.
 
 The **ExpCGM** framework therefore calls pressure profiles with $\alpha \approx 1$ and $t_{\rm cool}/t_{\rm ff} \sim 10$ at small radii ***precipitation limited.*** There are at least three options for imposing a precipitation limit on a cosmological entropy profile:
+
+* **Linked Normalization.** The simplest method forces a shape function that is cosmological at large radii to morph into a pressure profile with an approximately constant $t_{\rm cool} / t_{\rm ff}$ ratio at small radii. That can be done by setting $\alpha_{\rm in} = 1$ in the formula for a cosmological shape function or by modifying the formula's simplified version, so that 
+  $$\alpha (r) \approx 1 + 0.7 \left( \frac {2 r / r_{\rm max}} { 1 + r / r_{\rm max} } \right)$$
+If this method is used, increases in $E_{\rm CGM}$ change the pressure profile's normalization factor $P_0$ without changing its shape function, meaning that the pressure normalization of the inner region, which may be limited by precipitation, is *linked* to the normalization of the outer region, where the shape function's slope is cosmological.  The method implicitly assumes that feedback energy input is evenly spread over the entire atmosphere, so that $K(r)$ rises by the same factor at all radii.
+
 
 ## Evolving the Shape Function
