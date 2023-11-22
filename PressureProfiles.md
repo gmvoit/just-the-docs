@@ -195,3 +195,16 @@ If this method is used, increases in $E_{\rm CGM}$ change the pressure profile's
 
 
 ## Evolving the Shape Function
+
+The primary motivation for having multiple options for $\alpha (r)$ is that the spatial distribution of feedback energy input within a galaxy's atmosphere remains unknown. Comparisons of the different options with both observations and numerical simulations will eventually show which options most faithfully represent various modes of feedback energy input. Also, an atmosphere's shape function may evolve with time as feedback modes and the radial profile of energy input change.
+
+In principle, changes in $\alpha (r)$ during a time interval $\Delta t$ can be managed in two distinct steps. The first step is a computation of the atmosphere's mass change $\Delta M_{\rm CGM}$ and total energy change $\Delta E_{\rm CGM}$, based on the atmosphere's current shape function. The second step determines the atmosphere's structure based on the new values of $M_{\rm CGM}$ and $E_{\rm CGM}$ and also updated shape function that satisfies user-defined constraints imposed upon it.
+
+For example, consider a time interval that starts with a power-law shape function and ends with an isentropic core produced by an increment $\Delta E_{\rm fb}$ of centralized feedback energy. Radiative losses determined from the power-law configuration reduce $E_{\rm CGM}$ by $\dot{E}\_{\rm rad} \cdot \Delta t$ during the time interval, while feedback and cosmological accretion boost $E_{\rm CGM}$ by $\Delta E_{\rm fb}$ and $\Delta E_{\rm acc}$, respectively. Those processes also add gas mass increments $\Delta M_{\rm fb}$ and $\Delta M_{\rm acc}$ to $M_{\rm CGM}$, while radiative cooling removes $\dot{M}\_{\rm cool} \cdot \Delta t$. That concludes the first step.
+
+The second step begins with a calculation of $r_{\rm core}$, based on the initial power-law configuration, giving
+  $$r_{\rm core} \approx r_0 \times \left[ \frac {( 3 - \alpha_0) \Delta E_{\rm fb}} {4 \pi r_0^3 P_0} \right]^{1/ (3 - \alpha_0)}$$
+With that value of $r_{\rm core}$, a new shape function for the atmosphere can be calculated using the *Isentropic Core* procedure. Then, the usual **ExpCGM** procedure can be used to determine the atmosphere's new configuration, based on the new shape function, the updated values of $E_{\rm CGM}$ and $M_{\rm CGM}$, and possibly also updated values of $v_\varphi^2$ and $r_{\rm s}$, if the potential well's characteristics have changed. 
+
+{: .note}
+These two steps can be generalized to accommodate other kinds of changes in $\alpha (r)$. However, restrictions on $\Delta t$ may be necessary to ensure that the resulting changes in $\alpha (r)$ are at least qualitatively consistent with the physical rationale for those changes. Keep in mind that the overall aim of **ExpCGM** modeling is to explore how feedback from a halo's central galaxy both shapes its atmosphere and responds to the atmosphere's configuration. Therefore, one of its main goals is to test the community's *assumptions* about the relationship between feedback and the atmosphere's shape function (including the assumptions implicit in numerical simulations) and to assess those assumptions through comparisons of **ExpCGM** models with observations. 
