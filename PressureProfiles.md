@@ -195,10 +195,20 @@ If this method is used, increases in $E_{\rm CGM}$ change the pressure profile's
 
 * **Unlinked Normalization.** This method is based on representing a halo's precipitation-limited entropy profile with two power laws. The first is a cosmological entropy profile with 
   $$K_{\rm c} (r) = K_{\rm c,0} \left( \frac {r} {r_0} \right)^{1.1}$$
+in which the normalization factor $K_{\rm c,0}$ comes from cosmological numerical simulations.
 The second expresses the precipitation limit in terms of
   $$K_{\rm p} (r) = K_{\rm p,0} \left( \frac {r} {r_0} \right)^{2/3}$$
-The normalization factor $K_{\rm p,0}$ corresponds to a limiting $t_{\rm cool}/t_{\rm ff}$ ratio, and simulations of cosmological structure formation determine the normalization factor $K_{\rm c,0}$. The two normalization factors are *unlinked* in the sense that feedback energy input from the central galaxy raises $K_{\rm p}$ but not $K_{\rm c}$. Summing the cosmological and precipitation limited entropy profiles then gives the combined profile
+in which the normalization factor $K_{\rm p,0}$ corresponds to a limiting $t_{\rm cool}/t_{\rm ff}$ ratio. The two normalization factors are *unlinked* in the sense that feedback energy input from the central galaxy raises $K_{\rm p}$ but not $K_{\rm c}$. Summing the cosmological and precipitation limited entropy profiles then gives the combined entropy profile
   $$K(r) = K_{\rm p,0} \left( \frac {r} {r_0} \right)^{2/3} + K_{\rm c,0} \left( \frac {r} {r_0} \right)^{1.1}$$
+with the entropy shape function
+  $$\alpha_K(x) = \frac {2} {3} \left( \frac {1} {1+y} \right) + \frac {11} {10} \left( \frac {y} {1+y} \right)$$
+in which $y = (K_{\rm c,0} / K_{\rm p,0}) (r / r_0)^{13/30}$. In an atmosphere with a negligible temperature gradient, this expression for $\alpha_K$ gives the approximation
+  $$\alpha (r) \approx \frac {1 + 1.7 y} {1+y}$$ 
+for the pressure shape function. Users who do not want to neglect the temperature gradient can implement the approximation
+  $$\alpha (r) \approx \frac {1} {1+y} + 1.7 \left( \frac {2 r / r_{\rm max}} 
+                                { 1 + r / r_{\rm max}} \right)
+                                \frac {y} {1+y}$$
+which reduces to *Simplified Cosmological Profile* above in the limit $K_{\rm c,0} \gg K_{\rm p,0}$.
   
 ## Evolving the Shape Function
 
