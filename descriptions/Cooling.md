@@ -27,6 +27,10 @@ parent: Description
 # Cooling
 {: .no_toc}
 
+Radiative cooling is what causes a galactic atmosphere to deviate from a default cosmological atmosphere. Emission of photons removes some of the atmosphere's cosmological specific energy, allowing cold gas to accumulate at the halo's center, where it can form stars and accrete onto a central black hole. The resulting feedback energy released by supernova explosions and black-hole growth then further alters the atmosphere.
+
+This section describes how ...
+
 <details closed markdown="block">
   <summary>
     Table of contents
