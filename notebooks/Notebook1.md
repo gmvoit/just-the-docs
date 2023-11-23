@@ -7,4 +7,4 @@ parent: Notebooks
 
 # Notebook 1
 
-There is not yet an example here
+There is not yet a notebook featured here
