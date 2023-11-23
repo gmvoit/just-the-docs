@@ -1,8 +1,7 @@
 ---
 title: Credits
 layout: default
-nav_order: 6
-parent: Notebooks
+nav_order: 4
 ---
 
 # Credits
