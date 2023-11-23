@@ -170,7 +170,7 @@ All of the support energy is thermal, and so there is no need to compute $J_{\rm
 The figure below shows the relationship between $x_{\rm CGM}$ and $\varepsilon_{\rm CGM} / v_\varphi^2$ that follows from these integrals. A solid red line represents how an atmosphere's equilibrium radius depends on its mean specific energy for a case with $\alpha = 3/2$. The equilibrium radius starts at zero for $\varepsilon_{\rm CGM} = 0$ and rises through $r_{\rm CGM} \approx 6 r_{\rm s}$ at $\varepsilon_{\rm CGM} \approx 3 v_\varphi^2$. It then approaches infinity as $\varepsilon_{\rm CGM}$ approaches $A_{\rm NFW} v_\varphi^2$ because atmospheric gas with specific energy exceeding $A_{\rm NFW} v_\varphi^2$ is unbound. A dashed blue line shows how the normalization $P_0 \propto 1/ I(x)_{\rm CGM}$ of the atmosphere's pressure profile declines as the atmosphere expands.
 
 <figure>
-    <img src="epsCGM_xCGM_plot.jpg"
+    <img src="../epsCGM_xCGM_plot.jpg"
          alt="epsCGM_xCGM_plot">
 </figure>
 
