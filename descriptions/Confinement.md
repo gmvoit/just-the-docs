@@ -147,7 +147,7 @@ where is $H$ is the Hubble expansion parameter, $\rho_{\rm halo}$ is the halo's 
 The figure below illustrates how the relationship between an atmosphere's equilibrium radius $r_{\rm CGM}$ and its specific energy $\varepsilon_{\rm CGM}$ depends on $f_{\rm acc}$. It starts with an NFW potential well and assumes that thermal pressure follows $P(r) \propto r^{-3/2}$, as in the figure on the [Essentials](Essentials) page. Then it adds the extended potential $\varphi_{\rm ext}(r)$ using several values of the normalization parameter $f_{\rm acc}$, as labeled. The lines for $f_{\rm acc} = 0$ are the same as in the original figure, but they shift to the right as $f_{\rm acc}$ increases. An increase in $f_{\rm acc}$ corresponds to an an enhancement of the potential well's ability to confine gas that has been pushed beyond $R_{\rm halo}$. Consequently, equilibrium solutions are possible for larger values of $\varepsilon_{\rm CGM}$ than in the NFW-only case.
 
 <figure>
-    <img src="xCGM_plot.jpg"
+    <img src="../xCGM_plot.jpg"
          alt="xCGM_plot">
 </figure>
 
