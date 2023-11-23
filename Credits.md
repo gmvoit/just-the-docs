@@ -6,14 +6,14 @@ nav_order: 4
 
 # Credits
 
-### Curator
+### Curators
 
+* Viraj Pandya
 * Mark Voit
 
 ### Contributors
 
-* Viraj Pandya
-* Drummond Fielding
 * Greg Bryan
-* Rachel Somerville
 * Chris Carr
+* Drummond Fielding
+* Rachel Somerville
