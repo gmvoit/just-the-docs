@@ -192,7 +192,7 @@ for the specific kinetic energy of accreting gas. At present, the **ExpCGM** fra
 
 * **Adiabatic Compression.**
 Changes in the gravitational potential of a cosmological halo change the atmosphere's total energy $E_{\rm CGM}$ by the amount
-$$\Delta E_\varphi = \int_0^{r_{\rm CGM}} \Delta \varphi \cdot 4 \pi r^2 \rho dr$$
+  $$\Delta E_{\varphi,{\rm cos}} = \int_0^{r_{\rm CGM}} \Delta \varphi \cdot 4 \pi r^2 \rho dr$$
 Simply increasing the potential's normalization factor $v_\varphi^2$ by the fraction $\Delta v_\varphi^2 / v_\varphi^2$ results in a fractional increase $\Delta E_\varphi / E_{\rm CGM}$ in total atmospheric energy that is smaller than $\Delta v_\varphi^2 / v_\varphi^2$, meaning that the atmosphere becomes more strongly bound. If no atmospheric support energy is added along with the accreting mass, the increase in gravitational binding adiabatically compresses the atmosphere, causing a temperature rise proportional to $\Delta v_\varphi^2$. Adding some support energy does not offset this temperature increase. Instead, it causes atmospheric expansion that is approximately isothermal, because the product of $f_{\rm th}$ and $T$ depends far more directly on $v_\varphi^2$ than on $\varepsilon_{\rm CGM}$.
 
 * **Incoming Momentum.**
@@ -200,7 +200,7 @@ Accreting gas might not transfer much of its kinetic energy to the atmosphere un
 
 * **Net Energy Change.**
 The net change in atmospheric specific energy stemming from cosmological accretion during a time interval $\Delta t$ is
-$$\Delta E_{\rm acc} = \left[ \varepsilon_{\rm kin}  + \varphi(R_{\rm halo}) \right] \Delta M_{\rm CGM} + \Delta E_{\varphi,{\rm cos}}$$
+  $$\Delta E_{\rm acc} = \left[ \varepsilon_{\rm kin}  + \varphi(R_{\rm halo}) \right] \Delta M_{\rm CGM} + \Delta E_{\varphi,{\rm cos}}$$
 where $\Delta M_{\rm CGM} = \zeta f_{\rm b} \dot{M}\_{\rm halo} \, \Delta t$ is the gas mass added through accretion. Without radiative losses that reduce $E_{\rm CGM}$ or feedback energy that increases $E_{\rm CGM}$, the net effect of cosmological accretion on an atmosphere's mean specific energy $\varepsilon_{\rm CGM} = E_{\rm CGM} / M_{\rm CGM}$ is
-$$\Delta \varepsilon_{\rm CGM} =  \left[ \varepsilon_{\rm kin} + \varphi(R_{\rm halo}) - \varepsilon_{\rm CGM} \right] \frac {\Delta M_{\rm CGM}} {M_{\rm CGM}} + \frac {\Delta E_{\varphi,{\rm cos}} {M_{\rm CGM}}$$
+  $$\Delta \varepsilon_{\rm CGM} =  \left[ \varepsilon_{\rm kin} + \varphi(R_{\rm halo}) - \varepsilon_{\rm CGM} \right] \frac {\Delta M_{\rm CGM}} {M_{\rm CGM}} + \frac {\Delta E_{\varphi,{\rm cos}}} {M_{\rm CGM}}$$
 A cosmological atmosphere's structure therefore remains roughly self-similar (i.e. constant $x_{\rm CGM}$) as long as $\Delta \varepsilon_{\rm CGM} / \varepsilon_{\rm CGM}  \approx \Delta v_\varphi^2 / v_\varphi^2$.
