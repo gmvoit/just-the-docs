@@ -80,17 +80,18 @@ Accounting for the gravitational potential energy of incoming matter requires a 
 
 Another cosmological source of atmospheric heating is adiabatic gravitational compression. Mass that falls through a radius $r$ and remains at smaller radii increases the halo's circular velocity at $r$. None of the infalling matter needs to be baryonic but some of it may consist of baryonic mass in stars. The increase in gravitational force at $r$ compresses the atmospheric gas within $r$, thereby increasing both its temperature and turbulent velocity dispersion, if no support energy is added to offset compression.
 
-To assess the contribution that adiabatic compression makes to the total atmospheric energy $E_{\rm CGM}$, consider the effects of a change $\Delta \varphi$ in the gravitational potential without a compensating change in the atmosphere's pressure, temperature, or density profiles. The atmosphere's total gravitational energy rises by
+To assess the contribution that adiabatic compression makes to the total atmospheric energy $E_{\rm CGM}$, consider the effects of a change $\Delta \varphi$ in the gravitational potential without a compensating change in the atmosphere's pressure, temperature, or density profiles. Cosmological accretion alone changes the atmosphere's total gravitational energy by
   $$\Delta E_{\varphi,{\rm cos}} = \int_0^{r_{\rm CGM}} \Delta \varphi \cdot 4 \pi r^2 \rho dr$$
 while $E_{\rm th}$, $E_{\rm nt}$, and $M_{\rm CGM}$ temporarily stay the same (see [Essentials](Essentials) for definitions of symbols). If the change in $\varphi$ comes from an increase of the total mass within $r_{\rm CGM}$, then it raises the circular velocity there and also at smaller radii. The resulting change in the atmosphere's scaled specific energy $\varepsilon_{\rm CGM}/v_\varphi^2$ is 
-$$\Delta \left( \frac {\varepsilon_{\rm CGM}} {v_\varphi^2} \right) = \left[ \frac {\Delta E_{\varphi,{
-m cos}}} {E_\varphi} \frac {E_\varphi} {E_{\rm CGM}} - \frac {\Delta v_\varphi^2} {v_\varphi^2} \right] \frac {\varepsilon_{\rm CGM}} {v_\varphi^2}$$
+  $$\Delta \left( \frac {\varepsilon_{\rm CGM}} {v_\varphi^2} \right) = \left[ \frac {\Delta E_{\varphi,{\rm
+cos}}} {E_\varphi} \frac {E_\varphi} {E_{\rm CGM}} - \frac {\Delta v_\varphi^2} {v_\varphi^2} \right] \frac {\varepsilon_{\rm CGM}} {v_\varphi^2}$$
 in which $v_\varphi$ is the normalization of the potential's circular velocity profile.
 
 A simple renormalization of the gravitational potential, proportional to $v_\varphi^2$, causes a decrease in $\varepsilon_{\rm CGM}/v_\varphi^2$. That happens because $\Delta E_{\varphi,{\rm cos}} / E_\varphi = \Delta v_\varphi^2 / v_\varphi^2$ and $E_\varphi / E_{\rm CGM} < 1$. A change in both the normalization $v_\varphi$ and scale radius $r_{\rm s}$ of the potential well is a slightly more complicated case, giving
-$$\Delta \varphi (x) = \varphi (x) \, \frac {\Delta v_\varphi^2} {v_\varphi^2} - v_c^2(x) \frac {\Delta r_{\rm s}} {r_{\rm s}}$$
+  $$\Delta \varphi (x) = \varphi (x) \frac {\Delta v_\varphi^2} {v_\varphi^2} - v_c^2(x) \frac {\Delta r_{\rm s}} {r_{\rm s}}$$
 for the change in $\varphi(x)$ at $x = r / r_{\rm s}$. In that case one finds 
-$$\frac {\Delta E_{\varphi,{\rm cos}} {E_\varphi}  = \frac {\Delta v_\varphi^2} {v_\varphi^2} - \frac {\Delta r_{\rm s}} {r_{\rm s}} \int_0^{x_{\rm CGM}} \frac {\alpha (x) f_{\alpha} (x)} {J_\varphi(x_{\rm CGM}) f_{\rm th}(x)} x^2 dx$$ when $\Delta \varphi$ is inserted into the integral for the cosmological change in $E_\varphi$. Therefore, increasing both $v_\varphi$ and $r_{\rm s}$ causes an even greater decrease in $\varepsilon_{\rm CGM} / v_\varphi^2$ than just an increase of $v_\varphi$. 
+  $$\frac {\Delta E_{\varphi,{\rm cos}} {E_\varphi}  = \frac {\Delta v_\varphi^2} {v_\varphi^2} - \frac {\Delta r_{\rm s}} {r_{\rm s}} \int_0^{x_{\rm CGM}} \frac {\alpha (x) f_{\alpha} (x)} {J_\varphi(x_{\rm CGM}) f_{\rm th}(x)} x^2 dx$$ 
+when $\Delta \varphi$ is inserted into the integral for the cosmological change in $E_\varphi$. Therefore, increasing both $v_\varphi$ and $r_{\rm s}$ causes an even greater decrease in $\varepsilon_{\rm CGM} / v_\varphi^2$ than just an increase of $v_\varphi$. 
 
 In the **ExpCGM** framework, a decrease in $\varepsilon_{\rm CGM}/v_\varphi^2$ leads to a decrease in the atmosphere's equilibrium radius $x_{\rm CGM} = r_{\rm CGM} / r_{\rm s}$. The increase in the gravitational potential temporarily causes gravitational forces to exceed pressure forces. Adiabatic compression then raises the atmosphere's temperature by
 $$\Delta T (r) \approx \frac {\Delta v_\varphi^2} {v_\varphi^2} T (r)$$
