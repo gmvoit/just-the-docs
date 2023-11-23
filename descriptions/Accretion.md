@@ -90,7 +90,7 @@ in which $v_\varphi$ is the normalization of the potential's circular velocity p
 A simple renormalization of the gravitational potential, proportional to $v_\varphi^2$, causes a decrease in $\varepsilon_{\rm CGM}/v_\varphi^2$. That happens because $\Delta E_{\varphi,{\rm cos}} / E_\varphi = \Delta v_\varphi^2 / v_\varphi^2$ and $E_\varphi / E_{\rm CGM} < 1$. A change in both the normalization $v_\varphi$ and scale radius $r_{\rm s}$ of the potential well is a slightly more complicated case, giving
   $$\Delta \varphi (x) = \varphi (x) \frac {\Delta v_\varphi^2} {v_\varphi^2} - v_c^2(x) \frac {\Delta r_{\rm s}} {r_{\rm s}}$$
 for the change in $\varphi(x)$ at $x = r / r_{\rm s}$. In that case one finds 
-  $$\frac {\Delta E_{\varphi,{\rm cos}} {E_\varphi}  = \frac {\Delta v_\varphi^2} {v_\varphi^2} - \frac {\Delta r_{\rm s}} {r_{\rm s}} \int_0^{x_{\rm CGM}} \frac {\alpha (x) f_{\alpha} (x)} {J_\varphi(x_{\rm CGM}) f_{\rm th}(x)} x^2 dx$$ 
+  $$\frac {\Delta E_{\varphi,{\rm cos}}} {E_\varphi}  = \frac {\Delta v_\varphi^2} {v_\varphi^2} - \frac {\Delta r_{\rm s}} {r_{\rm s}} \int_0^{x_{\rm CGM}} \frac {\alpha (x) f_{\alpha} (x)} {J_\varphi(x_{\rm CGM}) f_{\rm th}(x)} x^2 dx$$ 
 when $\Delta \varphi$ is inserted into the integral for the cosmological change in $E_\varphi$. Therefore, increasing both $v_\varphi$ and $r_{\rm s}$ causes an even greater decrease in $\varepsilon_{\rm CGM} / v_\varphi^2$ than just an increase of $v_\varphi$. 
 
 In the **ExpCGM** framework, a decrease in $\varepsilon_{\rm CGM}/v_\varphi^2$ leads to a decrease in the atmosphere's equilibrium radius $x_{\rm CGM} = r_{\rm CGM} / r_{\rm s}$. The increase in the gravitational potential temporarily causes gravitational forces to exceed pressure forces. Adiabatic compression then raises the atmosphere's temperature by
@@ -105,7 +105,7 @@ Thermal and turbulent energy input associated with mass accretion that deepens t
 Baryonic gas accreting onto a galactic atmosphere does more than just add energy. It also applies some pressure. Incoming gas that is initially cold passes through an accretion shock at the atmosphere's outer edge. In an idealized, spherically symmetric accretion flow, the inward momentum flux of accreting gas at the shock's radius $R_{\rm acc}$ is
 
 <p>
-$$( \rho v^2 )_{\rm acc} = \frac {\dot{M}_{\rm acc} (R_{\rm acc})} { 4 \pi R_{\rm acc}^2 v_{\rm acc} ( R_{\rm acc} )}$$
+  $$( \rho v^2 )_{\rm acc} = \frac {\dot{M}_{\rm acc} (R_{\rm acc})} { 4 \pi R_{\rm acc}^2 v_{\rm acc} ( R_{\rm acc} )}$$
 </p>
 
 
@@ -120,7 +120,7 @@ The difficulty with applying that boundary condition is cosmological accretion's
 In the spherically symmetric **ExpCGM** framework, the effects of incoming momentum on the pressure gradient can be included by adding an accretion term to the force balance equation, giving
 
 <p>
-$$\frac {d} {dr} \frac {P} {f_{\rm th}} = - \, \rho \frac {d \varphi} {dr} - \frac {v_{\rm acc}} {4 \pi r^2} \frac {d \dot{M}_{\rm acc}} {dr}$$
+  $$\frac {d} {dr} \frac {P} {f_{\rm th}} = - \, \rho \frac {d \varphi} {dr} - \frac {v_{\rm acc}} {4 \pi r^2} \frac {d \dot{M}_{\rm acc}} {dr}$$
 </p>
     
 
@@ -142,7 +142,7 @@ Momentum transfer that happens within a narrow range of radii, as in a spherical
 Implementation of this correction requires guidance from numerical simulations. What's needed is an approximate power-law dependence of the gas inflow rate $\dot{M}\_{\rm acc} = 4 \pi r^2 (\rho v)\_{\rm acc}$ on radius. Suppose that $r_{\rm dec}$ is the outer radius of the deceleration zone, that $\dot{M}\_{\rm acc} \propto r^\eta$ within $r_{\rm dec}$, and that $v_{\rm acc} \approx v_{\rm c}$ is approximately constant with radius. In that case, we find
 
 <p>
-$$f_\varphi \approx 1 + \eta \left[ \frac { \dot{M}_{\rm acc} (R_{\rm acc})} {4 \pi r_{\rm dec}^2 \rho v_{\rm c}} \right] \left( \frac {r} {r_{\rm dec}} \right)^\eta$$
+  $$f_\varphi \approx 1 + \eta \left[ \frac { \dot{M}_{\rm acc} (R_{\rm acc})} {4 \pi r_{\rm dec}^2 \rho v_{\rm c}} \right] \left( \frac {r} {r_{\rm dec}} \right)^\eta$$
 </p>
 
 in which the magnitude of the factor in square brackets is similar to the ratio of the gas mass entering $r_{\rm dec}$ during a dynamical time $r_{\rm dec} / v_{\rm c}$ to the gas mass currently within $r_{\rm dec}$. If the atmosphere's state is quasi-steady, then $(\rho v^2)\_{\rm acc} \sim \rho v_{\rm c}^2$ corresponds to a situation in which ambient gas at $r_{\rm dec}$ is flowing outward at a speed similar to the inflow speed of accreting gas. A smaller correction to purely gravitational force balance corresponds to an outflow speed that is small compared with $v_{\rm c}$. 
@@ -200,7 +200,7 @@ Accreting gas might not transfer much of its kinetic energy to the atmosphere un
 
 * **Net Energy Change.**
 The net change in atmospheric specific energy stemming from cosmological accretion during a time interval $\Delta t$ is
-$$\Delta E_{\rm acc} = \left[ \varepsilon_{\rm kin}  + \varphi(R_{\rm halo}) \right] \Delta M_{\rm CGM} + \Delta E_\varphi$$
+$$\Delta E_{\rm acc} = \left[ \varepsilon_{\rm kin}  + \varphi(R_{\rm halo}) \right] \Delta M_{\rm CGM} + \Delta E_{\varphi,{\rm cos}}$$
 where $\Delta M_{\rm CGM} = \zeta f_{\rm b} \dot{M}\_{\rm halo} \, \Delta t$ is the gas mass added through accretion. Without radiative losses that reduce $E_{\rm CGM}$ or feedback energy that increases $E_{\rm CGM}$, the net effect of cosmological accretion on an atmosphere's mean specific energy $\varepsilon_{\rm CGM} = E_{\rm CGM} / M_{\rm CGM}$ is
-$$\Delta \varepsilon_{\rm CGM} =  \left[ \varepsilon_{\rm kin} + \varphi(R_{\rm halo}) - \varepsilon_{\rm CGM} \right] \frac {\Delta M_{\rm CGM}} {M_{\rm CGM}} + \frac {\Delta E_\varphi} {M_{\rm CGM}}$$
+$$\Delta \varepsilon_{\rm CGM} =  \left[ \varepsilon_{\rm kin} + \varphi(R_{\rm halo}) - \varepsilon_{\rm CGM} \right] \frac {\Delta M_{\rm CGM}} {M_{\rm CGM}} + \frac {\Delta E_{\varphi,{\rm cos}} {M_{\rm CGM}}$$
 A cosmological atmosphere's structure therefore remains roughly self-similar (i.e. constant $x_{\rm CGM}$) as long as $\Delta \varepsilon_{\rm CGM} / \varepsilon_{\rm CGM}  \approx \Delta v_\varphi^2 / v_\varphi^2$.
