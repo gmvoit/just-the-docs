@@ -239,7 +239,7 @@ An **ExpCGM** atmosphere model provides the following information useful for com
 
 A galactic atmosphere loses thermal energy through two-body collisions that produce photons. The cooling rate per unit volume is therefore proportional to $\rho^2$ and a temperature-dependent cooling function $\Lambda_\rho (T)$ that accounts for the atmosphere's ionization state, the speeds of colliding particles, and the cross-sections for excitation of photon emission. At radius $r$, the atmosphere loses thermal energy on a timescale
 $$t_{\rm cool} = \frac {3 k T} {2 \rho \Lambda_\rho (T)}$$ 
-computable using an **ExpCGM** model that gives $T(r)$ and $\rho(r)$ as functions of $\varepsilon_{\rm CGM}$ and $M_{\rm CGM}$. (See the [Cooling](Cooling) page for more detail.)
+computable using an **ExpCGM** model that gives $T(r)$ and $\rho(r)$ as functions of $\varepsilon_{\rm CGM}$ and $M_{\rm CGM}$. The [Cooling](Cooling) page provides more detail.
 
 ### Galactic Feedback
 
@@ -268,7 +268,7 @@ where $R_{\rm halo}$ is a user-defined radius for the galaxy's dark matter halo 
   $$\dot{E}_{\varphi,{\rm cos}} = 4 \pi \int_0^{r_{\rm CGM}} \dot{\varphi} (r) \rho(r) r^2 dr$$ 
 </p>
 
-and depends on both the rate of change $\dot{\varphi} (r)$ in the gravitational potential and the density profile supplied by an equilibrium model for the atmosphere.
+and depends on both the rate of change $\dot{\varphi} (r)$ in the gravitational potential and the density profile supplied by an equilibrium model for the atmosphere. The [Accretion](Accretion) page provides more detail.
 
 ### Total Energy Input
 
@@ -278,4 +278,4 @@ The total input rate for atmospheric energy is therefore
   $$\dot{E}_{\rm inj} = \dot{E}_{\rm fb} + \dot{E}_{\rm acc} + \dot{E}_{\varphi,{\rm cos}}$$ 
 </p>
 
-Supplementary models can be implemented to determine how energy input changes $f_{\rm th}(r)$ and perhaps also $\alpha (r)$. To learn more about them, as well as options for the pressure profile's shape function $\alpha (r)$ and the gravitational potential correction factor $f_\varphi (r)$, interested users will need to consult other pages providing more detailed descriptions of the **ExpCGM** framework.
+Supplementary models can be implemented to determine how energy input changes $f_{\rm th}(r)$ and perhaps also $\alpha (r)$. The [Pressure Profiles](PressureProfiles) page discusses various physically motivated options for the shape function $\alpha (r)$ and the gravitational potential correction factor $f_\varphi (r)$. The [Rotation](Rotation) page elaborates on the relationship between $f_\varphi (r)$ and atmospheric rotation.
