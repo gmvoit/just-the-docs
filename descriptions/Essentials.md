@@ -218,9 +218,9 @@ Expansion and contraction are assumed to be slow enough to have no effect on $f_
 
 <p>$$\dot{E}_{\rm th} = \dot{E}_{\rm diss} - \dot{E}_{\rm rad} - f_{\rm th} \dot{E}_{\varphi,{\rm exp}} + f_{\rm inj,th} \dot{E}_{\rm inj}$$</p>
 
-This assumption is based on both thermal energy and turbulent energy having the same ratio of thermal energy density to pressure.
+This assumption is based on both thermal energy and turbulent energy having the same ratio of thermal energy density to pressure, which gives them the same polytropic equation of state. However, an expanding or contracting atmosphere that is settling into an equilibrium state in a fully hydrodynamical model may be converting the kinetic energy of that bulk flow into a combination of thermal and turbulent energy with a ratio different from $f_{\rm th} / ( 1 - f_{\rm th})$. In principle, **ExpCGM** users can account for such differences through adjustments to the branching ratio $f_{\rm inj,th}$ for thermal energy injection.
 
-Combining the equations $\dot{E}\_{\rm th}$ and $\dot{E}\_{\rm th} / f_{\rm th}$ leads to
+Combining the **ExpCGM** equations for the rates of change in $E_{\rm th} / f_{\rm th}$ and $E_{\rm th}$ leads to
 
 <p>$$\frac {E_{\rm th}} {f_{\rm th}} \frac {d f_{\rm th}} {dt} = \dot{E}_{\rm diss} - \left( 1 - f_{\rm th} \right) \dot{E}_{\rm rad} + \left( f_{\rm inj,th} - f_{\rm th} \right) \dot{E}_{\rm inj}$$</p>
 
