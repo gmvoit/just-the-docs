@@ -103,7 +103,7 @@ The quantity $\dot{M}\_{\rm cool}$ is an *expected* cooling flow rate because we
 is approximately constant with radius. A steady cooling flow in an isothermal gravitational potential (with constant $v_{\rm c}^2$) therefore has $\alpha \approx 3/2$, because gravitational compression assures that $T$ remains approximately constant with radius. If those conditions apply, then combining $K(r) \propto P^{-2/3} T^{5/3}$ and $\alpha \approx 3/2$ gives $\alpha_K \approx 1$ and 
 
 <p>
-  $$\dot{M}_{\rm cool} (r) \approx \frac {4 \pi r^3 \rho (r)} {t_{\rm cool}(r)} = \frac {8 \pi r^3} {3 kT} \rho^2(r) \Lambda_\rho[T(r)]}$$
+  $$\dot{M}_{\rm cool} (r) \approx \frac {4 \pi r^3 \rho (r)} {t_{\rm cool}(r)} = \frac {8 \pi r^3} {3 kT} \rho^2(r) \Lambda_\rho[T(r)]$$
 </p>
 
 
