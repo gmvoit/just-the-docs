@@ -206,19 +206,21 @@ Turbulence dissipates into heat on a timescale $t_{\rm diss} = \lambda_{\rm d} /
 
 ### Evolution of Thermalization
 
-Energy injection, dissipation, and radiative cooling can all change the fraction $f_{\rm th}$ of support energy in thermal form. Injection changes the atmosphere's total amount of support energy $E_{\rm th} / f_{\rm th}$ on the timescale $t_{\rm inj} \equiv E_{\rm th} / f_{\rm th} \dot{E}\_{\rm inj}$. Dissipation converts turbulence into thermal energy at the rate $\dot{E}\_{\rm diss} = (1 - f_{\rm th}) E_{\rm th} / f_{\rm th} t_{\rm diss}$. Radiative cooling converts thermal energy into escaping photons on a timescale $t_{\rm cool} \equiv E_{\rm th} / \dot{E}\_{\rm rad}$, where $\dot{E}_{\rm rad}$ is a radiative loss rate computed from the atmosphere model.
+Energy injection, dissipation, and radiative cooling can all change the fraction $f_{\rm th}$ of support energy in thermal form. Injection changes the atmosphere's total amount of support energy $E_{\rm th} / f_{\rm th}$ on the timescale $t_{\rm inj} \equiv E_{\rm th} / f_{\rm th} \dot{E}\_{\rm inj}$. Dissipation converts turbulence into thermal energy at the rate $\dot{E}\_{\rm diss} = (1 - f_{\rm th}) E_{\rm th} / f_{\rm th} t_{\rm diss}$. Radiative cooling converts thermal energy into escaping photons on a timescale $t_{\rm cool} \equiv E_{\rm th} / \dot{E}\_{\rm rad}$, where $\dot{E}\_{\rm rad}$ is a radiative loss rate computed from the atmosphere model. 
 
-Atmospheric expansion or contraction converts support energy into gravitational energy at the rate $\dot{E}\_{\varphi,{\rm exp}}$. The **ExpCGM** framework assumes that expansion and contraction are slow enough to have no effect on the thermalization fraction $f_{\rm th}$. That is because both thermal energy and turbulent energy (in an atmosphere consisting of particles with no internal degrees of freedom) share the same polytropic equation of state and remain proportional to each other as the atmosphere adiabatically expands or contracts. (They are just two forms of non-relativistic kinetic energy that have been labeled either "thermal" or "turbulent" based on local properties of the particle-velocity distribution function.)
-
-In **ExpCGM**, the rate of change in $f_{\rm th}$ is derived from the overall rate of change in total support energy
+The rate of change in $f_{\rm th}$ in **ExpCGM** is derived from the overall rate of change in total atmospheric support energy
 
 <p>$$\frac {d} {dt} \frac {E_{\rm th}} {f_{\rm th}} = \dot{E}_{\rm inj} - \dot{E}_{\rm rad} - \dot{E}_{\varphi,{\rm exp}}$$</p>
 
-and the rate of change in just the thermal component of support energy
+in which $\dot{E}\_{\varphi,{\rm exp}}$ is the conversion rate of support energy into gravitational energy. This term is positive in an expanding atmosphere and negative in a contracting atmosphere.
+
+Expansion and contraction are assumed to be slow enough to have no effect on $f_{\rm th}$. The rate of change in just the thermal component of support energy is then
 
 <p>$$\dot{E}_{\rm th} = \dot{E}_{\rm diss} - \dot{E}_{\rm rad} - f_{\rm th} \dot{E}_{\varphi,{\rm exp}} + f_{\rm inj,th} \dot{E}_{\rm inj}$$</p>
 
-Combining the equations for the rate of change in $E_{\rm th}$ and the rate of change in $E_{\rm th} / f_{\rm th}$ leads to
+This assumption is based on both thermal energy and turbulent energy having the same ratio of thermal energy density to pressure.
+
+Combining the equations $\dot{E}\_{\rm th}$ and $\dot{E}\_{\rm th} / f_{\rm th}$ leads to
 
 <p>$$\frac {E_{\rm th}} {f_{\rm th}} \frac {d f_{\rm th}} {dt} = \dot{E}_{\rm diss} - \left( 1 - f_{\rm th} \right) \dot{E}_{\rm rad} + \left( f_{\rm inj,th} - f_{\rm th} \right) \dot{E}_{\rm inj}$$</p>
 
