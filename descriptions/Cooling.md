@@ -119,7 +119,12 @@ Cooling gas can still be flowing into a halo's central galaxy even if total heat
 ### Dissipation-Limited Gas Supply
 
 In galactic atmospheres with particularly short cooling times ($t_{\rm cool} \ll r / v_{\rm c}$), the pure cooling rate $\dot{M}\_{\rm cool}(r)$ overestimates how quickly atmospheric gas at radius $r$ can descend toward the central galaxy. The central galaxy's gas supply $\dot{M}\_{\rm in}$ then depends on how rapidly the atmosphere's kinetic energy can dissipate as gas falls inward. Its ultimate limit is the ballistic gravitational infall rate obtained by replacing $t_{\rm cool}$ with a free-fall timescale $t_{\rm ff}$. The pragmatic estimate
-  $$\dot{M}_{\rm in} = \min \left[ \dot{M}\_{\rm cool} (r_{\rm gal} ) , 2 M_{\rm CGM} v \varphi / r_{\rm CGM} \right]$$
+
+<p>
+  $$\dot{M}_{\rm in} = \min \left[ \dot{M}_{\rm cool} (r_{\rm gal} ) , 2 M_{\rm CGM} v \varphi / r_{\rm CGM} \right]$$
+</p>
+
+
 is the default mass supply rate in **ExpCGM** models.
 
 ## Inhomogeneous Cooling
