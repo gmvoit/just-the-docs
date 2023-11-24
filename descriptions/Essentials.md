@@ -251,6 +251,9 @@ A galactic atmosphere loses thermal energy through two-body collisions that prod
   $$t_{\rm cool} = \frac {3 k T} {2 \rho \Lambda_\rho (T)}$$ 
 computable using an **ExpCGM** model that gives $T(r)$ and $\rho(r)$ as functions of $\varepsilon_{\rm CGM}$ and $M_{\rm CGM}$. The [Cooling](Cooling) page provides more detail.
 
+{: .note}
+For notational compactness, the **ExpCGM** documentation sometimes uses the cooling function $\Lambda_\rho (T)$ instead of the usual cooling function $\Lambda (T)$ defined with respect to electron density $n_e$ and ion density $n_i$. They are related to each other through $\Lambda_\rho = (\mu m_p n_e n_i / \rho^2) \Lambda$.  
+
 ### Galactic Feedback
 
 A galactic atmosphere gains support energy when feedback energy released from the central galaxy propagates outward. The time-averaged rate of energy ejection depends on how rapidly a galaxy's atmosphere can supply the galaxy with fuel for star formation. It may also depend on how much of the galaxy's gas accretes onto its central black hole. According to the **ExpCGM** framework, the atmosphere supplies its central galaxy with gas at a rate no greater than the pure cooling-flow rate
