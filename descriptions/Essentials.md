@@ -46,17 +46,17 @@ The core of **ExpCGM** is an efficient method for determining the steady-state c
 ### Hydrostatic Equilibrium
 
 The most basic example of a such a steady-state atmospheric configuration is hydrostatic equilibrium in a spherically symmetric potential well, as described by 
-$$\frac {dP} {dr} = -  \rho \frac {d \varphi} {dr}$$ 
+  $$\frac {dP} {dr} = -  \rho \frac {d \varphi} {dr}$$ 
 where $P$ is thermal pressure, $\rho$ is gas density, and $\varphi$ is the gravitational potential.
 
 ### Pressure Shape Function
 
 Direct integration of the hydrostatic equilbrium equation is possible if both the gravitational potential $\varphi (r)$ and the pressure profile's ***shape function***
-$$\alpha (r) \equiv - \frac {d \ln P} {d \ln r}$$
+  $$\alpha (r) \equiv - \frac {d \ln P} {d \ln r}$$
 are known functions of radius. Integrating the shape function leads to
-$$f_P(r) \equiv \exp \left[ - \int_1^{r/r_0} \alpha (x)  dx \right]$$ 
+  $$f_P(r) \equiv \exp \left[ - \int_1^{r/r_0} \alpha (x)  d \ln x \right]$$ 
 which is a dimensionless pressure profile normalized to unity at a reference radius $r_0$. Providing a pressure normalization $P_0$ at $r_0$ then specifies the atmosphere's equilibrium pressure profile:
-$$P(r) = P_0 f_P(r)$$
+  $$P(r) = P_0 f_P(r)$$
 
 {: .note}
 Many details of an **ExpCGM** atmosphere model hinge on a user's choice for the pressure shape function $\alpha(r)$. That choice represents an assumption about the physical processes responsible for maintaining the pressure profile. See the [Pressure Profiles](PressureProfiles) page for more detail.
@@ -64,7 +64,7 @@ Many details of an **ExpCGM** atmosphere model hinge on a user's choice for the 
 ### Temperature Profile
 
 Solving the hydrostatic equilibrium equation for $T(r)$ yields the atmosphere's temperature profile:
-$$T(r) = \frac {2 T_\varphi (r) } {\alpha (r)}$$
+  $$T(r) = \frac {2 T_\varphi (r) } {\alpha (r)}$$
 Here, the function $T_\varphi (r) \equiv \mu m_p v_{\rm c}^2(r) / 2k$ represents the ***gravitational temperature profile*** for an atmosphere with a mean mass per particle $\mu m_p$ confined by a gravitational potential with a circular velocity profile $v_{\rm c} (r) = ( r d \varphi / dr)^{1/2}$. It is normalized so that $T(r) = T_\varphi (r)$ for $\alpha = 2$ because $P \propto r^{-2}$ is the equilibrium pressure profile of an isothermal atmosphere in a potential well with constant $v_{\rm c}$.
 
 {: .note}
@@ -73,19 +73,19 @@ The astronomical literature often calls something like $T_\varphi$ a *virial tem
 ### Density Profile
 
 Given those pressure and temperature profiles, an equilibrium atmosphere's density profile becomes
-$$\rho (r) = P_0 \frac {\alpha (r) f_P (r)} {v_{\rm c}^2(r)}$$
+  $$\rho (r) = P_0 \frac {\alpha (r) f_P (r)} {v_{\rm c}^2(r)}$$
 For example, the gas mass density at the reference radius $r_0$ is simply $\rho_0 = P_0 / (v_c^2 / 2)$ in an equilibrium atmosphere with $\alpha = 2$.
 
 ### Generalized Force Balance
 
 To represent equilibrium atmospheres partially supported by non-thermal energy, the **ExpCGM** framework generalizes hydrostatic equilibrium using the force balance equation
-$$\frac {d} {dr} \frac {P} {f_{\rm th}} = - \rho f_\varphi  \frac {d \varphi} {dr}$$
+  $$\frac {d} {dr} \frac {P} {f_{\rm th}} = - \rho f_\varphi  \frac {d \varphi} {dr}$$
 The ***thermalization fraction*** $f_{\rm th}$ represents the proportion that thermal pressure contributes to the total support opposing gravity. The ***force modification factor*** $f_\varphi$ accounts for phenomena (such as rotation) that alter the effective gravitational force pulling the atmosphere inward. 
 
 With those generalizations, an atmosphere's equilibrium temperature and density profiles become 
-$$T(r) = \frac {2 f_{\rm th} f_\varphi} {\alpha_{\rm eff} (r)} ~T_\varphi (r)~~~~~~,~~~~~~\rho (r) = P_0 \frac {\alpha_{\rm eff} (r) f_P (r)}{f_{\rm th} f_\varphi v_{\rm c}^2(r)}$$ 
+  $$T(r) = \frac {2 f_{\rm th} f_\varphi} {\alpha_{\rm eff} (r)} ~T_\varphi (r)~~~~~~,~~~~~~\rho (r) = P_0 \frac {\alpha_{\rm eff} (r) f_P (r)}{f_{\rm th} f_\varphi v_{\rm c}^2(r)}$$ 
 in which the function 
-$$\alpha_{\rm eff} (r) \equiv \alpha(r) + \frac {d \ln f_{\rm th}} {d \ln r}$$ 
+  $$\alpha_{\rm eff} (r) \equiv \alpha(r) + \frac {d \ln f_{\rm th}} {d \ln r}$$ 
 is a ***generalized shape function*** for atmospheric support, accounting for possible dependences of $f_{\rm th}$ on radius. It is also possible for $f_\varphi$ to depend on radius.
 
 {: .note}
@@ -94,47 +94,47 @@ Some other formulations of atmospheric force balance express resistance to gravi
 ## Specific Energy <a name="specific-energy-"></a>
 
 A galactic atmosphere of total mass $M_{\rm CGM}$ expands if its total energy $E_{\rm CGM}$ increases, and it contracts if its total energy declines. The **ExpCGM** framework therefore links a galactic atmosphere's equilibrium radius $r_{\rm CGM}$ to its ***mean specific energy***
-$$\varepsilon_{\rm CGM} = \frac {E_{\rm CGM}} {M_{\rm CGM}}$$
+  $$\varepsilon_{\rm CGM} = \frac {E_{\rm CGM}} {M_{\rm CGM}}$$
 The dependence of specific energy on radius can be inverted to obtain the dependence of radius on specific energy. However, several integrals are needed to derive $r_{\rm CGM} ( \varepsilon_{\rm CGM} )$ from the equilibrium profiles of pressure, temperature, and density. 
 
 ### Gas Mass
 
 Integrating $\rho(r)$ in a potential well with maximum circular velocity $v_\varphi \equiv \max (v_{\rm c})$ gives the atmospheric gas mass profile
-$$M_{\rm CGM} (r) = \frac {4 \pi r_0^3 P_0} {v_\varphi^2} I \left( \frac {r} {r_0} \right) ~~~~~~,~~~~~~I (x) \equiv v_\varphi^2 \int_0^{r/r_0} \frac {\alpha_{\rm eff} (x) f_P (x)} { f_{\rm th} f_\varphi v_{\rm c}^2 (x) } x^2 dx$$
+  $$M_{\rm CGM} (r) = \frac {4 \pi r_0^3 P_0} {v_\varphi^2} I \left( \frac {r} {r_0} \right) ~~~~~~,~~~~~~I (x) \equiv v_\varphi^2 \int_0^{r/r_0} \frac {\alpha_{\rm eff} (x) f_P (x)} { f_{\rm th} f_\varphi v_{\rm c}^2 (x) } x^2 dx$$
 
 ### Gravitational Energy
 
 Integrating $\varphi (r) \rho (r)$ gives the cumulative gravitational energy profile
-$$E_\varphi (r) = 4 \pi r_0^3 P_0 J_\varphi \left( \frac {r} {r_0} \right) ~~~~~~,~~~~~~J_\varphi (x) \equiv \int_0^{r/r_0} \frac {\alpha_{\rm eff} (x) f_P (x) \varphi(x)} { f_{\rm th} f_\varphi v_{\rm c}^2 (x) }  x^2 dx $$
+  $$E_\varphi (r) = 4 \pi r_0^3 P_0 J_\varphi \left( \frac {r} {r_0} \right) ~~~~~~,~~~~~~J_\varphi (x) \equiv \int_0^{r/r_0} \frac {\alpha_{\rm eff} (x) f_P (x) \varphi(x)} { f_{\rm th} f_\varphi v_{\rm c}^2 (x) }  x^2 dx $$
 
 ### Thermal Energy 
 
 Integrating $3 P(r)/2$ gives the cumulative thermal energy profile
-$$E_{\rm th} (r) = 4 \pi r_0^3 P_0  J_{\rm th} \left( \frac {r} {r_0} \right) ~~~~~~,~~~~~~J_{\rm th} (x) \equiv \frac {3} {2} \int_0^x f_P (x) x^2 dx$$
+  $$E_{\rm th} (r) = 4 \pi r_0^3 P_0  J_{\rm th} \left( \frac {r} {r_0} \right) ~~~~~~,~~~~~~J_{\rm th} (x) \equiv \frac {3} {2} \int_0^x f_P (x) x^2 dx$$
 
 ### Non-Thermal Energy
 
 If there are non-thermal pressure components, the cumulative non-thermal support energy profile is
-$$E_{\rm nt} (r) = 4 \pi r_0^3 P_0 J_{\rm nt} \left( \frac {r} {r_0} \right) ~~~~~~,~~~~~~J_{\rm nt} (x) \equiv \int_0^x \frac {(1 - f_{\rm th}) f_P (x)} {f_{\rm th} (\gamma_{\rm nt} - 1)} x^2  dx$$
+  $$E_{\rm nt} (r) = 4 \pi r_0^3 P_0 J_{\rm nt} \left( \frac {r} {r_0} \right) ~~~~~~,~~~~~~J_{\rm nt} (x) \equiv \int_0^x \frac {(1 - f_{\rm th}) f_P (x)} {f_{\rm th} (\gamma_{\rm nt} - 1)} x^2  dx$$
 The factor $\gamma_{\rm nt} - 1$ in the integral's denominator is the local ratio of non-thermal pressure support to non-thermal energy density, which can be different from 2/3. 
 
 ### Total Specific Energy
 
 To obtain a galactic atmosphere's total specific energy, the **ExpCGM** framework adds up the energy integrals to make the function 
-$$F(x) = \frac { J_\varphi (x) + J_{\rm th}(x) + J_{\rm nt}(x)} {I(x)}$$
+  $$F(x) = \frac { J_\varphi (x) + J_{\rm th}(x) + J_{\rm nt}(x)} {I(x)}$$
 It is defined so that
-$$\varepsilon_{\rm CGM} = v_\varphi^2 F \left( \frac {r_{\rm CGM}} {r_0} \right)$$
+  $$\varepsilon_{\rm CGM} = v_\varphi^2 F \left( \frac {r_{\rm CGM}} {r_0} \right)$$
 relates an atmosphere's mean specific energy $\varepsilon_{\rm CGM}$ to its equilibrium radius $r_{\rm CGM}$. 
 
 ### Equilibrium Radius
 
 Inverting $F(x)$ then gives the atmosphere's equilibrium radius $r_{\rm CGM} = x_{\rm CGM} r_0$ as a function of $\varepsilon_{\rm CGM} / v_\varphi^2$:
-$$r_{\rm CGM} = r_0 F^{-1} \left( \frac {\varepsilon_{\rm CGM}} {v_\varphi^2} \right)$$
+  $$r_{\rm CGM} = r_0 F^{-1} \left( \frac {\varepsilon_{\rm CGM}} {v_\varphi^2} \right)$$
 
 ### Pressure Normalization
 
 Once an equilibrium radius has been determined, the relation
-$$P_0 = \frac {M_{\rm CGM} v_\varphi^2} {4 \pi r_0^3} \frac {1} {I(r_{\rm CGM}/r_0)}$$
+  $$P_0 = \frac {M_{\rm CGM} v_\varphi^2} {4 \pi r_0^3} \frac {1} {I(r_{\rm CGM}/r_0)}$$
 gives the pressure profile's normalization at $r_0$.
 
 {:.note}
@@ -147,25 +147,25 @@ To illustrate how solutions for steady-state atmospheric structure emerge from t
 ### Power-Law Pressure Profile
 
 First, assume that the atmosphere has a power-law pressure profile (constant $\alpha$), that the atmosphere's support energy is purely thermal ($f_{\rm th} =1$), and that there are no radial forces other than gravity ($f_\varphi =1$). In that case, its equilibrium pressure, temperature, and density profiles become
-$$P(r) = P_0 \left( \frac {r} {r_0} \right)^{-\alpha}~~~~,~~~~T(r) = \frac {2 T_\varphi (r)} {\alpha} ~~~~,~~~~\rho (r) = \frac {\alpha P_0} {v_{\rm c}^2(r)} \left( \frac {r} {r_0} \right)^{-\alpha}$$
+  $$P(r) = P_0 \left( \frac {r} {r_0} \right)^{-\alpha}~~~~,~~~~T(r) = \frac {2 T_\varphi (r)} {\alpha} ~~~~,~~~~\rho (r) = \frac {\alpha P_0} {v_{\rm c}^2(r)} \left( \frac {r} {r_0} \right)^{-\alpha}$$
 
 ### NFW Potential Well
 
 Next, consider confinement by an Navarro-Frenk-White (NFW) gravitational potential with a zero point at $r=0$. We can express that potential as
-$$\varphi_{\rm NFW} (x) = A_{\rm NFW} v_\varphi^2 \left[ 1 - \frac {\ln (1 + x)} {x} \right]$$
+  $$\varphi_{\rm NFW} (x) = A_{\rm NFW} v_\varphi^2 \left[ 1 - \frac {\ln (1 + x)} {x} \right]$$
 where $r_{\rm s}$ is the potential's ***scale radius*** and $x = r / r_{\rm s}$.
 The parameter $v_\varphi^2$ is equal to the maximum value of the NFW circular velocity profile
-$$v_{\rm c}^2 (x) = A_{\rm NFW} v_\varphi^2 \left[ \frac {\ln (1 + x)} {x}  - \frac {1} {1 + x} \right]$$
+  $$v_{\rm c}^2 (x) = A_{\rm NFW} v_\varphi^2 \left[ \frac {\ln (1 + x)} {x}  - \frac {1} {1 + x} \right]$$
 for $A_{\rm NFW} = 4.625$. For convenience, we will choose $r_0$ to be identical to $r_{\rm s}$, so that $P_0$ is the thermal pressure at $r_{\rm s}$.
 
 ### Energy and Mass Integrals
 
 With those choices, the integrals needed for determining the atmosphere's equilibrium radius become much simpler. The integral giving the dimensionless gas mass profile simplifies to 
-$$I(x) = \frac {\alpha} {A_{\rm NFW}} \int_0^x \left[ \frac {x} {\ln (1+x) - x / (1 + x) } \right] x^{2 - \alpha} dx$$
+  $$I(x) = \frac {\alpha} {A_{\rm NFW}} \int_0^x \left[ \frac {x} {\ln (1+x) - x / (1 + x) } \right] x^{2 - \alpha} dx$$
 The integral giving the cumulative gravitational energy profile simplifies to         
-$$J_\varphi(x) = \alpha \int_0^x \left[ \frac {x - \ln (1 + x)} {\ln (1+x) - x / (1 + x)} \right] x^{2 - \alpha} dx$$
+  $$J_\varphi(x) = \alpha \int_0^x \left[ \frac {x - \ln (1 + x)} {\ln (1+x) - x / (1 + x)} \right] x^{2 - \alpha} dx$$
 The cumulative thermal energy profile becomes an algebraic function: 
-$$J_{\rm th}(x) = \frac {3 x^{3-\alpha}} {6 - 2\alpha}$$
+  $$J_{\rm th}(x) = \frac {3 x^{3-\alpha}} {6 - 2\alpha}$$
 All of the support energy is thermal, and so there is no need to compute $J_{\rm nt} (x)$.
 
 ### Energy and Expansion
@@ -185,11 +185,11 @@ The relationship between $r_{\rm CGM}$ and $\varepsilon_{\rm CGM}$ would be pure
 ## Turbulent Support <a name="TurbulentSupport"></a>
 
 The **ExpCGM** framework is designed to model galactic atmospheres supported by a combination of thermal energy and non-thermal gas motions that are usually called "turbulence" even though they do not necessarily arise from a classic Kolmogorov cascade of eddies. For simplicity, **ExpCGM** treats those gas motions as isotropic, with a one-dimensional velocity dispersion $\sigma_{\rm 1D}$, so that the thermalization fraction is
-$$f_{\rm th} = \frac {P} {P + \rho \sigma_{\rm 1D}^2}$$
+  $$f_{\rm th} = \frac {P} {P + \rho \sigma_{\rm 1D}^2}$$
 Conveniently, the ratio of turbulent energy density to turbulent pressure support is the same as the thermal ratio, corresponding to $\gamma_{\rm nt} = 5/3$. Summing the cumulative thermal and turbulent energy profiles gives
-$$4 \pi r_0^3 P_0 \left[ J_{\rm th} (x) + J_{\rm nt} (x) \right] =  4 \pi r_0^3 \int_0^x \frac {3} {2} \frac {P (x)} {f_{\rm th}(x)} x^2 dx$$
+  $$4 \pi r_0^3 P_0 \left[ J_{\rm th} (x) + J_{\rm nt} (x) \right] =  4 \pi r_0^3 \int_0^x \frac {3} {2} \frac {P (x)} {f_{\rm th}(x)} x^2 dx$$
 The equilibrium radius of an atmosphere jointly supported by thermal and turbulent energy therefore depends only on the total density of support energy, $3P/2 f_{\rm th}$, not the separate proportions of thermal and turbulent energy. That is because the equilibrium density profile
-$$\rho (r) = \frac {P_0 f_P (r)} {f_{\rm th}(r)} \frac {\alpha_{\rm eff}(r)} {v_{\rm c}^2 (r)}$$
+  $$\rho (r) = \frac {P_0 f_P (r)} {f_{\rm th}(r)} \frac {\alpha_{\rm eff}(r)} {v_{\rm c}^2 (r)}$$
 is identical to density profile of a purely hydrostatic atmosphere with $\alpha (r) = \alpha_{\rm eff} (r)$ and $f_{\rm th} = 1$.
 
 ## Thermalization <a name="Thermalization"></a>
@@ -238,7 +238,7 @@ An **ExpCGM** atmosphere model provides the following information useful for com
 ### Radiative Cooling 
 
 A galactic atmosphere loses thermal energy through two-body collisions that produce photons. The cooling rate per unit volume is therefore proportional to $\rho^2$ and a temperature-dependent cooling function $\Lambda_\rho (T)$ that accounts for the atmosphere's ionization state, the speeds of colliding particles, and the cross-sections for excitation of photon emission. At radius $r$, the atmosphere loses thermal energy on a timescale
-$$t_{\rm cool} = \frac {3 k T} {2 \rho \Lambda_\rho (T)}$$ 
+  $$t_{\rm cool} = \frac {3 k T} {2 \rho \Lambda_\rho (T)}$$ 
 computable using an **ExpCGM** model that gives $T(r)$ and $\rho(r)$ as functions of $\varepsilon_{\rm CGM}$ and $M_{\rm CGM}$. The [Cooling](Cooling) page provides more detail.
 
 ### Galactic Feedback
