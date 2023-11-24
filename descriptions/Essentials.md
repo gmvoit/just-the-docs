@@ -212,7 +212,7 @@ Energy injection, dissipation, and radiative cooling can all change the fraction
   
 * Dissipation converts turbulence into thermal energy at the rate $\dot{E}\_{\rm diss} = (1 - f_{\rm th}) E_{\rm th} / f_{\rm th} t_{\rm diss}$.
   
-* Radiative cooling converts thermal energy into escaping photons on a timescale $t_{\rm cool} \equiv E_{\rm th} / \dot{E}\_{\rm rad}$, where $\dot{E}\_{\rm rad}$ is a radiative loss rate computed from the atmosphere model. 
+* Radiative cooling happens on a timescale $t_{\rm cool} \equiv E_{\rm th} / \dot{E}\_{\rm rad}$, where $\dot{E}\_{\rm rad}$ is a radiative loss rate computed from the atmosphere model. 
 
 The rate of change in $f_{\rm th}$ in **ExpCGM** is derived from the overall rate of change in total atmospheric support energy
 
@@ -289,3 +289,6 @@ The total input rate for atmospheric energy is therefore
 </p>
 
 Supplementary models can be implemented to determine how energy input changes $f_{\rm th}(r)$ and perhaps also $\alpha (r)$. The [Pressure Profiles](PressureProfiles) page discusses various physically motivated options for the shape function $\alpha (r)$ and the gravitational potential correction factor $f_\varphi (r)$. The [Rotation](Rotation) page elaborates on the relationship between $f_\varphi (r)$ and atmospheric rotation.
+
+{: .note}
+The **ExpCGM framework splits the total rate of change in $E_\varphi$ into a component $\dot{E}\_{\varphi,{\rm cos}}$ corresponding to the evolution of $\varphi(r)$ and a component $\dot{E}\_{\varphi,{\rm exp}}$ corresponding to the evolution of $r_{\rm CGM}$. Only the cosmological component changes the atmosphere's total energy $E_{\rm CGM}$, because $\dot{E}\_{\varphi,{\rm exp}}$ simply represents internal conversation of support energy into gravitational energy, or vice versa.
