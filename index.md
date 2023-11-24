@@ -16,4 +16,4 @@ Those features of atmospheric expansion are what motivated development of **ExpC
 
 This website defines the **ExpCGM** framework, which is part of the [Galactic Atmospheres Project](https://external.ink?to=/galacticatmospheres.org) 
 
-Newcomers should begin with the [Essentials](Essentials) page.
+Newcomers should begin with the [Essentials](descriptions/Essentials) page.
