@@ -206,19 +206,25 @@ Turbulence dissipates into heat on a timescale $t_{\rm diss} = \lambda_{\rm d} /
 
 ### Evolution of Thermalization
 
-Energy injection, dissipation, and radiative cooling can all change the fraction $f_{\rm th}$ of support energy in thermal form. Injection changes the atmosphere's total amount of support energy $E_{\rm th} / f_{\rm th}$ on the timescale $t_{\rm inj} \equiv E_{\rm th} / f_{\rm th} \dot{E}\_{\rm inj}$. Dissipation converts turbulence into thermal energy at the rate $\dot{E}\_{\rm diss} = (1 - f_{\rm th}) E_{\rm th} / f_{\rm th} t_{\rm diss}$. Radiative cooling converts thermal energy into escaping photons on a timescale $t_{\rm cool} \equiv E_{\rm th} / \dot{E}\_{\rm rad}$, where $\dot{E}\_{\rm rad}$ is a radiative loss rate computed from the atmosphere model. 
+Energy injection, dissipation, and radiative cooling can all change the fraction $f_{\rm th}$ of support energy in thermal form. 
+
+* Injection changes the atmosphere's total amount of support energy $E_{\rm th} / f_{\rm th}$ on the timescale $t_{\rm inj} \equiv E_{\rm th} / f_{\rm th} \dot{E}\_{\rm inj}$.
+  
+* Dissipation converts turbulence into thermal energy at the rate $\dot{E}\_{\rm diss} = (1 - f_{\rm th}) E_{\rm th} / f_{\rm th} t_{\rm diss}$.
+  
+* Radiative cooling converts thermal energy into escaping photons on a timescale $t_{\rm cool} \equiv E_{\rm th} / \dot{E}\_{\rm rad}$, where $\dot{E}\_{\rm rad}$ is a radiative loss rate computed from the atmosphere model. 
 
 The rate of change in $f_{\rm th}$ in **ExpCGM** is derived from the overall rate of change in total atmospheric support energy
 
 <p>$$\frac {d} {dt} \frac {E_{\rm th}} {f_{\rm th}} = \dot{E}_{\rm inj} - \dot{E}_{\rm rad} - \dot{E}_{\varphi,{\rm exp}}$$</p>
 
-in which $\dot{E}\_{\varphi,{\rm exp}}$ is the conversion rate of support energy into gravitational energy. This term is positive in an expanding atmosphere and negative in a contracting atmosphere.
-
-Expansion and contraction are assumed to be slow enough to have no effect on $f_{\rm th}$. The rate of change in just the thermal component of support energy is then
+and the rate of change in thermal support energy 
 
 <p>$$\dot{E}_{\rm th} = \dot{E}_{\rm diss} - \dot{E}_{\rm rad} - f_{\rm th} \dot{E}_{\varphi,{\rm exp}} + f_{\rm inj,th} \dot{E}_{\rm inj}$$</p>
 
-This assumption is based on both thermal energy and turbulent energy having the same ratio of thermal energy density to pressure, which gives them the same polytropic equation of state. However, an expanding or contracting atmosphere that is settling into an equilibrium state in a fully hydrodynamical model may be converting the kinetic energy of that bulk flow into a combination of thermal and turbulent energy with a ratio different from $f_{\rm th} / ( 1 - f_{\rm th})$. In principle, **ExpCGM** users can account for such differences through adjustments to the branching ratio $f_{\rm inj,th}$ for thermal energy injection.
+In both of these equations, $\dot{E}\_{\varphi,{\rm exp}}$ is the conversion rate of support energy into gravitational energy. This term is positive in an expanding atmosphere and negative in a contracting atmosphere.
+
+The equation for $\dot{E}\_{\rm th}$ assumes that expansion and contraction are slow enough to have no effect on $f_{\rm th}$. This assumption is based on both thermal energy and turbulent energy having the same ratio of thermal energy density to pressure, which gives them the same polytropic equation of state. However, an expanding or contracting atmosphere that is settling into an equilibrium state in a fully hydrodynamical model may be converting the kinetic energy of that bulk flow into a combination of thermal and turbulent energy with a ratio different from $f_{\rm th} / ( 1 - f_{\rm th})$. In principle, **ExpCGM** users can account for such differences through adjustments to the branching ratio $f_{\rm inj,th}$ for thermal energy injection.
 
 Combining the **ExpCGM** equations for the rates of change in $E_{\rm th} / f_{\rm th}$ and $E_{\rm th}$ leads to
 
