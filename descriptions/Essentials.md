@@ -237,7 +237,7 @@ The time derivative of $f_{\rm th}$ can therefore be expressed as
 which explicitly connects changes in $f_{\rm th}$ to the three timescales for energy exchange.
 
 {: .important}
-This equation for how thermalization changes with time does not depend on the volume of gas being considered. It can be applied to a global value of $f_{\rm th}$ characterizing the entire atmosphere. It can also be applied to a thin atmospheric shell of radius $r$. 
+This equation for how thermalization changes with time does not depend on the volume of gas being considered. It can be applied to a global value of $f_{\rm th}$ characterizing the entire atmosphere. It can also be applied to individual subsets of the atmosphere with differing values of $t_{\rm diss}$, $t_{\rm cool}$, and $t_{\rm inj}$. 
 
 ## Atmospheric Evolution <a name="AtmosphericEvolution"></a>
 
