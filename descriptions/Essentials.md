@@ -54,7 +54,7 @@ where $P$ is thermal pressure, $\rho$ is gas density, and $\varphi$ is the gravi
 Direct integration of the hydrostatic equilbrium equation is possible if both the gravitational potential $\varphi (r)$ and the pressure profile's ***shape function***
   $$\alpha (r) \equiv - \frac {d \ln P} {d \ln r}$$
 are known functions of radius. Integrating the shape function leads to
-  $$f_P(r) \equiv \exp \left[ - \int_1^{r/r_0} \alpha (x)  d \ln x \right]$$ 
+  $$f_P(r) \equiv \exp \left[ - \int_1^{r/r_0} \alpha (x)  ~d \ln x \right]$$ 
 which is a dimensionless pressure profile normalized to unity at a reference radius $r_0$. Providing a pressure normalization $P_0$ at $r_0$ then specifies the atmosphere's equilibrium pressure profile:
   $$P(r) = P_0 f_P(r)$$
 
@@ -170,7 +170,7 @@ All of the support energy is thermal, and so there is no need to compute $J_{\rm
 
 ### Energy and Expansion
 
-The figure below shows the relationship between atmospheric radius and specific energy that follows from these integrals. A solid red line represents how an atmosphere's equilibrium radius $r_{\rm CGM} = x_{\rm CGM} r_{\rm s}$ depends on its mean specific energy $\varepsilon_{\rm CGM} = E_{\rm CGM} / M_{\rm CGM}$ for a case with $\alpha = 3/2$. The equilibrium radius starts at zero for $\varepsilon_{\rm CGM} = 0$ and rises through $r_{\rm CGM} \approx 6 r_{\rm s}$ at $\varepsilon_{\rm CGM} \approx 3 v_\varphi^2$. The atmosphere's radius then formally approaches infinity as $\varepsilon_{\rm CGM}$ approaches $A_{\rm NFW} v_\varphi^2$ because atmospheric gas with specific energy exceeding $A_{\rm NFW} v_\varphi^2$ is unbound. A dashed blue line shows how the normalization $P_0 \propto 1/ I(x)_{\rm CGM}$ of the atmosphere's pressure profile declines as the atmosphere expands.
+The figure below shows the relationship between atmospheric radius and specific energy that follows from these integrals. A solid red line represents how an atmosphere's equilibrium radius $r_{\rm CGM} = x_{\rm CGM} r_{\rm s}$ depends on its mean specific energy $\varepsilon_{\rm CGM} = E_{\rm CGM} / M_{\rm CGM}$ for a case with $\alpha = 3/2$. The equilibrium radius starts at zero for $\varepsilon_{\rm CGM} = 0$ and rises through $r_{\rm CGM} \approx 6 r_{\rm s}$ at $\varepsilon_{\rm CGM} \approx 3 v_\varphi^2$. The atmosphere's radius then formally approaches infinity as $\varepsilon_{\rm CGM}$ approaches $A_{\rm NFW} v_\varphi^2$ because atmospheric gas with specific energy exceeding $A_{\rm NFW} v_\varphi^2$ is unbound. A dashed blue line shows how the normalization $P_0 \propto 1/ I(x_{\rm CGM})$ of the atmosphere's pressure profile declines as the atmosphere expands.
 
 <figure>
     <img src="../epsCGM_xCGM_plot.jpg"
@@ -194,27 +194,29 @@ is identical to density profile of a purely hydrostatic atmosphere with $\alpha 
 
 ## Thermalization <a name="Thermalization"></a>
 
-Turbulence dissipates into heat on a timescale $t_{\rm diss} \sim \lambda_{\rm d} / \sigma_{\rm 1D}$, in which $\lambda_{\rm d}$ is a length scale characterizing the driving of turbulence. Meanwhile, collisional excitation of photons converts thermal energy into radiative energy on a timescale $t_{\rm cool}$. An atmosphere's thermalization fraction $f_{\rm th}$ therefore depends on how $t_{\rm diss}$ compares with $t_{\rm cool}$. 
-
-The previous section's results show that dissipation of turbulent support energy does not change the atmosphere's equilibrium radius or density profile. Turbulent dissipation simply changes $f_{\rm th}$ without altering an equilibrium atmosphere's overall structure. 
+The previous section showed why dissipation of turbulent support energy does not change a galactic atmosphere's equilibrium radius or density profile. Turbulent dissipation simply changes $f_{\rm th}$ without altering an equilibrium atmosphere's overall structure. The **ExpCGM** framework therefore therefore tracks thermalization of turbulence by determining the value of $f_{\rm th}$ in an atmosphere jointly supported by turbulence and thermal energy. 
 
 ### Energy Injection
 
-To track how thermalization of turbulence determines the value of $f_{\rm th}$ in an atmosphere jointly supported by turbulence and thermal energy, the **ExpCGM** framework defines $\dot{E}\_{\rm inj}$ to be the rate at which energy sources inject energy into a galaxy's atmosphere and accounts for the proportions going into thermal and turbulent energy. 
+User-specified models provide the total rate of non-gravitational energy injection $\dot{E}\_{\rm inj}$ from cosmological accretion and galactic feedback. That energy input branches into a user-specified fraction $f_{\rm inj,th}$ going directly into heat and a complementary fraction $1 - f_{\rm inj,th}$ initially going into turbulence. Those proportions can depend on the relative contributions of cosmological accretion and feedback to $\dot{E}\_{\rm inj}$. 
 
-The timescale $t_{\rm inj} \equiv E_{\rm th} / f_{\rm th} \dot{E}\_{\rm inj}$ for energy input is the time it takes for those sources to inject an amount of energy $\dot{E}\_{\rm inj} t_{\rm inj}$ comparable to the total support energy opposing gravitational compression, which is equal to the thermal energy $E_{\rm th}$ divided by $f_{\rm th}$. That energy input branches into a fraction $f_{\rm inj,th}$ going directly into heat and a complementary fraction $1 - f_{\rm inj,th}$ that initially goes into turbulence. Eventually the turbulence dissipates into heat on the timescale $t_{\rm diss} \equiv (1 - f_{\rm th}) E_{\rm th} / f_{\rm th} \dot{E}\_{\rm diss}$, where $\dot{E}\_{\rm diss}$ is the dissipation rate. Radiative cooling then converts that thermal energy into escaping photons on a timescale $t_{\rm cool} \equiv E_{\rm th} / \dot{E}\_{\rm rad}$, where $\dot{E}_{\rm rad}$ is the radiative loss rate.
+### Dissipation Timescale
 
-Energy input, dissipation, and radiative cooling can all change the fraction $f_{\rm th}$ of support energy in thermal form. Its rate of change can be derived from the overall rate of change in total support energy
-
-<p>$$\frac {d} {dt} \frac {E_{\rm th}} {f_{\rm th}} = \dot{E}_{\rm inj} - \dot{E}_{\rm rad} - \dot{E}_{\rm exp}$$</p>
-
-in which $\dot{E}\_{\rm exp}$ is the rate at which atmospheric expansion or contraction converts support energy into gravitational energy or vice versa. The rate of change of just the thermal component is
-
-<p>$$\dot{E}_{\rm th} = \dot{E}_{\rm diss} - \dot{E}_{\rm rad} - f_{\rm th} \dot{E}_{\rm exp} + f_{\rm inj,th} \dot{E}_{\rm inj}$$</p>
-
-The factor $f_{\rm th}$ in front of $\dot{E}\_{\rm exp}$ follows from turbulent energy having the same value of $\gamma - 1$ as thermal energy. 
+Turbulence dissipates into heat on a timescale $t_{\rm diss} = \lambda_{\rm d} / \sigma_{\rm 1D}$, in which $\lambda_{\rm d}$ is a length scale characterizing the driving of turbulence. An **ExpCGM** user specifies the value of $\lambda_{\rm d}$ relating $\sigma_{\rm 1D}$ to $t_{\rm diss}$.
 
 ### Evolution of Thermalization
+
+Energy injection, dissipation, and radiative cooling can all change the fraction $f_{\rm th}$ of support energy in thermal form. Injection changes the atmosphere's total amount of support energy $E_{\rm th} / f_{\rm th}$ on the timescale $t_{\rm inj} \equiv E_{\rm th} / f_{\rm th} \dot{E}\_{\rm inj}$. Dissipation converts turbulence into thermal energy at the rate $\dot{E}\_{\rm diss} = (1 - f_{\rm th}) E_{\rm th} / f_{\rm th} t_{\rm diss}$. Radiative cooling converts thermal energy into escaping photons on a timescale $t_{\rm cool} \equiv E_{\rm th} / \dot{E}\_{\rm rad}$, where $\dot{E}_{\rm rad}$ is a radiative loss rate computed from the atmosphere model.
+
+The rate of change in $f_{\rm th}$ is derived from the overall rate of change in total support energy
+
+<p>$$\frac {d} {dt} \frac {E_{\rm th}} {f_{\rm th}} = \dot{E}_{\rm inj} - \dot{E}_{\rm rad} - \dot{E}_{\varphi,{\rm exp}}$$</p>
+
+in which $\dot{E}\_{\varphi,{\rm exp}}$ is the rate at which atmospheric expansion or contraction converts support energy into gravitational energy or vice versa. The rate of change of just the thermal component of support energy is
+
+<p>$$\dot{E}_{\rm th} = \dot{E}_{\rm diss} - \dot{E}_{\rm rad} - f_{\rm th} \dot{E}_{\varphi,{\rm exp}} + f_{\rm inj,th} \dot{E}_{\rm inj}$$</p>
+
+The factor $f_{\rm th}$ in front of $\dot{E}\_{\varphi,{\rm exp}}$ follows from turbulent energy having the same value of $\gamma - 1$ as thermal energy. 
 
 Combining the equations for the rate of change in $E_{\rm th}$ and the rate of change in $E_{\rm th} / f_{\rm th}$ leads to
 
