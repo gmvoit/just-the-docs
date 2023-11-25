@@ -33,7 +33,7 @@ This section describes how ...
 
 <details closed markdown="block">
   <summary>
-    Table of contents
+    Contents
   </summary>
    {: .text-delta}
 - TOC
