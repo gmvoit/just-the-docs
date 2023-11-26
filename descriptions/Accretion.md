@@ -32,7 +32,7 @@ This page outlines how the **ExpCGM** framework incorporates cosmic accretion of
 
 <details closed markdown="block">
   <summary>
-    Table of contents
+    Contents
   </summary>
    {: .text-delta}
 - TOC
