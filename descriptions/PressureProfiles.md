@@ -33,7 +33,7 @@ This page is an **ExpCGM** user's guide to choosing a shape function. Its first 
 
 <details closed markdown="block">
   <summary>
-    Table of contents
+    Contents
   </summary>
    {: .text-delta}
 - TOC
