@@ -32,7 +32,7 @@ This page outlines the essential elements of the **ExpCGM** framework, starting 
 
 <details closed markdown="block">
   <summary>
-    Table of contents
+    Contents
   </summary>
    {: .text-delta}
 - TOC
