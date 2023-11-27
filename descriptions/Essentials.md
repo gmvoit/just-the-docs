@@ -65,10 +65,10 @@ Many details of an **ExpCGM** atmosphere model hinge on a user's choice for the 
 
 Solving the hydrostatic equilibrium equation for $T(r)$ yields the atmosphere's temperature profile:
   $$T(r) = \frac {2 T_\varphi (r) } {\alpha (r)}$$
-Here, the function $T_\varphi (r) \equiv \mu m_p v_{\rm c}^2(r) / 2k$ represents the ***gravitational temperature profile*** for an atmosphere with a mean mass per particle $\mu m_p$ confined by a gravitational potential with a circular velocity profile $v_{\rm c} (r) = ( r d \varphi / dr)^{1/2}$. It is normalized so that $T(r) = T_\varphi (r)$ for $\alpha = 2$ because $P \propto r^{-2}$ is the equilibrium pressure profile of an isothermal atmosphere in a potential well with constant $v_{\rm c}$.
+Here, the function $T_\varphi (r) \equiv \mu m_p v_{\rm c}^2(r) / 2k$ represents the ***gravitational temperature profile*** for an atmosphere with a mean mass per particle $\mu m_p$ confined by a gravitational potential with a circular velocity profile $v_{\rm c} (r) = ( r d \varphi / dr)^{1/2}$. It is normalized so that $T(r) = T_\varphi (r)$ for $\alpha = 2$ because an isothermal galactic halo with a constant ratio of gas density to total density has $P \propto r^{-2}$.
 
 {: .note}
-The astronomical literature often calls something like $T_\varphi$ a *virial temperature*. However, a galactic atmosphere can satisfy the virial theorem without having converted all of its kinetic energy into thermal energy, meaning that it can be virialized even if $T \ll T_\varphi$. Also, the virial theorem applies to an entire self-gravitating system, not just the gaseous component on its own. That is why **ExpCGM** calls $T_\varphi$ a *gravitational temperature*, not a virial temperature.
+The astronomical literature often calls something like $T_\varphi$ a *virial temperature*. However, a galactic atmosphere can satisfy the virial theorem even when $T \ll T_\varphi$, as long as its total kinetic energy provides enough support to balance gravity. Also, the virial theorem applies to an entire self-gravitating system, not just the gaseous component on its own. That is why **ExpCGM** calls $T_\varphi$ a *gravitational temperature*, not a virial temperature.
 
 ### Density Profile
 
@@ -194,7 +194,7 @@ is identical to the density profile of a purely hydrostatic atmosphere with $\al
 
 ## Thermalization <a name="Thermalization"></a>
 
-The previous section showed why dissipation of turbulent support energy does not change the equilibrium radius or density profile of a galactic atmosphere. Turbulent dissipation simply increases $f_{\rm th}$ without altering an equilibrium atmosphere's overall structure. An evolving **ExpCGM** model therefore therefore tracks thermalization of turbulence by determining the value of $f_{\rm th}$ in an atmosphere jointly supported by turbulence and thermal energy. 
+The previous section showed why dissipation of turbulent support energy does not change the equilibrium radius or density profile of a galactic atmosphere. Turbulent dissipation simply increases $f_{\rm th}$ without altering an equilibrium atmosphere's overall structure. An evolving **ExpCGM** model therefore tracks thermalization of turbulence by determining the value of $f_{\rm th}$ in an atmosphere jointly supported by turbulence and thermal energy. 
 
 ### Energy Injection
 
@@ -222,7 +222,7 @@ and the rate of change in thermal support energy
 
 <p>$$\dot{E}_{\rm th} = \dot{E}_{\rm diss} - \dot{E}_{\rm rad} - f_{\rm th} \dot{E}_{\varphi,{\rm exp}} + f_{\rm inj,th} \dot{E}_{\rm inj}$$</p>
 
-In both of these equations, $\dot{E}\_{\varphi,{\rm exp}}$ is the conversion rate of atmospheric support energy into gravitational energy. This term is positive in an expanding atmosphere and negative in a contracting atmosphere.
+In both of these equations, $\dot{E}\_{\varphi,{\rm exp}}$ is the conversion rate of atmospheric support energy into gravitational energy. The value of $\dot{E}\_{\varphi,{\rm exp}}$ is positive in an expanding atmosphere and negative in a contracting atmosphere.
 
 The equation for $\dot{E}\_{\rm th}$ assumes that expansion and contraction are slow enough to have no effect on $f_{\rm th}$. This assumption is based on both thermal energy and turbulent energy having the same ratio of energy density to pressure, which gives them the same polytropic equation of state. However, an expanding or contracting atmosphere that is settling into an equilibrium state in a fully hydrodynamical model may be converting the kinetic energy of that bulk flow into a combination of turbulent and thermal energy with a ratio different from $(1 - f_{\rm th}) / f_{\rm th}$. In principle, **ExpCGM** users can account for such differences through adjustments to the branching ratio $f_{\rm inj,th}$ for thermal energy injection.
 
