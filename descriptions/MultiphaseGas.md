@@ -48,11 +48,13 @@ Astronomers often call gas with large density and temperature contrasts a *multi
 
 ## Objectives
 
-Multiphase gas algorithms in **ExpCGM** need to be modestly scoped, because detailed modeling of a multiphase medium requires computational methods far beyond the sophistication of the **ExpCGM** framework. Remember that the framework's primary objective is to represent the global structure of a galactic atmosphere so that its coupling with the central galaxy can be modeled. It tracks how cosmological accretion augments $E_{\rm CGM}$ and $M_{\rm CGM}$. It determines how radiative losses reduce $E_{\rm CGM}$, allowing some of the accreted gas to enter the central galaxy. And it accounts for the central galaxy's feedback response to that gas supply, which adds energy and gas mass to the atmosphere's total $E_{\rm CGM}$ and $M_{\rm CGM}$. 
+Multiphase gas algorithms in **ExpCGM** need to be modestly scoped, because detailed modeling of a multiphase medium requires computational methods far beyond the sophistication of the **ExpCGM** framework. Remember that the framework's primary objective is to represent the global structure of a galactic atmosphere so that its coupling with the central galaxy can be modeled. It tracks how cosmological accretion augments the atmosphere's total energy $E_{\rm CGM}$ and mass $M_{\rm CGM}$. It determines how radiative losses reduce $E_{\rm CGM}$, allowing some of the accreted gas to enter the central galaxy. And it accounts for the central galaxy's feedback response to that gas supply, which adds both energy and gas mass to its atmosphere. 
 
 An **ExpCGM** algorithm for multiphase gas must therefore focus on how a galactic atmosphere's inhomogeneity affects $\dot{E}\_{\rm CGM}$ and $\dot{M}\_{\rm CGM}$. For example, density contrasts can enhance radiative losses and raise the cooling-flow limit on the galaxy's gas supply. They can also alter how turbulent dissipation or shock fronts convert the atmosphere's kinetic energy into heat.
 
-Different schemes for representing multiphase gas can be tested within the **ExpCGM** framework, to see how they affect $\dot{E}\_{\rm CGM}$ and $\dot{M}\_{\rm CGM}$ and alter the atmosphere's thermalization fraction $f_{\rm th}$. We hope that using the framework to experiment with different multiphase gas models and to identify how the assumptions inherent in those models affect various observable properties of galactic atmospheres will yield useful constraints on the astrophysics of multiphase atmospheric gas.
+Different user-defined schemes for representing multiphase gas can be tested within the **ExpCGM** framework, to see how they affect $\dot{E}\_{\rm CGM}$ and $\dot{M}\_{\rm CGM}$ and alter the atmosphere's thermalization fraction $f_{\rm th}$. 
+
+We hope that using **ExpCGM** to experiment with different multiphase gas models and to identify how the assumptions inherent in those models affect various observable properties of galactic atmospheres will yield useful constraints on the astrophysical processes determining those properties.
 
 ## Cool Gas Fraction
 
@@ -61,16 +63,16 @@ To represent multiphase gas, the **ExpCGM** framework defines an atmosphere's **
 where $\bar{\rho}$ is the mean mass density of an atmosphere in which gas with $T \ll T_\varphi$ occupies a negligible fraction of the volume. 
 
 Applying the usual **ExpCGM** assumption of force balance then gives
-  $$\alpha_{\rm eff} \frac {P} {f_{\rm th}} = \bar{\rho} f_\varphi v_{\rm c}^2$$
+  $$\frac {P} {f_{\rm th}} = \frac {\bar{\rho} f_\varphi v_{\rm c}^2} {\alpha_{\rm eff}}$$
 for a multiphase atmosphere, implying that 
   $$f_{\rm th} = (1 - f_{\rm cool}) \left( \frac {\alpha_{\rm eff}} {2 f_\varphi} \right) \frac {T} {T_\varphi}$$
 According to this last equation, an atmosphere's thermalization fraction $f_{\rm th}$ is similar to the fraction $(1 - f_{\rm cool})$ of the atmospheric gas mass that remains hot, because the $\alpha_{\rm eff} / 2 f_\varphi$ factor is generally of order unity and the temperature $T$ of the hot phase is always similar to $T_\varphi$, because of how the hot phase is defined. 
 
-Including multiphase gas within **ExpCGM** models therefore necessitates a reinterpretation of the $f_{\rm th}$ parameter. For example, gas temperature in a homogenous **ExpCGM** model with $t_{\rm cool} \ll f_{\rm th} t_{\rm diss}$ declines in proportion to $f_{\rm th}$. Meanwhile, the velocity dispersion $\sigma_{\rm 1D}^2$ of isotropic turbulence increases. A decline in $T$ is linked to a complementary rise in $\sigma_{\rm 1D}^2$ because the force balance condition ensures that
-  $$\sigma_{\rm 1D}^2 = \frac {f_\varphi} {\alpha_{\rm eff}} \left( 1 - f_{\rm th} \right) v_{\rm c}^2$$
+Including multiphase gas within **ExpCGM** models therefore necessitates a reinterpretation of the $f_{\rm th}$ parameter. For example, $f_{\rm th}$ in a homogenous **ExpCGM** model with $t_{\rm cool} \ll f_{\rm th} t_{\rm diss}$ declines in proportion to $T$. Meanwhile, the velocity dispersion $\sigma_{\rm 1D}^2$ of isotropic turbulence increases. A decline in $f_{\rm th}$ is linked to a complementary rise in $\sigma_{\rm 1D}^2$ because the force balance condition ensures that
+  $$\sigma_{\rm 1D}^2 = \left( 1 - f_{\rm th} \right) \frac {f_\varphi v_{\rm c}^2} {\alpha_{\rm eff}}$$
 However, the equivalent condition in a multiphase **ExpCGM** model is
-  $$f_{\rm cool}\sigma_{\rm 1D,cool}^2 + \left( 1 - f_{\rm cool} \right) \sigma_{\rm 1D,hot}^2 = \frac {f_\varphi} {\alpha_{\rm eff}} \left( 1 - f_{\rm th} \right) v_{\rm c}^2$$
-in which $\sigma_{\rm 1D, hot}$ and $\sigma_{\rm 1D, cool}$ are the velocity dispersions of the hot and cool components, respectively. A drop in $f_{\rm th}$ then corresponds to a rise in $f_{\rm cool}$ and a complementary decline in the hot gas fraction $(1 - f_{\rm cool})$ rather than a decline in the hot-gas temperature $T$.
+  $$f_{\rm cool}\sigma_{\rm 1D,cool}^2 + \left( 1 - f_{\rm cool} \right) \sigma_{\rm 1D,hot}^2 = \left( 1 - f_{\rm th} \right) \frac {f_\varphi v_{\rm c}^2} {\alpha_{\rm eff}}$$
+in which $\sigma_{\rm 1D, hot}$ and $\sigma_{\rm 1D, cool}$ are the velocity dispersions of the hot and cool components, respectively. In that case, a drop in $f_{\rm th}$ corresponds to a rise in $f_{\rm cool}$ and a complementary decline in the hot gas fraction $(1 - f_{\rm cool})$ rather than a decline in $T$.
 
 ## Velocity Coupling
 
@@ -85,7 +87,7 @@ A multiphase atmosphere in which discrete cool clouds have column densities much
 
 ### Weak Coupling
 
-In an atmosphere jointly supported by turbulence and thermal pressure, the motions of cool clouds are essentially ballistic if hydrodynamical drag cannot couple them to the hot component on an orbital timescale. Each temperature component in an equilibrium atmosphere must then separately satisfy its own force balance condition. 
+The motions of cool clouds in an atmosphere jointly supported by turbulence and thermal pressure are essentially ballistic if hydrodynamical drag cannot couple them to the hot component on an orbital timescale. Each temperature component in an equilibrium **ExpCGM** atmosphere must then separately satisfy its own force balance condition. 
 
 The force balance condition for the cool component becomes
   $$\sigma_{\rm 1D, cool}^2 = \frac {f_\varphi} {\alpha_{\rm eff}} v_{\rm c}^2$$
@@ -96,11 +98,11 @@ and a velocity dispersion
 The ratio $f_{\rm th} / (1 - f_{\rm cool})$ determines the breakdown between thermal and turbulent support of the hot medium and needs to be of order unity to satisfy the stipulation $T \sim T_\varphi$.
 
 {: .note}
-The force balance condition given for cool gas assumes an isotropic velocity dispersion, which might not be a good approximation for a population of ballistic clouds. 
+The force balance condition given above for cool gas assumes an isotropic velocity dispersion, which might not be a good approximation for a population of ballistic clouds. 
 
 ### Sedimentation
 
-Sedimentation occurs between the strong-coupling and weak-coupling limits. A small amount of drag gradually drains orbital energy from clouds that would otherwise be ballistic, causing them to sink toward the center. That radial drift speed can be a model parameter, or it can be estimated based on a user-defined model for cool-cloud properties. 
+Sedimentation occurs in between the strong-coupling and weak-coupling limits. A small amount of drag gradually drains orbital energy from clouds that would otherwise be ballistic, causing them to sink toward the center. That radial drift speed can be a model parameter, or it can be estimated based on a user-defined model for cool-cloud properties. 
 
 {: .note}
 A future Cloud Survival document can consider the conditions under which drifting clouds persist.
@@ -109,13 +111,15 @@ A future Cloud Survival document can consider the conditions under which driftin
 
 Reduction of a multiphase atmosphere's turbulent support is easiest to model in the strong-coupling limit, because dissipation of turbulence in the hot medium also reduces the velocity dispersion of the cool clouds. 
 
-Dissipation of kinetic energy in the weak-coupling limit is more model dependent. One approach to modeling it is to estimate the rate of inelastic cloud-cloud collisions in a population of cool ballistic clouds. Some the kinetic energy of two colliding clouds initially dissipates into heat, presumably in shock fronts. What happens next depends on how quickly such collisions turn heat into radiative energy: 
+Dissipation of kinetic energy in the weak-coupling limit is more model dependent. One approach to modeling it is to estimate the rate of inelastic cloud-cloud collisions in a population of cool ballistic clouds. Some of the kinetic energy of two colliding clouds initially dissipates into heat, presumably in shock fronts, and can contribute to $\dot{E}\_{\rm rad}$. 
+
+What happens next depends on how quickly such collisions turn heat into radiative energy: 
 
 * Rapid cooling converts the majority of the dissipated kinetic energy into photons, thereby reducing $E_{\rm CGM}$. 
 
 * Slow cooling may transfer some of the heated gas from the atmosphere's cool component and to the hot component.
 
-The details of how to model cloud-cloud collisions in a multiphase **ExpCGM** model atmosphere are left to the user.
+The details of how to model cloud-cloud collisions in a multiphase **ExpCGM** model atmosphere are currently left to the user.
 
 ## Mass Exchange
 
