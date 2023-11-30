@@ -65,7 +65,7 @@ Many details of an **ExpCGM** atmosphere model hinge on a user's choice for the 
 
 Solving the hydrostatic equilibrium equation for $T(r)$ yields the atmosphere's temperature profile:
   $$T(r) = \frac {2 T_\varphi (r) } {\alpha (r)}$$
-Here, the function $T_\varphi (r) \equiv \mu m_p v_{\rm c}^2(r) / 2k$ represents the ***gravitational temperature profile*** for an atmosphere with a mean mass per particle $\mu m_p$ confined by a gravitational potential with a circular velocity profile $v_{\rm c} (r) = ( r d \varphi / dr)^{1/2}$. It is normalized so that $T(r) = T_\varphi (r)$ for $\alpha = 2$ because an isothermal galactic halo with a constant ratio of gas density to total density has $P \propto r^{-2}$.
+Here, the function $T_\varphi (r) \equiv \mu m_p v_{\rm c}^2(r) / 2k$ represents the ***gravitational temperature profile*** for an atmosphere with a mean mass per particle $\mu m_p$ confined by a gravitational potential with a circular velocity profile $v_{\rm c} (r) = ( r \cdot d \varphi / dr)^{1/2}$. It is normalized so that $T(r) = T_\varphi (r)$ for $\alpha = 2$ because an isothermal galactic halo with a constant ratio of gas density to total mass density has $P \propto r^{-2}$.
 
 {: .note}
 The astronomical literature often calls something like $T_\varphi$ a *virial temperature*. However, a galactic atmosphere can satisfy the virial theorem even when $T \ll T_\varphi$, as long as its total kinetic energy provides enough support to balance gravity. Also, the virial theorem applies to an entire self-gravitating system, not just the gaseous component on its own. That is why **ExpCGM** calls $T_\varphi$ a *gravitational temperature*, not a virial temperature.
@@ -153,7 +153,7 @@ First, assume that the atmosphere has a power-law pressure profile (constant $\a
 
 Next, consider confinement by an Navarro-Frenk-White (NFW) gravitational potential with a zero point at $r=0$. We can express that potential as
   $$\varphi_{\rm NFW} (x) = A_{\rm NFW} v_\varphi^2 \left[ 1 - \frac {\ln (1 + x)} {x} \right]$$
-in which $x = r / r_{\rm s}$ represents how $r$ compares with the potential's ***scale radius*** and $r_{\rm s}$.
+in which $x = r / r_{\rm s}$ represents how $r$ compares with the potential's ***scale radius*** $r_{\rm s}$.
 The parameter $v_\varphi^2$ is equal to the maximum value of the NFW circular velocity profile
   $$v_{\rm c}^2 (x) = A_{\rm NFW} v_\varphi^2 \left[ \frac {\ln (1 + x)} {x}  - \frac {1} {1 + x} \right]$$
 for $A_{\rm NFW} = 4.625$. For convenience, we will choose $r_0$ to be identical to $r_{\rm s}$, so that $P_0$ is the thermal pressure at $r_{\rm s}$.
@@ -208,7 +208,7 @@ Turbulence dissipates into heat on a timescale $t_{\rm diss} = \lambda_{\rm d} /
 
 Energy injection, dissipation, and radiative cooling all affect the fraction $f_{\rm th}$ of support energy in thermal form. 
 
-* Injection changes the atmosphere's total amount of support energy $E_{\rm th} / f_{\rm th}$ on the timescale $t_{\rm inj} \equiv E_{\rm th} / f_{\rm th} \dot{E}\_{\rm inj}$.
+* Energy injection changes the atmosphere's total amount of support energy $E_{\rm th} / f_{\rm th}$ on the timescale $t_{\rm inj} \equiv E_{\rm th} / f_{\rm th} \dot{E}\_{\rm inj}$.
   
 * Dissipation converts turbulence into thermal energy at the rate $\dot{E}\_{\rm diss} = (1 - f_{\rm th}) E_{\rm th} / f_{\rm th} t_{\rm diss}$.
   
@@ -262,7 +262,7 @@ A galactic atmosphere gains support energy when feedback energy released from th
   $$\dot{M}_{\rm cool}(r_{\rm gal}) = \frac {4 \pi r_{\rm gal}^3 \, \rho (r_{\rm gal})} {t_{\rm cool} (r_{\rm gal})}$$ 
 </p> 
 
-evaluated at the galaxy's outer radius $r_{\rm gal}$. The inflowing mass is subtracted from $M_{\rm CGM}$, and its energy content is subtracted from $E_{\rm CGM}$. A supplementary galactic feedback model then determines the resulting supply of feedback energy $\dot{E}\_{\rm fb}$ and outflowing gas mass $\dot{M}\_{\rm fb}$. 
+evaluated at the galaxy's outer radius $r_{\rm gal}$. The inflowing mass is subtracted from $M_{\rm CGM}$, and its energy content is subtracted from $E_{\rm CGM}$. A user-defined galactic feedback model then determines the resulting supply of feedback energy $\dot{E}\_{\rm fb}$ and outflowing gas mass $\dot{M}\_{\rm fb}$. 
 
 {: .note}
 In the **ExpCGM** framework, radiative cooling can continue to supply gas to the galaxy even if $\dot{E}\_{\rm fb} > \dot{E}\_{\rm rad}$. Instead of shutting off the gas supply by offsetting radiative cooling, feedback energy limits $\dot{M}\_{\rm cool}$ by reducing $\rho (r_{\rm gal})/t_{\rm cool} (r_{\rm gal})$.
