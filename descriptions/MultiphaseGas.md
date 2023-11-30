@@ -29,7 +29,7 @@ parent: Description
 {: .no_toc}
 
 {: .warning}
-This page is still under construction.
+This page is still under development.
 
 The most basic **ExpCGM** models assume that a galactic atmosphere is homogeneous, with uniform values of pressure, gas density, and temperature at each radius. However, atmospheric gas with a radiative cooling time $t_{\rm cool}$ much shorter than the dissipation timescale $t_{\rm diss}$ of its non-thermal support energy is unlikely to remain homogeneous, as it is prone to thermal instability. 
 
