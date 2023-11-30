@@ -102,6 +102,8 @@ Thermal and turbulent energy input associated with mass accretion that deepens t
 
 ## Incoming Momentum
 
+The previous two sections on spherical collapse and adiabatic compression describe essential elements of every **ExpCGM** model. This section decribes an optional extension designed to account for atmospheric compression by infalling gas.
+
 Baryonic gas accreting onto a galactic atmosphere does more than just add energy. It also applies some pressure. Incoming gas that is initially cold passes through an accretion shock at the atmosphere's outer edge. In an idealized, spherically symmetric accretion flow, the inward momentum flux of accreting gas at the shock's radius $R_{\rm acc}$ is
 
 <p>
