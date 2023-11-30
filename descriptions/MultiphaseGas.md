@@ -137,13 +137,13 @@ In the figure, TRML stands for *turbulent radiative mixing layers*.
 
 ### Condensation
 
-Consider first the timescale on which cooling converts hot gas into cool gas in atmosphere with $t_{\rm cool} \ll f_{\rm th} t_{\rm diss}$. The cooling time of hot gas with a homogeneous mass density $\rho$ is
+Consider first the timescale on which cooling converts hot gas into cool gas in an atmosphere with $t_{\rm cool} \ll f_{\rm th} t_{\rm diss}$. The cooling time of homogeneous hot gas with a mass density $\rho$ is
   $$t_{\rm cool} = \left( \frac {3 kT} {2 \mu m_p} \right) \frac {1} {\rho \Lambda_\rho}$$
-in which $\rho \Lambda_{\rho}$ is the radiative energy loss rate per particle. W
+in which $\rho \Lambda_{\rho}$ is the radiative energy loss rate per particle.
 
-In a multiphase atmosphere with mean gas-mass density $\bar{\rho}$, the hot-phase cooling time becomes
+In a multiphase atmosphere with a mean mass density $\bar{\rho}$, the hot-phase cooling time becomes
   $$t_{\rm cool} = \left( \frac {3 kT} {2 \mu m_p} \right) \frac {1} { (1 - f_{\rm cool}) \bar{\rho} \Lambda_\rho}$$
-Mass transfer from the hot phase to the cool phase therefore causes the hot-gas cooling time rise and slows this particular channel for mass exchange, which asymptotically abates as $t_{\rm cool}$ approaches the universe's age.
+Mass transfer from the hot phase to the cool phase while $\bar{\rho}$ remains constant therefore causes the hot-gas cooling time to rise and slows this particular channel for mass exchange, which asymptotically abates as $t_{\rm cool}$ approaches the universe's age.
 
 {: .note}
 The abatement of condensation in a multiphase galactic atmosphere was notably emphasized by Maller & Bullock (2004). It places an upper limit on the value of $f_{\rm cool}$ acheivable through condensation and ensures that at least some volume-filling hot gas remains in a condensing atmosphere.
