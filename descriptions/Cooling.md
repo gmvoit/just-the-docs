@@ -186,5 +186,5 @@ A fully multiphase medium with embedded clouds orders of magnitude denser than t
 where $n = \rho / \mu m_p$ is the particle number density. In a homogeneous medium of pressure $P$ and temperature $T$ this loss rate is $\langle n \Lambda_\rho \rangle = P \Lambda_\rho (T) / kT$.
 
 Users who wish to model additional radiative losses from a multiphase medium need to supply an algorithm that determines the boost factor
-  $$f_{\rm rad} = \frac {kT} {P \Lambda_\rho(T)} \langle n \Lambda_\rho \rangle$$
+  $$f_{\rm rad} = \frac {kT \langle n \Lambda_\rho \rangle} {P \Lambda_\rho(T)} $$
 relating the homogeneous case to the multiphase case. Such an algorithm should be informed by high-resolution numerical simulations of turbulent radiative mixing layers in thermally unstable gas. It may depend on the local pressure and temperature of the volume-filling gas that presumably confines the denser clouds. It may also depend on the fraction $f_{\rm cool}$ of the gas mass with $T \ll T_\varphi$ and the velocity dispersion $\sigma_{\rm 1D,cool}$ of the cool-cloud population. (See the [Multiphase Gas](MultiphaseGas) page for more on how $f_{\rm cool}$ and $\sigma_{\rm 1D,cool}$ are related to the thermalization fraction $f_{\rm th}$.) 
