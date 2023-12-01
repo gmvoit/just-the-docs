@@ -172,14 +172,14 @@ Multiplying $\dot{E}\_{\rm rad}$ for the homogeneous case by this boost factor a
 
 ### Multiphase Inhomogeneity
 
-A fully multiphase medium with embedded clouds orders of magnitude denser than the ambient gas may experience even greater radiative losses that require a more complex assessment of the boost factor. The general integral for radiative losses from a gas sample of mass $M_{\rm gas}$ is
+A fully multiphase medium with embedded clouds orders of magnitude denser than the ambient gas may experience even greater radiative losses that require a more complex assessment of the boost factor. The general integral for the specific radiative loss rate from a gas sample of mass $M_{\rm gas}$ is
 
 <p>
-  $$\dot{E}_{\rm rad} = \int_{M_{\rm gas}} n \Lambda_\rho ~d M_{\rm gas} = \langle n \Lambda_\rho \rangle M_{\rm gas}$$
+  $$ \langle n \Lambda_\rho \rangle  = \frac {1} {M_{\rm gas}} \int_{M_{\rm gas}} n \Lambda_\rho ~d M_{\rm gas}$$
 </p>
 
-where $n = \rho / \mu m_p$ is the particle number density and the quantity $\langle n \Lambda_\rho \rangle$ is the specific radiative energy loss rate of the gas sample.
+where $n = \rho / \mu m_p$ is the particle number density. In a homogeneous medium of pressure $P$ and temperature $T$ this loss rate is $\langle n \Lambda_\rho \rangle = P \Lambda_\rho (T) / kT$.
 
-Users who which to model radiative losses from a multiphase medium need to supply an algorithm that determines the boost factor
+Users who wish to model additional radiative losses from a multiphase medium need to supply an algorithm that determines the boost factor
   $$f_{\rm rad} = \frac {kT} {P \Lambda_\rho(T)} \langle n \Lambda_\rho \rangle$$
-relating losses from a homogenous atmosphere of pressure $P$ and temperature $T$ to losses from a multiphase atmosphere. Such an algorithm should be informed by high-resolution numerical simulations of turbulent radiative mixing layers in thermally unstable gas. It may depend on the local pressure $P$ and temperature $T$ of the volume-filling gas. It may also depend on the fraction $f_{\rm cool}$ of the gas mass with $T \ll T_\varphi$ and the atmosphere's velocity dispersion $\sigma_{\rm 1D}$. (See the [Multiphase Gas](MultiphaseGas) page for more on how $f_{\rm cool}$ is related to the thermalization fraction $f_{\rm th}$.) 
+relating the homogeneous case to the multiphase case. Such an algorithm should be informed by high-resolution numerical simulations of turbulent radiative mixing layers in thermally unstable gas. It may depend on the local pressure and temperature of the volume-filling gas that presumably confines the denser clouds. It may also depend on the fraction $f_{\rm cool}$ of the gas mass with $T \ll T_\varphi$ and the velocity dispersion $\sigma_{\rm 1D,cool}$ of the cool-cloud population. (See the [Multiphase Gas](MultiphaseGas) page for more on how $f_{\rm cool}$ and $\sigma_{\rm 1D,cool}$ are related to the thermalization fraction $f_{\rm th}$.) 
