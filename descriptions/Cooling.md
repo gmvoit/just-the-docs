@@ -131,7 +131,7 @@ and the standard deviations of those fluctuation amplitudes are related through
 Cooling time also has a log-normal distribution, as long as the cooling function's dependence on temperature can be described with the power-law parameter
   $$\lambda \equiv \frac {d \ln \Lambda (T)} {d \ln T}$$
 In that case, one finds
-  $$\delta \ln t_{\rm cool} ~=~ - (2 - \lambda) \, \delta \ln \rho ~=~ (2 - \lambda) \, \delta \ln T  ~=~ \frac {3 (2 - \lambda)} {5} \, \delta \ln K$$
+  $$\delta \ln t_{\rm cool} ~=~ - (2 - \lambda) \delta \ln \rho ~=~ (2 - \lambda) \delta \ln T  ~=~ \frac {3 (2 - \lambda)} {5} \, \delta \ln K$$
 for an atmosphere in pressure equilibrium.
 
 ### Cooling-Time Fluctuations
