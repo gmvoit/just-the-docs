@@ -51,7 +51,7 @@ represents the emission rate of radiative energy per unit volume. An alternative
 Steady emission radiates an amount of energy equivalent to an atmosphere's thermal  energy on a timescale
   $$t_{\rm cool} = \frac {3} {2} \frac {kT} {\rho \Lambda_\rho} = \frac {3} {2} \frac {P} {n_e n_i \Lambda (T)} \approx \frac {3kT} {n_e \Lambda (T)}$$
 called the ***cooling time***. However, the atmosphere's temperature does not necessarily decline on that timescale. Gravitational compression keeps the atmosphere's temperature approximately constant if $t_{\rm cool}$ is longer than the atmosphere's dynamical timescale ($\sim r / v_{\rm c})$. It therefore remains close to
-  $$T \approx \left( \frac {2 f_{\rm th}} {\alpha_{\rm eff}} \right) T_\varphi  = \left( \frac {\mu m_p f_{\rm th}} {\alpha_{\rm eff} k} \right) v_{\rm c}^2$$
+  $$T \approx \left( \frac {2 f_{\rm th}} {\alpha_{\rm eff}} \right) T_\varphi  = \left( \frac {2  f_{\rm th}} {\alpha_{\rm eff} k} \right) {\mu m_p v_{\rm c}^2} {2}$$
 (See the [Essentials](Essentials) page for an explanation and definitions of symbols.) 
 
 {: .note} 
