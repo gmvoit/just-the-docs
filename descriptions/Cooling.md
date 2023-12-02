@@ -179,7 +179,7 @@ Multiplying $\dot{E}\_{\rm rad}$ for the homogeneous case by this boost factor a
 
 ### Multiphase Inhomogeneity
 
-A multiphase medium with embedded clouds orders of magnitude denser than the ambient gas may experience even greater radiative losses that require a more complex assessment of the boost factor. The radiative loss rate per unit mass from a gas sample of mass $M_{\rm gas}$ is
+A multiphase medium with embedded clouds orders of magnitude denser than the ambient gas may experience even greater radiative losses that require a more complex assessment of the boost factor. The radiative loss rate per unit mass from a multiphase gas sample of mass $M_{\rm gas}$ can be expressed as
 
 <p>
   $$ \langle n \Lambda_\rho \rangle  = \frac {1} {M_{\rm gas}} \int_{M_{\rm gas}} n \Lambda_\rho ~d M_{\rm gas}$$
