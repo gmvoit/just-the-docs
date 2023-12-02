@@ -86,12 +86,12 @@ With those generalizations, an atmosphere's equilibrium temperature and density 
   $$T(r) = \frac {2 f_{\rm th} f_\varphi} {\alpha_{\rm eff} (r)} ~T_\varphi (r)~~~~~~,~~~~~~\rho (r) = P_0 \frac {\alpha_{\rm eff} (r) f_P (r)}{f_{\rm th} f_\varphi v_{\rm c}^2(r)}$$ 
 in which the function 
   $$\alpha_{\rm eff} (r) \equiv \alpha(r) + \frac {d \ln f_{\rm th}} {d \ln r}$$ 
-is a ***generalized shape function*** for atmospheric support, accounting for possible dependences of $f_{\rm th}$ on radius. It is also possible for $f_\varphi$ to depend on radius.
+is a ***generalized shape function*** for atmospheric support, to be used if $f_{\rm th}$ depends on radius. It is also possible for $f_\varphi$ to depend on radius.
 
 {: .note}
 Some other formulations of atmospheric force balance express resistance to gravity in terms of a total pressure $P_{\rm tot} = P / f_{\rm th}$. However, **ExpCGM** explicitly accounts for the thermal pressure contribution using the $f_{\rm th}$ factor so that an equilibrium atmosphere's temperature profile can be directly inferred from just force balance considerations and the thermalization fraction $f_{\rm th}$.
 
-## Specific Energy <a name="specific-energy-"></a>
+## Specific Energy
 
 A galactic atmosphere of total mass $M_{\rm CGM}$ expands if its total energy $E_{\rm CGM}$ increases, and it contracts if its total energy declines. The **ExpCGM** framework therefore links a galactic atmosphere's equilibrium radius $r_{\rm CGM}$ to its ***mean specific energy***
   $$\varepsilon_{\rm CGM} = \frac {E_{\rm CGM}} {M_{\rm CGM}}$$
@@ -140,7 +140,7 @@ gives the pressure profile's normalization at $r_0$.
 {:.note}
 These relationships between $\varepsilon_{\rm CGM}$, $r_{\rm CGM}$, and $P_0$ are the cornerstones of all **ExpCGM** atmosphere models. They depend primarily on a user's choices for $\varphi(r)$ and $\alpha(r)$ and determine how the resulting atmosphere expands or contracts as its total mass and energy change. They may also depend on a user's choices for $f_{\rm th}(r)$ and $f_\varphi(r)$.
 
-## A Simple Example <a name="ASimpleExample"></a>
+## A Simple Example 
 
 To illustrate how solutions for steady-state atmospheric structure emerge from the **ExpCGM** framework, the following example simplifies some things. 
 
@@ -182,7 +182,7 @@ Dotted lines in the figure illustrate relationships that are exponentially sensi
 {:.note}
 The relationship between $r_{\rm CGM}$ and $\varepsilon_{\rm CGM}$ would be purely exponential for an atmosphere with constant $\alpha$ in a gravitational potential with constant $v_{\rm c}$. The relationships in the figure are consequently *nearly* exponential in the portion of an NFW potential well in which $v_{\rm c}$ is *nearly* constant. 
 
-## Turbulent Support <a name="TurbulentSupport"></a>
+## Turbulent Support 
 
 The **ExpCGM** framework is designed to model galactic atmospheres supported by a combination of thermal energy and non-thermal gas motions that are usually called "turbulence" even though they do not necessarily arise from a classic Kolmogorov cascade of eddies. For simplicity, **ExpCGM** treats those gas motions as isotropic, with a one-dimensional velocity dispersion $\sigma_{\rm 1D}$, so that the thermalization fraction is
   $$f_{\rm th} = \frac {P} {P + \rho \sigma_{\rm 1D}^2}$$
@@ -192,7 +192,7 @@ The equilibrium radius of an atmosphere jointly supported by thermal and turbule
   $$\rho (r) = \frac {P_0 f_P (r)} {f_{\rm th}(r)} \frac {\alpha_{\rm eff}(r)} {v_{\rm c}^2 (r)}$$
 is identical to the density profile of a purely hydrostatic atmosphere with $\alpha (r) = \alpha_{\rm eff} (r)$ and $f_{\rm th} = 1$.
 
-## Thermalization <a name="Thermalization"></a>
+## Thermalization 
 
 The previous section showed why dissipation of turbulent support energy does not change the equilibrium radius or density profile of a galactic atmosphere. Turbulent dissipation simply increases $f_{\rm th}$ without altering an equilibrium atmosphere's overall structure. An evolving **ExpCGM** model therefore tracks thermalization of turbulence by determining the value of $f_{\rm th}$ in an atmosphere jointly supported by turbulence and thermal energy. 
 
@@ -216,11 +216,15 @@ Energy injection, dissipation, and radiative cooling all affect the fraction $f_
 
 The rate of change in $f_{\rm th}$ in **ExpCGM** is derived from the overall rate of change in total atmospheric support energy
 
-<p>$$\frac {d} {dt} \frac {E_{\rm th}} {f_{\rm th}} = \dot{E}_{\rm inj} - \dot{E}_{\rm rad} - \dot{E}_{\varphi,{\rm exp}}$$</p>
+<p>
+  $$\frac {d} {dt} \frac {E_{\rm th}} {f_{\rm th}} = \dot{E}_{\rm inj} - \dot{E}_{\rm rad} - \dot{E}_{\varphi,{\rm exp}}$$
+</p>
 
 and the rate of change in thermal support energy 
 
-<p>$$\dot{E}_{\rm th} = \dot{E}_{\rm diss} - \dot{E}_{\rm rad} - f_{\rm th} \dot{E}_{\varphi,{\rm exp}} + f_{\rm inj,th} \dot{E}_{\rm inj}$$</p>
+<p>
+  $$\dot{E}_{\rm th} = \dot{E}_{\rm diss} - \dot{E}_{\rm rad} - f_{\rm th} \dot{E}_{\varphi,{\rm exp}} + f_{\rm inj,th} \dot{E}_{\rm inj}$$
+</p>
 
 In both of these equations, $\dot{E}\_{\varphi,{\rm exp}}$ is the conversion rate of atmospheric support energy into gravitational energy. The value of $\dot{E}\_{\varphi,{\rm exp}}$ is positive in an expanding atmosphere and negative in a contracting atmosphere.
 
@@ -228,18 +232,22 @@ The equation for $\dot{E}\_{\rm th}$ assumes that expansion and contraction are 
 
 Combining the **ExpCGM** equations for the rates of change in $E_{\rm th} / f_{\rm th}$ and $E_{\rm th}$ leads to
 
-<p>$$\frac {E_{\rm th}} {f_{\rm th}} \frac {d f_{\rm th}} {dt} = \dot{E}_{\rm diss} - \left( 1 - f_{\rm th} \right) \dot{E}_{\rm rad} + \left( f_{\rm inj,th} - f_{\rm th} \right) \dot{E}_{\rm inj}$$</p>
+<p>
+  $$\frac {E_{\rm th}} {f_{\rm th}} \frac {d f_{\rm th}} {dt} = \dot{E}_{\rm diss} - \left( 1 - f_{\rm th} \right) \dot{E}_{\rm rad} + \left( f_{\rm inj,th} - f_{\rm th} \right) \dot{E}_{\rm inj}$$
+</p>
 
 The time derivative of $f_{\rm th}$ can therefore be expressed as
 
-<p>$$\frac {d f_{\rm th}} {dt} = \frac {1 - f_{\rm th}} {t_{\rm diss}} - \frac {(1 - f_{\rm th}) f_{\rm th}} {t_{\rm cool}} + \frac {(f_{\rm inj,th} - f_{\rm th})} {t_{\rm inj}}$$</p>
+<p>
+  $$\frac {d f_{\rm th}} {dt} = \frac {1 - f_{\rm th}} {t_{\rm diss}} - \frac {(1 - f_{\rm th}) f_{\rm th}} {t_{\rm cool}} + \frac {(f_{\rm inj,th} - f_{\rm th})} {t_{\rm inj}}$$
+</p>
 
 which explicitly connects changes in $f_{\rm th}$ to the three timescales for energy exchange.
 
 {: .important}
 This equation for how thermalization changes with time does not depend on the volume of gas being considered. It can be applied to a global value of $f_{\rm th}$ characterizing the entire atmosphere. It can also be applied to individual subsets of the atmosphere with differing values of $t_{\rm diss}$, $t_{\rm cool}$, $t_{\rm inj}$, and $f_{\rm inj,th}$. 
 
-## Atmospheric Evolution <a name="AtmosphericEvolution"></a>
+## Atmospheric Evolution 
 
 Evolution of a galactic atmosphere in the **ExpCGM** framework proceeds through a series of equilibrium states. They are the states the atmosphere would settle into on a dynamical timescale ($\sim r / v_c$) in the absence of heating or cooling. A series of those states is therefore a valid approximation for atmospheric evolution as long as the timescales for energy injection ($t_{\rm inj}$) and radiative cooling ($t_{\rm cool}$) are not short compared to the atmosphere's dynamical time at the radii of interest. A shorter dissipation timescale ($t_{\rm diss}$) simply ensures that $f_{\rm th}$ remains close to unity.
 
