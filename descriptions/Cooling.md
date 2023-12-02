@@ -158,16 +158,18 @@ In the **ExpCGM** framework, the total radiative loss rate of thermal energy wit
 
 ### Homogenous Atmosphere
 
-Simple **ExpCGM** models assume homogeneous gas. Making the substitutions $P(r) = P_0 f_P (r / r_0)$ and $r_{\rm CGM} = r_0 x_{\rm CGM}$ (see the [Essentials](Essentials) page for definitions of symbols) therefore gives
+Simple **ExpCGM** models assume homogeneous gas. Making the substitutions $P(r) = P_0 f_P (r / r_0)$ and $r_{\rm CGM} = r_0 x_{\rm CGM}$ therefore gives
 
 <p>
   $$\dot{E}_{\rm rad} =  \frac {3} {2} \cdot \frac {4 \pi P_0 r_0^3} {t_{\rm cool}(r_0)} \cdot \int_0^{x_{\rm CGM}} \left[ \frac {\Lambda (r) / T^2 (r)}  { \Lambda (r_0) / T^2(r_0)} \right] x^2 f_P^2 (x)  dx$$
 </p>
 
 
-for a homogeneous atmosphere. The temperature-dependent factor in square brackets is approximately constant with radius in a nearly isothermal potential well. Therefore, the pressure profile's shape function $\alpha (r)$, from which $f_P (x)$ is derived, determines how radiative losses are distributed as a function of radius.
+for a homogeneous atmosphere. The temperature-dependent factor in square brackets is approximately constant with radius in a nearly isothermal potential well. Therefore, the pressure profile's shape function $\alpha (r)$, from which $f_P (x)$ is derived, determines how radiative losses are distributed as a function of radius. (See the [Essentials](Essentials) page for definitions of symbols used here.)
 
-Notice that the integral for $\dot{E}\_{\rm rad}$ diverges at small $r$ for $f_P (x) = x^{-\alpha}$ and $\alpha \geq 3/2$, if the factor in brackets is a constant or declining function of radius. In that case, something needs to be done to truncate the integral at small radii. One option is to truncate the integral at $r_{\rm gal}$. Another is to use a shape function with some curvature, so that $\alpha < 3/2$ at $r \ll r_0$ and $\alpha > 3/2$ at $r \gg r_0$ (see the [Pressure Profiles](PressureProfiles) page for some physically motivated shape function options). Observations of galaxy clusters and groups show that their pressure profiles do indeed have shape functions with the curvature properties necessary for $\dot{E}_{\rm rad}$ in a homogeneous atmosphere to converge at both small and large $r$.
+Notice that the integral for $\dot{E}\_{\rm rad}$ diverges at small $r$ for $f_P (x) = x^{-\alpha}$ and $\alpha \geq 3/2$, if the factor in square brackets is a constant or declining function of radius. In that case, something needs to be done to truncate the integral at small radii. One option is to truncate the integral at $r_{\rm gal}$. Another is to use a shape function with some curvature, so that $\alpha < 3/2$ at $r \ll r_0$ and $\alpha > 3/2$ at $r \gg r_0$ (see the [Pressure Profiles](PressureProfiles) page for some physically motivated shape function options). 
+
+Observations of galaxy clusters and groups show that their pressure profiles do indeed have shape functions with the curvature properties necessary for $\dot{E}_{\rm rad}$ in a homogeneous atmosphere to converge at both small and large $r$.
 
 ### Log-Normal Inhomogeneity
 
@@ -177,14 +179,16 @@ Multiplying $\dot{E}\_{\rm rad}$ for the homogeneous case by this boost factor a
 
 ### Multiphase Inhomogeneity
 
-A fully multiphase medium with embedded clouds orders of magnitude denser than the ambient gas may experience even greater radiative losses that require a more complex assessment of the boost factor. The general integral for the specific radiative loss rate from a gas sample of mass $M_{\rm gas}$ is
+A multiphase medium with embedded clouds orders of magnitude denser than the ambient gas may experience even greater radiative losses that require a more complex assessment of the boost factor. The radiative loss rate per unit mass from a gas sample of mass $M_{\rm gas}$ is
 
 <p>
   $$ \langle n \Lambda_\rho \rangle  = \frac {1} {M_{\rm gas}} \int_{M_{\rm gas}} n \Lambda_\rho ~d M_{\rm gas}$$
 </p>
 
-where $n = \rho / \mu m_p$ is the particle number density. In a homogeneous medium of pressure $P$ and temperature $T$ this loss rate is $\langle n \Lambda_\rho \rangle = P \Lambda_\rho (T) / kT$.
+where $n = \rho / \mu m_p$ is the particle number density. 
 
-Users who wish to model additional radiative losses from a multiphase medium need to supply an algorithm that determines the boost factor
+Users of **ExpCGM** who wish to incorporate additional radiative losses from a multiphase medium need to supply an algorithm that determines the boost factor
   $$f_{\rm rad} = \frac {kT \langle n \Lambda_\rho \rangle} {P \Lambda_\rho(T)} $$
-relating the homogeneous case to the multiphase case. Such an algorithm should be informed by high-resolution numerical simulations of turbulent radiative mixing layers in thermally unstable gas. It may depend on the local pressure and temperature of the volume-filling gas that presumably confines the denser clouds. It may also depend on the fraction $f_{\rm cool}$ of the gas mass with $T \ll T_\varphi$ and the velocity dispersion $\sigma_{\rm 1D,cool}$ of the cool-cloud population. (See the [Multiphase Gas](MultiphaseGas) page for more on how $f_{\rm cool}$ and $\sigma_{\rm 1D,cool}$ are related to the atmosphere's thermalization fraction $f_{\rm th}$.) 
+representing how the specific radiative loss rate of multiphase gas compares with the specific radiative loss rate $P \Lambda_\rho (T) / kT$ of homogeneous gas. 
+
+Such an algorithm should be informed by high-resolution numerical simulations of turbulent radiative mixing layers in thermally unstable gas. It may depend on the local pressure and temperature of the volume-filling gas that presumably confines the denser clouds. It may also depend on the fraction $f_{\rm cool}$ of the gas mass with $T \ll T_\varphi$ and the velocity dispersion $\sigma_{\rm 1D,cool}$ of the cool-cloud population. (See the [Multiphase Gas](MultiphaseGas) page for more on how $f_{\rm cool}$ and $\sigma_{\rm 1D,cool}$ are related to the atmosphere's thermalization fraction $f_{\rm th}$.) 
