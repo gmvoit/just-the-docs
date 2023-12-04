@@ -2,7 +2,7 @@
 title: Confinement
 layout: default
 nav_order: 3
-parent: Description
+parent: Extensions
 ---
 
 <head>
