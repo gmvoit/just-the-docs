@@ -42,7 +42,7 @@ This page is still under construction.
  {:toc}  
  </details>
 
-## Minimalist Regulator Model
+## Minimalist Regulator
 
 ## Black Hole Feedback
 
