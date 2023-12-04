@@ -2,7 +2,7 @@
 title: Multiphase Gas
 layout: default
 nav_order: 5
-parent: Description
+parent: Extensions
 ---
 
 <head>
