@@ -33,14 +33,14 @@ This page outlines how to fit observational data and simulated galactic atmosphe
 {: .warning}
 This page is still under construction.
 
- <details closed markdown="block">
-   <summary>
-     Contents
-   </summary>
-    {: .text-delta}
- - TOC
- {:toc}  
- </details>
+<details closed markdown="block">
+  <summary>
+    Contents
+  </summary>
+   {: .text-delta}
+- TOC
+{:toc}  
+</details>
 
 ## Parametric Input Models
 
