@@ -38,7 +38,7 @@ This page is still under construction.
    Contents
   </summary>
   {: .text-delta}
- - TOC
+- TOC
 {:toc}  
 </details>
 
