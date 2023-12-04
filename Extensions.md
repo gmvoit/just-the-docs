@@ -5,9 +5,6 @@ nav_order: 3
 has_children: true
 ---
 
-# Notebooks
+# Extensions
 
-These pages present applications of the **ExpCGM** framework for modeling galactic atmospheres.
-
-{: .warning}
-There are not yet any applications presented in this section of the website.
+These pages present extensions of the basic **ExpCGM** framework for users seeking to customize their models of galactic atmospheres.
