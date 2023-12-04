@@ -1,5 +1,5 @@
 ---
-title: Applications
+title: Extensions
 layout: default
 nav_order: 5
 has_children: true
