@@ -33,14 +33,14 @@ This page outlines how to construct an evolving **ExpCGM** model for a galactic 
 {: .warning}
 This page is still under construction.
 
- <details closed markdown="block">
-   <summary>
-     Contents
-   </summary>
-    {: .text-delta}
+<details closed markdown="block">
+  <summary>
+   Contents
+  </summary>
+  {: .text-delta}
  - TOC
- {:toc}  
- </details>
+{:toc}  
+</details>
 
 ## Minimalist Regulator
 
