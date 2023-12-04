@@ -1,9 +1,9 @@
 ---
- title: Accretion
- layout: default
- nav_order: 1
- parent: Extensions
- ---
+title: Accretion
+layout: default
+nav_order: 1
+parent: Extensions
+---
 
  <head>
    <title>MathJax tests</title>
