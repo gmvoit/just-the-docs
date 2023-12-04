@@ -1,8 +1,8 @@
 ---
- title: Accretion-Copy
- layout: default
- nav_order: 10
- ---
+title: Accretion-Copy
+layout: default
+nav_order: 10
+---
 
  <head>
    <title>MathJax tests</title>
