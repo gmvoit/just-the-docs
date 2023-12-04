@@ -1,8 +1,8 @@
 ---
 title: Accretion
 layout: default
-nav_order: 2
-parent: Description
+nav_order: 1
+parent: Extensions
 ---
 
 <head>
