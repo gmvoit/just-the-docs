@@ -44,10 +44,8 @@ This page is still under construction.
 
 ## Parametric Input Models
 
-## Output Models
+## Synthetic Output Models
 
-## Mock Observations
-
-## Populations
+## Population Properties
 
 
