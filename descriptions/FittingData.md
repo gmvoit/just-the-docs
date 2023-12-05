@@ -52,11 +52,13 @@ Two parametric models are therefore the starting point for obtaining predicted o
 
 * **Shape Function,** $\alpha( r ; \alpha_{\rm in} , \alpha_{\rm out} , r_\alpha , ... )$: The shape function model depends on at least one parameter, which can be a constant value of $\alpha$. It may also describe the shape function in terms of a limiting value $\alpha_{\rm in}$ at small radii, a limiting value $\alpha_{\rm out}$ at large radii, and a crossover radius $r_\alpha$ from one value to the other. Additional parameters may be needed to describe more complex shape functions.
 
-Up to two additional parametric functions may be needed to represent how the thermalization fraction $f_{\rm th}$ and force modification factor $f_\varphi$ depend on radius. (See the [Essentials](Essentials) page for their definitions.)
+Up to two additional parametric functions may be needed to represent how the thermalization fraction $f_{\rm th}$ and force modification factor $f_\varphi$ depend on radius. Their default values are $f_{\rm th} = f_\varphi = 1$. (See the [Essentials](Essentials) page for the definitions.)
 
 That set of parametric functions determines the atmosphere's temperature profile
-    $$T(r) = \left( \frac {f_{\rm th} f_\varphi}  {\alpha_{\rm eff}} \right) \mu m_p v_{\rm c}^2$$  
+    $$T(r) = \left( {f_{\rm th} f_\varphi} \right) \frac {\mu m_p v_{\rm c}^2} {\alpha_{\rm eff}}$$  
+The generalized shape function $\alpha_{\rm eff}(r)$ reduces to $\alpha(r)$ in models with a constant thermalization factor $f_{\rm th} = 1$.
 
+The final parameter, often the most important one, is the normalization $P_0 = P(r_0)$ of the pressure profile at the radius $r_0$.
 
 ### Basic Model
 
