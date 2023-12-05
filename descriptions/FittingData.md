@@ -66,6 +66,8 @@ Users seeking to minimize degrees of freedom can simply choose to keep $v_{\rm c
   $$\rho(r) = \frac {\alpha P_0} {v_\varphi^2} \left( \frac {r} {r_0} \right)^{-\alpha}$$
 There are three degrees of freedom $(P_0,v_\varphi,\alpha)$, and $r_0$ remains constant.
 
+### Double Power-Law Atmosphere
+
 ### NFW-like Models
 
 ### NFW Halo + Central Galaxy
@@ -73,12 +75,14 @@ There are three degrees of freedom $(P_0,v_\varphi,\alpha)$, and $r_0$ remains c
 ### NFW Halo + Central Galaxy + SMBH
 
 
+## Model Output
 
-## Output Models
+### Global Properties
 
 ### Thermodynamic Profiles
 
-### Projected Observables
+### Projected Profiles
+
 
 ## Scaling Laws
 
