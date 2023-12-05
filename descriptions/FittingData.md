@@ -42,10 +42,23 @@ This page is still under construction.
 {:toc}  
 </details>
 
-## Parametric Input Models
+## Input Parameters
 
-## Synthetic Output Models
+All **ExpCGM** models for galactic atmospheres are based on a user-specified gravitational potential function $\varphi(\mathbf{r})$ and a user-specified shape function $\alpha(\mathbf{r})$ for the atmosphere's pressure profile. In general, they can be functions of a three dimensional vector $\mathbf{r}$. Spherically symmetric models depending only on $r = |\mathbf{r}|$ are often sufficient, and this introductory page focuses on such models.
 
-## Population Properties
+Parametric models are the starting point for obtaining predicted observables: 
+* **Gravitational Potential** $\varphi( r ; v_\varphi , r_{\rm s} , r_0 , ... )$.
+
+### Basic Model
+
+### NFW + Galaxy Model
+
+## Output Models
+
+### Thermodynamic Profiles
+
+### Projected Observables
+
+## Scaling Laws
 
 
