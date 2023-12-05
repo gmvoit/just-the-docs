@@ -56,15 +56,23 @@ Up to two additional parametric functions may be needed to represent how the the
 
 That set of parametric functions determines the atmosphere's temperature profile
     $$T(r) = \left( {f_{\rm th} f_\varphi} \right) \frac {\mu m_p v_{\rm c}^2} {\alpha_{\rm eff}}$$  
-The generalized shape function $\alpha_{\rm eff}(r)$ reduces to $\alpha(r)$ in models with a constant thermalization factor $f_{\rm th} = 1$.
+in which the generalized shape function $\alpha_{\rm eff}(r)$ reduces to $\alpha(r)$ if the thermalization factor $f_{\rm th} = 1$ is independent of radius.
 
-The final parameter, often the most important one, is the normalization $P_0 = P(r_0)$ of the pressure profile at the radius $r_0$.
+The final input parameter is the normalization $P_0 = P(r_0)$ of the pressure profile at the radius $r_0$.
 
-### Basic Model
+### Isothermal Atmosphere
+
+Users seeking to minimize degrees of freedom can simply choose to keep $v_{\rm c}$ and $\alpha$ constant and set $f_{\rm th}$ and $f_\varphi$ to unity. The atmosphere's temperature $T = \mu m_p v_\varphi^2 / \alpha$ is then constant with radius, its pressure profile is the power law $P(r) = P_0 (r / r_0)^{-\alpha}$, and its density profile is 
+  $$\rho(r) = \frac {\alpha P_0} {v_\varphi^2} \left( \frac {r} {r_0} \right)^{-\alpha}$$
+There are three degrees of freedom $(P_0,v_\varphi,\alpha)$, and $r_0$ remains constant.
+
+### NFW-like Models
+
+### NFW Halo + Central Galaxy
+
+### NFW Halo + Central Galaxy + SMBH
 
 
-
-### NFW + Galaxy Model
 
 ## Output Models
 
