@@ -48,9 +48,9 @@ All **ExpCGM** models for galactic atmospheres are based on a user-specified gra
 
 Two parametric models represent the mininum input for generating an **ExpCGM** model atmosphere: 
 
-* **Gravitational Potential,** $\varphi( r \| v_\varphi , r_0 , r_{\rm s} , ... )$: The gravitational potential model needs to depend on at least two parameters: (1) the maximum circular velocity $v_\varphi$ of the confining halo's gravitational potential, and (2) a radius $r_0$ at which $\varphi = 0$. It may also depend on a scale radius $r_{\rm s}$ determining where $v_{\rm c} = v_\varphi$ along with other parameters of interest to the user.
+* **Gravitational Potential,** $\varphi( r ~\|~ v_\varphi , r_0 , r_{\rm s} , ... )$: The gravitational potential model needs to depend on at least two parameters: (1) the maximum circular velocity $v_\varphi$ of the confining halo's gravitational potential, and (2) a radius $r_0$ at which $\varphi = 0$. It may also depend on a scale radius $r_{\rm s}$ determining where $v_{\rm c} = v_\varphi$ along with other parameters of interest to the user.
 
-* **Shape Function,** $\alpha( r \| \alpha_{\rm in} , \alpha_{\rm out} , r_\alpha , ... )$: The shape function model depends on at least one parameter, which can be a constant value of $\alpha$. It may also describe the shape function in terms of a limiting value $\alpha_{\rm in}$ at small radii, a limiting value $\alpha_{\rm out}$ at large radii, and a crossover radius $r_\alpha$ from one value to the other. Additional parameters may be needed to describe more complex shape functions.
+* **Shape Function,** $\alpha( r ~\|~ \alpha_{\rm in} , \alpha_{\rm out} , r_\alpha , ... )$: The shape function model depends on at least one parameter, which can be a constant value of $\alpha$. It may also describe the shape function in terms of a limiting value $\alpha_{\rm in}$ at small radii, a limiting value $\alpha_{\rm out}$ at large radii, and a crossover radius $r_\alpha$ from one value to the other. Additional parameters may be needed to describe more complex shape functions.
 
 Two additional parametric functions may be added to represent how the thermalization fraction $f_{\rm th}$ and force modification factor $f_\varphi$ depend on radius. Their default values are $f_{\rm th} = f_\varphi = 1$. (See the [Essentials](Essentials) page for the definitions.)
 
