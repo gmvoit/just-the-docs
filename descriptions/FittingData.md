@@ -55,7 +55,7 @@ Two parametric models are therefore the starting point for obtaining predicted o
 Up to two additional parametric functions may be needed to represent how the thermalization fraction $f_{\rm th}$ and force modification factor $f_\varphi$ depend on radius. (See the [Essentials](Essentials) page for their definitions.)
 
 That set of parametric functions determines the atmosphere's temperature profile
-    $$T(r) = {f_{\rm th} f_\varphi} \frac {\mu m_p v_{\rm c}^2} {\alpha_{\rm eff}}$$  
+    $$T(r) = \left( \frac {f_{\rm th} f_\varphi}  {\alpha_{\rm eff}} \right) \mu m_p v_{\rm c}^2$$  
 
 
 ### Basic Model
