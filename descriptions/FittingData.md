@@ -64,7 +64,7 @@ The final input parameter is the normalization $P_0 = P(r_0)$ of the pressure pr
 
 Users seeking to minimize degrees of freedom can simply choose to keep $v_{\rm c}$ and $\alpha$ constant and set $f_{\rm th}$ and $f_\varphi$ to unity. The atmosphere's temperature $T = \mu m_p v_\varphi^2 / \alpha$ is then constant with radius, its pressure profile is the power law $P(r) = P_0 (r / r_0)^{-\alpha}$, and its density profile is 
   $$\rho(r) = \frac {\alpha P_0} {v_\varphi^2} \left( \frac {r} {r_0} \right)^{-\alpha}$$
-There are three degrees of freedom $(P_0,v_\varphi,\alpha)$, and $r_0$ remains constant.
+This isothermal atmosphere model has three degrees of freedom $(P_0,v_\varphi,\alpha)$, because $r_0$ is degenerate with $P_0$ and can be held constant.
 
 ### Double Power-Law Atmosphere
 
