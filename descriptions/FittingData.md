@@ -44,7 +44,7 @@ This page is still under construction.
 
 ## Input Parameters
 
-All **ExpCGM** models for galactic atmospheres are based on a user-specified gravitational potential function $\varphi(\mathbf{r})$ and a user-specified shape function $\alpha(\mathbf{r})$ for the atmosphere's pressure profile. In general, they can be functions of a three dimensional vector $\mathbf{r}$. Spherically symmetric models depending only on $r = |\mathbf{r}|$ are often sufficient, and this introductory page focuses on such models.
+All **ExpCGM** models for galactic atmospheres are based on a user-specified gravitational potential function $\varphi(\mathbf{r})$ and a user-specified shape function $\alpha(\mathbf{r})$ for the atmosphere's pressure profile. In general, they can be functions of a three dimensional vector $\mathbf{r}$. Spherically symmetric models depending only on $r = \| \mathbf{r} \|$ are often sufficient, and this introductory page focuses on such models.
 
 Two parametric models are therefore the starting point for obtaining predicted observables: 
 
