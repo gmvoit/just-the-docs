@@ -140,7 +140,7 @@ in which $T_\varphi (r)$ is the gravitational temperature profile defined on the
 $$T(r) = T_{\rm core} + \frac {4} {5}\int_r^{r_{\rm core}} T_\varphi (r) \frac {dr} {r}$$
 The ***core radius*** parameter $r_{\rm core}$ is the outer radius of the isentropic region, and $T_{\rm core} = T(r_{\rm core})$ is the atmospheric temperature at that radius. 
 
-Inserting $T(r)$ into the equation $\alpha (r) = 2 \frac {T_\varphi (r)} {T(r)}$
+Inserting $T(r)$ into the equation $\alpha (r) = 2 T_\varphi (r) / T(r)$
 then gives the pressure profile's shape function at $r < r_{\rm core}$. It reduces to
   $$\alpha (r) \approx \frac {2 T_\varphi (r)} {T_{\rm core} + 0.8 T_\varphi (r) \cdot \ln (r_{\rm core}/r) }$$
 in a potential well that is approximately isothermal.
