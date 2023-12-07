@@ -92,9 +92,17 @@ Expanding that example to accommodate a double power-law atmosphere yields a mod
 An NFW halo model coupled with a shape function model that has $\alpha_{\rm in} > 0$ results in an atmospheric temperature that approaches zero at small radii. Adding a central galaxy to the gravitational potential model helps to address this potentially problematic issue.
 
 One option in the **ExpCGM** framework is to use a ***Hernquist model*** to represent the galaxy's contribution to the potential's circular velocity profile:
-  $$v_{\rm H}^2(r) =  $$
+  $$v_{\rm H}^2(r) =  \frac {G M_{\rm H} r} {r + r_{\rm H}}$$
+In this expression, $M_{\rm H}$ represents the galaxy's total mass and $r_{\rm H}$ is a Hernquist scale radius determining where the galaxy's cumulative mass profile flattens. 
+
+The model parameters $M_{\rm H}$ and $r_{\rm H}$ can be free, or they can be fixed at values consistent with the observed stellar mass and effective radius of the halo's central galaxy. If they are allowed to be free, the **ExpCGM** atmosphere model grows to have nine parameters: $P_0,v_\varphi,r_{\rm s},M_{\rm H},r_{\rm H},\alpha_{\rm in},\alpha_{\rm out},\alpha_{\rm tr},r_\alpha$.  
+
+Most central galaxies have a maximum circular velocity $G M_{\rm H} / 4 r_{\rm H}$ similar to the maximum circular velocity $v_\varphi$ of the surrounding halo. It is therefore reasonable to apply the restriction $r_{\rm H} = G M_{\rm H} / 4 v_\varphi^2$, so that $\max (v_{\rm H}) = v_\varphi$, thereby reducing the model to eight degrees of freedom. However, that restriction is unwise for galaxy-cluster models, because the maximum circular velocity of a central cluster galaxy is significantly smaller than the maximum circular velocity of its halo. 
 
 ### NFW Halo + Central Galaxy + SMBH
+
+At the smallest radii, a supermassive black hole may dominate the galaxy's gravitational potential. Its contribution can be included in an **ExpCGM** model using the Newtonian formula
+  $$v_{\rm BH}^
 
 ### Thermalization Factor
 
