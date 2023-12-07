@@ -77,7 +77,7 @@ The atmosphere's temperature declines with radius for $\alpha_{\rm out} > \alpha
 Restricting the shape-function model by setting $\alpha_{\rm in} = 0$ and $\alpha_{\rm tr} = 2$ results in 
   $$\alpha(r) = \alpha_{\rm out} \left[ \frac {(r / r_\alpha)^2} {1 + (r / r_\alpha)^2} \right]$$
 which is equivalent to the classic *beta model* for galaxy-cluster atmospheres, but for thermal pressure instead of gas density:
-  $$P(r) \propto \frac \left[ 1 +  \right]^{-\alpha_{\rm out} / 2}$$ 
+  $$P(r) \propto \left[ 1 + \left( \frac {r} {r_\alpha} \right)^2 \right]^{-\alpha_{\rm out} / 2}$$ 
 The classic beta model assumes a constant-temperature atmosphere, but the **ExpCGM** force-balance assumption results in a declining temperature gradient that is greatest near the transition radius $r_\alpha$.
 
 ### NFW-like Models
