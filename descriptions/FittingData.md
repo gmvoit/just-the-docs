@@ -77,19 +77,26 @@ Gas temperature in this atmosphere model declines from $T \approx \mu m_p v_\var
 {: .note}
 Restricting the double power law model by setting $\alpha_{\rm in} = 0$ and $\alpha_{\rm tr} = 2$ results in 
   $$P(r) \propto \left[ 1 + \left( \frac {r} {r_\alpha} \right)^2 \right]^{-\frac {\alpha_{\rm out}} {2}}$$ 
-This relation is equivalent to the classic *beta model* for galaxy-cluster atmospheres, but for thermal pressure instead of gas density. However, the fundamental force-balance assumption of **ExpCGM** then results in a gas-temperature profile that diverges at small $r$ in an isothermal potential well with constant $v_\varphi$. This undesirable feature of a beta model can be mitigated by using a gravitational potential in which $v_{\rm c}$ becomes small at small radii.
+This relation is equivalent to the classic *beta model* for galaxy-cluster atmospheres, but with thermal pressure replacing gas density. This model has a drawback: The fundamental force-balance assumption of **ExpCGM** results in a gas-temperature profile that diverges at small $r$ in an isothermal potential well with constant $v_\varphi$. This undesirable feature of a beta model can be mitigated by using a gravitational potential in which $v_{\rm c}$ becomes small at small radii.
 
 ### NFW-like Models
 
 Cosmological structure formation also produces halo potential wells that are not quite isothermal. Typically, the circular velocity profile of a cosmological halo rises with radius at small $r$ and declines with radius at large $r$. The most common fitting formula accounting for that feature is the Navarro-Frenk-White (NFW) model, which can be represented as
-  $$v_{\rm c}^2(x) = A_{\rm NFW} v_\varphi^2 \left[ \frac {\ln (1 + x)} {x} - \frac {1} {1 + x} \right]$$
+  $$v_{\rm NFW}^2(x) = A_{\rm NFW} v_\varphi^2 \left[ \frac {\ln (1 + x)} {x} - \frac {1} {1 + x} \right]$$
 with $x =  r / r_{\rm s}$ and $A_{\rm NFW} = 4.625$. The simple example on the [Essentials](Essentials) page presents a model with four degrees freedom $(P_0,v_\varphi,r_{\rm s}, \alpha)$ for a power-law atmosphere in an NFW potential well. 
 
 Expanding that example to accommodate a double power-law atmosphere yields a model with seven degrees of freedom $(P_0,v_\varphi,r_{\rm s},\alpha_{\rm in},\alpha_{\rm out},\alpha_{\rm tr},r_\alpha)$. It can be reduced to a six-parameter model by choosing to make $r_\alpha$ a constant multiple of $r_{\rm s}$ and to a five-parameter model by keeping $\alpha_{\rm tr}$ fixed.
  
 ### NFW Halo + Central Galaxy
 
+An NFW halo model coupled with a shape function model that has $\alpha_{\rm in} > 0$ results in an atmospheric temperature that approaches zero at small radii. Adding a central galaxy to the gravitational potential model helps to address this potentially problematic issue.
+
+One option in the **ExpCGM** framework is to use a ***Hernquist model*** to represent the galaxy's contribution to the potential's circular velocity profile:
+  $$v_{\rm H}^2(r) =  $$
+
 ### NFW Halo + Central Galaxy + SMBH
+
+### Thermalization Factor
 
 
 ## Model Output
