@@ -70,16 +70,20 @@ This isothermal atmosphere model therefore has three degrees of freedom $(P_0,v_
 
 Cosmological structure formation produces gaseous atmospheres in which $\alpha(r)$ increases with radius. An **ExpCGM** model can account for this increase using the four-parameter fitting formula
   $$\alpha(r) = \alpha_{\rm in} + ( \alpha_{\rm out} - \alpha_{\rm in} ) \left[ \frac {(r / r_\alpha)^{\alpha_{\rm tr}}} {1 + (r / r_\alpha)^{\alpha_{\rm tr}}} \right]$$
-It results in a model with six degrees of freedom $(P_0,v_\varphi,\alpha_{\rm in},\alpha_{\rm out},\alpha_{\rm tr},r_\alpha)$ for an atmosphere in an isothermal potential well. Atmospheric temperature then declines with radius for $\alpha_{\rm out} > \alpha_{\rm in}$.
+It results in a model with six degrees of freedom $(P_0,v_\varphi,\alpha_{\rm in},\alpha_{\rm out},\alpha_{\rm tr},r_\alpha)$ for an atmosphere in an isothermal potential well, with a pressure profile
+  $$P(r) \propto $$
+The atmosphere's temperature declines with radius for $\alpha_{\rm out} > \alpha_{\rm in}$.
 
 Restricting the shape-function model by setting $\alpha_{\rm in} = 0$ and $\alpha_{\rm tr} = 2$ results in 
   $$\alpha(r) = \alpha_{\rm out} \left[ \frac {(r / r_\alpha)^2} {1 + (r / r_\alpha)^2} \right]$$
-which is equivalent to the classic *beta model* for galaxy-cluster atmospheres, but for pressure instead of gas density.
+which is equivalent to the classic *beta model* for galaxy-cluster atmospheres, but for thermal pressure instead of gas density:
+  $$P(r) \propto \frac \left[ 1 + \left( \frac {r} {r_\alpha} \right)^2 \right]^{\alpha_{\rm out} / 2}$$ 
+The classic beta model assumes a constant-temperature atmosphere, but the **ExpCGM** force-balance assumption results in a declining temperature gradient that is greatest near the transition radius $r_\alpha$.
 
 ### NFW-like Models
 
 Cosmological structure formation also produces halo potential wells that are not quite isothermal. Typically, $v_{\rm c}$ rises with radius at small $r$ and declines with radius at large $r$. The most common fitting formula accounting for that feature is the Navarro-Frenk-White model, which can be represented as
-  $$v_{\rm c}(x) = A_{\rm NFW} v_\varphi^2 \left[ \frac {\ln (1 + x)} {x} - \frac {1} {1 = x} \right]$$
+  $$v_{\rm c}(x) = A_{\rm NFW} v_\varphi^2 \left[ \frac {\ln (1 + x)} {x} - \frac {1} {1 + x} \right]$$
 with $x =  r / r_{\rm s}$ and $A_{\rm NFW} = 4.625$. The simple example on the [Essentials](Essentials) page works out a model with four degrees freedom $(P_0,v_\varphi,r_{\rm s}, \alpha)$ for a power-law atmosphere in an NFW potential well. 
 
 Expanding that example to accommodate a double power-law atmosphere yields a model with seven degrees of freedom $(P_0,v_\varphi,r_{\rm s},\alpha_{\rm in},\alpha_{\rm out},\alpha_{\rm tr},r_\alpha)$. It can be restricted by choosing to make $r_\alpha$ a constant multiple of $r_{\rm s}$.
