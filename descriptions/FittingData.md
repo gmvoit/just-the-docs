@@ -55,14 +55,14 @@ Two parametric models represent the mininum input for generating an **ExpCGM** m
 Two additional parametric functions may be added to represent how the thermalization fraction $f_{\rm th}$ and force modification factor $f_\varphi$ depend on radius. Their default values are $f_{\rm th} = f_\varphi = 1$. (See the [Essentials](Essentials) page for definitions.)
 
 That set of four parametric functions determines the atmosphere's temperature profile
-    $$T(r) = \left( {f_{\rm th} f_\varphi} \right) \frac {\mu m_p v_{\rm c}^2 (r)} {\alpha_{\rm eff} (r) }$$  
+    $$kT(r) = \left( {f_{\rm th} f_\varphi} \right) \frac {\mu m_p v_{\rm c}^2 (r)} {\alpha_{\rm eff} (r) }$$  
 in which the generalized shape function $\alpha_{\rm eff}(r)$ reduces to $\alpha(r)$ if the thermalization factor $f_{\rm th}$ is independent of radius.
 
 The final input parameter needed for a complete **ExpCGM** model is the normalization $P_0 = P(r_0)$ of the atmosphere's pressure profile at a user-chosen fiducial radius $r_0$. 
 
 ### Isothermal Atmosphere
 
-Users seeking to minimize degrees of freedom can opt for an isothermal potential well with constant circular velocity $v_{\rm c} = v_\varphi$ and an atmosphere with constant $\alpha$ while setting $f_{\rm th}$ and $f_\varphi$ to unity. The atmosphere's temperature $T = \mu m_p v_\varphi^2 / \alpha$ is then constant with radius, its pressure profile is the power law $P(r) = P_0 (r / r_0)^{-\alpha}$, and its density profile is 
+Users seeking to minimize degrees of freedom can opt for an isothermal potential well with constant circular velocity $v_{\rm c} = v_\varphi$ and an atmosphere with constant $\alpha$ while setting $f_{\rm th}$ and $f_\varphi$ to unity. The atmosphere's temperature $kT = \mu m_p v_\varphi^2 / \alpha$ is then constant with radius, its pressure profile is the power law $P(r) = P_0 (r / r_0)^{-\alpha}$, and its density profile is 
   $$\rho(r) = \frac {\alpha P_0} {v_\varphi^2} \left( \frac {r} {r_0} \right)^{-\alpha}$$
 This isothermal atmosphere model therefore has three degrees of freedom $(P_0,v_\varphi,\alpha)$, because $r_0$ is degenerate with $P_0$. Its temperature for a given value of $v_\varphi$ depends inversely on $\alpha$.
 
@@ -72,7 +72,7 @@ Cosmological structure formation produces gaseous atmospheres in which $\alpha(r
   $$\alpha(r) = \alpha_{\rm in} + ( \alpha_{\rm out} - \alpha_{\rm in} ) \left[ \frac {(r / r_\alpha)^{\alpha_{\rm tr}}} {1 + (r / r_\alpha)^{\alpha_{\rm tr}}} \right]$$
 It results in a model with six degrees of freedom $(P_0,v_\varphi,\alpha_{\rm in},\alpha_{\rm out},\alpha_{\rm tr},r_\alpha)$ for an atmosphere in an isothermal potential well, with a pressure profile 
   $$P(r) \propto \left( \frac {r} {r_\alpha} \right)^{-\alpha_{\rm in}} \left[ 1 + \left( \frac {r} {r_\alpha} \right)^{\alpha_{\rm tr}} \right]^{- \frac {\alpha_{\rm out} - \alpha_{\rm in}} {\alpha_{\rm tr}}}$$
-Gas temperature in this atmosphere model declines from $T \approx \mu m_p v_\varphi^2 / \alpha_{\rm in}$ at small radii toward $T \approx \mu m_p v_\varphi^2 / \alpha_{\rm out}$ at large radii as long as $\alpha_{\rm out} > \alpha_{\rm in}$.
+Gas temperature in this atmosphere model declines from $kT \approx \mu m_p v_\varphi^2 / \alpha_{\rm in}$ at small radii toward $kT \approx \mu m_p v_\varphi^2 / \alpha_{\rm out}$ at large radii as long as $\alpha_{\rm out} > \alpha_{\rm in}$.
 
 {: .note}
 Restricting the double power law model by setting $\alpha_{\rm in} = 0$ and $\alpha_{\rm tr} = 2$ results in 
@@ -105,10 +105,16 @@ At the smallest radii, a supermassive black hole may dominate the galaxy's gravi
   $$v_{\rm BH}^2 (r) = \frac {G M_{\rm BH}} {r}$$
 where $M_{\rm BH}$ is the central black hole's mass. Adding a black hole to the potential model, so that
   $$v_{\rm c}^2 (r) = v_{\rm NFW}^2 (r) + v_{\rm H}^2 (r) + v_{\rm BH}^2 (r)$$
-then prevents the atmospheric temperature from going to zero at small radii.
+then ensures that the model atmosphere's temperature does not go to zero at small radii.
 
 ### Thermalization Factor
 
+Constraining an atmosphere's thermalization factor $f_{\rm th}$ is possible if the data set to be fit contains information about the gravitational potential other than the atmospheric temperature profile. An **ExpCGM** atmosphere model may include a parametric model for $f_{\rm th}$ that depends on radius.
+
+Combining that model with the model for $\alpha (r)$ gives
+  $$\alpha_{\rm eff} (r) = \alpha (r) + \frac {d \ln f_{\rm th}} {d \ln r}$$
+The predicted temperature profile then becomes
+  $$kT(r) = f_{\rm th} (r) \frac {\mu m_p v_{\rm c}^2 (r)} {\alpha_{\rm eff} (r)}$$
 
 ## Model Output
 
