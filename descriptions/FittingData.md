@@ -114,7 +114,10 @@ Constraining an atmosphere's thermalization factor $f_{\rm th}$ is possible if t
 Combining that model with the model for $\alpha (r)$ gives
   $$\alpha_{\rm eff} (r) = \alpha (r) + \frac {d \ln f_{\rm th}} {d \ln r}$$
 The predicted temperature profile then becomes
-  $$kT(r) = f_{\rm th} (r) \frac {\mu m_p v_{\rm c}^2 (r)} {\alpha_{\rm eff} (r)}$$
+  $$kT(r) = \frac {\mu m_p v_{\rm c}^2 (r)} {\alpha_{\rm eff} (r)} f_{\rm th} (r)$$
+Assuming that isotropic turbulence provides the rest of the support needed for force balance gives the prediction
+  $$\sigma_{\rm 1D} (r) = \frac {v_{\rm c}^2 (r)} {\alpha_{\rm eff} (r)} \left[ 1 - f_{\rm th} (r) \right]$$
+in which $\sigma_{\rm 1D}$ is the one-dimensional velocity dispersion of turbulent support.
 
 ## Model Output
 
