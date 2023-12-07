@@ -116,7 +116,7 @@ Combining that model with the model for $\alpha (r)$ gives
 The predicted temperature profile then becomes
   $$kT(r) = \frac {\mu m_p v_{\rm c}^2 (r)} {\alpha_{\rm eff} (r)} f_{\rm th} (r)$$
 Assuming that isotropic turbulence provides the rest of the support needed for force balance gives the prediction
-  $$\sigma_{\rm 1D} (r) = \frac {v_{\rm c}^2 (r)} {\alpha_{\rm eff} (r)} \left[ 1 - f_{\rm th} (r) \right]$$
+  $$\sigma_{\rm 1D}^2 (r) = \frac {2} {3} \frac {v_{\rm c}^2 (r)} {\alpha_{\rm eff} (r)} \left[ 1 - f_{\rm th} (r) \right]$$
 in which $\sigma_{\rm 1D}$ is the one-dimensional velocity dispersion of turbulent support.
 
 ## Model Output
