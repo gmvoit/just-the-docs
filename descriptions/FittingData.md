@@ -71,21 +71,21 @@ This isothermal atmosphere model therefore has three degrees of freedom $(P_0,v_
 Cosmological structure formation produces gaseous atmospheres in which $\alpha(r)$ increases with radius. An **ExpCGM** model can account for this increase using the four-parameter fitting formula
   $$\alpha(r) = \alpha_{\rm in} + ( \alpha_{\rm out} - \alpha_{\rm in} ) \left[ \frac {(r / r_\alpha)^{\alpha_{\rm tr}}} {1 + (r / r_\alpha)^{\alpha_{\rm tr}}} \right]$$
 It results in a model with six degrees of freedom $(P_0,v_\varphi,\alpha_{\rm in},\alpha_{\rm out},\alpha_{\rm tr},r_\alpha)$ for an atmosphere in an isothermal potential well, with a pressure profile 
-  $$P(r) \propto \left( \frac {r} {r_\alpha} \right)^{-\alpha_{\rm in}} \left[ 1 + \left( \frac {r} {r_\alpha} \right)^{\alpha_{\rm tr}} \right]^{-(\alpha_{\rm out} - \alpha_{\rm in})/\alpha_{\rm tr}}$$
-Temperature in this atmosphere model declines from $T \approx \mu m_p v_\varphi^2 / \alpha_{\rm in}$ at small radii toward $T \approx \mu m_p v_\varphi^2 / \alpha_{\rm out}$ at large radii, for $\alpha_{\rm out} > \alpha_{\rm in}$.
+  $$P(r) \propto \left( \frac {r} {r_\alpha} \right)^{-\alpha_{\rm in}} \left[ 1 + \left( \frac {r} {r_\alpha} \right)^{\alpha_{\rm tr}} \right]^{- \frac {\alpha_{\rm out} - \alpha_{\rm in}} {\alpha_{\rm tr}}}$$
+Gas temperature in this atmosphere model declines from $T \approx \mu m_p v_\varphi^2 / \alpha_{\rm in}$ at small radii toward $T \approx \mu m_p v_\varphi^2 / \alpha_{\rm out}$ at large radii as long as $\alpha_{\rm out} > \alpha_{\rm in}$.
 
 {: .note}
-Restricting this shape-function model by setting $\alpha_{\rm in} = 0$ and $\alpha_{\rm tr} = 2$ results in 
+Restricting the double power law model by setting $\alpha_{\rm in} = 0$ and $\alpha_{\rm tr} = 2$ results in 
   $$P(r) \propto \left[ 1 + \left( \frac {r} {r_\alpha} \right)^2 \right]^{-\frac {\alpha_{\rm out}} {2}}$$ 
-which is equivalent to the classic *beta model* for galaxy-cluster atmospheres, but for thermal pressure instead of gas density. However, the force-balance assumption that **ExpCGM** applies then results in a gas-temperature profile that diverges at small $r$ in an isothermal potential well with constant $v_\varphi$. This undesirable feature of a a beta model can be mitigated by using a gravitational potential in which $v_{\rm c}$ becomes small at small radii.
+This relation is equivalent to the classic *beta model* for galaxy-cluster atmospheres, but for thermal pressure instead of gas density. However, the fundamental force-balance assumption of **ExpCGM** then results in a gas-temperature profile that diverges at small $r$ in an isothermal potential well with constant $v_\varphi$. This undesirable feature of a beta model can be mitigated by using a gravitational potential in which $v_{\rm c}$ becomes small at small radii.
 
 ### NFW-like Models
 
-Cosmological structure formation also produces halo potential wells that are not quite isothermal. Typically, $v_{\rm c}$ rises with radius at small $r$ and declines with radius at large $r$. The most common fitting formula accounting for that feature is the Navarro-Frenk-White model, which can be represented as
-  $$v_{\rm c}(x) = A_{\rm NFW} v_\varphi^2 \left[ \frac {\ln (1 + x)} {x} - \frac {1} {1 + x} \right]$$
-with $x =  r / r_{\rm s}$ and $A_{\rm NFW} = 4.625$. The simple example on the [Essentials](Essentials) page works out a model with four degrees freedom $(P_0,v_\varphi,r_{\rm s}, \alpha)$ for a power-law atmosphere in an NFW potential well. 
+Cosmological structure formation also produces halo potential wells that are not quite isothermal. Typically, the circular velocity profile of a cosmological halo rises with radius at small $r$ and declines with radius at large $r$. The most common fitting formula accounting for that feature is the Navarro-Frenk-White (NFW) model, which can be represented as
+  $$v_{\rm c}^2(x) = A_{\rm NFW} v_\varphi^2 \left[ \frac {\ln (1 + x)} {x} - \frac {1} {1 + x} \right]$$
+with $x =  r / r_{\rm s}$ and $A_{\rm NFW} = 4.625$. The simple example on the [Essentials](Essentials) page presents a model with four degrees freedom $(P_0,v_\varphi,r_{\rm s}, \alpha)$ for a power-law atmosphere in an NFW potential well. 
 
-Expanding that example to accommodate a double power-law atmosphere yields a model with seven degrees of freedom $(P_0,v_\varphi,r_{\rm s},\alpha_{\rm in},\alpha_{\rm out},\alpha_{\rm tr},r_\alpha)$. It can be restricted by choosing to make $r_\alpha$ a constant multiple of $r_{\rm s}$.
+Expanding that example to accommodate a double power-law atmosphere yields a model with seven degrees of freedom $(P_0,v_\varphi,r_{\rm s},\alpha_{\rm in},\alpha_{\rm out},\alpha_{\rm tr},r_\alpha)$. It can be reduced to a six-parameter model by choosing to make $r_\alpha$ a constant multiple of $r_{\rm s}$ and to a five-parameter model by keeping $\alpha_{\rm tr}$ fixed.
  
 ### NFW Halo + Central Galaxy
 
