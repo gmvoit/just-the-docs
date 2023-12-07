@@ -74,11 +74,10 @@ It results in a model with six degrees of freedom $(P_0,v_\varphi,\alpha_{\rm in
   $$P(r) \propto \left( \frac {r} {r_\alpha} \right)^{-\alpha_{\rm in}} \left[ 1 + \left( \frac {r} {r_\alpha} \right)^{\alpha_{\rm tr}} \right]^{-(\alpha_{\rm out} - \alpha_{\rm in})/\alpha_{\rm tr}}$$
 Temperature in this atmosphere model declines from $T \approx \mu m_p v_\varphi^2 / \alpha_{\rm in}$ at small radii toward $T \approx \mu m_p v_\varphi^2 / \alpha_{\rm out}$ at large radii, for $\alpha_{\rm out} > \alpha_{\rm in}$.
 
-Restricting the shape-function model by setting $\alpha_{\rm in} = 0$ and $\alpha_{\rm tr} = 2$ results in 
-  $$\alpha(r) = \alpha_{\rm out} \left[ \frac {(r / r_\alpha)^2} {1 + (r / r_\alpha)^2} \right]$$
-which is equivalent to the classic *beta model* for galaxy-cluster atmospheres, but for thermal pressure instead of gas density:
+{: .note}
+Restricting this shape-function model by setting $\alpha_{\rm in} = 0$ and $\alpha_{\rm tr} = 2$ results in 
   $$P(r) \propto \left[ 1 + \left( \frac {r} {r_\alpha} \right)^2 \right]^{-\frac {\alpha_{\rm out}} {2}}$$ 
-The classic beta model assumes a constant-temperature atmosphere, but the **ExpCGM** force-balance assumption results in a declining temperature gradient that is greatest near the transition radius $r_\alpha$.
+which is equivalent to the classic *beta model* for galaxy-cluster atmospheres, but for thermal pressure instead of gas density. However, the force-balance assumption that **ExpCGM** applies then results in a gas-temperature profile that diverges at small $r$ in an isothermal potential well with constant $v_\varphi$. This undesirable feature of a a beta model can be mitigated by using a gravitational potential in which $v_{\rm c}$ becomes small at small radii.
 
 ### NFW-like Models
 
