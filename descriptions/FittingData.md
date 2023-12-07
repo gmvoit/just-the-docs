@@ -99,10 +99,13 @@ The model parameters $M_{\rm H}$ and $r_{\rm H}$ can be free, or they can be fix
 
 Most central galaxies have a maximum circular velocity $G M_{\rm H} / 4 r_{\rm H}$ similar to the maximum circular velocity $v_\varphi$ of the surrounding halo. It is therefore reasonable to apply the restriction $r_{\rm H} = G M_{\rm H} / 4 v_\varphi^2$, so that $\max (v_{\rm H}) = v_\varphi$, thereby reducing the model to eight degrees of freedom. However, that restriction is unwise for galaxy-cluster models, because the maximum circular velocity of a central cluster galaxy is significantly smaller than the maximum circular velocity of its halo. 
 
-### NFW Halo + Central Galaxy + SMBH
+### NFW Halo + Central Galaxy + BH
 
 At the smallest radii, a supermassive black hole may dominate the galaxy's gravitational potential. Its contribution can be included in an **ExpCGM** model using the Newtonian formula
-  $$v_{\rm BH}^
+  $$v_{\rm BH}^2 (r) = \frac {G M_{\rm BH}} {r}$$
+where $M_{\rm BH}$ is the central black hole's mass. Adding a black hole to the potential model, so that
+  $$v_{\rm c}^2 (r) = v_{\rm NFW}^2 (r) + v_{\rm H}^2 (r) + v_{\rm BH}^2 (r)$$
+then prevents the atmospheric temperature from going to zero at small radii.
 
 ### Thermalization Factor
 
