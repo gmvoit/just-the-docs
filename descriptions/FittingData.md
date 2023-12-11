@@ -140,9 +140,9 @@ Data sets with many objects ...
 
 ## Scaling Laws
 
-### Halo-Mass Dependence
+### Dependence on Halo Mass
 
-### Redshift Dependence
+### Dependence on Redshift
 
 
 
