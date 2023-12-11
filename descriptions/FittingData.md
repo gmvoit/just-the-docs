@@ -57,7 +57,7 @@ Once $\alpha(r)$ has been specified, the pressure profile of an **ExpCGM** atmos
 In the simplest **ExpCGM** models, dividing $v_{\rm c} (r)$ by $\alpha(r)$ gives the atmosphere's temperature profile: 
   $$kT(r) = \frac {\mu m_p v_{\rm c}^2(r)} {\alpha(r)}$$
 The atmosphere's density profile 
-  $$\rho(r) = \frac {\mu m_p P(r)} {kT(r)}$$
+  $$\rho(r) = \frac {\alpha(r) P(r)} {v_{\rm c}^2(r)}$$
 then depends on just $\varphi(r)$, $\alpha(r)$, and $P_0$. However, $T(r)$ and $\rho(r)$ may also depend on two additional parametric functions representing the atmosphere's thermalization fraction $f_{\rm th}$ and a force modification factor $f_\varphi$. (See the [Essentials](Essentials) page for definitions of those functions.)
 
 ### Isothermal Atmosphere
