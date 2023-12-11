@@ -124,11 +124,14 @@ Fitting such an **ExpCGM** atmosphere model to a data set containing information
 
 ## Model Output
 
-An **ExpCGM** model atmosphere's thermodynamical profiles, $P(r)$, $T(r)$, and $\rho (r)$, are functions of the input parameter set $(P_0,v_\varphi, r_{\rm s}, \alpha_{\rm in}, \alpha_{\rm out}, \alpha_{\rm tr}, r_\alpha, f_{\rm th}, ...)$ ...
+The input parameters of an **ExpCGM** atmosphere model $(P_0,v_\varphi, r_{\rm s}, \alpha_{\rm in}, \alpha_{\rm out}, \alpha_{\rm tr}, r_\alpha, f_{\rm th}, ...)$ determine a variety of potentially observable atmospheric characteristics.
+
+### Thermodynamic Profiles
+
+An **ExpCGM** model atmosphere's thermodynamical profiles, $P(r)$, $T(r)$, and $\rho (r)$, are functions of the input parameter set  ...
 
 ### Global Properties
 
-### Thermodynamic Profiles
 
 ### Projected Profiles
 
