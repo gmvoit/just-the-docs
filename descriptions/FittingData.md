@@ -1,4 +1,4 @@
----
+ ---
 title: Fitting Data
 layout: default
 nav_order: 2
@@ -95,9 +95,9 @@ One option is to use a ***Hernquist model*** to represent the galaxy's contribut
   $$v_{\rm H}^2(r) =  \frac {G M_{\rm H} r} {r + r_{\rm H}}$$
 In this expression, $M_{\rm H}$ represents the galaxy's total mass and the ***Hernquist radius*** $r_{\rm H}$ is a scale radius determining how the galaxy's mass profile converges toward $M_{\rm H}$. 
 
-The model parameters $M_{\rm H}$ and $r_{\rm H}$ can be free, or they can be fixed at values consistent with the observed stellar mass and effective radius of the halo's central galaxy. If they are both allowed to be free, then adding a central galaxy to the gravitational potential model increases the degrees of freedom of the overall **ExpCGM** atmosphere model by two.
+The model parameters $M_{\rm H}$ and $r_{\rm H}$ can be free, or they can be fixed at values consistent with the observed stellar mass and effective radius of the halo's central galaxy. If both $M_{\rm H}$ and $r_{\rm H}$ are allowed to be free, then adding a central galaxy to the gravitational potential model increases dimensionality of the overall **ExpCGM** atmosphere model by two degrees of freedom.
 
-{: note}
+{: .note}
 Most central galaxies have a maximum circular velocity $(G M_{\rm H} / 4 r_{\rm H})^{1/2}$ similar to the maximum circular velocity $v_\varphi$ of the surrounding halo. It is therefore reasonable to reduce the dimensionality of the parameter space by applying the restriction $r_{\rm H} = G M_{\rm H} / 4 v_\varphi^2$, so that $\max (v_{\rm H}) = v_\varphi$. However, applying that restriction is unwise for galaxy-cluster models, because the maximum circular velocity of a central cluster galaxy is significantly smaller than the maximum circular velocity of its halo. 
 
 ### NFW Halo + Central Galaxy + BH
