@@ -1,4 +1,4 @@
- ---
+---
 title: Fitting Data
 layout: default
 nav_order: 2
