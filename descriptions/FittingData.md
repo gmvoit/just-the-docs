@@ -52,20 +52,17 @@ Two parametric models represent the mininum input for generating an **ExpCGM** m
 
 * **Shape Function,** $\alpha( ~r~ \| ~\alpha , \alpha_{\rm in} , \alpha_{\rm out} , r_\alpha , ... ~)$: The atmosphere's shape function can be a constant value of $\alpha$. It can also go from one limiting value ($\alpha_{\rm in}$) at small radii to another one ($\alpha_{\rm out}$) near a crossover radius ($r_\alpha$). The [Pressure Profiles](PressureProfiles) page discusses how $\alpha (r)$ is related to the physical processes that shape a galaxy's atmosphere and provides parametric expressions for several physically motivated options.
 
-Once $\varphi(r)$ and $\alpha(r)$ have been specified, an **ExpCGM** atmosphere model depends on just one other required parameter: the pressure profile's normalization $P_0$ at a user-chosen fiducial radius $r_0$. Integrating $\alpha (r)$ to obtain $f_P (r)$, as described on the [Essentials](Essentials) page, then gives the atmosphere's pressure profile
-  $$P(r) = P_0 f_P(r)$$
-
-In the simplest **ExpCGM** atmosphere model's temperature and density profiles may depend on two additional parametric functions representing how its thermalization fraction $f_{\rm th}$ and force modification factor $f_\varphi$ depend on radius. (See the [Essentials](Essentials) page for definitions.)
-
-That set of four parametric functions determines the atmosphere's temperature profile
-    $$kT(r) = \left( {f_{\rm th} f_\varphi} \right) \frac {\mu m_p v_{\rm c}^2 (r)} {\alpha_{\rm eff} (r) }$$  
-in which the generalized shape function $\alpha_{\rm eff}(r)$ reduces to $\alpha(r)$ if the thermalization factor $f_{\rm th}$ is independent of radius.
-
-The final input parameter needed for a complete **ExpCGM** model is the normalization $P_0 = P(r_0)$ of the atmosphere's pressure profile at a user-chosen fiducial radius $r_0$. 
+Once $\alpha(r)$ has been specified, the pressure profile of an **ExpCGM** atmosphere model depends on just the normalization factor $P_0$ at a user-chosen fiducial radius $r_0$. The atmosphere's pressure profile becomes
+  $$P(r) = P_0 \cdot \exp \left[ - \int_1^{r/r_0} \frac {\alpha(x)} {x} dx \right]$$
+Atmospheric temperature in the simplest **ExpCGM** models 
+  $$kT(r) = \frac {\mu m_p v_{\rm c}^2(r)} {\alpha(r)}$$
+depends on just $\varphi(r)$ and $\alpha(r)$, and atmospheric density
+  $$\rho(r) = \mu m_p \frac {P(r)} {kT(r)}$$
+depends on just $\varphi(r)$, $\alpha(r)$, and $P_0$. However, the atmosphere's temperature and density profiles may depend on two additional parametric functions representing a thermalization fraction $f_{\rm th}$ and a force modification factor $f_\varphi$. (See the [Essentials](Essentials) page for definitions of those functions.)
 
 ### Isothermal Atmosphere
 
-Users seeking to minimize degrees of freedom can opt for an isothermal potential well with constant circular velocity $v_{\rm c} = v_\varphi$ and an atmosphere with constant $\alpha$ while setting $f_{\rm th}$ and $f_\varphi$ to unity. The atmosphere's temperature $kT = \mu m_p v_\varphi^2 / \alpha$ is then constant with radius, its pressure profile is the power law $P(r) = P_0 (r / r_0)^{-\alpha}$, and its density profile is 
+Users seeking to minimize degrees of freedom can opt for an isothermal potential well with constant circular velocity $v_{\rm c} = v_\varphi$ and an atmosphere with constant $\alpha$ while setting $f_{\rm th}$ and $f_\varphi$ to unity. The atmosphere's temperature $kT = \mu m_p v_\varphi^2 / \alpha$ is then independent of radius, its pressure profile is the power law $P(r) = P_0 (r / r_0)^{-\alpha}$, and its density profile is 
   $$\rho(r) = \frac {\alpha P_0} {v_\varphi^2} \left( \frac {r} {r_0} \right)^{-\alpha}$$
 This isothermal atmosphere model therefore has three degrees of freedom $(P_0,v_\varphi,\alpha)$, because $r_0$ is degenerate with $P_0$. Its temperature for a given value of $v_\varphi$ depends inversely on $\alpha$.
 
