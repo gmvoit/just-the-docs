@@ -50,9 +50,12 @@ Two parametric models represent the mininum input for generating an **ExpCGM** m
 
 * **Gravitational Potential,** $\varphi( ~r~ \| ~v_\varphi , r_{\rm s} , ... ~)$: The gravitational potential model requires only one parameter, the maximum circular velocity $v_\varphi$ of the confining halo's gravitational potential. It may also include a scale radius $r_{\rm s}$ determining how the potential's circular velocity $v_{\rm c}$ depends on $r$. Descriptions of more detailed potential wells require additional parameters.
 
-* **Shape Function,** $\alpha( ~r~ \| ~\alpha , \alpha_{\rm in} , \alpha_{\rm out} , r_\alpha , ... ~)$: The atmosphere's shape function can be a constant value of $\alpha$. It can also be a function that goes from one limiting value ($\alpha_{\rm in}$) at small radii to another one ($\alpha_{\rm out}$) near a crossover radius ($r_\alpha$). The [Pressure Profiles](PressureProfiles) page provides parametric expressions for some physically motivated options.
+* **Shape Function,** $\alpha( ~r~ \| ~\alpha , \alpha_{\rm in} , \alpha_{\rm out} , r_\alpha , ... ~)$: The atmosphere's shape function can be a constant value of $\alpha$. It can also go from one limiting value ($\alpha_{\rm in}$) at small radii to another one ($\alpha_{\rm out}$) near a crossover radius ($r_\alpha$). The [Pressure Profiles](PressureProfiles) page discusses how $\alpha (r)$ is related to the physical processes that shape a galaxy's atmosphere and provides parametric expressions for several physically motivated options.
 
-Two additional parametric functions may be added to represent how the thermalization fraction $f_{\rm th}$ and force modification factor $f_\varphi$ depend on radius. Their default values are $f_{\rm th} = f_\varphi = 1$. (See the [Essentials](Essentials) page for definitions.)
+Once $\varphi(r)$ and $\alpha(r)$ have been specified, an **ExpCGM** atmosphere model depends on just one other required parameter: the pressure profile's normalization $P_0$ at a user-chosen fiducial radius $r_0$. Integrating $\alpha (r)$ to obtain $f_P (r)$, as described on the [Essentials](Essentials) page, then gives the atmosphere's pressure profile
+  $$P(r) = P_0 f_P(r)$$
+
+In the simplest **ExpCGM** atmosphere model's temperature and density profiles may depend on two additional parametric functions representing how its thermalization fraction $f_{\rm th}$ and force modification factor $f_\varphi$ depend on radius. (See the [Essentials](Essentials) page for definitions.)
 
 That set of four parametric functions determines the atmosphere's temperature profile
     $$kT(r) = \left( {f_{\rm th} f_\varphi} \right) \frac {\mu m_p v_{\rm c}^2 (r)} {\alpha_{\rm eff} (r) }$$  
