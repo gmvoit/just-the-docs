@@ -48,36 +48,36 @@ All **ExpCGM** models for galactic atmospheres are based on a user-specified gra
 
 Two parametric models represent the mininum input for generating an **ExpCGM** model atmosphere: 
 
-* **Gravitational Potential,** $\varphi( ~r~ \| ~v_\varphi , r_{\rm s} , ... ~)$: The gravitational potential model requires only one parameter, the maximum circular velocity $v_\varphi$ of the confining halo's gravitational potential. It may also include a scale radius $r_{\rm s}$ determining how the potential's circular velocity $v_{\rm c}$ depends on $r$. Descriptions of more detailed potential wells require additional parameters.
+* **Gravitational Potential,** $\varphi( ~r~ \| ~v_\varphi , r_{\rm s} , ... ~)$: The gravitational potential model requires only one parameter, the maximum circular velocity $v_\varphi$ of the confining halo's gravitational potential. It may also include a scale radius $r_{\rm s}$ determining how the potential's circular velocity $v_{\rm c}$ depends on $r$. Descriptions of more detailed potential wells may require additional parameters.
 
-* **Shape Function,** $\alpha( ~r~ \| ~\alpha , \alpha_{\rm in} , \alpha_{\rm out} , r_\alpha , ... ~)$: The atmosphere's shape function can be a constant value of $\alpha$. It can also go from one limiting value ($\alpha_{\rm in}$) at small radii to another one ($\alpha_{\rm out}$) near a crossover radius ($r_\alpha$). The [Pressure Profiles](PressureProfiles) page discusses how $\alpha (r)$ is related to the physical processes that shape a galaxy's atmosphere and provides parametric expressions for several physically motivated options.
+* **Shape Function,** $\alpha( ~r~ \| ~\alpha , \alpha_{\rm in} , \alpha_{\rm out} , r_\alpha , ... ~)$: The atmosphere's shape function can be just a constant value of $\alpha$. It can also shift from one limiting value ($\alpha_{\rm in}$) at small radii to another one ($\alpha_{\rm out}$) at large radii in the vicinity of a crossover radius ($r_\alpha$). The [Pressure Profiles](PressureProfiles) page discusses how $\alpha (r)$ is related to the processes that shape a galaxy's atmosphere and provides parametric expressions for several physically motivated options.
 
 Once $\alpha(r)$ has been specified, the pressure profile of an **ExpCGM** atmosphere model depends on just the normalization factor $P_0$ at a user-chosen fiducial radius $r_0$. The atmosphere's pressure profile becomes
   $$P(r) = P_0 \cdot \exp \left[ - \int_1^{r/r_0} \frac {\alpha(x)} {x} dx \right]$$
-In the simplest **ExpCGM** models, dividing $v_{\rm c} (r)$ by $\alpha(r)$ gives the atmosphere's temperature profile: 
+Dividing $v_{\rm c}^2 (r)$ by $\alpha(r)$ gives the temperature profile for a thermally supported atmosphere: 
   $$kT(r) = \frac {\mu m_p v_{\rm c}^2(r)} {\alpha(r)}$$
-The atmosphere's density profile 
+Its density profile then depends on just $\varphi(r)$, $\alpha(r)$, and $P_0$:
   $$\rho(r) = \frac {\alpha(r) P(r)} {v_{\rm c}^2(r)}$$
-then depends on just $\varphi(r)$, $\alpha(r)$, and $P_0$. However, $T(r)$ and $\rho(r)$ may also depend on two additional parametric functions representing the atmosphere's thermalization fraction $f_{\rm th}$ and a force modification factor $f_\varphi$. (See the [Essentials](Essentials) page for definitions of those functions.)
+However, $T(r)$ and $\rho(r)$ may also depend on two additional parametric functions representing the atmosphere's thermalization fraction $f_{\rm th}$ and force modification factor $f_\varphi$ (see the [Essentials](Essentials) page for definitions of those functions).
 
 ### Isothermal Atmosphere
 
-Users seeking to minimize degrees of freedom can opt for an isothermal potential well with constant circular velocity ($v_{\rm c} = v_\varphi$) confining an atmosphere with constant $\alpha$. Setting $f_{\rm th}$ and $f_\varphi$ to unity then gives an atmospheric temperature $kT = \mu m_p v_\varphi^2 / \alpha$ that is independent of radius, a power-law pressure profile $P(r) = P_0 (r / r_0)^{-\alpha}$, and a power-law density profile 
-  $$\rho(r) = \frac {\alpha P_0} {v_\varphi^2} \left( \frac {r} {r_0} \right)^{-\alpha}$$
+Users seeking to minimize degrees of freedom can opt for an isothermal potential well with constant circular velocity ($v_{\rm c} = v_\varphi$) confining an atmosphere with constant $\alpha$. Setting $f_{\rm th}$ and $f_\varphi$ to unity then gives an atmospheric temperature $kT = \mu m_p v_\varphi^2 / \alpha$ that is independent of radius and power-law profiles for pressure and density: 
+  $$P(r) = P_0 \left( \frac {r} {r_0} \right)^{-\alpha} ~~~,~~~ \rho(r) = \frac {\alpha P_0} {v_\varphi^2} \left( \frac {r} {r_0} \right)^{-\alpha}$$
 This isothermal atmosphere model has three degrees of freedom $(P_0,v_\varphi,\alpha)$, because $r_0$ is degenerate with $P_0$. 
 
 ### Double Power-Law Atmospheres
 
-Cosmological structure formation produces gaseous atmospheres in which $\alpha(r)$ increases with radius. An **ExpCGM** model can describe that increase using the four-parameter fitting formula
+Cosmological structure formation produces gaseous atmospheres in which $\alpha(r)$ increases with radius. An **ExpCGM** model can describe that increase via the four-parameter fitting formula
   $$\alpha(r) = \alpha_{\rm in} + ( \alpha_{\rm out} - \alpha_{\rm in} ) \left[ \frac {(r / r_\alpha)^{\alpha_{\rm tr}}} {1 + (r / r_\alpha)^{\alpha_{\rm tr}}} \right]$$
-If all the parameters are left free, the resulting model for atmosphere in an isothermal potential well has six degrees of freedom ($P_0,v_\varphi,\alpha_{\rm in},\alpha_{\rm out},\alpha_{\rm tr},r_\alpha$). Its pressure profile is 
+If all four parameters are left free, the resulting model for an atmosphere in an isothermal potential well has six degrees of freedom instead of three. Its pressure profile is 
   $$P(r) \propto \left( \frac {r} {r_\alpha} \right)^{-\alpha_{\rm in}} \left[ 1 + \left( \frac {r} {r_\alpha} \right)^{\alpha_{\rm tr}} \right]^{- \frac {\alpha_{\rm out} - \alpha_{\rm in}} {\alpha_{\rm tr}}}$$
-and gas temperature declines from $kT \approx \mu m_p v_\varphi^2 / \alpha_{\rm in}$ at small radii toward $kT \approx \mu m_p v_\varphi^2 / \alpha_{\rm out}$ at large radii (assuming $\alpha_{\rm out} > \alpha_{\rm in}$).
+and its gas temperature declines from $kT \approx \mu m_p v_\varphi^2 / \alpha_{\rm in}$ at small radii toward $kT \approx \mu m_p v_\varphi^2 / \alpha_{\rm out}$ at large radii (assuming $\alpha_{\rm out} > \alpha_{\rm in}$).
 
 {: .note}
-Restricting the double power law model by setting $\alpha_{\rm in} = 0$ and $\alpha_{\rm tr} = 2$ results in 
+Restricting the double power-law atmosphere model by setting $\alpha_{\rm in} = 0$ and $\alpha_{\rm tr} = 2$ results in 
   $$P(r) \propto \left[ 1 + \left( \frac {r} {r_\alpha} \right)^2 \right]^{-\frac {\alpha_{\rm out}} {2}}$$ 
-This relation is nearly equivalent to the classic "beta model" for galaxy-cluster atmospheres, but with thermal pressure replacing gas density. However, the model has a drawback: In an isothermal potential well with constant $v_\varphi$ it results in a gas-temperature profile that diverges at small $r$. This undesirable feature is less problematic in gravitational potentials with small values of $v_{\rm c}$ at small radii.
+This relation is nearly equivalent to the classic "beta model" for galaxy-cluster atmospheres, but with thermal pressure replacing gas density. However, the model has a drawback: It results in a gas-temperature profile that diverges at small $r$ in an isothermal potential well with constant $v_\varphi$. This undesirable feature is less problematic in gravitational potentials with small values of $v_{\rm c}$ at small radii.
 
 ### NFW-like Models
 
@@ -112,7 +112,7 @@ then ensures that the model atmosphere's temperature does not formally go to zer
 
 Observational constraints can be placed on an atmosphere's thermalization fraction $f_{\rm th}$ if the overall data set contains information complementary to the atmospheric temperature profile. 
 
-An **ExpCGM** user may choose to add a parametric model for $f_{\rm th}$ that depends on radius. Combining that model with $\alpha (r)$ gives
+An **ExpCGM** user interested in thermalization may choose to add a parametric model for $f_{\rm th}$ that depends on radius. Combining that model with $\alpha (r)$ gives
   $$\alpha_{\rm eff} (r) = \alpha (r) + \frac {d \ln f_{\rm th}} {d \ln r}$$
 The predicted temperature profile then becomes
   $$kT(r) = \frac {\mu m_p v_{\rm c}^2 (r)} {\alpha_{\rm eff} (r)} f_{\rm th} (r)$$
@@ -120,7 +120,7 @@ Furthermore, assuming that isotropic turbulence provides the rest of the support
   $$\sigma_{\rm 1D}^2 (r) = \frac {2} {3} \frac {v_{\rm c}^2 (r)} {\alpha_{\rm eff} (r)} \left[ 1 - f_{\rm th} (r) \right]$$
 in which $\sigma_{\rm 1D}$ is the one-dimensional velocity dispersion of turbulent support.
 
-Fitting such an **ExpCGM** atmosphere model to a data set containing information about both $T(r)$ and $\sigma_{\rm 1D}$ jointly constrains both $v_{\rm c} (r)$ and $f_{\rm th}(r)$.
+Fitting such an **ExpCGM** atmosphere model to a data set containing information about both $T(r)$ and $v_{\rm c}^2 (r)$ or $T(r)$ and $\sigma_{\rm 1D}$ then jointly constrains both $v_{\rm c} (r)$ and $f_{\rm th}(r)$.
 
 ## Model Output
 
@@ -128,11 +128,11 @@ The input parameters of an **ExpCGM** galactic atmosphere model determine model 
 
 ### Radial Profiles
 
-An input parameter set determines the radial thermodynamic profiles, $P(r)$, $T(r)$, and $\rho (r)$, a model atmosphere as described in the previous section. They can be directly compared with deprojected versions of $P(r)$, $T(r)$, and $\rho (r)$ derived from observational data, providing constraints on the input parameters. However, reliable deprojection generally requires high-quality data and approximate spherical symmetry.
+An input parameter set determines the radial profiles of thermal pressure, temperature, and gas density as described in the previous section. They can be directly compared with deprojected versions of $P(r)$, $T(r)$, and $\rho (r)$ derived from observational data. Fitting an **ExpCGM** model to those deprojected profiles constrains the input parameters. However, reliable deprojections generally require high-quality data and approximate spherical symmetry.
 
 ### Projected Profiles
 
-Forward modeling of projected observables therefore results in more robust fits to observational data ...
+Forward modeling of projected observables enables more robust fits to observational data ...
 
 ### Global Properties
 
