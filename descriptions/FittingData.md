@@ -124,7 +124,7 @@ Fitting such an **ExpCGM** atmosphere model to a data set containing information
 
 ## Model Output
 
-The input parameters of an **ExpCGM** galactic atmosphere model $( P_0,v_\varphi, r_{\rm s}, \alpha_{\rm in}, \alpha_{\rm out}, \alpha_{\rm tr}, r_\alpha, f_{\rm th}, ... )$ determine model output representing a variety of potentially observable atmospheric characteristics.
+The input parameters of an **ExpCGM** galactic atmosphere model determine model output representing a variety of potentially observable atmospheric characteristics.
 
 ### Radial Profiles
 
