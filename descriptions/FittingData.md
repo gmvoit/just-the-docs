@@ -128,16 +128,15 @@ The input parameters of an **ExpCGM** galactic atmosphere model $( P_0,v_\varphi
 
 ### Radial Profiles
 
-An atmosphere's predicted radial profiles, $P(r)$, $T(r)$, and $\rho (r)$, come directly from the input parameters as described in the previous section ...
+An input parameter set determines the radial thermodynamic profiles, $P(r)$, $T(r)$, and $\rho (r)$, a model atmosphere as described in the previous section. They can be directly compared with deprojected versions of $P(r)$, $T(r)$, and $\rho (r)$ derived from observational data, providing constraints on the input parameters. However, reliable deprojection generally requires high-quality data and approximate spherical symmetry.
 
 ### Projected Profiles
 
-Forward modeling of projected observables usually results in more robust fits to observational data ...
+Forward modeling of projected observables therefore results in more robust fits to observational data ...
 
 ### Global Properties
 
 Data sets with many objects ...
-
 
 ## Scaling Laws
 
