@@ -189,9 +189,9 @@ Dispersion-measure observations of fast radio bursts behind galactic atmospheres
 
 ... $I_\nu$ ...
 
-#### Maximum Pressure
+#### Minimum Pressure
 
-... $P_{\rm max}$ from photoionization models of CGM absorption clouds ...
+... $P_{\rm min}$ from photoionization models of CGM absorption clouds ...
 
 ### Global Properties
 
