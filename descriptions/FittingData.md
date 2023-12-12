@@ -188,8 +188,8 @@ for atmospheres with $\alpha \approx 2$.
 
 Collisional excitation of emission lines produces a signal proportional to the integral of $\rho^2$ along a line of sight through a galactic atmosphere. The literature on nebular emission excited by electron collisions defines the ***emission measure*** along that line of sight to be
   $${\rm EM} \equiv \int n_e n_{\rm H} ~d r_\parallel$$
-A galactic atmosphere's emission measure at a projected radius $r_\perp$ is therefore
-  $${\rm EM} (r_\perp) = \int$$
+The emission measure profile of an **ExpCGM** galactic atmosphere model is therefore
+  $${\rm EM} (r_\perp) = \frac {r_\perp \rho^2 (r_\perp)} {\mu_e \mu_{\rm H} m_p^2} \int_{-\infty}^{\infty} \frac {\rho^2 (r)} {\rho^2 (r_\perp)} ~d \left( \frac {r_\parallel} {r_\perp} \right)$$
 
 
 #### Projected X-ray Spectrum
