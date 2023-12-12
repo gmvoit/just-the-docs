@@ -151,7 +151,7 @@ where $r_\parallel$ is the component of $\mathbf{r}$ parallel to the line of sig
 The structure-factor integral to be performed is then a number of order unity usually calculated by numerical integration. However, the result for an isothermal power-law atmosphere can be expressed in terms of gamma functions:
 
 <p>
-  $$\Sigma_{\rm CGM} (r_\perp) = \left[ \frac {\pi^{1/2} \Gamma ()} {\gamma ()} \right] r_\perp \rho(r_\perp) $$
+  $$\Sigma_{\rm CGM} (r_\perp) = \left[ \frac {\pi^{1/2} \Gamma \left( \frac {\alpha - 1} {2} \right)} {\Gamma \left( \frac {\alpha} {2} \right)} \right] r_\perp \rho(r_\perp) $$
 </p>
 
 #### Hydrogen Column Density
