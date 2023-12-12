@@ -137,7 +137,10 @@ Forward modeling of projected observables enables more robust fits to observatio
 
 #### Surface Mass Density
 
+<p>
   $$\Sigma(r_\perp) = \int q(r_\parallel \| r_\perp) dr_\parallel$$
+</p>
+
 
 ### Global Properties
 
