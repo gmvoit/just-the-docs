@@ -136,24 +136,13 @@ Forward modeling of projected observables enables more robust fits to observatio
 
 #### Surface Mass Density
 
-A spherical atmosphere's surface mass density along a line of sight at a projected radius $r_\perp$ is 
-
-<p>
+Along a line of sight at a projected radius $r_\perp$, a spherical atmosphere's surface mass density is 
   $$\Sigma_{\rm CGM} (r_\perp) = \int_{-\infty}^{\infty} \rho(r) ~dr_\parallel$$ 
-</p>
-
 where $r_\parallel$ is the component of $\mathbf{r}$ parallel to the line of sight. Bringing the dimensional factors outside of the integral gives
-
-<p>
   $$\Sigma_{\rm CGM} (r_\perp) = r_\perp \rho(r_\perp) \int_{-\infty}^{\infty} \frac {\rho(r)} {\rho(r_\perp)} ~d \left( \frac {r_\parallel} {r_\perp} \right)$$
-</p>
 
 The integral to be performed is then a structure factor of order unity usually calculated via numerical integration. However, the result for an isothermal power-law atmosphere can be expressed in terms of gamma functions:
-
-<p>
   $$\Sigma_{\rm CGM} (r_\perp) = \left[ \frac {\pi^{1/2} \Gamma \left( \frac {\alpha - 1} {2} \right)} {\Gamma \left( \frac {\alpha} {2} \right)} \right] r_\perp \rho(r_\perp) $$
-</p>
-
 For example, the result for $\alpha = 2$ is
   $$\Sigma_{\rm CGM} (r_\perp) = \pi r_\perp \rho (r_\perp) = \frac {2 \pi r_0 P_0} {v_\varphi^2} \left( \frac {r_\perp} {r_0} \right)^{-1}$$
 
