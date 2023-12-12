@@ -151,7 +151,7 @@ where $r_\parallel$ is the component of $\mathbf{r}$ parallel to the line of sig
 The structure-factor integral to be performed then becomes a number of order unity usually calculated by numerical integration. However, the result for an isothermal power-law atmosphere can be expressed in terms of gamma functions:
 
 <p>
-  $$\Sigma_{\rm CGM} (r_\perp) = \left[ \frac {\sqrt{\pi} \Gamma \left( \frac {\alpha - 1} {2} \right)} {\Gamma \left( \frac {\alpha} {2} \right)} \right] r_\perp \rho(r_\perp) $$
+  $$\Sigma_{\rm CGM} (r_\perp) = \left[ \frac {\pi^{1/2} \Gamma \left( \frac {\alpha - 1} {2} \right)} {\Gamma \left( \frac {\alpha} {2} \right)} \right] r_\perp \rho(r_\perp) $$
 </p>
 
 For example, the result for $\alpha = 2$ is $\Sigma_{\rm CGM} = \pi r_\perp \rho (r_\perp)$.
