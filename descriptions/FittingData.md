@@ -145,13 +145,13 @@ A spherical atmosphere's surface mass density along a line of sight at a project
 where $r_\parallel$ is the component of $\mathbf{r}$ parallel to the line of sight. Bringing the dimensional factors outside of the integral gives
 
 <p>
-  $$\Sigma_{\rm CGM} (r_\perp) = \left[ \int_{-\infty}^{\infty} \frac {\rho(r)} {\rho(r_\perp)} d \left( \frac {r_\parallel} {r_\perp} \right) \right] r_\perp \rho(r_\perp) $$
+  $$\Sigma_{\rm CGM} (r_\perp) = r_\perp \rho(r_\perp) \int_{-\infty}^{\infty} \frac {\rho(r)} {\rho(r_\perp)} d \left( \frac {r_\parallel} {r_\perp} \right)$$
 </p>
 
-in which the bracketed quantity is a number of order unity depending on the atmosphere's structure. Usually that integral needs to be done numerically, but the result for an isothermal power-law atmosphere can be expressed in terms of gamma functions:
+The structure-factor integral to be performed is then a number of order unity usually calculated by numerical integration. However, the result for an isothermal power-law atmosphere can be expressed in terms of gamma functions:
 
 <p>
-  $$\Sigma_{\rm CGM} (r_\perp) = \left[ \frac {\pi^{1/2} \Gamma ()} {\gamma ()} r_\perp \rho(r_\perp) $$
+  $$\Sigma_{\rm CGM} (r_\perp) = \left[ \frac {\pi^{1/2} \Gamma ()} {\gamma ()} \right] r_\perp \rho(r_\perp) $$
 </p>
 
 ### Global Properties
