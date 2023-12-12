@@ -154,6 +154,34 @@ The structure-factor integral to be performed is then a number of order unity us
   $$\Sigma_{\rm CGM} (r_\perp) = \left[ \frac {\pi^{1/2} \Gamma ()} {\gamma ()} \right] r_\perp \rho(r_\perp) $$
 </p>
 
+#### Hydrogen Column Density
+
+... photoionization modeling of CGM absorption-line clouds ...
+
+#### Electron Column Density
+
+... dispersion measure ...
+
+#### Compton Parameter
+
+... Sunyaev-Zeldovich effect ...
+
+#### Emission Measure
+
+... line emission ...
+
+#### X-ray Surface Brightness
+
+... $I_{\rm X}$ ...
+
+#### Projected X-ray Spectrum
+
+... $I_/nu$ ...
+
+#### Maximum Pressure
+
+... $P_{\rm max}$ from photoionization models of CGM absorption clouds ...
+
 ### Global Properties
 
 Data sets with many objects ...
