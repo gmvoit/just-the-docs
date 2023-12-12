@@ -175,7 +175,12 @@ The predicted tSZ distortion profile of a spherical **ExpCGM** atmosphere model 
 As with the surface density, the integral is a structure factor of order unity usually computed through numerical integration. 
 
 Those structure factors are identical in isothermal atmospheres, giving
+
+<p>
   $$y (r_\perp) ~=~ \frac {\mu} {\mu_e} \frac {\pi r_0 P_0} {m_e c^2 \sigma_{\rm T}} \left( \frac {r_\perp} {r_0} \right)^{-1}$$
+</p>
+
+
 for the case with $\alpha = 2$. For reference, this formula for the Compton parameter gives
   $$y \approx \left( \frac {r_\perp} {100~ {\rm kpc}} \right) \left( \frac {n} {10^{-3}~ {\rm cm}^{-3}} \right) \left( \frac {T} {10^7~ {\rm K}} \right)$$
 
