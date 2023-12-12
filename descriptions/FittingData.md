@@ -196,21 +196,23 @@ In the special case of an isothermal power-law atmosphere, the structure-factor 
   $$\int_{-\infty}^{\infty} \left( \frac {r} {r_\perp} \right)^{-2\alpha} ~d \left( \frac {r_\parallel} {r_\perp} \right) =  \frac {\pi^{1/2} \Gamma \left( \alpha - \frac {1} {2} \right)} {\Gamma \left( \alpha \right)}$$
 which reduces to $\pi/2$ for $\alpha = 2$. 
 
-A particular emission line has an emissivity $\epsilon_{\rm line} (T)$ that depends on temperature, defined so that $4 \pi \epsilon_{\rm line} (T) n_e n_{\rm H}$ is the emission rate of energy per unit volume. Isotropic emission in an isothermal atmosphere therefore produces a line of intensity
-  $$I_{\rm line} (r_\perp) = {\rm EM} (r_\perp) \cdot \epsilon_{\rm line} (T)$$
+A particular emission line has a temperature-dependent emissivity $\epsilon_{\rm line}$, defined so that $4 \pi \epsilon_{\rm line} n_e n_{\rm H}$ is the emission rate of energy per unit volume. Isotropic emission in an isothermal atmosphere therefore produces a line of intensity
+  $$I_{\rm line} (r_\perp) = \epsilon_{\rm line} {\rm EM} (r_\perp)$$
 at projected radius $r_\perp$. This quantity has units of energy/time/area/solid angle.
 
 {: .note}
 Emission measure is sometimes defined in the literature as an integral of $n_e n_{\rm H}$ over volume rather than an integral along a line of sight. 
 
-#### Projected X-ray Spectrum
+#### Projected Spectrum
 
 ... $I_\nu$ ...
 
 
-#### X-ray Surface Brightness
+#### Surface Brightness
 
-... $I_{\rm X}$ ...
+... bolometric surface brightness $I_{\rm bol}$ ...
+
+... surface brightness in a particular band $I_{\rm band}$ ...
 
 
 #### Minimum Pressure
