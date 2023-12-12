@@ -128,30 +128,28 @@ Fitting such an **ExpCGM** atmosphere model to a data set containing information
 
 ### Radial Profiles
 
-An input parameter set determines the radial profiles of thermal pressure, temperature, and gas density as described in the previous section. Those predicted profiles can be directly compared with deprojected versions of $P(r)$, $T(r)$, and $\rho (r)$ derived from observational data. Fitting an **ExpCGM** model to deprojected profiles constrains the input parameters. However, reliable deprojections generally require high-quality data and approximate spherical symmetry.
+An atmosphere model's radial profiles of thermal pressure, temperature, and gas density depend on the input parameter set as described in the previous section. Those predicted profiles can be directly compared with deprojected versions of $P(r)$, $T(r)$, and $\rho (r)$ derived from observational data. Fitting an **ExpCGM** model to deprojected profiles therefore constrains the input parameters. However, reliable deprojections generally require high-quality data and approximate spherical symmetry.
 
 ### Projected Profiles
 
-Forward modeling of projected observables enables more robust fits to observational data ...
+Projections of **ExpCGM** models provide many observable predictions that can be combined to obtain joint constraints of the input parameters.
 
 #### Surface Mass Density
 
-Along a line of sight at a projected radius $r_\perp$, a spherical atmosphere's surface mass density is 
+A spherical atmosphere's surface mass density along a line of sight at a projected radius $r_\perp$ is 
   $$\Sigma_{\rm CGM} (r_\perp) = \int_{-\infty}^{\infty} \rho(r) ~dr_\parallel$$ 
 where $r_\parallel$ is the component of $\mathbf{r}$ parallel to the line of sight. Bringing the dimensional factors outside of the integral gives
   $$\Sigma_{\rm CGM} (r_\perp) = r_\perp \rho(r_\perp) \int_{-\infty}^{\infty} \frac {\rho(r)} {\rho(r_\perp)} ~d \left( \frac {r_\parallel} {r_\perp} \right)$$
-
 The integral to be performed is then a structure factor of order unity usually calculated via numerical integration. However, the result for an isothermal power-law atmosphere can be expressed in terms of gamma functions:
   $$\Sigma_{\rm CGM} (r_\perp) = \left[ \frac {\pi^{1/2} \Gamma \left( \frac {\alpha - 1} {2} \right)} {\Gamma \left( \frac {\alpha} {2} \right)} \right] r_\perp \rho(r_\perp) $$
 For example, the result for $\alpha = 2$ is
-  $$\Sigma_{\rm CGM} (r_\perp) = \pi r_\perp \rho (r_\perp) = \frac {2 \pi r_0 P_0} {v_\varphi^2} \left( \frac {r_\perp} {r_0} \right)^{-1}$$
-
+  $$\Sigma_{\rm CGM} (r_\perp) ~=~ \pi r_\perp \rho (r_\perp) ~=~ \frac {2 \pi r_0 P_0} {v_\varphi^2} \left( \frac {r_\perp} {r_0} \right)^{-1}$$
 
 #### Hydrogen Column Density
 
 Dividing the atmosphere's surface mass density by its mean mass per hydrogen nucleus $\mu_{\rm H} m_p$ gives the total hydrogen column density along a line of sight at $r_\perp$:
   $$N_{\rm H} (r_\perp) = \frac {\Sigma_{\rm CGM} (r_\perp)} {\mu_{\rm H} m_p}$$
-A primordial atmosphere has $\mu_{\rm H} = XX$. An atmosphere with solar abundances has $\mu_{\rm H} = XX$.
+A primordial atmosphere has $\mu_{\rm H} = 1.33$. An atmosphere with solar abundances has $\mu_{\rm H} = 1.42$.
 
 Some of the observational constraints on $N_{\rm H}$ and its dependence on $r_\prime$ come from circumgalactic clouds that absorb UV light from background quasars. Photoionization modeling is necessary for determining $N_{\rm H}$ and its uncertainty range from those observations. Also, the fraction of gas without a UV absorption signature is often unknown, meaning that column density contraints derived from those observations are usually lower limits on $N_{\rm H}$.
 
@@ -159,13 +157,18 @@ Some of the observational constraints on $N_{\rm H}$ and its dependence on $r_\p
 
 Dividing the atmosphere's surface mass density by its mean mass per electron $\mu_3 m_p$ gives the electron column density along a line of sight at $r_\perp$:
   $$N_e (r_\perp) = \frac {\Sigma_{\rm CGM} (r_\perp)} {\mu_e m_p}$$
-A fully ionized primordial atmosphere has $\mu_e = XX$. A fully ionized atmosphere with solar abundances has $\mu_e = XX$.
+A fully ionized primordial atmosphere has $\mu_e = 1.14$. A fully ionized atmosphere with solar abundances has $\mu_e = 1.18$.
 
 Dispersion-measure observations of fast radio bursts behind galactic atmospheres place constraints on $N_e (r_\perp)$.
 
 #### Compton Parameter
 
-... Sunyaev-Zeldovich effect ...
+Microwave observations along lines of sight through hot galactic atmospheres show that Compton scattering has distorted the microwave background spectrum. This distortion is known as the *Thermal Sunyaev-Zeldovich Effect* or *tSZ* for short. It depends on frequency and is proportional to the ***Compton parameter***
+  $$y = \int \frac {kT} {m_e c^2} n_e \sigma_{\rm T} ~d r_\parallel$$
+in which $\sigma_{\rm T}$ is the Thomson cross section for electron scattering.
+
+The predicted tSZ distortion profile of a spherical **ExpCGM** atmosphere model is
+  $$y (r_\perp) = \frac {\mu r_\perp P (r_\perp)} {\mu_e m_e c^2 \sigma_{\rm T}} \int_{-\intfy}^{\infty} \frac {f_P (r)} {f_P (r_\perp)} ~d \left \frac {r_\parallel} {r_\perp} \right)$$ 
 
 #### Emission Measure
 
