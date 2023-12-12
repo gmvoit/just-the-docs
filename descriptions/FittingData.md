@@ -191,7 +191,7 @@ Collisional excitation of emission lines produces a signal proportional to the i
 The emission measure profile of an **ExpCGM** galactic atmosphere model is therefore
   $${\rm EM} (r_\perp) = \frac {r_\perp \rho^2 (r_\perp)} {\mu_e \mu_{\rm H} m_p^2} \int_{-\infty}^{\infty} \frac {\rho^2 (r)} {\rho^2 (r_\perp)} ~d \left( \frac {r_\parallel} {r_\perp} \right)$$
 Once again, the integral is a structure factor of order unity, to be determined numerically. However, the integral for an isothermal power-law atmosphere simplifies to
-  $$\frac {\pi^{1/2} \Gamma \left( \alpha - \frac {1} {2} \right)} {\Gamma \left( \alpha \right)}$$
+  $$\int_{-\infty}^{\infty} \left( \frac {r} {r_\perp} \right)^{-2\alpha} ~d \left( \frac {r_\parallel} {r_\perp} \right) =  \frac {\pi^{1/2} \Gamma \left( \alpha - \frac {1} {2} \right)} {\Gamma \left( \alpha \right)}$$
 
 {: .note}
 Emission measure is sometimes defined in the literature as an integral of $n_e n_{\rm H}$ over volume rather than along a line of sight. 
