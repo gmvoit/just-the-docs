@@ -179,7 +179,7 @@ For example, the result is $\Sigma_{\rm CGM} (r_\perp) = \pi r_\perp \rho (r_\pe
 
 #### Projected X-ray Spectrum
 
-... $I_/nu$ ...
+... $I_\nu$ ...
 
 #### Maximum Pressure
 
