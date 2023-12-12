@@ -184,7 +184,7 @@ for a power-law model with $\alpha = 2$. Inserting physical quantities character
 for atmospheres with $\alpha \approx 2$.
 
 
-#### Line Intensity
+#### Emission Measure
 
 Collisional excitation of emission lines produces a signal proportional to the integral of $\rho^2$ along a line of sight through a galactic atmosphere. The literature on nebular emission excited by electron collisions defines the ***emission measure*** along that line of sight to be
   $${\rm EM} \equiv \int n_e n_{\rm H} ~d r_\parallel$$
@@ -196,12 +196,19 @@ In the special case of an isothermal power-law atmosphere, the structure-factor 
   $$\int_{-\infty}^{\infty} \left( \frac {r} {r_\perp} \right)^{-2\alpha} ~d \left( \frac {r_\parallel} {r_\perp} \right) =  \frac {\pi^{1/2} \Gamma \left( \alpha - \frac {1} {2} \right)} {\Gamma \left( \alpha \right)}$$
 which reduces to $\pi/2$ for $\alpha = 2$. 
 
+{: .note}
+Emission measure is sometimes defined in the literature as an integral of $n_e n_{\rm H}$ over volume rather than an integral along a line of sight. 
+
+
+#### Line Intensity
+
 A particular emission line has a temperature-dependent emissivity $\epsilon_{\rm line} (T)$, defined so that $4 \pi n_e n_{\rm H} \epsilon_{\rm line}(T)$ is the emission rate of energy per unit volume. Isotropic emission in an isothermal atmosphere therefore produces a line of intensity
   $$I_{\rm line} (r_\perp) = \epsilon_{\rm line}(T) \cdot {\rm EM} (r_\perp)$$
 at projected radius $r_\perp$. The line's intensity has units of energy/time/area/solid angle.
 
 {: .note}
-Emission measure is sometimes defined in the literature as an integral of $n_e n_{\rm H}$ over volume rather than an integral along a line of sight. 
+Sometimes the emission line of interest will be from a region of the atmosphere with a temperature distinctly different from most of the atmosphere. In that case, the emission measure integral should be limited to that region.
+
 
 #### Projected Spectrum
 
