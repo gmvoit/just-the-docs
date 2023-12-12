@@ -124,15 +124,20 @@ Fitting such an **ExpCGM** atmosphere model to a data set containing information
 
 ## Model Output
 
-The input parameters of an **ExpCGM** galactic atmosphere model determine model output representing a variety of potentially observable atmospheric characteristics.
+**ExpCGM** models for galactic atmospheres predict a variety of potentially observable atmospheric characteristics that can be used to test the models and to constrain the input parameters.
 
 ### Radial Profiles
 
-An input parameter set determines the radial profiles of thermal pressure, temperature, and gas density as described in the previous section. They can be directly compared with deprojected versions of $P(r)$, $T(r)$, and $\rho (r)$ derived from observational data. Fitting an **ExpCGM** model to those deprojected profiles constrains the input parameters. However, reliable deprojections generally require high-quality data and approximate spherical symmetry.
+An input parameter set determines the radial profiles of thermal pressure, temperature, and gas density as described in the previous section. Those predicted profiles can be directly compared with deprojected versions of $P(r)$, $T(r)$, and $\rho (r)$ derived from observational data. Fitting an **ExpCGM** model to deprojected profiles constrains the input parameters. However, reliable deprojections generally require high-quality data and approximate spherical symmetry.
 
 ### Projected Profiles
 
 Forward modeling of projected observables enables more robust fits to observational data ...
+  $$Q(r_\perp) = \int q(r_\parallel | r_\perp) dr_\parallel$$
+
+#### Surface Mass Density
+
+  $$\Sigma(r_\perp) = \int q(r_\parallel | r_\perp) dr_\parallel$$
 
 ### Global Properties
 
