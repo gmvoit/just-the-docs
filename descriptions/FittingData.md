@@ -169,7 +169,10 @@ Microwave observations along lines of sight through hot galactic atmospheres sho
 in which $\sigma_{\rm T}$ is the Thomson cross section for electron scattering.
 
 The predicted tSZ distortion profile of a spherical **ExpCGM** atmosphere model is
-  $$y (r_\perp) = \frac {\mu r_\perp P (r_\perp)} {\mu_e m_e c^2 \sigma_{\rm T}} \int_{-\intfy}^{\infty} \frac {f_P (r)} {f_P (r_\perp)} ~d \left( \frac {r_\parallel} {r_\perp} \right)$$ 
+  $$y (r_\perp) = \frac {\mu} {\mu_e} \frac {r_\perp P (r_\perp)} {m_e c^2 \sigma_{\rm T}} \int_{-\infty}^{\infty} \frac {f_P (r)} {f_P (r_\perp)} ~d \left( \frac {r_\parallel} {r_\perp} \right)$$ 
+As with the surface density, the integral is a structure factor of order unity usually computed through numerical integration. Those structure factors are identical in isothermal atmospheres, giving
+  $$y (r_\perp) ~=~ \frac {\mu} {\mu_e} \frac {\pi r_\perp P (r_\perp)} {m_e c^2 \sigma_{\rm T}} ~=~ \frac {\mu} {\mu_e} \frac {\pi r_0 P_0} {m_e c^2 \sigma_{\rm T}} \left( \frac {r_\perp} {r_0} \right)^{-1}$$
+for the case with $\alpha = 2$.
 
 #### Emission Measure
 
