@@ -161,12 +161,17 @@ For example, the result is $\Sigma_{\rm CGM} (r_\perp) = \pi r_\perp \rho (r_\pe
 
 Dividing the atmosphere's surface mass density by its mean mass per hydrogen nucleus $\mu_{\rm H} m_p$ gives the total hydrogen column density along a line of sight at $r_\perp$:
   $$N_{\rm H} (r_\perp) = \frac {\Sigma_{\rm CGM} (r_\perp)} {\mu_{\rm H} m_p}$$
+A primordial atmosphere has $\mu_{\rm H} = XX$. An atmosphere with solar abundances has $\mu_{\rm H} = XX$.
 
-Some of the observational constraints on $N_{\rm H}$ and its dependence on $r_\prime$ come from circumgalactic clouds that absorb UV light from background quasars. Photoionization modeling is necessary for determining their ionization level and the abundance ratios of other elements relative to hydrogen. Also, the fraction of gas without a UV absorption signature is often unknown, meaning that column density contraints derived from those observations are usually lower limits on $N_{\rm H}$.
+Some of the observational constraints on $N_{\rm H}$ and its dependence on $r_\prime$ come from circumgalactic clouds that absorb UV light from background quasars. Photoionization modeling is necessary for determining $N_{\rm H}$ and its uncertainty range from those observations. Also, the fraction of gas without a UV absorption signature is often unknown, meaning that column density contraints derived from those observations are usually lower limits on $N_{\rm H}$.
 
 #### Electron Column Density
 
-... dispersion measure ...
+Dividing the atmosphere's surface mass density by its mean mass per electron $\mu_3 m_p$ gives the electron column density along a line of sight at $r_\perp$:
+  $$N_e (r_\perp) = \frac {\Sigma_{\rm CGM} (r_\perp)} {\mu_e m_p}$$
+A fully ionized primordial atmosphere has $\mu_e = XX$. A fully ionized atmosphere with solar abundances has $\mu_e = XX$.
+
+Dispersion-measure observations of fast radio bursts behind galactic atmospheres place constraints on $N_e (r_\perp)$.
 
 #### Compton Parameter
 
