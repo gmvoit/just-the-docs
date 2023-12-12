@@ -171,19 +171,19 @@ Microwave observations along lines of sight through hot galactic atmospheres sho
 in which $\sigma_{\rm T}$ is the Thomson cross section for electron scattering.
 
 The predicted tSZ distortion profile of a spherical **ExpCGM** atmosphere model is
-  $$y (r_\perp) = \frac {\mu} {\mu_e} \frac {r_\perp P (r_\perp)} {m_e c^2 \sigma_{\rm T}} \int_{-\infty}^{\infty} \frac {f_P (r)} {f_P (r_\perp)} ~d \left( \frac {r_\parallel} {r_\perp} \right)$$ 
-As with the surface density, the integral is a structure factor of order unity usually computed through numerical integration. 
-
-Those structure factors are identical in isothermal atmospheres, giving
+  $$y (r_\perp) = \frac {\mu} {\mu_e} \frac {\sigma_{\rm T} r_\perp P (r_\perp)} {m_e c^2} \int_{-\infty}^{\infty} \frac {f_P (r)} {f_P (r_\perp)} ~d \left( \frac {r_\parallel} {r_\perp} \right)$$ 
+As with the surface density, the integral is a structure factor of order unity usually computed through numerical integration. Those structure factors are identical in isothermal atmospheres, giving
 
 <p>
-  $$y (r_\perp) ~=~ \frac {\mu} {\mu_e} \frac {\pi r_0 P_0} {m_e c^2 \sigma_{\rm T}} \left( \frac {r_\perp} {r_0} \right)^{-1}$$
+  $$y (r_\perp) ~=~ \frac {\mu} {\mu_e} \frac {\pi \sigma_{\rm T} r_0 P_0} {m_e c^2} \left( \frac {r_\perp} {r_0} \right)^{-1}$$
 </p>
 
 
-for the case with $\alpha = 2$. For reference, this formula for the Compton parameter gives
-  $$y \approx \left( \frac {r_\perp} {100~ {\rm kpc}} \right) \left( \frac {n} {10^{-3}~ {\rm cm}^{-3}} \right) \left( \frac {T} {10^7~ {\rm K}} \right)$$
+for a power-law model with $\alpha = 2$. 
 
+For reference, this formula for the Compton parameter gives
+  $$y \approx 5 \times 10^{-7} \left( \frac {r_\perp} {100~ {\rm kpc}} \right) \left( \frac {n} {10^{-3}~ {\rm cm}^{-3}} \right) \left( \frac {T} {10^7~ {\rm K}} \right)$$
+for atmospheres with $\alpha \approx 2$.
 
 #### Emission Measure
 
