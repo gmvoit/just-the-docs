@@ -133,14 +133,16 @@ An input parameter set determines the radial profiles of thermal pressure, tempe
 ### Projected Profiles
 
 Forward modeling of projected observables enables more robust fits to observational data ...
-  $$Q(r_\perp) = \int q(r_\parallel | r_\perp) dr_\parallel$$
 
 #### Surface Mass Density
 
+A spherical atmosphere's surface mass density along a line of sight at a projected radius $r_\perp$ is 
+
 <p>
-  $$\Sigma(r_\perp) = \int q(r_\parallel \| r_\perp) dr_\parallel$$
+  $$\Sigma_{\rm CGM} (r_\perp) = \int_{-\infty}^{\infty} \rho(r) ds = \rho(r_\perp) r_\perp \int_{-\infty}^{\infty} \frac {\rho(r)} {\rho(r_\perp)} d \left( \frac {s} {r_\perp} \right)$$
 </p>
 
+where $s$ is the component of $\mathbf{r}$ parallel to the line of sight.
 
 ### Global Properties
 
