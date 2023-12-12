@@ -145,6 +145,7 @@ The integral to be performed is then a structure factor of order unity usually c
 For example, the result for $\alpha = 2$ is
   $$\Sigma_{\rm CGM} (r_\perp) ~=~ \pi r_\perp \rho (r_\perp) ~=~ \frac {2 \pi r_0 P_0} {v_\varphi^2} \left( \frac {r_\perp} {r_0} \right)^{-1}$$
 
+
 #### Hydrogen Column Density
 
 Dividing the atmosphere's surface mass density by its mean mass per hydrogen nucleus $\mu_{\rm H} m_p$ gives the total hydrogen column density along a line of sight at $r_\perp$:
@@ -164,11 +165,11 @@ Dispersion-measure observations of fast radio bursts behind galactic atmospheres
 #### Compton Parameter
 
 Microwave observations along lines of sight through hot galactic atmospheres show that Compton scattering has distorted the microwave background spectrum. This distortion is known as the *Thermal Sunyaev-Zeldovich Effect* or *tSZ* for short. It depends on frequency and is proportional to the ***Compton parameter***
-  $$y = \int \frac {kT} {m_e c^2} n_e \sigma_{\rm T} ~d r_\parallel$$
+  $$y = \int \left( \frac {kT} {m_e c^2} \right) n_e \sigma_{\rm T} ~d r_\parallel$$
 in which $\sigma_{\rm T}$ is the Thomson cross section for electron scattering.
 
 The predicted tSZ distortion profile of a spherical **ExpCGM** atmosphere model is
-  $$y (r_\perp) = \frac {\mu r_\perp P (r_\perp)} {\mu_e m_e c^2 \sigma_{\rm T}} \int_{-\intfy}^{\infty} \frac {f_P (r)} {f_P (r_\perp)} ~d \left \frac {r_\parallel} {r_\perp} \right)$$ 
+  $$y (r_\perp) = \frac {\mu r_\perp P (r_\perp)} {\mu_e m_e c^2 \sigma_{\rm T}} \int_{-\intfy}^{\infty} \frac {f_P (r)} {f_P (r_\perp)} ~d \left( \frac {r_\parallel} {r_\perp} \right)$$ 
 
 #### Emission Measure
 
