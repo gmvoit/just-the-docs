@@ -190,7 +190,8 @@ Collisional excitation of emission lines produces a signal proportional to the i
   $${\rm EM} \equiv \int n_e n_{\rm H} ~d r_\parallel$$
 The emission measure profile of an **ExpCGM** galactic atmosphere model is therefore
   $${\rm EM} (r_\perp) = \frac {r_\perp \rho^2 (r_\perp)} {\mu_e \mu_{\rm H} m_p^2} \int_{-\infty}^{\infty} \frac {\rho^2 (r)} {\rho^2 (r_\perp)} ~d \left( \frac {r_\parallel} {r_\perp} \right)$$
-
+Once again, the integral is a structure factor of order unity, to be determined numerically. However, this time the integral for an isothermal power-law atmosphere results in
+  $${\rm EM} (r_\perp) = \left[ \frac {\pi^{1/2} \Gamma \left( \frac {2\alpha - 1} {2} \right)} {\Gamma \left( \alpha \right)} \right] r_0 n_e(r_0) n_p(r_0) \left( \frac {r} {r_0} \right)^{1 - 2 \alpha}$$
 
 #### Projected X-ray Spectrum
 
