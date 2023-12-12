@@ -124,15 +124,15 @@ Fitting such an **ExpCGM** atmosphere model to a data set containing information
 
 ## Model Output
 
-**ExpCGM** models for galactic atmospheres predict a variety of potentially observable atmospheric characteristics that can be used to test the models and to constrain the input parameters.
+A variety of potentially observable atmospheric characteristics that can be used to test **ExpCGM** models for galactic atmospheres and to constrain their input parameters.
 
 ### Radial Profiles
 
-An atmosphere model's radial profiles of thermal pressure, temperature, and gas density depend on the input parameter set as described in the previous section. Those predicted profiles can be directly compared with deprojected versions of $P(r)$, $T(r)$, and $\rho (r)$ derived from observational data. Fitting an **ExpCGM** model to deprojected profiles therefore constrains the input parameters. However, reliable deprojections generally require high-quality data and approximate spherical symmetry.
+An **ExpCGM** model's radial profiles of thermal pressure, temperature, and gas density depend on the input parameter set as described in the previous section. Those profiles can be directly compared with deprojected versions of $P(r)$, $T(r)$, and $\rho (r)$ derived from observational data. Fitting an **ExpCGM** model to deprojected observations therefore constrains the model's input parameters. However, reliable deprojections generally require high-quality data and approximate spherical symmetry.
 
 ### Projected Profiles
 
-Projections of **ExpCGM** models provide many observable predictions that can be combined to obtain joint constraints of the input parameters.
+Projected **ExpCGM** models provide many observable predictions that can be compared more directly with observational data and combined to obtain joint constraints on a model's input parameters.
 
 #### Surface Mass Density
 
@@ -171,37 +171,46 @@ Microwave observations along lines of sight through hot galactic atmospheres sho
 in which $\sigma_{\rm T}$ is the Thomson cross section for electron scattering.
 
 The predicted tSZ distortion profile of a spherical **ExpCGM** atmosphere model is
-  $$y (r_\perp) = \frac {\mu} {\mu_e} \frac {\sigma_{\rm T} r_\perp P (r_\perp)} {m_e c^2} \int_{-\infty}^{\infty} \frac {f_P (r)} {f_P (r_\perp)} ~d \left( \frac {r_\parallel} {r_\perp} \right)$$ 
-As with the surface density, the integral is a structure factor of order unity usually computed through numerical integration. Those structure factors are identical in isothermal atmospheres, giving
+  $$y (r_\perp) = \frac {\mu \sigma_{\rm T}} {\mu_e m_e c^2}  r_\perp P (r_\perp) \int_{-\infty}^{\infty} \frac {f_P (r)} {f_P (r_\perp)} ~d \left( \frac {r_\parallel} {r_\perp} \right)$$ 
+As with the surface density, the integral is a structure factor of order unity usually computed through numerical integration. Those structure factors are identical in isothermal atmospheres, resulting in
 
 <p>
-  $$y (r_\perp) ~=~ \frac {\mu} {\mu_e} \frac {\pi \sigma_{\rm T} r_0 P_0} {m_e c^2} \left( \frac {r_\perp} {r_0} \right)^{-1}$$
+  $$y (r_\perp) ~=~ \frac {\pi \mu \sigma_{\rm T}} {\mu_e m_e c^2} r_0 P_0 \left( \frac {r_\perp} {r_0} \right)^{-1}$$
 </p>
 
 
-for a power-law model with $\alpha = 2$. This formula for the Compton parameter gives a reference value
+for a power-law model with $\alpha = 2$. Inserting physical quantities characteristic of galaxy groups gives a reference value
   $$y \approx 5 \times 10^{-7} \left( \frac {r_\perp} {100~ {\rm kpc}} \right) \left( \frac {n} {10^{-3}~ {\rm cm}^{-3}} \right) \left( \frac {T} {10^7~ {\rm K}} \right)$$
 for atmospheres with $\alpha \approx 2$.
 
+
 #### Emission Measure
 
-... line emission ...
+Collisional excitation of emission lines produces a signal proportional to the integral of $\rho^2$ along a line of sight through a galactic atmosphere. The literature on nebular emission excited by electron collisions defines the ***emission measure*** along that line of sight to be
+  $${\rm EM} \equiv \int n_e n_{\rm H} ~d r_\parallel$$
+A galactic atmosphere's emission measure at a projected radius $r_\perp$ is therefore
+  $${\rm EM} (r_\perp) = \int$$
 
-#### X-ray Surface Brightness
-
-... $I_{\rm X}$ ...
 
 #### Projected X-ray Spectrum
 
 ... $I_\nu$ ...
 
+
+#### X-ray Surface Brightness
+
+... $I_{\rm X}$ ...
+
+
 #### Minimum Pressure
 
 ... $P_{\rm min}$ from photoionization models of CGM absorption clouds ...
 
-### Global Properties
+
+### Unresolved Properties
 
 Data sets with many objects ...
+
 
 ## Scaling Laws
 
