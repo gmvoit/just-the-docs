@@ -154,6 +154,7 @@ A primordial atmosphere has $\mu_{\rm H} = 1.33$. An atmosphere with solar abund
 
 Some of the observational constraints on $N_{\rm H}$ and its dependence on $r_\prime$ come from circumgalactic clouds that absorb UV light from background quasars. Photoionization modeling is necessary for determining $N_{\rm H}$ and its uncertainty range from those observations. Also, the fraction of gas without a UV absorption signature is often unknown, meaning that column density contraints derived from those observations are usually lower limits on $N_{\rm H}$.
 
+
 #### Electron Column Density
 
 Dividing the atmosphere's surface mass density by its mean mass per electron $\mu_3 m_p$ gives the electron column density along a line of sight at $r_\perp$:
@@ -161,6 +162,7 @@ Dividing the atmosphere's surface mass density by its mean mass per electron $\m
 A fully ionized primordial atmosphere has $\mu_e = 1.14$. A fully ionized atmosphere with solar abundances has $\mu_e = 1.18$.
 
 Dispersion-measure observations of fast radio bursts behind galactic atmospheres place constraints on $N_e (r_\perp)$.
+
 
 #### Compton Parameter
 
@@ -173,6 +175,7 @@ The predicted tSZ distortion profile of a spherical **ExpCGM** atmosphere model 
 As with the surface density, the integral is a structure factor of order unity usually computed through numerical integration. Those structure factors are identical in isothermal atmospheres, giving
   $$y (r_\perp) ~=~ \frac {\mu} {\mu_e} \frac {\pi r_\perp P (r_\perp)} {m_e c^2 \sigma_{\rm T}} ~=~ \frac {\mu} {\mu_e} \frac {\pi r_0 P_0} {m_e c^2 \sigma_{\rm T}} \left( \frac {r_\perp} {r_0} \right)^{-1}$$
 for the case with $\alpha = 2$.
+
 
 #### Emission Measure
 
