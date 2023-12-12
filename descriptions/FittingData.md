@@ -162,7 +162,7 @@ For example, the result is $\Sigma_{\rm CGM} (r_\perp) = \pi r_\perp \rho (r_\pe
 Dividing the atmosphere's surface mass density by its mean mass per hydrogen nucleus $\mu_{\rm H} m_p$ gives the total hydrogen column density along a line of sight at $r_\perp$:
   $$N_{\rm H} (r_\perp) = \frac {\Sigma_{\rm CGM} (r_\perp)} {\mu_{\rm H} m_p}$$
 
-... photoionization modeling of CGM absorption-line clouds ...
+Some of the observational constraints on $N_{\rm H}$ and its dependence on $r_\prime$ come from circumgalactic clouds that absorb UV light from background quasars. Photoionization modeling is necessary for determining their ionization level and the abundance ratios of other elements relative to hydrogen. Also, the fraction of gas without a UV absorption signature is often unknown, meaning that column density contraints derived from those observations are usually lower limits on $N_{\rm H}$.
 
 #### Electron Column Density
 
