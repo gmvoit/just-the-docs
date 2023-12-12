@@ -148,7 +148,7 @@ where $r_\parallel$ is the component of $\mathbf{r}$ parallel to the line of sig
   $$\Sigma_{\rm CGM} (r_\perp) = r_\perp \rho(r_\perp) \int_{-\infty}^{\infty} \frac {\rho(r)} {\rho(r_\perp)} d \left( \frac {r_\parallel} {r_\perp} \right)$$
 </p>
 
-The structure-factor integral to be performed then becomes a number of order unity usually calculated by numerical integration. However, the result for an isothermal power-law atmosphere can be expressed in terms of gamma functions:
+The structure-factor integral to be performed then becomes a number of order unity usually calculated via numerical integration. However, the result for an isothermal power-law atmosphere can be expressed in terms of gamma functions:
 
 <p>
   $$\Sigma_{\rm CGM} (r_\perp) = \left[ \frac {\pi^{1/2} \Gamma \left( \frac {\alpha - 1} {2} \right)} {\Gamma \left( \frac {\alpha} {2} \right)} \right] r_\perp \rho(r_\perp) $$
@@ -158,6 +158,9 @@ For example, the result is $\Sigma_{\rm CGM} (r_\perp) = \pi r_\perp \rho (r_\pe
 
 
 #### Hydrogen Column Density
+
+Dividing the atmosphere's surface mass density by its mean mass per hydrogen nucleus $\mu_{\rm H} m_p$ gives the total hydrogen column density along a line of sight at $r_\perp$:
+  $$N_{\rm H} (r_\perp) = \frac {\Sigma_{\rm CGM} (r_\perp)} {\mu_{\rm H} m_p}$$
 
 ... photoionization modeling of CGM absorption-line clouds ...
 
