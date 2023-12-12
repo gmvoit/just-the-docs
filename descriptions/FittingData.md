@@ -154,7 +154,8 @@ The integral to be performed is then a structure factor of order unity usually c
   $$\Sigma_{\rm CGM} (r_\perp) = \left[ \frac {\pi^{1/2} \Gamma \left( \frac {\alpha - 1} {2} \right)} {\Gamma \left( \frac {\alpha} {2} \right)} \right] r_\perp \rho(r_\perp) $$
 </p>
 
-For example, the result is $\Sigma_{\rm CGM} (r_\perp) = \pi r_\perp \rho (r_\perp)$ for $\alpha = 2$.
+For example, the result for $\alpha = 2$ is
+  $$\Sigma_{\rm CGM} (r_\perp) = \pi r_\perp \rho (r_\perp) = \frac {2 \pi r_0 P_0} {v_\varphi^2} \left( \frac {r_\perp} {r_0} \right)^{-1}$$
 
 
 #### Hydrogen Column Density
