@@ -179,9 +179,7 @@ As with the surface density, the integral is a structure factor of order unity u
 </p>
 
 
-for a power-law model with $\alpha = 2$. 
-
-For reference, this formula for the Compton parameter gives
+for a power-law model with $\alpha = 2$. This formula for the Compton parameter gives a reference value
   $$y \approx 5 \times 10^{-7} \left( \frac {r_\perp} {100~ {\rm kpc}} \right) \left( \frac {n} {10^{-3}~ {\rm cm}^{-3}} \right) \left( \frac {T} {10^7~ {\rm K}} \right)$$
 for atmospheres with $\alpha \approx 2$.
 
