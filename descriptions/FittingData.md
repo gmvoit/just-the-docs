@@ -210,11 +210,11 @@ at projected radius $r_\perp$. The line's intensity has units of energy/time/are
 Sometimes the emission line of interest will be from a region of the atmosphere with a temperature distinctly different from most of the atmosphere. In that case, the emission measure integral should be limited to that region.
 
 
-#### Projected Spectrum
+#### Spectral Intensity
 
 A galactic atmosphere's overall spectrum comes from both line emission and continuum emission processes collectively represented by the quantity $\epsilon_\nu (T)$. It is defined so that $4 \pi n_e n_{\rm H} \epsilon_\nu (T) ~ \Delta \nu$ is the rate of energy emission per unit volume within a narrow frequency interval $\Delta \nu$ containing the frequency $\nu$. An **ExpCGM** atmosphere model therefore predicts emission at frequency $\nu$ with an intensity 
-  $$I_\nu (r_\perp) = \int $$
-This ***spectral intensity*** has units of energy/time/area/solid angle/frequency.
+  $$I_\nu (r_\perp) = \int_{-\infty}^{\infty} n_e n_{\rm H} \epsilon_\nu (T) ~d r_\parallel$$
+at projected radius $r_\perp$. This ***spectral intensity*** has units of energy/time/area/solid angle/frequency.
 
 #### Surface Brightness
 
