@@ -260,9 +260,9 @@ Integrating a spherical atmosphere's Compton parameter over projected radius yie
   $$Y_\infty = 2 \pi \int_0^\infty y(r_\perp) ~r_\perp d r_\perp$$
 The integral has units of area, and the subscript $\infty$ indicates that the integral is not truncated at a particular outer radius. Instead, the Compton $y$ parameter needs to decline rapidly enough at large radii for the integral to converge. A shape function with $\alpha_{\rm out} > 2$ guarantees convergence. Likewise, the integral diverges at small radii unless $\alpha_{\rm in} < 2$.
 
-Dividing $$Y_\infty$$ by the effective area of the full sky at the distance of the galactic atmosphere gives the dimensionless quantity
+Dividing $Y_\infty$ by the effective area of the full sky at the distance of the galactic atmosphere gives the dimensionless quantity
   $$Y_{\infty,{\rm obs}} = \frac {Y_\infty} {4 \pi d_{\rm A}^2 (z)}$$
-Here, $$d_{\rm A} (z)$$ is the cosmological angular size distance at the atmosphere's redshift $z$. The detectability of an unresolved tSZ source depends on the magnitude of $Y_{\infty,{\rm obs}}$.
+Here, $d_{\rm A} (z)$ is the cosmological angular size distance at the atmosphere's redshift $z$. The detectability of an unresolved tSZ source depends on the magnitude of $Y_{\infty,{\rm obs}}$.
 
 
 #### Bolometric Luminosity
