@@ -236,7 +236,7 @@ Forward modeling that convolves $I_\nu (r_\perp)$ with an instrumental response 
 Integrating $I_\nu$ over all frequencies gives the atmosphere's ***bolometric surface brightness*** 
   $$I_{\rm bol} (r_\perp) = \int_0^\infty I_\nu (r_\perp) ~d\nu$$
 Observations of surface brightness generally remain within a specific frequency band going from $\nu_{\rm min}$ to $\nu_{\rm max}$, in which the ***band surface brightness*** is 
-  $$I_{\rm band} (r_\perp | \nu_{\rm min} , \nu_{\rm max}) = \int_\nu_{\rm min}^\nu_{\rm max} I_\nu (r_\perp) ~d\nu$$
+  $$I_{\rm band} (r_\perp | \nu_{\rm min} , \nu_{\rm max}) = \int_{\nu_{\rm min}}^{\nu_{\rm max}} I_\nu (r_\perp) ~d\nu$$
 **ExpCGM** users can specify the desired band range $[\nu_{\rm min} , \nu_{\rm max}]$ for model output.
 
 {: .note}
