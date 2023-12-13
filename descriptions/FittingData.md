@@ -126,11 +126,21 @@ Fitting such an **ExpCGM** atmosphere model to a data set containing information
 
 #### Essential Parameters
 
-$r_0$, $P_0$, $v_\varphi$, $\alpha$
+| Parameter | Description |
+| --------- | ----------- |
+|   $r_0$   | Fiducial radius (chosen by user and remains fixed) |
+|   $P_0$   | Thermal pressure normalization at $r_0$ |
+| $v_\varphi$ | Halo circular velocity (constant for isothermal potential) | 
+| $\alpha$ | Shape function (constant for power-law atmosphere model) |
 
 #### Shape Function Parameters
 
-$\alpha_{\rm in}$, $\alpha_{\rm out}$, $\alpha_{\rm tr}$, $r_\alpha$
+| Parameter | Description |
+| --------- | ----------- |
+|  $\alpha_{\rm in}$   | Asymptotic value of $\alpha$ at small radii |
+|  $\alpha_{\rm out}$  | Asymptotic value of $\alpha$ at large radii |
+|  $r_\alpha$ | Transitional radius from $\alpha_{\rm in}$ to $\alpha_{\rm out}$ | 
+|  $\alpha_{\rm tr}$ | Parameter determining sharpness of transition |
 
 #### Potential Well Parameters
 
