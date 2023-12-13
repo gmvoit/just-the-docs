@@ -280,7 +280,8 @@ Dividing $Y_\infty$ by the effective area of the full sky at the distance of the
 Here, $d_{\rm A} (z)$ is the cosmological angular size distance at the atmosphere's redshift $z$. The detectability of an unresolved tSZ source depends on the magnitude of $Y_{\infty,{\rm obs}}$.
 
 {: .note}
-This integral diverges at small radii for $\alpha_in > 3/2$ and diverges at large radii for $\alpha_{\rm out} < 3/2$.
+The integral for $Y_\infty$ diverges at small radii for $\alpha_{\rm in} > 3$ because the atmosphere's thermal energy unphysically diverges there. It diverges at large radii for $\alpha_{\rm out} < 3 because the atmosphere's total thermal energy then does not converge. Its value for isothermal power-law atmospheres is therefore undefined. 
+
 
 #### Bolometric Luminosity
 
@@ -288,23 +289,21 @@ Integrating the bolometric surface brightness over projected area gives the atmo
   $$L_{\rm bol} = 8 \pi^2 \int I_{\rm bol}(r_\perp) ~r_\perp d r_\perp$$
 
 {: .note}
-This integral diverges at small radii for $\alpha_in > 3/2$ and diverges at large radii for $\alpha_{\rm out} < 3/2$.
+This integral for $L_{\rm bol}$ and the luminosity integrals that follow all diverge at small radii for $\alpha_{\rm in} > 3/2$ and at large radii for $\alpha_{\rm out} < 3/2$. They are therefore undefined for isothermal power-law atmospheres. To obtain converged values of $Y_\infty$ and $L_{\rm bol}$ for **ExpCGM** models, users need to specify a shape function that has $\alpha_{\rm in} < 3/2$ and $\alpha_{\rm out} > 3$.
 
 #### Band Luminosity
 
 Integrating the band surface brightness over projected area gives the atmosphere's luminosity in the band $[\nu_{\rm min} , \nu_{\rm max}]$:
   $$L_{\rm band} = 8 \pi^2 \int I_{\rm band}(r_\perp) ~r_\perp d r_\perp$$
+... can depend on abundance $Z$ ...
 
-{: .note}
-This integral diverges at small radii for $\alpha_in > 3/2$ and diverges at large radii for $\alpha_{\rm out} < 3/2$.
 
 #### Line Luminosity
 
 Integrating the line intensity over projected area gives the atmosphere's line luminosity:
   $$L_{\rm line} = 8 \pi^2 \int I_{\rm line}(r_\perp) ~r_\perp d r_\perp$$
+... depends on user-specified line emissivity
 
-{: .note}
-This integral diverges at small radii for $\alpha_in > 3/2$ and diverges at large radii for $\alpha_{\rm out} < 3/2$.
 
 ### Summary of Model Output
 
