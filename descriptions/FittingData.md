@@ -28,7 +28,7 @@ parent: Description
 # Fitting Data
 {: .no_toc}
 
-This page outlines the input parameters for **ExpCGM** models and the output predictions they enable for users wishing to fit either observed or simulated galactic atmospheres with those models.
+This page outlines the input parameters for **ExpCGM** models and the output predictions they enable for users wishing to fit those models to either observed or simulated galactic atmospheres.
 
 {: .warning}
 This page is still under construction.
@@ -152,7 +152,7 @@ Projected **ExpCGM** models provide many observable predictions that can be comp
 
 A spherical atmosphere's surface mass density along a line of sight at a projected radius $r_\perp$ is 
   $$\Sigma_{\rm CGM} (r_\perp) = \int_{-\infty}^{\infty} \rho(r) ~dr_\parallel$$ 
-where $r_\parallel = \pm ( r^2 - r_\perp^2} )^{1/2} is the component of $\mathbf{r}$ parallel to the line of sight. Bringing the dimensional factors outside of the integral gives
+where $r_\parallel = \pm ( r^2 - r_\perp^2 )^{1/2} is the component of $\mathbf{r}$ parallel to the line of sight. Bringing the dimensional factors outside of the integral gives
   $$\Sigma_{\rm CGM} (r_\perp) = r_\perp \rho(r_\perp) \int_{-\infty}^{\infty} \frac {\rho(r)} {\rho(r_\perp)} ~d \left( \frac {r_\parallel} {r_\perp} \right)$$
 The integral to be performed is then a structure factor of order unity usually calculated via numerical integration. 
 
@@ -198,9 +198,9 @@ As with the surface density, the integral is a structure factor of order unity u
 
 For an isothermal power-law atmosphere, the integral results in
   $$y (r_\perp) = \left( \frac {\mu \sigma_{\rm T}} {\mu_e m_e c^2} \right) \left[ \frac {\pi^{1/2} \Gamma \left( \frac {\alpha - 1} {2} \right)} {\Gamma \left( \frac {\alpha} {2} \right)} \right] r_0 P_0 \left( \frac {r_\perp} {r_0} \right)^{1-\alpha}$$
-and reduces to
+When $\alpha = 2$ it further reduces to
   $$y (r_\perp) = \left( \frac {\mu \sigma_{\rm T}} {\mu_e m_e c^2} \right) \pi r_0 P_0 \left( \frac {r_\perp} {r_0} \right)^{-1}$$
-when $\alpha = 2$. 
+ 
 
 {: .note}
 Inserting physical quantities characteristic of galaxy groups gives a reference value
