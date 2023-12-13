@@ -244,15 +244,23 @@ More precise comparisons with observations may require multiplying $I_\nu$ by a 
 
 #### Minimum Pressure
 
-Another constraint on projected **ExpCGM** models comes from UV absorption-line observations. Photoionization models of such an absorbing cloud provide a pressure estimate, $P_{\rm min} (r)$, at the cloud's projected radius $r_\perp$. That estimate is likely to be a lower limit on the atmospheric pressure at $r = r_\perp$ for two reasons:
+Another constraint on projected **ExpCGM** models comes from UV absorption-line observations. Photoionization models of such an absorbing cloud provide a pressure estimate, $P_{\rm min}$, at $r = r_\perp$. That estimate is likely to be a lower limit on the atmospheric pressure at $r$ for two reasons:
 
-1. The cloud's distance $r$ from the atmosphere's center may be greater than $r_\perp$, and thermal pressure usually declines with radius in a galactic atmosphere.
-2. Thermal pressure may not be the only source of pressure that supports the cloud. 
+1. The cloud's actual distance from the atmosphere's center may be greater than $r_\perp$, and thermal pressure usually declines with radius in a galactic atmosphere.
+2. Thermal pressure may not be the only source of pressure keeping the cloud from being compressed by its surroundings. 
 
 
 ### Unresolved Properties
 
-Data sets with many objects ...
+Sometimes the only information we can gather about a galactic atmosphere is unresolved and represented a quantity integrated over solid angle. The output of an **ExpCGM** model can provide predictions for some of those unresolved properties. 
+
+#### Integrated Compton Parameter
+
+#### Bolometric Luminosity
+
+#### Band Luminosity
+
+#### Line Luminosity
 
 
 ## Scaling Laws
