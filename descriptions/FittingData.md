@@ -120,7 +120,7 @@ Furthermore, assuming that isotropic turbulence provides the rest of the support
   $$\sigma_{\rm 1D}^2 (r) = \frac {2} {3} \frac {v_{\rm c}^2 (r)} {\alpha_{\rm eff} (r)} \left[ 1 - f_{\rm th} (r) \right]$$
 in which $\sigma_{\rm 1D}$ is the one-dimensional velocity dispersion of turbulent support.
 
-Fitting such an **ExpCGM** atmosphere model to a data set containing information about both $T(r)$ and $\sigma_{\rm 1D}$ then jointly constrains both $v_{\rm c} (r)$ and $f_{\rm th}(r)$.
+Fitting such an **ExpCGM** atmosphere model to a data set containing information about both $T(r)$ and $v_{\rm c} (r)$ then constrains $f_{\rm th}(r)$ and $\sigma_{\rm 1D}$. Likewise, having information about both $T(r)$ and $\sigma_{\rm 1D}$ constrains $v_{\rm c} (r)$ and $f_{\rm th}(r)$.
 
 ### Summary of Input Parameters
 
@@ -179,7 +179,7 @@ Projected **ExpCGM** models provide many observable predictions that can be comp
 
 A spherical atmosphere's surface mass density along a line of sight at a projected radius $r_\perp$ is 
   $$\Sigma_{\rm CGM} (r_\perp) = \int_{-\infty}^{\infty} \rho(r) ~dr_\parallel$$ 
-where $r_\parallel = \pm ( r^2 - r_\perp^2 )^{1/2} is the component of $\mathbf{r}$ parallel to the line of sight. Bringing the dimensional factors outside of the integral gives
+where $r_\parallel = \pm ( r^2 - r_\perp^2 )^{1/2}$ is the component of $\mathbf{r}$ parallel to the line of sight. Bringing the dimensional factors outside of the integral gives
   $$\Sigma_{\rm CGM} (r_\perp) = r_\perp \rho(r_\perp) \int_{-\infty}^{\infty} \frac {\rho(r)} {\rho(r_\perp)} ~d \left( \frac {r_\parallel} {r_\perp} \right)$$
 The integral to be performed is then a structure factor of order unity usually calculated via numerical integration. 
 
