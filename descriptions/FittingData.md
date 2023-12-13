@@ -144,11 +144,21 @@ Fitting such an **ExpCGM** atmosphere model to a data set containing information
 
 #### Potential Well Parameters
 
-$v_varphi$, $r_{\rm s}$, $M_{\rm H}$, $r_{\rm H}$, $M_{\rm BH}$
+| Parameter | Description |
+| :-------: | ----------- |
+|  $v_varphi$   | Maximum circular velocity of halo potential |
+|  $r_{\rm s}$  | Scale radius of NFW halo potential well |
+|  $M_*$        | Stellar mass of central galaxy | 
+|  $r_{\rm H}$  | Hernquist scale radius of stellar potential well |
+| $M_{\rm BH}$  | Mass of central supermassive black hole |
 
 #### Force Balance Parameters
 
-$f_{\rm th}$ and $f_\varphi$ may be constants with a default value of unity or may be parametric functions of $r$.
+| Parameter | Description |
+| :-------: | ----------- |
+|  $f_{\rm th}$ | Thermalization fraction (may be constant or a parametric function of $r$) |
+|  $f_\varphi$  | Force modification factor (may be constant or a parametric function of $r$) |
+
 
 ## Model Output
 
