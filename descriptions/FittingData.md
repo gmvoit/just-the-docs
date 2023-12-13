@@ -252,16 +252,23 @@ Another constraint on projected **ExpCGM** models comes from UV absorption-line 
 
 ### Unresolved Properties
 
-Sometimes the only information we can gather about a galactic atmosphere is unresolved and corresponds to a projected model quantity integrated over solid angle. The output of an **ExpCGM** model can provide predictions for some of those unresolved properties. 
+Sometimes the only information we can gather about a galactic atmosphere is spatially unresolved and corresponds to a projected model quantity integrated over solid angle. The output of an **ExpCGM** model can provide predictions for some of those integrated properties. 
 
 #### Integrated Compton Parameter
 
+  $$Y_\infty = 2 \pi \int y ~r_\perp ~d r_\perp$$
+  
 #### Bolometric Luminosity
+
+  $$L_{\rm bol} = 8 \pi^2 \int I_{\rm bol}(r_\perp) ~r_\perp ~d r_\perp$$
 
 #### Band Luminosity
 
+  $$L_{\rm band} = 8 \pi^2 \int I_{\rm band}(r_\perp) ~r_\perp ~d r_\perp$$
+
 #### Line Luminosity
 
+  $$L_{\rm line} = 8 \pi^2 \int I_{\rm line}(r_\perp) ~r_\perp ~d r_\perp$$
 
 ## Scaling Laws
 
