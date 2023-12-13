@@ -256,10 +256,14 @@ Sometimes the only information we can gather about a galactic atmosphere is spat
 
 #### Integrated Compton Parameter
 
-  $$Y_\infty = 2 \pi \int y(r_\perp) ~r_\perp d r_\perp$$
+Integrating a spherical atmosphere's Compton parameter over projected radius yields the ***integrated Compton parameter***
+  $$Y_\infty = 2 \pi \int_0^\infty y(r_\perp) ~r_\perp d r_\perp$$
+The integral has units of area, and the subscript $\infty$ indicates that the integral is not truncated at a particular outer radius. Instead, the Compton $y$ parameter needs to decline more rapidly than $r_\perp^{-2}$ at large radii for the integral to converge, which is guaranteed for $\alpha_{\rm out} > 3$.
 
+Likewise, the integral diverges at small radii for 
   
 #### Bolometric Luminosity
+
 
   $$L_{\rm bol} = 8 \pi^2 \int I_{\rm bol}(r_\perp) ~r_\perp d r_\perp$$
 
