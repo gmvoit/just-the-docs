@@ -240,7 +240,7 @@ Observations of surface brightness generally remain within a specific frequency 
 **ExpCGM** users can specify the desired band range $[\nu_{\rm min} , \nu_{\rm max}]$ for model output.
 
 {: .note}
-More precise comparisons with observations may require multiplying the **ExpCGM** model prediction for $I_\nu$ by a more complex frequency-dependent kernel function before integrating it over frequency. For example, soft X-ray absorption by the Milky Way's interstellar medium can attenuate the X-ray signal coming from extragalactic sources. If the interstellar X-ray optical depth along that direction is $\tau_\nu$, then the kernel function accounting for it is $\exp ( - \tau_\nu )$.
+More precise comparisons with observations may require multiplying the **ExpCGM** model prediction for $I_\nu$ by a more complex frequency-dependent kernel function before integrating it over frequency. For example, soft X-ray absorption by the Milky Way's interstellar medium can attenuate the X-ray signal coming from an extragalactic source. If the interstellar X-ray optical depth along that direction is $\tau_\nu$, then the kernel function accounting for it is $\exp ( - \tau_\nu )$.
 
 #### Minimum Pressure
 
