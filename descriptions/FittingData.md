@@ -28,7 +28,7 @@ parent: Description
 # Fitting Data
 {: .no_toc}
 
-This page outlines how to fit both observed and simulated galactic atmospheres with **ExpCGM** models.
+This page outlines the input parameters for **ExpCGM** models and the output predictions they enable for users wishing to fit either observed or simulated galactic atmospheres with those models.
 
 {: .warning}
 This page is still under construction.
@@ -58,13 +58,13 @@ Dividing $v_{\rm c}^2 (r)$ by $\alpha(r)$ gives the temperature profile for a th
   $$kT(r) = \frac {\mu m_p v_{\rm c}^2(r)} {\alpha(r)}$$
 The atmosphere's density profile then depends on just $\varphi(r)$, $\alpha(r)$, and $P_0$:
   $$\rho(r) = \frac {\alpha(r) P(r)} {v_{\rm c}^2(r)}$$
-However, $T(r)$ and $\rho(r)$ may also depend on two additional parametric functions representing the atmosphere's thermalization fraction $f_{\rm th}$ and force modification factor $f_\varphi$ (see the [Essentials](Essentials) page for definitions of those functions).
+However, $T(r)$ and $\rho(r)$ may also depend on two additional parametric functions representing the atmosphere's thermalization fraction $f_{\rm th}$ and force modification factor $f_\varphi$ (see the [Essentials](Essentials) page for definitions).
 
 ### Isothermal Atmosphere
 
 Users seeking to minimize degrees of freedom can opt for an isothermal potential well with constant circular velocity ($v_{\rm c} = v_\varphi$) confining an atmosphere with constant $\alpha$. Setting $f_{\rm th}$ and $f_\varphi$ to unity then gives an atmospheric temperature $kT = \mu m_p v_\varphi^2 / \alpha$ that is independent of radius and power-law profiles for pressure and density: 
   $$P(r) = P_0 \left( \frac {r} {r_0} \right)^{-\alpha} ~~~,~~~ \rho(r) = \frac {\alpha P_0} {v_\varphi^2} \left( \frac {r} {r_0} \right)^{-\alpha}$$
-This isothermal atmosphere model has three degrees of freedom $(P_0,v_\varphi,\alpha)$, because $r_0$ is degenerate with $P_0$. 
+This *isothermal power-law atmosphere* model has three degrees of freedom $(P_0,v_\varphi,\alpha)$, because $r_0$ is degenerate with $P_0$. 
 
 ### Double Power-Law Atmospheres
 
@@ -72,7 +72,7 @@ Cosmological structure formation produces gaseous atmospheres in which $\alpha(r
   $$\alpha(r) = \alpha_{\rm in} + ( \alpha_{\rm out} - \alpha_{\rm in} ) \left[ \frac {(r / r_\alpha)^{\alpha_{\rm tr}}} {1 + (r / r_\alpha)^{\alpha_{\rm tr}}} \right]$$
 If all four parameters are left free, the resulting model for an atmosphere in an isothermal potential well has six degrees of freedom instead of three. Its pressure profile is 
   $$P(r) \propto \left( \frac {r} {r_\alpha} \right)^{-\alpha_{\rm in}} \left[ 1 + \left( \frac {r} {r_\alpha} \right)^{\alpha_{\rm tr}} \right]^{-(\alpha_{\rm out} - \alpha_{\rm in}) / {\alpha_{\rm tr}}}$$
-and its gas temperature declines from $kT \approx \mu m_p v_\varphi^2 / \alpha_{\rm in}$ at small radii toward $kT \approx \mu m_p v_\varphi^2 / \alpha_{\rm out}$ at large radii (assuming $\alpha_{\rm out} > \alpha_{\rm in}$).
+and its gas temperature declines from $kT \approx \mu m_p v_\varphi^2 / \alpha_{\rm in}$ at small radii toward $kT \approx \mu m_p v_\varphi^2 / \alpha_{\rm out}$ at large radii as $\alpha (r)$ rises.
 
 {: .note}
 Restricting the double power-law atmosphere model by choosing $\alpha_{\rm in} = 0$ and $\alpha_{\rm tr} = 2$ results in 
@@ -81,11 +81,11 @@ This relation is nearly equivalent to the classic "beta model" for galaxy-cluste
 
 ### NFW-like Models
 
-Cosmological structure formation also produces halo potential wells that are not quite isothermal. Typically, the circular velocity profile of a cosmological halo rises with radius at small $r$ and declines with radius at large $r$. The most common fitting formula accounting for that feature is the Navarro-Frenk-White (NFW) model, which can be represented by the circular velocity profile
+Cosmological structure formation also produces halo potential wells that are not quite isothermal. Typically, the circular velocity profile of a cosmological halo rises with radius at small $r$ and declines with radius at large $r$. The most common fitting formula accounting for that feature is the Navarro-Frenk-White (NFW) model, which has a circular velocity profile
   $$v_{\rm NFW}^2(x) = A_{\rm NFW} v_\varphi^2 \left[ \frac {\ln (1 + x)} {x} - \frac {1} {1 + x} \right]$$
 with $x =  r / r_{\rm s}$ and $A_{\rm NFW} = 4.625$. 
 
-The [Essentials](Essentials) page presents a simple example with four degrees of freedom $(P_0,v_\varphi,r_{\rm s}, \alpha)$ describing a power-law atmosphere in an NFW potential well. Expanding that example using all four parameters of a double power-law atmosphere yields a model with seven degrees of freedom $(P_0,v_\varphi,r_{\rm s},\alpha_{\rm in},\alpha_{\rm out},\alpha_{\rm tr},r_\alpha)$. Choosing to make $r_\alpha$ a constant multiple of $r_{\rm s}$ and keeping $\alpha_{\rm tr}$ fixed are options for reducing the dimensionality of the parameter space.
+The [Essentials](Essentials) page presents a simple example with four degrees of freedom $(P_0,v_\varphi,r_{\rm s}, \alpha)$ describing a power-law atmosphere in an NFW potential well. Expanding that example using all four parameters of a double power-law atmosphere yields a model with seven degrees of freedom $(P_0,v_\varphi,r_{\rm s},\alpha_{\rm in},\alpha_{\rm out},\alpha_{\rm tr},r_\alpha)$. Users can reduce the dimensionality of the input parameter space by keeping $\alpha_{\rm tr}$ fixed and by choosing to make $r_\alpha$ a constant multiple of $r_{\rm s}$.
  
 ### NFW Halo + Central Galaxy
 
@@ -95,7 +95,7 @@ One option is to use a ***Hernquist model*** to represent the galaxy's contribut
   $$v_{\rm H}^2(r) =  \frac {G M_{\rm H} r} {r + r_{\rm H}}$$
 In this expression, $M_{\rm H}$ represents the galaxy's total mass and the ***Hernquist radius*** $r_{\rm H}$ is a scale radius determining how the galaxy's mass profile converges toward $M_{\rm H}$. 
 
-The model parameters $M_{\rm H}$ and $r_{\rm H}$ can be free, or they can be fixed at values consistent with the observed stellar mass and effective radius of the halo's central galaxy. If both $M_{\rm H}$ and $r_{\rm H}$ are allowed to be free, then adding a central galaxy to the gravitational potential model increases dimensionality of the overall **ExpCGM** atmosphere model by two degrees of freedom.
+The model parameters $M_{\rm H}$ and $r_{\rm H}$ can be free, or they can be fixed at values consistent with the observed stellar mass and effective radius of the halo's central galaxy. If both $M_{\rm H}$ and $r_{\rm H}$ are allowed to be free, then adding a central galaxy to the gravitational potential model adds to degrees of freedom to the input parameter space.
 
 {: .note}
 Most central galaxies have a maximum circular velocity $(G M_{\rm H} / 4 r_{\rm H})^{1/2}$ similar to the maximum circular velocity $v_\varphi$ of the surrounding halo. It is therefore reasonable to reduce the dimensionality of the parameter space by applying the restriction $r_{\rm H} = G M_{\rm H} / 4 v_\varphi^2$, so that $\max (v_{\rm H}) = v_\varphi$. However, applying that restriction is unwise for galaxy-cluster models, because the maximum circular velocity of a central cluster galaxy is significantly smaller than the maximum circular velocity of its halo. 
@@ -120,7 +120,18 @@ Furthermore, assuming that isotropic turbulence provides the rest of the support
   $$\sigma_{\rm 1D}^2 (r) = \frac {2} {3} \frac {v_{\rm c}^2 (r)} {\alpha_{\rm eff} (r)} \left[ 1 - f_{\rm th} (r) \right]$$
 in which $\sigma_{\rm 1D}$ is the one-dimensional velocity dispersion of turbulent support.
 
-Fitting such an **ExpCGM** atmosphere model to a data set containing information about both $T(r)$ and $v_{\rm c}^2 (r)$ or $\sigma_{\rm 1D}$ then jointly constrains both $v_{\rm c} (r)$ and $f_{\rm th}(r)$.
+Fitting such an **ExpCGM** atmosphere model to a data set containing information about both $T(r)$ and $\sigma_{\rm 1D}$ then jointly constrains both $v_{\rm c} (r)$ and $f_{\rm th}(r)$.
+
+### Summary of Input Parameters
+
+#### Essential Parameters
+
+#### Shape Function
+
+#### Potential Well
+
+#### Force Balance
+
 
 ## Model Output
 
@@ -141,11 +152,13 @@ Projected **ExpCGM** models provide many observable predictions that can be comp
 
 A spherical atmosphere's surface mass density along a line of sight at a projected radius $r_\perp$ is 
   $$\Sigma_{\rm CGM} (r_\perp) = \int_{-\infty}^{\infty} \rho(r) ~dr_\parallel$$ 
-where $r_\parallel = \pm \sqrt{r^2 - r_\perp^2}$ is the component of $\mathbf{r}$ parallel to the line of sight. Bringing the dimensional factors outside of the integral gives
+where $r_\parallel = \pm ( r^2 - r_\perp^2} )^{1/2} is the component of $\mathbf{r}$ parallel to the line of sight. Bringing the dimensional factors outside of the integral gives
   $$\Sigma_{\rm CGM} (r_\perp) = r_\perp \rho(r_\perp) \int_{-\infty}^{\infty} \frac {\rho(r)} {\rho(r_\perp)} ~d \left( \frac {r_\parallel} {r_\perp} \right)$$
-The integral to be performed is then a structure factor of order unity usually calculated via numerical integration. However, the result for an isothermal power-law atmosphere can be expressed in terms of gamma functions:
+The integral to be performed is then a structure factor of order unity usually calculated via numerical integration. 
+
+For an isothermal power-law atmosphere, the integral can be expressed in terms of gamma functions, giving
   $$\Sigma_{\rm CGM} (r_\perp) = \left[ \frac {\pi^{1/2} \Gamma \left( \frac {\alpha - 1} {2} \right)} {\Gamma \left( \frac {\alpha} {2} \right)} \right] r_\perp \rho(r_\perp) $$
-For example, the result for $\alpha = 2$ is
+For example, the result for $\alpha = 2$ and constant $v_{\rm c}$ is
   $$\Sigma_{\rm CGM} (r_\perp) ~=~ \pi r_\perp \rho (r_\perp) ~=~ \frac {2 \pi r_0 P_0} {v_\varphi^2} \left( \frac {r_\perp} {r_0} \right)^{-1}$$
 
 {: .note}
@@ -181,14 +194,16 @@ in which $\sigma_{\rm T}$ is the Thomson cross section for electron scattering.
 
 The predicted tSZ distortion profile of a spherical **ExpCGM** atmosphere model is
   $$y (r_\perp) = \left( \frac {\mu \sigma_{\rm T}} {\mu_e m_e c^2} \right) r_\perp P (r_\perp) \int_{-\infty}^{\infty} \frac {f_P (r)} {f_P (r_\perp)} ~d \left( \frac {r_\parallel} {r_\perp} \right)$$ 
-As with the surface density, the integral is a structure factor of order unity usually computed through numerical integration. In isothermal atmosphere, the integral results in
+As with the surface density, the integral is a structure factor of order unity usually computed through numerical integration. 
 
-<p>
-  $$y (r_\perp) ~=~ \left( \frac {\mu \sigma_{\rm T}} {\mu_e m_e c^2} \right) \pi r_0 P_0 \left( \frac {r_\perp} {r_0} \right)^{-1}$$
-</p>
+For an isothermal power-law atmosphere, the integral results in
+  $$y (r_\perp) = \left( \frac {\mu \sigma_{\rm T}} {\mu_e m_e c^2} \right) \left[ \frac {\pi^{1/2} \Gamma \left( \frac {\alpha - 1} {2} \right)} {\Gamma \left( \frac {\alpha} {2} \right)} \right] r_0 P_0 \left( \frac {r_\perp} {r_0} \right)^{1-\alpha}$$
+and reduces to
+  $$y (r_\perp) = \left( \frac {\mu \sigma_{\rm T}} {\mu_e m_e c^2} \right) \pi r_0 P_0 \left( \frac {r_\perp} {r_0} \right)^{-1}$$
+when $\alpha = 2$. 
 
-
-for a power-law model with $\alpha = 2$. Inserting physical quantities characteristic of galaxy groups gives a reference value
+{: .note}
+Inserting physical quantities characteristic of galaxy groups gives a reference value
   $$y \approx 5 \times 10^{-7} \left( \frac {r_\perp} {100~ {\rm kpc}} \right) \left( \frac {n} {10^{-3}~ {\rm cm}^{-3}} \right) \left( \frac {T} {10^7~ {\rm K}} \right)$$
 for atmospheres with $\alpha \approx 2$.
 
@@ -264,21 +279,40 @@ Dividing $Y_\infty$ by the effective area of the full sky at the distance of the
   $$Y_{\infty,{\rm obs}} = \frac {Y_\infty} {4 \pi d_{\rm A}^2 (z)}$$
 Here, $d_{\rm A} (z)$ is the cosmological angular size distance at the atmosphere's redshift $z$. The detectability of an unresolved tSZ source depends on the magnitude of $Y_{\infty,{\rm obs}}$.
 
+{: .note}
+This integral diverges at small radii for $\alpha_in > 3/2$ and diverges at large radii for $\alpha_{\rm out} < 3/2$.
 
 #### Bolometric Luminosity
 
-
+Integrating the bolometric surface brightness over projected area gives the atmosphere's bolometric luminosity:
   $$L_{\rm bol} = 8 \pi^2 \int I_{\rm bol}(r_\perp) ~r_\perp d r_\perp$$
 
+{: .note}
+This integral diverges at small radii for $\alpha_in > 3/2$ and diverges at large radii for $\alpha_{\rm out} < 3/2$.
 
 #### Band Luminosity
 
+Integrating the band surface brightness over projected area gives the atmosphere's luminosity in the band $[\nu_{\rm min} , \nu_{\rm max}]$:
   $$L_{\rm band} = 8 \pi^2 \int I_{\rm band}(r_\perp) ~r_\perp d r_\perp$$
 
+{: .note}
+This integral diverges at small radii for $\alpha_in > 3/2$ and diverges at large radii for $\alpha_{\rm out} < 3/2$.
 
 #### Line Luminosity
 
+Integrating the line intensity over projected area gives the atmosphere's line luminosity:
   $$L_{\rm line} = 8 \pi^2 \int I_{\rm line}(r_\perp) ~r_\perp d r_\perp$$
+
+{: .note}
+This integral diverges at small radii for $\alpha_in > 3/2$ and diverges at large radii for $\alpha_{\rm out} < 3/2$.
+
+### Summary of Model Output
+
+#### Radial Profiles
+
+#### Projected Profiles
+
+#### Unresolved Properties
 
 
 ## Scaling Laws
