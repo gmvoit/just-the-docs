@@ -50,13 +50,13 @@ Two parametric models represent the mininum input for generating an **ExpCGM** m
 
 * **Gravitational Potential,** $\varphi( ~r~ \| ~v_\varphi , r_{\rm s} , ... ~)$: The gravitational potential model requires only one parameter, the maximum circular velocity $v_\varphi$ of the confining halo's gravitational potential. It may also include a scale radius $r_{\rm s}$ determining how the potential's circular velocity $v_{\rm c}$ depends on $r$. Descriptions of more detailed potential wells may require additional parameters.
 
-* **Shape Function,** $\alpha( ~r~ \| ~\alpha , \alpha_{\rm in} , \alpha_{\rm out} , r_\alpha , ... ~)$: The atmosphere's shape function can be just a constant value of $\alpha$. It can also shift from one limiting value ($\alpha_{\rm in}$) at small radii to another one ($\alpha_{\rm out}$) at large radii in the vicinity of a crossover radius ($r_\alpha$). The [Pressure Profiles](PressureProfiles) page discusses how $\alpha (r)$ is related to the processes that shape a galaxy's atmosphere and provides parametric expressions for several physically motivated options.
+* **Shape Function,** $\alpha( ~r~ \| ~\alpha_{\rm in} , \alpha_{\rm out} , r_\alpha , ... ~)$: The atmosphere's shape function can be just a constant value of $\alpha$. It can also shift from one limiting value $\alpha_{\rm in}$ at small radii to another one $\alpha_{\rm out}$ at large radii in the vicinity of a crossover radius $r_\alpha$. The [Pressure Profiles](PressureProfiles) page discusses how $\alpha (r)$ is related to the processes that shape a galaxy's atmosphere and provides parametric expressions for several physically motivated options.
 
 Once $\alpha(r)$ has been specified, the pressure profile of an **ExpCGM** atmosphere model depends on just the normalization factor $P_0$ at a user-chosen fiducial radius $r_0$. The atmosphere's pressure profile becomes
   $$P(r) = P_0 \cdot \exp \left[ - \int_1^{r/r_0} \frac {\alpha(x)} {x} dx \right]$$
 Dividing $v_{\rm c}^2 (r)$ by $\alpha(r)$ gives the temperature profile for a thermally supported atmosphere: 
   $$kT(r) = \frac {\mu m_p v_{\rm c}^2(r)} {\alpha(r)}$$
-Its density profile then depends on just $\varphi(r)$, $\alpha(r)$, and $P_0$:
+The atmosphere's density profile then depends on just $\varphi(r)$, $\alpha(r)$, and $P_0$:
   $$\rho(r) = \frac {\alpha(r) P(r)} {v_{\rm c}^2(r)}$$
 However, $T(r)$ and $\rho(r)$ may also depend on two additional parametric functions representing the atmosphere's thermalization fraction $f_{\rm th}$ and force modification factor $f_\varphi$ (see the [Essentials](Essentials) page for definitions of those functions).
 
@@ -68,15 +68,15 @@ This isothermal atmosphere model has three degrees of freedom $(P_0,v_\varphi,\a
 
 ### Double Power-Law Atmospheres
 
-Cosmological structure formation produces gaseous atmospheres in which $\alpha(r)$ increases with radius. An **ExpCGM** model can describe that increase via the four-parameter fitting formula
+Cosmological structure formation produces gaseous atmospheres in which $\alpha(r)$ increases with radius. An **ExpCGM** model can describe that increase with the four-parameter fitting formula
   $$\alpha(r) = \alpha_{\rm in} + ( \alpha_{\rm out} - \alpha_{\rm in} ) \left[ \frac {(r / r_\alpha)^{\alpha_{\rm tr}}} {1 + (r / r_\alpha)^{\alpha_{\rm tr}}} \right]$$
 If all four parameters are left free, the resulting model for an atmosphere in an isothermal potential well has six degrees of freedom instead of three. Its pressure profile is 
-  $$P(r) \propto \left( \frac {r} {r_\alpha} \right)^{-\alpha_{\rm in}} \left[ 1 + \left( \frac {r} {r_\alpha} \right)^{\alpha_{\rm tr}} \right]^{- \frac {\alpha_{\rm out} - \alpha_{\rm in}} {\alpha_{\rm tr}}}$$
+  $$P(r) \propto \left( \frac {r} {r_\alpha} \right)^{-\alpha_{\rm in}} \left[ 1 + \left( \frac {r} {r_\alpha} \right)^{\alpha_{\rm tr}} \right]^{-(\alpha_{\rm out} - \alpha_{\rm in}) / {\alpha_{\rm tr}}}$$
 and its gas temperature declines from $kT \approx \mu m_p v_\varphi^2 / \alpha_{\rm in}$ at small radii toward $kT \approx \mu m_p v_\varphi^2 / \alpha_{\rm out}$ at large radii (assuming $\alpha_{\rm out} > \alpha_{\rm in}$).
 
 {: .note}
-Restricting the double power-law atmosphere model by setting $\alpha_{\rm in} = 0$ and $\alpha_{\rm tr} = 2$ results in 
-  $$P(r) \propto \left[ 1 + \left( \frac {r} {r_\alpha} \right)^2 \right]^{-\frac {\alpha_{\rm out}} {2}}$$ 
+Restricting the double power-law atmosphere model by choosing $\alpha_{\rm in} = 0$ and $\alpha_{\rm tr} = 2$ results in 
+  $$P(r) \propto \left[ 1 + \left( \frac {r} {r_\alpha} \right)^2 \right]^{-\alpha_{\rm out} / 2}$$ 
 This relation is nearly equivalent to the classic "beta model" for galaxy-cluster atmospheres, but with thermal pressure replacing gas density. However, the model has a drawback: It results in a gas-temperature profile that diverges at small $r$ in an isothermal potential well with constant $v_\varphi$. This undesirable feature is less problematic in gravitational potentials with small values of $v_{\rm c}$ at small radii.
 
 ### NFW-like Models
@@ -104,7 +104,7 @@ Most central galaxies have a maximum circular velocity $(G M_{\rm H} / 4 r_{\rm 
 
 A supermassive black hole may dominate the galaxy's gravitational potential at the smallest radii. Its contribution can be included in an **ExpCGM** model using the Newtonian formula
   $$v_{\rm BH}^2 (r) = \frac {G M_{\rm BH}} {r}$$
-where $M_{\rm BH}$ is the central black hole's mass. Adding a black hole to the potential model, so that
+where $M_{\rm BH}$ is the central black hole's mass. Adding a black hole to the potential model so that
   $$v_{\rm c}^2 (r) = v_{\rm NFW}^2 (r) + v_{\rm H}^2 (r) + v_{\rm BH}^2 (r)$$
 then ensures that the model atmosphere's temperature does not formally go to zero at the center.
 
@@ -116,19 +116,22 @@ An **ExpCGM** user interested in thermalization may choose to add a parametric m
   $$\alpha_{\rm eff} (r) = \alpha (r) + \frac {d \ln f_{\rm th}} {d \ln r}$$
 The predicted temperature profile then becomes
   $$kT(r) = \frac {\mu m_p v_{\rm c}^2 (r)} {\alpha_{\rm eff} (r)} f_{\rm th} (r)$$
-Furthermore, assuming that isotropic turbulence provides the rest of the support needed for force balance gives the prediction
+Furthermore, assuming that isotropic turbulence provides the rest of the support needed for force balance leads to the prediction
   $$\sigma_{\rm 1D}^2 (r) = \frac {2} {3} \frac {v_{\rm c}^2 (r)} {\alpha_{\rm eff} (r)} \left[ 1 - f_{\rm th} (r) \right]$$
 in which $\sigma_{\rm 1D}$ is the one-dimensional velocity dispersion of turbulent support.
 
-Fitting such an **ExpCGM** atmosphere model to a data set containing information about both $T(r)$ and $v_{\rm c}^2 (r)$ or $T(r)$ and $\sigma_{\rm 1D}$ then jointly constrains both $v_{\rm c} (r)$ and $f_{\rm th}(r)$.
+Fitting such an **ExpCGM** atmosphere model to a data set containing information about both $T(r)$ and $v_{\rm c}^2 (r)$ or $\sigma_{\rm 1D}$ then jointly constrains both $v_{\rm c} (r)$ and $f_{\rm th}(r)$.
 
 ## Model Output
 
-A variety of potentially observable atmospheric characteristics that can be used to test **ExpCGM** models for galactic atmospheres and to constrain their input parameters.
+A variety of potentially observable atmospheric characteristics can be used to test **ExpCGM** models for galactic atmospheres and to constrain their input parameters.
 
 ### Radial Profiles
 
-An **ExpCGM** model's radial profiles of thermal pressure, temperature, and gas density depend on the input parameter set as described in the previous section. Those profiles can be directly compared with deprojected versions of $P(r)$, $T(r)$, and $\rho (r)$ derived from observational data. Fitting an **ExpCGM** model to deprojected observations therefore constrains the model's input parameters. However, reliable deprojections generally require high-quality data and approximate spherical symmetry.
+An **ExpCGM** model's radial profiles of thermal pressure, temperature, and gas density depend on the input parameter set as described in the previous section. Those profiles can be directly compared with deprojected versions of $P(r)$, $T(r)$, and $\rho (r)$ derived from observational data. Fits of an **ExpCGM** model to deprojected observations therefore constrain the model's input parameters. 
+
+{: .note}
+Reliable deprojections generally require high-quality data and approximate spherical symmetry.
 
 ### Projected Profiles
 
@@ -138,30 +141,36 @@ Projected **ExpCGM** models provide many observable predictions that can be comp
 
 A spherical atmosphere's surface mass density along a line of sight at a projected radius $r_\perp$ is 
   $$\Sigma_{\rm CGM} (r_\perp) = \int_{-\infty}^{\infty} \rho(r) ~dr_\parallel$$ 
-where $r_\parallel$ is the component of $\mathbf{r}$ parallel to the line of sight. Bringing the dimensional factors outside of the integral gives
+where $r_\parallel = \pm \sqrt{r^2 - r_\perp^2}$ is the component of $\mathbf{r}$ parallel to the line of sight. Bringing the dimensional factors outside of the integral gives
   $$\Sigma_{\rm CGM} (r_\perp) = r_\perp \rho(r_\perp) \int_{-\infty}^{\infty} \frac {\rho(r)} {\rho(r_\perp)} ~d \left( \frac {r_\parallel} {r_\perp} \right)$$
 The integral to be performed is then a structure factor of order unity usually calculated via numerical integration. However, the result for an isothermal power-law atmosphere can be expressed in terms of gamma functions:
   $$\Sigma_{\rm CGM} (r_\perp) = \left[ \frac {\pi^{1/2} \Gamma \left( \frac {\alpha - 1} {2} \right)} {\Gamma \left( \frac {\alpha} {2} \right)} \right] r_\perp \rho(r_\perp) $$
 For example, the result for $\alpha = 2$ is
   $$\Sigma_{\rm CGM} (r_\perp) ~=~ \pi r_\perp \rho (r_\perp) ~=~ \frac {2 \pi r_0 P_0} {v_\varphi^2} \left( \frac {r_\perp} {r_0} \right)^{-1}$$
 
+{: .note}
+The approximation 
+  $$\Sigma_{\rm CGM} \approx \frac {2 \pi r_0 P_0} {v_\varphi^2} \left( \frac {r_\perp} {r_0} \right)^{1-\alpha}$$ 
+for isothermal power-law atmospheres is good to within 10% for $\alpha$ in the range $1.7 \leq \alpha \leq 5.5$.
+
 
 #### Hydrogen Column Density
 
 Dividing the atmosphere's surface mass density by its mean mass per hydrogen nucleus $\mu_{\rm H} m_p$ gives the total hydrogen column density along a line of sight at $r_\perp$:
   $$N_{\rm H} (r_\perp) = \frac {\Sigma_{\rm CGM} (r_\perp)} {\mu_{\rm H} m_p}$$
-A primordial atmosphere has $\mu_{\rm H} = 1.33$. An atmosphere with solar abundances has $\mu_{\rm H} = 1.42$.
+A primordial atmosphere has $\mu_{\rm H} = 1.33$. An atmosphere with solar abundance ratios has $\mu_{\rm H} = 1.42$.
 
-Some of the observational constraints on $N_{\rm H}$ and its dependence on $r_\prime$ come from circumgalactic clouds that absorb UV light from background quasars. Photoionization modeling is necessary for determining $N_{\rm H}$ and its uncertainty range from those observations. Also, the fraction of gas without a UV absorption signature is often unknown, meaning that column density contraints derived from those observations are usually lower limits on $N_{\rm H}$.
+{: .note}
+Some of the observational constraints on $N_{\rm H}$ and its dependence on $r_\perp$ around galaxies like the Milky Way come from circumgalactic clouds that absorb UV light from background quasars. Photoionization modeling is necessary for determining $N_{\rm H}$ and its uncertainty range from those observations. Also, the fraction of gas without a UV absorption signature is often unknown, meaning that column density contraints derived from those observations are usually lower limits on $N_{\rm H} (r_\perp)$.
 
 
 #### Electron Column Density
 
-Dividing the atmosphere's surface mass density by its mean mass per electron $\mu_3 m_p$ gives the electron column density along a line of sight at $r_\perp$:
+Dividing the atmosphere's surface mass density by its mean mass per electron $\mu_e m_p$ gives the electron column density along a line of sight at $r_\perp$:
   $$N_e (r_\perp) = \frac {\Sigma_{\rm CGM} (r_\perp)} {\mu_e m_p}$$
 A fully ionized primordial atmosphere has $\mu_e = 1.14$. A fully ionized atmosphere with solar abundances has $\mu_e = 1.18$.
 
-Dispersion-measure observations of fast radio bursts behind galactic atmospheres place constraints on $N_e (r_\perp)$.
+Dispersion-measure observations of fast radio bursts that pass through galactic atmospheres place constraints on $N_e (r_\perp)$.
 
 
 #### Compton Parameter
@@ -171,11 +180,11 @@ Microwave observations along lines of sight through hot galactic atmospheres sho
 in which $\sigma_{\rm T}$ is the Thomson cross section for electron scattering.
 
 The predicted tSZ distortion profile of a spherical **ExpCGM** atmosphere model is
-  $$y (r_\perp) = \frac {\mu \sigma_{\rm T}} {\mu_e m_e c^2}  r_\perp P (r_\perp) \int_{-\infty}^{\infty} \frac {f_P (r)} {f_P (r_\perp)} ~d \left( \frac {r_\parallel} {r_\perp} \right)$$ 
-As with the surface density, the integral is a structure factor of order unity usually computed through numerical integration. Those structure factors are identical in isothermal atmospheres, resulting in
+  $$y (r_\perp) = \left( \frac {\mu \sigma_{\rm T}} {\mu_e m_e c^2} \right) r_\perp P (r_\perp) \int_{-\infty}^{\infty} \frac {f_P (r)} {f_P (r_\perp)} ~d \left( \frac {r_\parallel} {r_\perp} \right)$$ 
+As with the surface density, the integral is a structure factor of order unity usually computed through numerical integration. In isothermal atmosphere, the integral results in
 
 <p>
-  $$y (r_\perp) ~=~ \frac {\pi \mu \sigma_{\rm T}} {\mu_e m_e c^2} r_0 P_0 \left( \frac {r_\perp} {r_0} \right)^{-1}$$
+  $$y (r_\perp) ~=~ \left( \frac {\mu \sigma_{\rm T}} {\mu_e m_e c^2} \right) \pi r_0 P_0 \left( \frac {r_\perp} {r_0} \right)^{-1}$$
 </p>
 
 
@@ -186,7 +195,7 @@ for atmospheres with $\alpha \approx 2$.
 
 #### Emission Measure
 
-Collisional excitation of emission lines produces a signal proportional to the integral of $\rho^2$ along a line of sight through a galactic atmosphere. The literature on nebular emission excited by electron collisions defines the ***emission measure*** along that line of sight to be
+Collisional excitation of emission lines produces a signal proportional to the integral of $\rho^2$ along a line of sight through a galactic atmosphere. The literature on nebular emission excited by electron collisions defines the ***emission measure*** along a line of sight to be
   $${\rm EM} \equiv \int n_e n_{\rm H} ~d r_\parallel$$
 The emission measure profile of an **ExpCGM** galactic atmosphere model is therefore
   $${\rm EM} (r_\perp) = \frac {r_\perp \rho^2 (r_\perp)} {\mu_e \mu_{\rm H} m_p^2} \int_{-\infty}^{\infty} \frac {\rho^2 (r)} {\rho^2 (r_\perp)} ~d \left( \frac {r_\parallel} {r_\perp} \right)$$
@@ -194,17 +203,19 @@ Once again, the integral is a structure factor of order unity, to be determined 
 
 In the special case of an isothermal power-law atmosphere, the structure-factor integral simplifies to
   $$\int_{-\infty}^{\infty} \left( \frac {r} {r_\perp} \right)^{-2\alpha} ~d \left( \frac {r_\parallel} {r_\perp} \right) =  \frac {\pi^{1/2} \Gamma \left( \alpha - \frac {1} {2} \right)} {\Gamma \left( \alpha \right)}$$
-which reduces to $\pi/2$ for $\alpha = 2$. 
+and reduces to $\pi/2$ for $\alpha = 2$. 
 
 {: .note}
-Emission measure is sometimes defined in the literature as an integral of $n_e n_{\rm H}$ over volume rather than an integral along a line of sight. 
+Be aware that emission measure is sometimes defined in the literature as an integral of $n_e n_{\rm H}$ over volume rather than an integral along a line of sight. It is then proportional to a quantity called the "normalization" in models of X-ray emission.
 
 
 #### Line Intensity
 
-A particular emission line has a temperature-dependent emissivity $\epsilon_{\rm line} (T)$, defined so that $4 \pi n_e n_{\rm H} \epsilon_{\rm line}(T)$ is the emission rate of energy per unit volume. Isotropic emission in an isothermal atmosphere therefore produces a line of intensity
+A particular emission line has a temperature-dependent emissivity $\epsilon_{\rm line} (T)$, defined so that $4 \pi n_e n_{\rm H} \epsilon_{\rm line}(T)$ is the emission rate of line energy per unit volume. Isotropic emission in an isothermal atmosphere therefore produces a line of intensity
   $$I_{\rm line} (r_\perp) = \epsilon_{\rm line}(T) \cdot {\rm EM} (r_\perp)$$
 at projected radius $r_\perp$. The line's intensity has units of energy/time/area/solid angle.
+
+Emission lines from elements other than hydrogen or helium will have an emissivity proportional to the factor $Z / Z_\odot$ relating its relative abundance $Z$ to its abundance $Z_\odot$ in the Sun. The abundance $Z$, given in units of $Z_\odot$, can be an **ExpCGM** input parameter.
 
 {: .note}
 Sometimes the emission line of interest will be from a region of the atmosphere with a temperature distinctly different from most of the atmosphere. In that case, the emission measure integral should be limited to that region.
@@ -212,20 +223,31 @@ Sometimes the emission line of interest will be from a region of the atmosphere 
 
 #### Spectral Intensity
 
-A galactic atmosphere's overall spectrum comes from both line emission and continuum emission processes collectively represented by the quantity $\epsilon_\nu (T)$. It is defined so that $4 \pi n_e n_{\rm H} \epsilon_\nu (T) ~ \Delta \nu$ is the rate of energy emission per unit volume within a narrow frequency interval $\Delta \nu$ containing the frequency $\nu$. An **ExpCGM** atmosphere model therefore predicts emission at frequency $\nu$ with an intensity 
+A galactic atmosphere's overall spectrum comes from both line emission and continuum emission processes collectively represented by the quantity $\epsilon_\nu (T)$. This version of emissivity is defined so that $4 \pi n_e n_{\rm H} \epsilon_\nu (T) ~ \Delta \nu$ is the rate of energy emission per unit volume within a narrow frequency interval $\Delta \nu$ containing the frequency $\nu$. An **ExpCGM** atmosphere model therefore predicts that emission at frequency $\nu$ has an intensity 
   $$I_\nu (r_\perp) = \int_{-\infty}^{\infty} n_e n_{\rm H} \epsilon_\nu (T) ~d r_\parallel$$
-at projected radius $r_\perp$. This ***spectral intensity*** has units of energy/time/area/solid angle/frequency.
+at projected radius $r_\perp$. This ***spectral intensity*** has units of energy/time/area/solid angle/frequency and may depend on the abundance ratio $Z / Z_\odot$.
+
+{: .note}
+Forward modeling that convolves $I_\nu (r_\perp)$ with an instrumental response function and fits the result to an instrument's signal is an alternative to deprojection that makes the uncertainties in input model parameters easier to assess.
+
 
 #### Surface Brightness
 
-Integrating $I_\nu$ over all frequencies gives the atmosphere's ***bolometric surface brightness*** $I_{\rm bol}$ ...
+Integrating $I_\nu$ over all frequencies gives the atmosphere's ***bolometric surface brightness*** 
+  $$I_{\rm bol} (r_\perp) = \int_0^\infty I_\nu (r_\perp) ~d\nu$
+Observations of surface brightness generally remain within a specific frequency band going from $\nu_{\rm min}$ to $\nu_{\rm max}$, in which the integrated surface brightness is 
+  $$I_{\rm band} (r_\perp | \nu_{\rm min} , \nu_{\rm max}) = \int_\nu_{\rm min}^\nu_{\rm max} I_\nu (r_\perp) ~d\nu$$
+**ExpCGM** users can specify the range $[\nu_{\rm min} , \nu_{\rm max}]$.
 
-... surface brightness in a particular band $I_{\rm band}$ ...
-
+{: .note}
+More precise comparisons with observations may require multiplying $I_\nu$ by a frequency-dependent kernel function before doing the integration over frequency.
 
 #### Minimum Pressure
 
-... $P_{\rm min}$ from photoionization models of CGM absorption clouds ...
+Another constraint on projected **ExpCGM** models comes from UV absorption-line observations. Photoionization models of such an absorbing cloud provide a pressure estimate, $P_{\rm min} (r)$, at the cloud's projected radius $r_\perp$. That estimate is likely to be a lower limit on the atmospheric pressure at $r = r_\perp$ for two reasons:
+
+1. The cloud's distance $r$ from the atmosphere's center may be greater than $r_\perp$, and thermal pressure usually declines with radius in a galactic atmosphere.
+2. Thermal pressure may not be the only source of pressure that supports the cloud. 
 
 
 ### Unresolved Properties
