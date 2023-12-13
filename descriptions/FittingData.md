@@ -234,17 +234,17 @@ Forward modeling that convolves $I_\nu (r_\perp)$ with an instrumental response 
 #### Surface Brightness
 
 Integrating $I_\nu$ over all frequencies gives the atmosphere's ***bolometric surface brightness*** 
-  $$I_{\rm bol} (r_\perp) = \int_0^\infty I_\nu (r_\perp) ~d\nu$
-Observations of surface brightness generally remain within a specific frequency band going from $\nu_{\rm min}$ to $\nu_{\rm max}$, in which the integrated surface brightness is 
+  $$I_{\rm bol} (r_\perp) = \int_0^\infty I_\nu (r_\perp) ~d\nu$$
+Observations of surface brightness generally remain within a specific frequency band going from $\nu_{\rm min}$ to $\nu_{\rm max}$, in which the ***band surface brightness*** is 
   $$I_{\rm band} (r_\perp | \nu_{\rm min} , \nu_{\rm max}) = \int_\nu_{\rm min}^\nu_{\rm max} I_\nu (r_\perp) ~d\nu$$
-**ExpCGM** users can specify the range $[\nu_{\rm min} , \nu_{\rm max}]$.
+**ExpCGM** users can specify the desired band range $[\nu_{\rm min} , \nu_{\rm max}]$ for model output.
 
 {: .note}
-More precise comparisons with observations may require multiplying $I_\nu$ by a frequency-dependent kernel function before doing the integration over frequency.
+More precise comparisons with observations may require multiplying $I_\nu$ by a more complex frequency-dependent kernel function before doing the integration over frequency.
 
 #### Minimum Pressure
 
-Another constraint on projected **ExpCGM** models comes from UV absorption-line observations. Photoionization models of such an absorbing cloud provide a pressure estimate, $P_{\rm min}$, at $r = r_\perp$. That estimate is likely to be a lower limit on the atmospheric pressure at $r$ for two reasons:
+Another constraint on projected **ExpCGM** models comes from UV absorption-line observations. Photoionization models of such an absorbing cloud at projected radius $r_\perp$ provide a ***minimum pressure*** estimate $P_{\rm min} (r)$ at $r \approx r_\perp$. That estimate is likely to be a lower limit on the atmospheric pressure at $r$ for two reasons:
 
 1. The cloud's actual distance from the atmosphere's center may be greater than $r_\perp$, and thermal pressure usually declines with radius in a galactic atmosphere.
 2. Thermal pressure may not be the only source of pressure keeping the cloud from being compressed by its surroundings. 
@@ -252,7 +252,7 @@ Another constraint on projected **ExpCGM** models comes from UV absorption-line 
 
 ### Unresolved Properties
 
-Sometimes the only information we can gather about a galactic atmosphere is unresolved and represented a quantity integrated over solid angle. The output of an **ExpCGM** model can provide predictions for some of those unresolved properties. 
+Sometimes the only information we can gather about a galactic atmosphere is unresolved and corresponds to a projected model quantity integrated over solid angle. The output of an **ExpCGM** model can provide predictions for some of those unresolved properties. 
 
 #### Integrated Compton Parameter
 
