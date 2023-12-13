@@ -236,11 +236,11 @@ Forward modeling that convolves $I_\nu (r_\perp)$ with an instrumental response 
 Integrating $I_\nu$ over all frequencies gives the atmosphere's ***bolometric surface brightness*** 
   $$I_{\rm bol} (r_\perp) = \int_0^\infty I_\nu (r_\perp) ~d\nu$$
 Observations of surface brightness generally remain within a specific frequency band going from $\nu_{\rm min}$ to $\nu_{\rm max}$, in which the ***band surface brightness*** is 
-  $$I_{\rm band} (r_\perp | \nu_{\rm min} , \nu_{\rm max}) = \int_{\nu_{\rm min}}^{\nu_{\rm max}} I_\nu (r_\perp) ~d\nu$$
+  $$I_{\rm band} (~ r_\perp ~|~ \nu_{\rm min} , \nu_{\rm max} ~) = \int_{\nu_{\rm min}}^{\nu_{\rm max}} I_\nu (r_\perp) ~d\nu$$
 **ExpCGM** users can specify the desired band range $[\nu_{\rm min} , \nu_{\rm max}]$ for model output.
 
 {: .note}
-More precise comparisons with observations may require multiplying $I_\nu$ by a more complex frequency-dependent kernel function before doing the integration over frequency.
+More precise comparisons with observations may require multiplying the **ExpCGM** model prediction for $I_\nu$ by a more complex frequency-dependent kernel function before integrating it over frequency. For example, soft X-ray absorption by the Milky Way's interstellar medium can attenuate the X-ray signal coming from extragalactic sources. If the interstellar X-ray optical depth along that direction is $\tau_\nu$, then the kernel function accounting for it is $\exp ( - \tau_\nu )$.
 
 #### Minimum Pressure
 
