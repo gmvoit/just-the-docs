@@ -28,7 +28,7 @@ parent: Description
 # Fitting Data
 {: .no_toc}
 
-This page outlines the input parameters for **ExpCGM** models and the output predictions they enable for users wishing to fit those models to either observed or simulated galactic atmospheres.
+This page outlines the input parameters for **ExpCGM** models and the output predictions for users wishing to fit those models to either observed or simulated galactic atmospheres.
 
 {: .warning}
 This page is still under construction.
@@ -126,12 +126,19 @@ Fitting such an **ExpCGM** atmosphere model to a data set containing information
 
 #### Essential Parameters
 
-#### Shape Function
+$r_0$, $P_0$, $v_\varphi$, $\alpha$
 
-#### Potential Well
+#### Shape Function Parameters
 
-#### Force Balance
+$\alpha_{\rm in}$, $\alpha_{\rm out}$, $\alpha_{\rm tr}$, $r_\alpha$
 
+#### Potential Well Parameters
+
+$v_varphi$, $r_{\rm s}$, $M_{\rm H}$, $r_{\rm H}$, $M_{\rm BH}$
+
+#### Force Balance Parameters
+
+$f_{\rm th}$ and $f_\varphi$ may be constants with a default value of unity or may be parametric functions of $r$.
 
 ## Model Output
 
