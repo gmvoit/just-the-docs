@@ -146,7 +146,7 @@ Fitting such an **ExpCGM** atmosphere model to a data set containing information
 
 | Parameter | Description |
 | :-------: | ----------- |
-|  $v_varphi$   | Maximum circular velocity of halo potential |
+|  $v_\varphi$   | Maximum circular velocity of halo potential |
 |  $r_{\rm s}$  | Scale radius of NFW halo potential well |
 |  $M_*$        | Stellar mass of central galaxy | 
 |  $r_{\rm H}$  | Hernquist scale radius of stellar potential well |
@@ -162,14 +162,11 @@ Fitting such an **ExpCGM** atmosphere model to a data set containing information
 
 ## Model Output
 
-A variety of potentially observable atmospheric characteristics can be used to test **ExpCGM** models for galactic atmospheres and to constrain their input parameters.
+A variety of potentially observable atmospheric characteristics can be used to test **ExpCGM** models for galactic atmospheres and constrain their input parameters.
 
 ### Radial Profiles
 
-An **ExpCGM** model's radial profiles of thermal pressure, temperature, and gas density depend on the input parameter set as described in the previous section. Those profiles can be directly compared with deprojected versions of $P(r)$, $T(r)$, and $\rho (r)$ derived from observational data. Fits of an **ExpCGM** model to deprojected observations therefore constrain the model's input parameters. 
-
-{: .note}
-Reliable deprojections generally require high-quality data and approximate spherical symmetry.
+An **ExpCGM** model's radial profiles of thermal pressure, temperature, and gas density depend on the input parameter set as described in the previous section. Those profiles can be directly compared with deprojected versions of $P(r)$, $T(r)$, and $\rho (r)$ derived from observational data. Fits of an **ExpCGM** model to deprojected observations therefore constrain the model's input parameters. However, reliable deprojections require high-quality data and approximate spherical symmetry.
 
 ### Projected Profiles
 
@@ -179,7 +176,7 @@ Projected **ExpCGM** models provide many observable predictions that can be comp
 
 A spherical atmosphere's surface mass density along a line of sight at a projected radius $r_\perp$ is 
   $$\Sigma_{\rm CGM} (r_\perp) = \int_{-\infty}^{\infty} \rho(r) ~dr_\parallel$$ 
-where $r_\parallel = \pm ( r^2 - r_\perp^2 )^{1/2}$ is the component of $\mathbf{r}$ parallel to the line of sight. Bringing the dimensional factors outside of the integral gives
+where $r_\parallel = \pm ( r^2 - r_\perp^2 )^{1/2}$ is the component of $\mathbf{r}$ parallel to the line of sight. Bringing dimensional factors outside of the integral gives
   $$\Sigma_{\rm CGM} (r_\perp) = r_\perp \rho(r_\perp) \int_{-\infty}^{\infty} \frac {\rho(r)} {\rho(r_\perp)} ~d \left( \frac {r_\parallel} {r_\perp} \right)$$
 The integral to be performed is then a structure factor of order unity usually calculated via numerical integration. 
 
@@ -215,11 +212,11 @@ Dispersion-measure observations of fast radio bursts that pass through galactic 
 
 #### Compton Parameter
 
-Microwave observations along lines of sight through hot galactic atmospheres show that Compton scattering has distorted the microwave background spectrum. This distortion is known as the *Thermal Sunyaev-Zeldovich Effect* or *tSZ* for short. It depends on frequency and is proportional to the ***Compton parameter***
+Compton scattering distorts the microwave background spectrum along lines of sight through hot galactic atmospheres. This distortion is known as the *Thermal Sunyaev-Zeldovich Effect* or *tSZ* for short. It depends on frequency and is proportional to the ***Compton parameter***
   $$y = \int \left( \frac {kT} {m_e c^2} \right) n_e \sigma_{\rm T} ~d r_\parallel$$
 in which $\sigma_{\rm T}$ is the Thomson cross section for electron scattering.
 
-The predicted tSZ distortion profile of a spherical **ExpCGM** atmosphere model is
+A spherical **ExpCGM** atmosphere model gives the predicted tSZ distortion profile
   $$y (r_\perp) = \left( \frac {\mu \sigma_{\rm T}} {\mu_e m_e c^2} \right) r_\perp P (r_\perp) \int_{-\infty}^{\infty} \frac {f_P (r)} {f_P (r_\perp)} ~d \left( \frac {r_\parallel} {r_\perp} \right)$$ 
 As with the surface density, the integral is a structure factor of order unity usually computed through numerical integration. 
 
@@ -255,19 +252,21 @@ Be aware that emission measure is sometimes defined in the literature as an inte
 
 A particular emission line has a temperature-dependent emissivity $\epsilon_{\rm line} (T)$, defined so that $4 \pi n_e n_{\rm H} \epsilon_{\rm line}(T)$ is the emission rate of line energy per unit volume. Isotropic emission in an isothermal atmosphere therefore produces a line of intensity
   $$I_{\rm line} (r_\perp) = \epsilon_{\rm line}(T) \cdot {\rm EM} (r_\perp)$$
-at projected radius $r_\perp$. The line's intensity has units of energy/time/area/solid angle.
+at projected radius $r_\perp$. The line's intensity has units of energy/time/area/solid angle. 
 
-Emission lines from elements other than hydrogen or helium will have an emissivity proportional to the factor $Z / Z_\odot$ relating its relative abundance $Z$ to its abundance $Z_\odot$ in the Sun. The abundance $Z$, given in units of $Z_\odot$, can be an **ExpCGM** input parameter.
+Line emission from an atmosphere that is not isothermal requires numerical integration to obtain
+  $$I_{\rm line} (r_\perp) = \int_{-\infty}^{\infty} n_e n_{\rm H} \epsilon_{\rm line} (T) ~d r_\parallel$$
+Currently, an **ExpCGM** user interested in $I_{\rm line}$ must specify $\epsilon_{\rm line}(T)$.
 
 {: .note}
-Sometimes the emission line of interest will be from a region of the atmosphere with a temperature distinctly different from most of the atmosphere. In that case, the emission measure integral should be limited to that region.
+Sometimes the emission line of interest will be from a region of the atmosphere with a temperature distinctly different from most of the atmosphere, such as a low-temperature cloud in pressure equilibrium with the rest of the gas at its location. In that case, the integral should be limited to that region. See the [Multiphase Gas](MultiphaseGas) page for more on how gas components with $T \ll T_\varphi$ are treated in the **ExpCGM** framework.
 
 
 #### Spectral Intensity
 
 A galactic atmosphere's overall spectrum comes from both line emission and continuum emission processes collectively represented by the quantity $\epsilon_\nu (T)$. This version of emissivity is defined so that $4 \pi n_e n_{\rm H} \epsilon_\nu (T) ~ \Delta \nu$ is the rate of energy emission per unit volume within a narrow frequency interval $\Delta \nu$ containing the frequency $\nu$. An **ExpCGM** atmosphere model therefore predicts that emission at frequency $\nu$ has an intensity 
   $$I_\nu (r_\perp) = \int_{-\infty}^{\infty} n_e n_{\rm H} \epsilon_\nu (T) ~d r_\parallel$$
-at projected radius $r_\perp$. This ***spectral intensity*** has units of energy/time/area/solid angle/frequency and may depend on the abundance ratio $Z / Z_\odot$.
+at projected radius $r_\perp$. This ***spectral intensity*** has units of energy/time/area/solid angle/frequency and may depend on the mass fraction $Z$ of elements other than H and He. An **ExpCGM** user interested in $I_\nu$ may specify as an auxilliary input parameter the mass fraction $Z$ in units of the solar value $Z_\odot$.
 
 {: .note}
 Forward modeling that convolves $I_\nu (r_\perp)$ with an instrumental response function and fits the result to an instrument's signal is an alternative to deprojection that makes the uncertainties in input model parameters easier to assess.
@@ -307,29 +306,29 @@ Dividing $Y_\infty$ by the effective area of the full sky at the distance of the
 Here, $d_{\rm A} (z)$ is the cosmological angular size distance at the atmosphere's redshift $z$. The detectability of an unresolved tSZ source depends on the magnitude of $Y_{\infty,{\rm obs}}$.
 
 {: .note}
-The integral for $Y_\infty$ diverges at small radii for $\alpha_{\rm in} > 3$ because the atmosphere's thermal energy unphysically diverges there. It diverges at large radii for $\alpha_{\rm out} < 3 because the atmosphere's total thermal energy then does not converge. Its value for isothermal power-law atmospheres is therefore undefined. 
+The integral for $Y_\infty$ diverges at small radii for $\alpha_{\rm in} > 3$ because the atmosphere's thermal energy unphysically diverges there. It diverges at large radii for $\alpha_{\rm out} < 3$ because the atmosphere's total thermal energy then does not converge. The value of $Y_\infty$ for isothermal power-law atmospheres is therefore undefined. 
 
 
 #### Bolometric Luminosity
 
 Integrating the bolometric surface brightness over projected area gives the atmosphere's bolometric luminosity:
   $$L_{\rm bol} = 8 \pi^2 \int I_{\rm bol}(r_\perp) ~r_\perp d r_\perp$$
+This quantity may depend on the heavy-element abundance $Z$, which a user can specify in units of $Z_\odot$.
 
 {: .note}
-This integral for $L_{\rm bol}$ and the luminosity integrals that follow all diverge at small radii for $\alpha_{\rm in} > 3/2$ and at large radii for $\alpha_{\rm out} < 3/2$. They are therefore undefined for isothermal power-law atmospheres. To obtain converged values of $Y_\infty$ and $L_{\rm bol}$ for **ExpCGM** models, users need to specify a shape function that has $\alpha_{\rm in} < 3/2$ and $\alpha_{\rm out} > 3$.
+This integral for $L_{\rm bol}$ and the luminosity integrals that follow all diverge at small radii for $\alpha_{\rm in} > 3/2$ and at large radii for $\alpha_{\rm out} < 3/2$. They are therefore undefined for isothermal power-law atmospheres. To obtain converged values of $Y_\infty$ and $L_{\rm bol}$ from **ExpCGM** models, users need to specify a shape function that has $\alpha_{\rm in} < 3/2$ and $\alpha_{\rm out} > 3$.
 
 #### Band Luminosity
 
 Integrating the band surface brightness over projected area gives the atmosphere's luminosity in the band $[\nu_{\rm min} , \nu_{\rm max}]$:
   $$L_{\rm band} = 8 \pi^2 \int I_{\rm band}(r_\perp) ~r_\perp d r_\perp$$
-... can depend on abundance $Z$ ...
-
+This quantity may depend on the heavy-element abundance $Z$, which a user can specify in units of $Z_\odot$.
 
 #### Line Luminosity
 
 Integrating the line intensity over projected area gives the atmosphere's line luminosity:
   $$L_{\rm line} = 8 \pi^2 \int I_{\rm line}(r_\perp) ~r_\perp d r_\perp$$
-... depends on user-specified line emissivity
+Currently, a user must specify $\epsilon_{\rm line} (T)$ to obtain $I_{\rm line} (r_\perp)$ and $L_{\rm line}$.
 
 
 ### Summary of Model Output
