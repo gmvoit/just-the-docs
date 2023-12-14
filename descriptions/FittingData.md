@@ -245,7 +245,7 @@ In the special case of an isothermal power-law atmosphere, the structure-factor 
 and reduces to $\pi/2$ for $\alpha = 2$. 
 
 {: .note}
-Be aware that emission measure is sometimes defined in the literature as an integral of $n_e n_{\rm H}$ over volume rather than an integral along a line of sight. It is then proportional to a quantity called the "normalization" in models of X-ray emission.
+Be aware the integral of $n_e n_{\rm H}$ over volume (rather along a line of sight) is sometimes called an "emission measure." In the **ExpCGM** framework, that volume integral is called an "emission normalization" and is defined among the *Cumulative Profiles* described below.
 
 
 #### Line Intensity
@@ -335,6 +335,15 @@ The **ExpCGM** framework calls ${\rm EN} (r_\perp)$ an "emission normalization" 
   $$\frac {10^{-14}} {4 \pi d_{\rm A}^2 (1 + z)^2} \int n_e n_{\rm H} dV$$
 gives a quantity often called a "normalization" in the X-ray astronomy literature. Elsewhere, ${\rm EN}$ is sometimes called an "emission measure."
 
+#### Density Contrast Profile
+
+Many users of **ExpCGM** models will want to know the atmosphere's luminosity or $Y_{\rm SZ}$ value within a bounding radius corresponding to a particular mass density contrast $\Delta_{\rm c}$ relative to the cosmological critical density $\rho_{\rm cr} (z) = 3 H^2 (z) / 8 \pi G$ at the halo's redshift (z). For that purpose, the **ExpCGM** provides both a radial total mass profile      $$M_{\rm tot} (r) = \frac {v_{\rm c}^2} {Gr}$$
+and a radial density contrast profile 
+  $$\Delta_{\rm c} (r)  \frac {2 v_c^2 (r)} {H^2(z) r^2}$$ 
+along with the atmosphere model output. 
+
+Both profiles include all of the mass components specified in the input parameter set. Having that information provides users with the flexibility to apply their own preferred value of $\Delta_{\rm c}$.
+
 ### Summary of Model Output
 
 #### Radial Profiles
@@ -366,12 +375,15 @@ gives a quantity often called a "normalization" in the X-ray astronomy literatur
 |  $Y_{\rm SZ}(r_\perp)$  | Integrated Compton parameter profile |
 |  $L_{\rm bol}(r_\perp \| Z)$  | Bolometric luminosity profile |
 |  $L_{\rm band}(r_\perp \| Z , \nu_{\rm min} , \nu_{\rm max})$  | Band luminosity profile |
-|  ${\rm VEM}(r_\perp)$ | Volumetric emission measure profile |
+|  ${\rm EN}(r_\perp)$ | Emission normalization profile |
+|  $M_{\rm tot} (r)$   | Total mass profile |
+|  $\Delta_{\rm c}(r)$ | Spherical density contrast profile, relative to $\rho_{\rm cr}(z)$ |
 
 #### Auxilliary Input Parameters
 
-| Output | Description |
+| Parameter | Description |
 | :-------: | ----------- |
+|  $z$  | Halo redshift |
 |  $Z$  | Heavy-element abundance in units of $Z_\odot$ (default: 1) |
 |  $\nu_{\rm min}$  | Minimum frequency of band (default: 0) |
 |  $\nu_{\rm max}$  | Maximum frequency of band (default: $\infty$) |
@@ -379,11 +391,41 @@ gives a quantity often called a "normalization" in the X-ray astronomy literatur
 
 ## Population Scaling Laws
 
-One of the **ExpCGM** framework's primary purposes is to constrain galactic feedback models using multiple data sets providing complementary information about how atmospheric properties depend on halo mass and redshift.
+One of the **ExpCGM** framework's primary purposes is to help constrain galactic feedback models using multiple data sets that provide complementary information about how atmospheric properties scale with halo mass and redshift.
 
 ### Dependence on Halo Mass
 
+The simplest parametric fitting formulae for halo-mass scaling of atmospheric properties assume power-law dependences. However, halo mass is not one of the **ExpCGM** input parameters. Instead, mass scaling of model parameters in the **ExpCGM** framework is represented with power-law dependences on $v_\varphi$ rather than on a value of $M_{\rm tot}$ defined with respect to a particular density contrast $\Delta_{\rm c}$.  
+
+Making that choice has three benefits:
+ 1. It eliminates the "pseudoevolution" of scaling relations that occurs simply because $\rho_{\rm cr} (z)$ changes with time.
+ 2. The maximum circular velocity of a cosmological halo usually changes slowly with time, meaning that fits of redshift evolution at fixed $v_\varphi$ is closer to representing time-dependent changes in a particular population of halos than is redshift evolution at fixed $M_{\rm halo}$.
+ 3. The importance of cooling and feedback processes in an **ExpCGM** model depends on how much they change the ratio of atmospheric specific energy to $v_\varphi^2$ as described on the [Essentials](Essentials) page.
+
+The symbol $\beta$ represents the power-law dependence of a parameter on $v_\varphi$ in the **ExpCGM** framework. For example, the pressure normalization is assumed to scale as
+  $$P_0 \propto v_\varphi^{\beta_P}$$
+A self-similar population of cosmological atmospheres has $\beta_P \
+
+Other parameters that may scale with $v_\varphi$ include $\alpha$ and $f_{\rm th}$.
+
 ### Dependence on Redshift
 
+Model parameters in **ExpCGM** are also assumed to have power-law dependences on $1+z$ ... For example, 
+  $$P_0(v_\varphi,z) \propto v_\varphi^{\beta_P} (1+z)^{\eta_P}$$
+  $$f_{\rm th} (v_\varphi,z) \propto v_\varphi^{\beta_{\rm th}} (1+z)^{\eta_{\rm th}}$$
 
+### Intrinsic Dispersion
 
+Log-normal scatter in $P_0$ at fixed $v_\varphi$ is represented with $\sigma_{P \| \varphi}$. It is constrained by observations...
+
+There may also be scatter in $\alpha$ ...
+
+### Summary of Scaling Parameters
+
+| Parameter | Description |
+| :-------: | ----------- |
+|  $\beta_P$  |  Dependence of $P_0$ on potential well depth  |
+|  $\eta_P$   |  Dependence of $P_0$ on redshift  |
+|  $\beta_{\rm th}$  |  Dependence of thermalization on potential well depth  |
+|  $\eta_{\rm th}$   |  Dependence of thermalization on redshift  |
+|  $\sigma_{P \| \varphi}$ | 
