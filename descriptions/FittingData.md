@@ -312,7 +312,7 @@ The integral for $Y_{\rm SZ}$ diverges at small radii for $\alpha_{\rm in} > 3$ 
 #### Bolometric Luminosity Profile
 
 Integrating the bolometric surface brightness over projected area gives the atmosphere's bolometric luminosity profile:
-  $$L_{\rm bol} (r_\perp) = 8 \pi^2 \int_0^ I_{\rm bol} (r_\perp \| Z) ~r_\perp d r_\perp$$
+  $$L_{\rm bol} (r_\perp) = 8 \pi^2 \int_0^{r_\perp} I_{\rm bol} (r_\perp \| Z) ~r_\perp d r_\perp$$
 This quantity may depend on the atmosphere's heavy-element abundance $Z$, which a user can specify in units of $Z_\odot$ along with the input parameter set.
 
 {: .note}
@@ -326,10 +326,14 @@ This quantity also may depend on the heavy-element abundance $Z$.
 
 #### Volumetric Emission Measure Profile
 
-Integrating ${\rm EM}(r_\perp)$ over projected area gives the ***volumetric emission measure*** corresponding to an integral of $n_e n_{\rm H}$ over volume:
-  $${\rm VEM} (r_\perp) = 2 \pi \int_0^{r_\perp} {\rm EM}(r_\perp) ~r_\perp d r_\perp$$
-Mulitplying ${\rm VEM} (r_\perp)$ by $4 \pi \epsilon_{\rm line} (T)$ gives the line luminosity profile $L_{\rm line} (r_\perp)$ for an isothermal atmosphere. Users interested in line-luminosity predictions for non-isothermal atmospheres should use a model's radial-profile output to perform the necessary integrals.
+Integrating ${\rm EM}(r_\perp)$ over projected area gives the ***emission normalization*** corresponding to an integral of $n_e n_{\rm H}$ over the cylindrical volume within $r_\perp$:
+  $${\rm EN} (r_\perp) = 2 \pi \int_0^{r_\perp} {\rm EN}(r_\perp) ~r_\perp d r_\perp$$
+Mulitplying ${\rm EN} (r_\perp)$ by $4 \pi \epsilon_{\rm line} (T)$ gives the line luminosity profile $L_{\rm line} (r_\perp)$ for an isothermal atmosphere. Users interested in line-luminosity predictions for non-isothermal atmospheres should use a model's radial-profile output to perform the necessary integrals.
 
+{: .note}
+The **ExpCGM** framework calls ${\rm EN} (r_\perp)$ an "emission normalization" because the quantity
+  $$\frac {10^{-14}} {4 \pi d_{\rm A}^2 (1 + z)^2} \int n_e n_{\rm H}$$
+gives a quantity often called a "normalization" in the X-ray astronomy literature. Elsewhere, ${\rm EN}$ is sometimes called an "emission measure."
 
 ### Summary of Model Output
 
