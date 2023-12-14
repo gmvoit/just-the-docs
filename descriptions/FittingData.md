@@ -348,33 +348,34 @@ Mulitplying ${\rm VEM} (r_\perp)$ by $4 \pi \epsilon_{\rm line} (T)$ gives the l
 | :-------: | ----------- |
 |  $\Sigma_{\rm CGM}(r_\perp)$  | Surface mass density profile |
 |  $N_{\rm H}(r_\perp)$  | Hydrogen column density profile |
-|  $N_e(r_\perp)$  | Electron column density profile |
-|  $y(r_\perp)$  | Compton parameter profile |
+|  $N_e(r_\perp)$  \| Electron column density profile |
+|  $y(r_\perp)$  \| Compton parameter profile |
 |  ${\rm EM}(r_\perp)$  | Emission measure profile |
-|  $I_\nu(r_\perp | Z)$  | Spectral intensity profile |
-|  $I_{\rm bol}(r_\perp | Z)$  | Bolometric intensity profile |
-|  $I_{\rm band}(r_\perp | Z , \nu_{\rm min} , \nu_{\rm max})$  | Band intensity profile |
+|  $I_\nu(r_\perp \| Z)$  | Spectral intensity profile |
+|  $I_{\rm bol}(r_\perp \| Z)$  | Bolometric intensity profile |
+|  $I_{\rm band}(r_\perp \| Z , \nu_{\rm min} , \nu_{\rm max})$  | Band intensity profile |
 
 #### Cumulative Profiles
 
 | Output | Description |
 | :-------: | ----------- |
 |  $Y_{\rm SZ}(r_\perp)$  | Integrated Compton parameter profile |
-|  $L_{\rm bol}(r_\perp | Z)$  | Bolometric luminosity profile |
-|  $L_{\rm band}(r_\perp | Z , \nu_{\rm min} , \nu_{\rm max})$  | Band luminosity profile |
+|  $L_{\rm bol}(r_\perp \| Z)$  | Bolometric luminosity profile |
+|  $L_{\rm band}(r_\perp \| Z , \nu_{\rm min} , \nu_{\rm max})$  | Band luminosity profile |
 |  ${\rm VEM}(r_\perp)$ | Volumetric emission measure profile |
 
 #### Auxilliary Input Parameters
 
 | Output | Description |
 | :-------: | ----------- |
-|  $Z$  | Heavy-element abundance in units of $Z_\odot$ (default: $Z = 1$) |
-|  $\nu_{\rm min}$  | Minimum frequency of band (default: $\nu_{\rm min} = 0$) |
-|  $\nu_{\rm max}$  | Maximum frequency of band (default: $\nu_{\rm max} = \infty$) |
+|  $Z$  | Heavy-element abundance in units of $Z_\odot$ (default: 1) |
+|  $\nu_{\rm min}$  | Minimum frequency of band (default: 0) |
+|  $\nu_{\rm max}$  | Maximum frequency of band (default: $\infty$) |
 
 
+## Population Scaling Laws
 
-## Scaling Laws
+One of the **ExpCGM** framework's primary purposes is to constrain galactic feedback models using multiple data sets providing complementary information about how atmospheric properties depend on halo mass and redshift.
 
 ### Dependence on Halo Mass
 
