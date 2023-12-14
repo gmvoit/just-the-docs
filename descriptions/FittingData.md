@@ -92,7 +92,7 @@ The [Essentials](Essentials) page presents a simple example with four degrees of
 An NFW halo model coupled with a shape function model that has $\alpha_{\rm in} > 0$ results in an atmospheric temperature that formally approaches zero at small radii. Adding a central galaxy to the gravitational potential model helps to mitigate that potentially problematic issue.
 
 One option is to use a ***Hernquist model*** to represent the galaxy's contribution to the potential's circular velocity profile:
-  $$v_{\rm H}^2(r) =  \frac {G M_* r} {r + r_{\rm H}}$$
+  $$v_{\rm H}^2(r) =  \frac {G M_* r} { ( r + r_{\rm H})^2 }$$
 In this expression, $M_\*$ represents the galaxy's total stellar mass and the ***Hernquist radius*** $r_{\rm H}$ is a scale radius determining how the galaxy's mass profile converges toward $M_{\rm H}$. 
 
 The model parameters $M_\*$ and $r_{\rm H}$ can be free, or they can be fixed at values consistent with the observed stellar mass and effective radius of the halo's central galaxy. If both $M_\*$ and $r_{\rm H}$ are allowed to be free, then adding a central galaxy to the gravitational potential model adds two degrees of freedom to the input parameter space.
@@ -312,7 +312,7 @@ The integral for $Y_{\rm SZ}$ diverges at small radii for $\alpha_{\rm in} > 3$ 
 #### Bolometric Luminosity Profile
 
 Integrating the bolometric surface brightness over projected area gives the atmosphere's bolometric luminosity profile:
-  $$L_{\rm bol}(r_\perp) = 8 \pi^2 \int_0^ I_{\rm bol}(r_\perp | Z) ~r_\perp d r_\perp$$
+  $$L_{\rm bol} (r_\perp) = 8 \pi^2 \int_0^ I_{\rm bol} (r_\perp \| Z) ~r_\perp d r_\perp$$
 This quantity may depend on the atmosphere's heavy-element abundance $Z$, which a user can specify in units of $Z_\odot$ along with the input parameter set.
 
 {: .note}
