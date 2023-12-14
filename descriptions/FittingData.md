@@ -331,8 +331,8 @@ Integrating ${\rm EM}(r_\perp)$ over projected area gives the ***emission normal
 Mulitplying ${\rm EN} (r_\perp)$ by $4 \pi \epsilon_{\rm line} (T)$ gives the line luminosity profile $L_{\rm line} (r_\perp)$ for an isothermal atmosphere. Users interested in line-luminosity predictions for non-isothermal atmospheres should use a model's radial-profile output to perform the necessary integrals.
 
 {: .note}
-The **ExpCGM** framework calls ${\rm EN} (r_\perp)$ an "emission normalization" because the quantity
-  $$\frac {10^{-14}} {4 \pi d_{\rm A}^2 (1 + z)^2} \int n_e n_{\rm H}$$
+The **ExpCGM** framework calls ${\rm EN} (r_\perp)$ an "emission normalization" because the volume integral
+  $$\frac {10^{-14}} {4 \pi d_{\rm A}^2 (1 + z)^2} \int n_e n_{\rm H} dV$$
 gives a quantity often called a "normalization" in the X-ray astronomy literature. Elsewhere, ${\rm EN}$ is sometimes called an "emission measure."
 
 ### Summary of Model Output
