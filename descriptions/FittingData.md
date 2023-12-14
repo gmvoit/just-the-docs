@@ -93,9 +93,9 @@ An NFW halo model coupled with a shape function model that has $\alpha_{\rm in} 
 
 One option is to use a ***Hernquist model*** to represent the galaxy's contribution to the potential's circular velocity profile:
   $$v_{\rm H}^2(r) =  \frac {G M_* r} {r + r_{\rm H}}$$
-In this expression, $M_*$ represents the galaxy's total stellar mass and the ***Hernquist radius*** $r_{\rm H}$ is a scale radius determining how the galaxy's mass profile converges toward $M_{\rm H}$. 
+In this expression, $M_\*$ represents the galaxy's total stellar mass and the ***Hernquist radius*** $r_{\rm H}$ is a scale radius determining how the galaxy's mass profile converges toward $M_{\rm H}$. 
 
-The model parameters $M_*$ and $r_{\rm H}$ can be free, or they can be fixed at values consistent with the observed stellar mass and effective radius of the halo's central galaxy. If both $M_*$ and $r_{\rm H}$ are allowed to be free, then adding a central galaxy to the gravitational potential model adds two degrees of freedom to the input parameter space.
+The model parameters $M_\*$ and $r_{\rm H}$ can be free, or they can be fixed at values consistent with the observed stellar mass and effective radius of the halo's central galaxy. If both $M_\*$ and $r_{\rm H}$ are allowed to be free, then adding a central galaxy to the gravitational potential model adds two degrees of freedom to the input parameter space.
 
 {: .note}
 Most central galaxies have a maximum circular velocity $(G M_* / 4 r_{\rm H})^{1/2}$ similar to the maximum circular velocity $v_\varphi$ of the surrounding halo. It is therefore reasonable to reduce the dimensionality of the parameter space by applying the restriction $r_{\rm H} = G M_* / 4 v_\varphi^2$, so that $\max (v_{\rm H}) = v_\varphi$. However, applying that restriction is unwise for galaxy-cluster models, because the maximum circular velocity of a central cluster galaxy is significantly smaller than the maximum circular velocity of its halo. 
@@ -301,8 +301,8 @@ Integrating a spherical atmosphere's Compton parameter over projected radius yie
   $$Y_{\rm SZ}(r_\perp) = 2 \pi \int_0^{r_\perp} y(r_\perp) ~r_\perp d r_\perp$$
 The integral has units of area and diverges at small radii unless $\alpha_{\rm in} < 3$.
 
-Dividing $Y$ by the effective area of the full sky at the distance of the galactic atmosphere gives the dimensionless quantity
-  $$\tilde{Y}\_{\rm SZ}} = \frac {Y_{\rm SZ}} {4 \pi d_{\rm A}^2 (z)}$$
+Dividing $Y$ by the effective area of the full sky at a halo's redshift $z$ gives the dimensionless quantity
+  $$\tilde{Y}\_{\rm SZ} = \frac {Y_{\rm SZ}} {4 \pi d_{\rm A}^2 (z)}$$
 Here, $d_{\rm A} (z)$ is the cosmological angular size distance at the atmosphere's redshift $z$. The detectability of an unresolved tSZ source depends on the magnitude of $\tilde{Y}\_{\rm SZ}$.
 
 {: .note}
@@ -311,18 +311,18 @@ The integral for $Y_{\rm SZ}$ diverges at small radii for $\alpha_{\rm in} > 3$ 
 
 #### Bolometric Luminosity Profile
 
-Integrating the bolometric surface brightness over projected area gives the atmosphere's bolometric luminosity:
+Integrating the bolometric surface brightness over projected area gives the atmosphere's bolometric luminosity profile:
   $$L_{\rm bol}(r_\perp) = 8 \pi^2 \int_0^ I_{\rm bol}(r_\perp | Z) ~r_\perp d r_\perp$$
-This quantity may depend on the heavy-element abundance $Z$, which a user can specify in units of $Z_\odot$.
+This quantity may depend on the atmosphere's heavy-element abundance $Z$, which a user can specify in units of $Z_\odot$ along with the input parameter set.
 
 {: .note}
-This integral for $L_{\rm bol}$ and the luminosity integrals that follow all diverge at small radii for $\alpha_{\rm in} > 3/2$ and at large radii for $\alpha_{\rm out} < 3/2$. They are therefore undefined for isothermal power-law atmospheres. To obtain converged values of $Y_\infty$ and $L_{\rm bol}$ from **ExpCGM** models, users need to specify a shape function that has $\alpha_{\rm in} < 3/2$ and $\alpha_{\rm out} > 3$.
+This integral for $L_{\rm bol}$ and the luminosity integrals that follow all diverge at small radii for $\alpha_{\rm in} > 3/2$ and at large radii for $\alpha_{\rm out} < 3/2$. To obtain converged values of $Y_{\rm SZ}$ and $L_{\rm bol}$ from **ExpCGM** models, users need to specify a shape function that has $\alpha_{\rm in} < 3/2$ and $\alpha_{\rm out} > 3$.
 
 #### Band Luminosity Profile
 
 Integrating the band surface brightness over projected area gives the atmosphere's luminosity in the band $[\nu_{\rm min} , \nu_{\rm max}]$:
   $$L_{\rm band} (Z) = 8 \pi^2 \int I_{\rm band}(r_\perp | Z) ~r_\perp d r_\perp$$
-This quantity may depend on the heavy-element abundance $Z$, which a user can specify in units of $Z_\odot$.
+This quantity also may depend on the heavy-element abundance $Z$.
 
 #### Volumetric Emission Measure Profile
 
@@ -340,7 +340,7 @@ Mulitplying ${\rm VEM} (r_\perp)$ by $4 \pi \epsilon_{\rm line} (T)$ gives the l
 |  $P(r)$  | Thermal pressure profile |
 |  $T(r)$  | Temperature profile |
 | $\rho (r)$ | Gas density profile | 
-| $f_{\rm th}$ | Thermalization profile (if $f_{\th}$ is a parametric function of $r$) |
+| $f_{\rm th} (r)$ | Thermalization profile (if $f_{\rm th}$ is a parametric function of $r$) |
 
 #### Projected Profiles
 
@@ -348,8 +348,8 @@ Mulitplying ${\rm VEM} (r_\perp)$ by $4 \pi \epsilon_{\rm line} (T)$ gives the l
 | :-------: | ----------- |
 |  $\Sigma_{\rm CGM}(r_\perp)$  | Surface mass density profile |
 |  $N_{\rm H}(r_\perp)$  | Hydrogen column density profile |
-|  $N_e(r_\perp)$  \| Electron column density profile |
-|  $y(r_\perp)$  \| Compton parameter profile |
+|  $N_e(r_\perp)$  | Electron column density profile |
+|  $y(r_\perp)$  | Compton parameter profile |
 |  ${\rm EM}(r_\perp)$  | Emission measure profile |
 |  $I_\nu(r_\perp \| Z)$  | Spectral intensity profile |
 |  $I_{\rm bol}(r_\perp \| Z)$  | Bolometric intensity profile |
