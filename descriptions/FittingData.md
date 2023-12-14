@@ -252,11 +252,11 @@ Be aware that emission measure is sometimes defined in the literature as an inte
 
 A particular emission line has a temperature-dependent emissivity $\epsilon_{\rm line} (T)$, defined so that $4 \pi n_e n_{\rm H} \epsilon_{\rm line}(T)$ is the emission rate of line energy per unit volume. Isotropic emission in an isothermal atmosphere therefore produces a line of intensity
   $$I_{\rm line} (r_\perp) = \epsilon_{\rm line}(T) \cdot {\rm EM} (r_\perp)$$
-at projected radius $r_\perp$. The line's intensity has units of energy/time/area/solid angle. 
+at projected radius $r_\perp$. The line's intensity then has units of energy/time/area/solid angle. 
 
 Line emission from an atmosphere that is not isothermal requires numerical integration to obtain
   $$I_{\rm line} (r_\perp) = \int_{-\infty}^{\infty} n_e n_{\rm H} \epsilon_{\rm line} (T) ~d r_\parallel$$
-Currently, an **ExpCGM** user interested in $I_{\rm line}$ must specify $\epsilon_{\rm line}(T)$.
+Currently, **ExpCGM** models do not automatically provide $I_{\rm line}$ as standard output. However, a user interested in the line-intensity profile of a non-isothermal atmopshere can perform the necessary integration using the radial-profile output.
 
 {: .note}
 Sometimes the emission line of interest will be from a region of the atmosphere with a temperature distinctly different from most of the atmosphere, such as a low-temperature cloud in pressure equilibrium with the rest of the gas at its location. In that case, the integral should be limited to that region. See the [Multiphase Gas](MultiphaseGas) page for more on how gas components with $T \ll T_\varphi$ are treated in the **ExpCGM** framework.
@@ -264,9 +264,9 @@ Sometimes the emission line of interest will be from a region of the atmosphere 
 
 #### Spectral Intensity
 
-A galactic atmosphere's overall spectrum comes from both line emission and continuum emission processes collectively represented by the quantity $\epsilon_\nu (T)$. This version of emissivity is defined so that $4 \pi n_e n_{\rm H} \epsilon_\nu (T) ~ \Delta \nu$ is the rate of energy emission per unit volume within a narrow frequency interval $\Delta \nu$ containing the frequency $\nu$. An **ExpCGM** atmosphere model therefore predicts that emission at frequency $\nu$ has an intensity 
-  $$I_\nu (r_\perp) = \int_{-\infty}^{\infty} n_e n_{\rm H} \epsilon_\nu (T) ~d r_\parallel$$
-at projected radius $r_\perp$. This ***spectral intensity*** has units of energy/time/area/solid angle/frequency and may depend on the mass fraction $Z$ of elements other than H and He. An **ExpCGM** user interested in $I_\nu$ may specify as an auxilliary input parameter the mass fraction $Z$ in units of the solar value $Z_\odot$.
+A galactic atmosphere's overall spectrum comes from both line emission and continuum emission processes collectively represented by the quantity $\epsilon_\nu (T)$. This version of emissivity is defined so that $4 \pi n_e n_{\rm H} \epsilon_\nu ~ \Delta \nu$ is the rate of energy emission per unit volume within a narrow frequency interval $\Delta \nu$ containing the frequency $\nu$. An **ExpCGM** atmosphere model therefore predicts that emission at frequency $\nu$ has an intensity 
+  $$I_\nu (r_\perp | Z) = \int_{-\infty}^{\infty} n_e n_{\rm H} \epsilon_\nu (T,Z) ~d r_\parallel$$
+at projected radius $r_\perp$. This ***spectral intensity*** has units of energy/time/area/solid angle/frequency and usually depends on the mass fraction $Z$ of elements other than H and He. An **ExpCGM** user interested in $I_\nu$ may specify as an auxilliary input parameter the mass fraction $Z$ of heavy elements in units of the solar value $Z_\odot$.
 
 {: .note}
 Forward modeling that convolves $I_\nu (r_\perp)$ with an instrumental response function and fits the result to an instrument's signal is an alternative to deprojection that makes the uncertainties in input model parameters easier to assess.
@@ -275,9 +275,9 @@ Forward modeling that convolves $I_\nu (r_\perp)$ with an instrumental response 
 #### Surface Brightness
 
 Integrating $I_\nu$ over all frequencies gives the atmosphere's ***bolometric surface brightness*** 
-  $$I_{\rm bol} (r_\perp) = \int_0^\infty I_\nu (r_\perp) ~d\nu$$
+  $$I_{\rm bol} (r_\perp | Z) = \int_0^\infty I_\nu (r_\perp | Z) ~d\nu$$
 Observations of surface brightness generally remain within a specific frequency band going from $\nu_{\rm min}$ to $\nu_{\rm max}$, in which the ***band surface brightness*** is 
-  $$I_{\rm band} (~ r_\perp ~|~ \nu_{\rm min} , \nu_{\rm max} ~) = \int_{\nu_{\rm min}}^{\nu_{\rm max}} I_\nu (r_\perp) ~d\nu$$
+  $$I_{\rm band | Z } (~ r_\perp ~|~ Z , \nu_{\rm min} , \nu_{\rm max} ~) = \int_{\nu_{\rm min}}^{\nu_{\rm max}} I_\nu (r_\perp | Z) ~d\nu$$
 **ExpCGM** users can specify the desired band range $[\nu_{\rm min} , \nu_{\rm max}]$ for model output.
 
 {: .note}
@@ -291,53 +291,87 @@ Another constraint on projected **ExpCGM** models comes from UV absorption-line 
 2. Thermal pressure may not be the only source of pressure keeping the cloud from being compressed by its surroundings. 
 
 
-### Unresolved Properties
+### Cumulative Profiles
 
 Sometimes the only information we can gather about a galactic atmosphere is spatially unresolved and corresponds to a projected model quantity integrated over solid angle. The output of an **ExpCGM** model can provide predictions for some of those integrated properties. 
 
-#### Integrated Compton Parameter
+#### Integrated Compton Parameter Profile
 
 Integrating a spherical atmosphere's Compton parameter over projected radius yields the ***integrated Compton parameter***
-  $$Y_\infty = 2 \pi \int_0^\infty y(r_\perp) ~r_\perp d r_\perp$$
-The integral has units of area, and the subscript $\infty$ indicates that the integral is not truncated at a particular outer radius. Instead, the Compton $y$ parameter needs to decline rapidly enough at large radii for the integral to converge. A shape function with $\alpha_{\rm out} > 2$ guarantees convergence. Likewise, the integral diverges at small radii unless $\alpha_{\rm in} < 2$.
+  $$Y_{\rm SZ}(r_\perp) = 2 \pi \int_0^{r_\perp} y(r_\perp) ~r_\perp d r_\perp$$
+The integral has units of area and diverges at small radii unless $\alpha_{\rm in} < 3$.
 
-Dividing $Y_\infty$ by the effective area of the full sky at the distance of the galactic atmosphere gives the dimensionless quantity
-  $$Y_{\infty,{\rm obs}} = \frac {Y_\infty} {4 \pi d_{\rm A}^2 (z)}$$
-Here, $d_{\rm A} (z)$ is the cosmological angular size distance at the atmosphere's redshift $z$. The detectability of an unresolved tSZ source depends on the magnitude of $Y_{\infty,{\rm obs}}$.
+Dividing $Y$ by the effective area of the full sky at the distance of the galactic atmosphere gives the dimensionless quantity
+  $$\tilde{Y}\_{\rm SZ}} = \frac {Y_{\rm SZ}} {4 \pi d_{\rm A}^2 (z)}$$
+Here, $d_{\rm A} (z)$ is the cosmological angular size distance at the atmosphere's redshift $z$. The detectability of an unresolved tSZ source depends on the magnitude of $\tilde{Y}\_{\rm SZ}$.
 
 {: .note}
-The integral for $Y_\infty$ diverges at small radii for $\alpha_{\rm in} > 3$ because the atmosphere's thermal energy unphysically diverges there. It diverges at large radii for $\alpha_{\rm out} < 3$ because the atmosphere's total thermal energy then does not converge. The value of $Y_\infty$ for isothermal power-law atmospheres is therefore undefined. 
+The integral for $Y_{\rm SZ}$ diverges at small radii for $\alpha_{\rm in} > 3$ because the atmosphere's thermal energy unphysically diverges there. It diverges at large radii for $\alpha_{\rm out} < 3$ because the atmosphere's total thermal energy then does not converge.  
 
 
-#### Bolometric Luminosity
+#### Bolometric Luminosity Profile
 
 Integrating the bolometric surface brightness over projected area gives the atmosphere's bolometric luminosity:
-  $$L_{\rm bol} = 8 \pi^2 \int I_{\rm bol}(r_\perp) ~r_\perp d r_\perp$$
+  $$L_{\rm bol}(r_\perp) = 8 \pi^2 \int_0^ I_{\rm bol}(r_\perp | Z) ~r_\perp d r_\perp$$
 This quantity may depend on the heavy-element abundance $Z$, which a user can specify in units of $Z_\odot$.
 
 {: .note}
 This integral for $L_{\rm bol}$ and the luminosity integrals that follow all diverge at small radii for $\alpha_{\rm in} > 3/2$ and at large radii for $\alpha_{\rm out} < 3/2$. They are therefore undefined for isothermal power-law atmospheres. To obtain converged values of $Y_\infty$ and $L_{\rm bol}$ from **ExpCGM** models, users need to specify a shape function that has $\alpha_{\rm in} < 3/2$ and $\alpha_{\rm out} > 3$.
 
-#### Band Luminosity
+#### Band Luminosity Profile
 
 Integrating the band surface brightness over projected area gives the atmosphere's luminosity in the band $[\nu_{\rm min} , \nu_{\rm max}]$:
-  $$L_{\rm band} = 8 \pi^2 \int I_{\rm band}(r_\perp) ~r_\perp d r_\perp$$
+  $$L_{\rm band} (Z) = 8 \pi^2 \int I_{\rm band}(r_\perp | Z) ~r_\perp d r_\perp$$
 This quantity may depend on the heavy-element abundance $Z$, which a user can specify in units of $Z_\odot$.
 
-#### Line Luminosity
+#### Volumetric Emission Measure Profile
 
-Integrating the line intensity over projected area gives the atmosphere's line luminosity:
-  $$L_{\rm line} = 8 \pi^2 \int I_{\rm line}(r_\perp) ~r_\perp d r_\perp$$
-Currently, a user must specify $\epsilon_{\rm line} (T)$ to obtain $I_{\rm line} (r_\perp)$ and $L_{\rm line}$.
+Integrating ${\rm EM}(r_\perp)$ over projected area gives the ***volumetric emission measure*** corresponding to an integral of $n_e n_{\rm H}$ over volume:
+  $${\rm VEM} (r_\perp) = 2 \pi \int_0^{r_\perp} {\rm EM}(r_\perp) ~r_\perp d r_\perp$$
+Mulitplying ${\rm VEM} (r_\perp)$ by $4 \pi \epsilon_{\rm line} (T)$ gives the line luminosity profile $L_{\rm line} (r_\perp)$ for an isothermal atmosphere. Users interested in line-luminosity predictions for non-isothermal atmospheres should use a model's radial-profile output to perform the necessary integrals.
 
 
 ### Summary of Model Output
 
 #### Radial Profiles
 
+| Output | Description |
+| :-------: | ----------- |
+|  $P(r)$  | Thermal pressure profile |
+|  $T(r)$  | Temperature profile |
+| $\rho (r)$ | Gas density profile | 
+| $f_{\rm th}$ | Thermalization profile (if $f_{\th}$ is a parametric function of $r$) |
+
 #### Projected Profiles
 
-#### Unresolved Properties
+| Output | Description |
+| :-------: | ----------- |
+|  $\Sigma_{\rm CGM}(r_\perp)$  | Surface mass density profile |
+|  $N_{\rm H}(r_\perp)$  | Hydrogen column density profile |
+|  $N_e(r_\perp)$  | Electron column density profile |
+|  $y(r_\perp)$  | Compton parameter profile |
+|  ${\rm EM}(r_\perp)$  | Emission measure profile |
+|  $I_\nu(r_\perp | Z)$  | Spectral intensity profile |
+|  $I_{\rm bol}(r_\perp | Z)$  | Bolometric intensity profile |
+|  $I_{\rm band}(r_\perp | Z , \nu_{\rm min} , \nu_{\rm max})$  | Band intensity profile |
+
+#### Cumulative Profiles
+
+| Output | Description |
+| :-------: | ----------- |
+|  $Y_{\rm SZ}(r_\perp)$  | Integrated Compton parameter profile |
+|  $L_{\rm bol}(r_\perp | Z)$  | Bolometric luminosity profile |
+|  $L_{\rm band}(r_\perp | Z , \nu_{\rm min} , \nu_{\rm max})$  | Band luminosity profile |
+|  ${\rm VEM}(r_\perp)$ | Volumetric emission measure profile |
+
+#### Auxilliary Input Parameters
+
+| Output | Description |
+| :-------: | ----------- |
+|  $Z$  | Heavy-element abundance in units of $Z_\odot$ (default: $Z = 1$) |
+|  $\nu_{\rm min}$  | Minimum frequency of band (default: $\nu_{\rm min} = 0$) |
+|  $\nu_{\rm max}$  | Maximum frequency of band (default: $\nu_{\rm max} = \infty$) |
+
 
 
 ## Scaling Laws
