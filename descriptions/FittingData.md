@@ -337,12 +337,11 @@ gives a quantity often called a "normalization" in the X-ray astronomy literatur
 
 #### Density Contrast Profile
 
-Many users of **ExpCGM** models will want to know the atmosphere's luminosity or $Y_{\rm SZ}$ value within a bounding radius corresponding to a particular mass density contrast $\Delta_{\rm c}$ relative to the cosmological critical density $\rho_{\rm cr} (z) = 3 H^2 (z) / 8 \pi G$ at the halo's redshift (z). For that purpose, the **ExpCGM** provides both a radial total mass profile      $$M_{\rm tot} (r) = \frac {v_{\rm c}^2} {Gr}$$
-and a radial density contrast profile 
+Many **ExpCGM** users will want to know an atmosphere's predicted luminosity or $Y_{\rm SZ}$ value within a radius corresponding to a particular mass density contrast $\Delta_{\rm c}$ relative to the cosmological critical density $\rho_{\rm cr} (z) = 3 H^2 (z) / 8 \pi G$. For that purpose, the **ExpCGM** framework provides along with the atmosphere model output both a total mass profile      
+  $$M_{\rm tot} (r) = \frac {v_{\rm c}^2} {Gr}$$
+and a density contrast profile 
   $$\Delta_{\rm c} (r)  \frac {2 v_c^2 (r)} {H^2(z) r^2}$$ 
-along with the atmosphere model output. 
-
-Both profiles include all of the mass components specified in the input parameter set. Having that information provides users with the flexibility to apply their own preferred value of $\Delta_{\rm c}$.
+Both profiles include all of the mass components specified in the input parameter set. Having that information provides users with the flexibility to use their preferred value of $\Delta_{\rm c}$ and to convert among observable properties corresponding to different values of $\Delta_{\rm c}$.
 
 ### Summary of Model Output
 
