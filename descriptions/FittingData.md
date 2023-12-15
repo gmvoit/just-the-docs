@@ -301,9 +301,9 @@ Integrating a spherical atmosphere's Compton parameter over projected radius yie
   $$Y_{\rm SZ}(r_\perp) = 2 \pi \int_0^{r_\perp} y(r_\perp) ~r_\perp d r_\perp$$
 The integral has units of area and diverges at small radii unless $\alpha_{\rm in} < 3$.
 
-Dividing $Y$ by the effective area of the full sky at a halo's redshift $z$ gives the dimensionless quantity
-  $$\tilde{Y}\_{\rm SZ} = \frac {Y_{\rm SZ}} {4 \pi d_{\rm A}^2 (z)}$$
-Here, $d_{\rm A} (z)$ is the cosmological angular size distance at the atmosphere's redshift $z$. The detectability of an unresolved tSZ source depends on the magnitude of $\tilde{Y}\_{\rm SZ}$.
+Dividing $Y_{\rm SZ}$ by the effective area of the full sky at a halo's redshift $z$ gives the dimensionless quantity
+  $$Y\_{\rm SZ,obs} = \frac {Y_{\rm SZ}} {4 \pi d_{\rm A}^2 (z)}$$
+Here, $d_{\rm A} (z)$ is the cosmological angular size distance at the atmosphere's redshift $z$. The detectability of an unresolved tSZ source depends on the magnitude of $Y_{\rm SZ,obs}$.
 
 {: .note}
 The integral for $Y_{\rm SZ}$ diverges at small radii for $\alpha_{\rm in} > 3$ because the atmosphere's thermal energy unphysically diverges there. It diverges at large radii for $\alpha_{\rm out} < 3$ because the atmosphere's total thermal energy then does not converge.  
@@ -312,7 +312,7 @@ The integral for $Y_{\rm SZ}$ diverges at small radii for $\alpha_{\rm in} > 3$ 
 #### Bolometric Luminosity Profile
 
 Integrating the bolometric surface brightness over projected area gives the atmosphere's bolometric luminosity profile:
-  $$L_{\rm bol} (r_\perp) = 8 \pi^2 \int_0^{r_\perp} I_{\rm bol} (r_\perp \| Z) ~r_\perp d r_\perp$$
+  $$L_{\rm bol} (r_\perp) = 8 \pi^2 \int_0^{r_\perp} I_{\rm bol} (r_\perp | Z) ~r_\perp d r_\perp$$
 This quantity may depend on the atmosphere's heavy-element abundance $Z$, which a user can specify in units of $Z_\odot$ along with the input parameter set.
 
 {: .note}
@@ -324,10 +324,10 @@ Integrating the band surface brightness over projected area gives the atmosphere
   $$L_{\rm band} (Z) = 8 \pi^2 \int I_{\rm band}(r_\perp | Z) ~r_\perp d r_\perp$$
 This quantity also may depend on the heavy-element abundance $Z$.
 
-#### Volumetric Emission Measure Profile
+#### Emission Normalization Profile
 
 Integrating ${\rm EM}(r_\perp)$ over projected area gives the ***emission normalization*** corresponding to an integral of $n_e n_{\rm H}$ over the cylindrical volume within $r_\perp$:
-  $${\rm EN} (r_\perp) = 2 \pi \int_0^{r_\perp} {\rm EN}(r_\perp) ~r_\perp d r_\perp$$
+  $${\rm EN} (r_\perp) = 2 \pi \int_0^{r_\perp} {\rm EM}(r_\perp) ~r_\perp d r_\perp$$
 Mulitplying ${\rm EN} (r_\perp)$ by $4 \pi \epsilon_{\rm line} (T)$ gives the line luminosity profile $L_{\rm line} (r_\perp)$ for an isothermal atmosphere. Users interested in line-luminosity predictions for non-isothermal atmospheres should use a model's radial-profile output to perform the necessary integrals.
 
 {: .note}
@@ -392,7 +392,7 @@ Both profiles include all of the mass components specified in the input paramete
 
 One of the **ExpCGM** framework's primary purposes is to help constrain galactic feedback models using multiple data sets that provide complementary information about how atmospheric properties scale with halo mass and redshift.
 
-### Dependence on Halo Mass
+### Mass Dependence
 
 The simplest parametric fitting formulae for halo-mass scaling of atmospheric properties assume power-law dependences. However, halo mass is not one of the **ExpCGM** input parameters. Instead, mass scaling of model parameters in the **ExpCGM** framework is represented with power-law dependences on $v_\varphi$ rather than on a value of $M_{\rm tot}$ defined with respect to a particular density contrast $\Delta_{\rm c}$.  
 
@@ -403,19 +403,25 @@ Making that choice has three benefits:
 
 The symbol $\beta$ represents the power-law dependence of a parameter on $v_\varphi$ in the **ExpCGM** framework. For example, the pressure normalization is assumed to scale as
   $$P_0 \propto v_\varphi^{\beta_P}$$
-A self-similar population of cosmological atmospheres has $\beta_P \
+
+#### Self-Similar Halos
+
+A self-similar population of cosmological atmospheres has $\beta_P$
+
+
+#### NFW Halos
 
 Other parameters that may scale with $v_\varphi$ include $\alpha$ and $f_{\rm th}$.
 
-### Dependence on Redshift
+### Redshift Dependence
 
 Model parameters in **ExpCGM** are also assumed to have power-law dependences on $1+z$ ... For example, 
-  $$P_0(v_\varphi,z) \propto v_\varphi^{\beta_P} (1+z)^{\eta_P}$$
-  $$f_{\rm th} (v_\varphi,z) \propto v_\varphi^{\beta_{\rm th}} (1+z)^{\eta_{\rm th}}$$
+  $$P_0(v_\varphi,z) \propto v_\varphi^{\beta_P} (1+z)^{\zeta_P}$$
+  $$f_{\rm th} (v_\varphi,z) \propto v_\varphi^{\beta_{\rm th}} (1+z)^{\zeta_{\rm th}}$$
 
 ### Intrinsic Dispersion
 
-Log-normal scatter in $P_0$ at fixed $v_\varphi$ is represented with $\sigma_{P \| \varphi}$. It is constrained by observations...
+Log-normal scatter in $P_0$ at fixed $v_\varphi$ is represented with $\sigma_{\ln P \| \varphi}$. It is constrained by observations...
 
 There may also be scatter in $\alpha$ ...
 
@@ -424,7 +430,8 @@ There may also be scatter in $\alpha$ ...
 | Parameter | Description |
 | :-------: | ----------- |
 |  $\beta_P$  |  Dependence of $P_0$ on potential well depth  |
-|  $\eta_P$   |  Dependence of $P_0$ on redshift  |
+|  $\zeta_P$   |  Dependence of $P_0$ on redshift  |
 |  $\beta_{\rm th}$  |  Dependence of thermalization on potential well depth  |
-|  $\eta_{\rm th}$   |  Dependence of thermalization on redshift  |
-|  $\sigma_{P \| \varphi}$ | 
+|  $\zeta_{\rm th}$   |  Dependence of thermalization on redshift  |
+|  $\sigma_{\ln P \| \varphi}$ | Log-normal scatter in $P_0$ at fixed $v_\varphi$ | 
+|  $\sigma_{r_{\rm s} \| \varphi}$ | Scatter in $r_0$ at fixed $v_\varphi$ | 
