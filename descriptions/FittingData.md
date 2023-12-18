@@ -62,7 +62,7 @@ However, $T(r)$ and $\rho(r)$ may also depend on two additional parametric funct
 
 ### Isothermal Atmosphere
 
-Users seeking to minimize degrees of freedom can opt for an isothermal potential well with constant circular velocity ($v_{\rm c} = v_\varphi$) confining an atmosphere with constant $\alpha$. Setting $f_{\rm th}$ and $f_\varphi$ to unity then gives an atmospheric temperature $kT = \mu m_p v_\varphi^2 / \alpha$ that is independent of radius and power-law profiles for pressure and density: 
+Users seeking to minimize degrees of freedom can opt for an isothermal potential well with constant circular velocity ($v_{\rm c} = v_\varphi$) that confines an atmosphere with constant $\alpha$. Setting $f_{\rm th}$ and $f_\varphi$ to unity then gives an atmospheric temperature $kT = \mu m_p v_\varphi^2 / \alpha$ that is independent of radius, and the pressure and density are power laws: 
   $$P(r) = P_0 \left( \frac {r} {r_0} \right)^{-\alpha} ~~~,~~~ \rho(r) = \frac {\alpha P_0} {v_\varphi^2} \left( \frac {r} {r_0} \right)^{-\alpha}$$
 This *isothermal power-law atmosphere* model has three degrees of freedom $(P_0,v_\varphi,\alpha)$, because $r_0$ is degenerate with $P_0$. 
 
@@ -85,7 +85,7 @@ Cosmological structure formation also produces halo potential wells that are not
   $$v_{\rm NFW}^2(x) = A_{\rm NFW} v_\varphi^2 \left[ \frac {\ln (1 + x)} {x} - \frac {1} {1 + x} \right]$$
 with $x =  r / r_{\rm s}$ and $A_{\rm NFW} = 4.625$. 
 
-The [Essentials](Essentials) page presents a simple example with four degrees of freedom $(P_0,v_\varphi,r_{\rm s}, \alpha)$ describing a power-law atmosphere in an NFW potential well. Expanding that example using all four parameters of a double power-law atmosphere yields a model with seven degrees of freedom $(P_0,v_\varphi,r_{\rm s},\alpha_{\rm in},\alpha_{\rm out},\alpha_{\rm tr},r_\alpha)$. Users can reduce the dimensionality of the input parameter space by keeping $\alpha_{\rm tr}$ fixed and by choosing to make $r_\alpha$ a constant multiple of $r_{\rm s}$.
+The [Essentials](Essentials) page presents a simple example with four degrees of freedom $(P_0,v_\varphi,r_{\rm s}, \alpha)$ describing a power-law atmosphere in an NFW potential well. Expanding that example using all four parameters of a double power-law atmosphere yields a model with seven degrees of freedom $(P_0,v_\varphi,r_{\rm s},\alpha_{\rm in},\alpha_{\rm out},\alpha_{\rm tr},r_\alpha)$. Users can reduce those degrees of freedom to five by keeping $\alpha_{\rm tr}$ fixed and by choosing to make $r_\alpha$ a constant multiple of $r_{\rm s}$.
  
 ### NFW Halo + Central Galaxy
 
@@ -95,14 +95,14 @@ One option is to use a ***Hernquist model*** to represent the galaxy's contribut
   $$v_{\rm H}^2(r) =  \frac {G M_* r} { ( r + r_{\rm H})^2 }$$
 In this expression, $M_\*$ represents the galaxy's total stellar mass and the ***Hernquist radius*** $r_{\rm H}$ is a scale radius determining how the galaxy's mass profile converges toward $M_{\rm H}$. 
 
-The model parameters $M_\*$ and $r_{\rm H}$ can be free, or they can be fixed at values consistent with the observed stellar mass and effective radius of the halo's central galaxy. If both $M_\*$ and $r_{\rm H}$ are allowed to be free, then adding a central galaxy to the gravitational potential model adds two degrees of freedom to the input parameter space.
+The model parameters $M_\*$ and $r_{\rm H}$ can be free, or they can be fixed at values consistent with the observed stellar mass and effective radius of the halo's central galaxy. If both $M_\*$ and $r_{\rm H}$ are allowed to be free, then adding a central galaxy to the gravitational potential model adds two more degrees of freedom to the input parameter space.
 
 {: .note}
 Most central galaxies have a maximum circular velocity $(G M_* / 4 r_{\rm H})^{1/2}$ similar to the maximum circular velocity $v_\varphi$ of the surrounding halo. It is therefore reasonable to reduce the dimensionality of the parameter space by applying the restriction $r_{\rm H} = G M_* / 4 v_\varphi^2$, so that $\max (v_{\rm H}) = v_\varphi$. However, applying that restriction is unwise for galaxy-cluster models, because the maximum circular velocity of a central cluster galaxy is significantly smaller than the maximum circular velocity of its halo. 
 
 ### NFW Halo + Central Galaxy + BH
 
-A supermassive black hole may dominate the galaxy's gravitational potential at the smallest radii. Its contribution can be included in an **ExpCGM** model using the Newtonian formula
+A supermassive black hole may dominate the central galaxy's gravitational potential at the smallest radii. Its contribution can be included in an **ExpCGM** model using the Newtonian formula
   $$v_{\rm BH}^2 (r) = \frac {G M_{\rm BH}} {r}$$
 where $M_{\rm BH}$ is the central black hole's mass. Adding a black hole to the potential model so that
   $$v_{\rm c}^2 (r) = v_{\rm NFW}^2 (r) + v_{\rm H}^2 (r) + v_{\rm BH}^2 (r)$$
@@ -121,6 +121,10 @@ Furthermore, assuming that isotropic turbulence provides the rest of the support
 in which $\sigma_{\rm 1D}$ is the one-dimensional velocity dispersion of turbulent support.
 
 Fitting such an **ExpCGM** atmosphere model to a data set containing information about both $T(r)$ and $v_{\rm c} (r)$ then constrains $f_{\rm th}(r)$ and $\sigma_{\rm 1D}$. Likewise, having information about both $T(r)$ and $\sigma_{\rm 1D}$ constrains $v_{\rm c} (r)$ and $f_{\rm th}(r)$.
+
+### Auxilliary Input Parameters
+
+The output of an **ExpCGM** model may contain predictions for observable features that depend on a halo's redshift $z$, the collective abundance $Z$ of atmospheric elements other than hydrogren and helium (relative to the solar proportion), and the frequency band $[\nu_{\rm in},\nu{\rm out}]$ being observed. Those auxiliary parameters $(z,Z,\nu_{\rm in},\nu_{\rm out})$ can be specified as part of the input parameter set.
 
 ### Summary of Input Parameters
 
@@ -159,10 +163,19 @@ Fitting such an **ExpCGM** atmosphere model to a data set containing information
 |  $f_{\rm th}$ | Thermalization fraction (may be constant or a parametric function of $r$) |
 |  $f_\varphi$  | Force modification factor (may be constant or a parametric function of $r$) |
 
+#### Auxilliary Parameters
+
+| Parameter | Description |
+| :-------: | ----------- |
+|  $z$  | Halo redshift |
+|  $Z$  | Heavy-element abundance in units of $Z_\odot$ (default: 1) |
+|  $\nu_{\rm min}$  | Minimum frequency of band (default: 0) |
+|  $\nu_{\rm max}$  | Maximum frequency of band (default: $\infty$) |
+
 
 ## Model Output
 
-A variety of potentially observable atmospheric characteristics can be used to test **ExpCGM** models for galactic atmospheres and constrain their input parameters.
+A variety of potentially observable atmospheric characteristics can be used to test **ExpCGM** models for galactic atmospheres, to apply contraints on them through comparisons with observations, and to compare observations with simulations within the input parameter space.
 
 ### Radial Profiles
 
@@ -302,7 +315,7 @@ Integrating a spherical atmosphere's Compton parameter over projected radius yie
 The integral has units of area and diverges at small radii unless $\alpha_{\rm in} < 3$.
 
 Dividing $Y_{\rm SZ}$ by the effective area of the full sky at a halo's redshift $z$ gives the dimensionless quantity
-  $$Y\_{\rm SZ,obs} = \frac {Y_{\rm SZ}} {4 \pi d_{\rm A}^2 (z)}$$
+  $$Y_{\rm SZ,obs}(r_\perp) = \frac {Y_{\rm SZ}} {4 \pi d_{\rm A}^2 (z)}$$
 Here, $d_{\rm A} (z)$ is the cosmological angular size distance at the atmosphere's redshift $z$. The detectability of an unresolved tSZ source depends on the magnitude of $Y_{\rm SZ,obs}$.
 
 {: .note}
@@ -377,15 +390,6 @@ Both profiles include all of the mass components specified in the input paramete
 |  ${\rm EN}(r_\perp)$ | Emission normalization profile |
 |  $M_{\rm tot} (r)$   | Total mass profile |
 |  $\Delta_{\rm c}(r)$ | Spherical density contrast profile, relative to $\rho_{\rm cr}(z)$ |
-
-#### Auxilliary Input Parameters
-
-| Parameter | Description |
-| :-------: | ----------- |
-|  $z$  | Halo redshift |
-|  $Z$  | Heavy-element abundance in units of $Z_\odot$ (default: 1) |
-|  $\nu_{\rm min}$  | Minimum frequency of band (default: 0) |
-|  $\nu_{\rm max}$  | Maximum frequency of band (default: $\infty$) |
 
 
 ## Population Scaling Laws
