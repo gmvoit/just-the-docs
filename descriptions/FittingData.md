@@ -175,7 +175,7 @@ The output of an **ExpCGM** model may contain predictions for observable feature
 
 ## Model Output
 
-A variety of potentially observable atmospheric characteristics can be used to test **ExpCGM** models for galactic atmospheres, to apply contraints on them through comparisons with observations, and to compare observations with simulations within the input parameter space.
+A variety of potentially observable atmospheric characteristics can be used to test **ExpCGM** models for galactic atmospheres, to derive contraints on model parameters, and to compare observations with simulations within the input parameter space.
 
 ### Radial Profiles
 
@@ -191,7 +191,7 @@ A spherical atmosphere's surface mass density along a line of sight at a project
   $$\Sigma_{\rm CGM} (r_\perp) = \int_{-\infty}^{\infty} \rho(r) ~dr_\parallel$$ 
 where $r_\parallel = \pm ( r^2 - r_\perp^2 )^{1/2}$ is the component of $\mathbf{r}$ parallel to the line of sight. Bringing dimensional factors outside of the integral gives
   $$\Sigma_{\rm CGM} (r_\perp) = r_\perp \rho(r_\perp) \int_{-\infty}^{\infty} \frac {\rho(r)} {\rho(r_\perp)} ~d \left( \frac {r_\parallel} {r_\perp} \right)$$
-The integral to be performed is then a structure factor of order unity usually calculated via numerical integration. 
+The integral to be performed is then a structure factor of order unity found through numerical integration. 
 
 For an isothermal power-law atmosphere, the integral can be expressed in terms of gamma functions, giving
   $$\Sigma_{\rm CGM} (r_\perp) = \left[ \frac {\pi^{1/2} \Gamma \left( \frac {\alpha - 1} {2} \right)} {\Gamma \left( \frac {\alpha} {2} \right)} \right] r_\perp \rho(r_\perp) $$
@@ -211,7 +211,7 @@ Dividing the atmosphere's surface mass density by its mean mass per hydrogen nuc
 A primordial atmosphere has $\mu_{\rm H} = 1.33$. An atmosphere with solar abundance ratios has $\mu_{\rm H} = 1.42$.
 
 {: .note}
-Some of the observational constraints on $N_{\rm H}$ and its dependence on $r_\perp$ around galaxies like the Milky Way come from circumgalactic clouds that absorb UV light from background quasars. Photoionization modeling is necessary for determining $N_{\rm H}$ and its uncertainty range from those observations. Also, the fraction of gas without a UV absorption signature is often unknown, meaning that column density contraints derived from those observations are usually lower limits on $N_{\rm H} (r_\perp)$.
+Some of the observational constraints on $N_{\rm H}$ and its dependence on $r_\perp$ around galaxies like the Milky Way come from circumgalactic clouds that absorb UV light from background quasars. Photoionization modeling is necessary for determining $N_{\rm H}$ and its uncertainty range from those observations. Also, the fraction of gas without a UV absorption signature is often unknown, meaning that column density contraints derived from UV observations should be treated as lower limits on $N_{\rm H} (r_\perp)$.
 
 
 #### Electron Column Density
@@ -231,7 +231,7 @@ in which $\sigma_{\rm T}$ is the Thomson cross section for electron scattering.
 
 A spherical **ExpCGM** atmosphere model gives the predicted tSZ distortion profile
   $$y (r_\perp) = \left( \frac {\mu \sigma_{\rm T}} {\mu_e m_e c^2} \right) r_\perp P (r_\perp) \int_{-\infty}^{\infty} \frac {f_P (r)} {f_P (r_\perp)} ~d \left( \frac {r_\parallel} {r_\perp} \right)$$ 
-As with the surface density, the integral is a structure factor of order unity usually computed through numerical integration. 
+As with the surface density, the integral is a structure factor of order unity to be numerically integrated. 
 
 For an isothermal power-law atmosphere, the integral results in
   $$y (r_\perp) = \left( \frac {\mu \sigma_{\rm T}} {\mu_e m_e c^2} \right) \left[ \frac {\pi^{1/2} \Gamma \left( \frac {\alpha - 1} {2} \right)} {\Gamma \left( \frac {\alpha} {2} \right)} \right] r_0 P_0 \left( \frac {r_\perp} {r_0} \right)^{1-\alpha}$$
@@ -258,7 +258,7 @@ In the special case of an isothermal power-law atmosphere, the structure-factor 
 and reduces to $\pi/2$ for $\alpha = 2$. 
 
 {: .note}
-Be aware the integral of $n_e n_{\rm H}$ over volume (rather along a line of sight) is sometimes called an "emission measure." In the **ExpCGM** framework, that volume integral is called an "emission normalization" and is defined among the *Cumulative Profiles* described below.
+Be aware the integral of $n_e n_{\rm H}$ over volume (rather along a line of sight) is sometimes called an "emission measure." That volume integral is called an "emission normalization" in the **ExpCGM** framework and is defined among the *Cumulative Profiles* described below.
 
 
 #### Line Intensity
@@ -351,9 +351,9 @@ gives a quantity often called a "normalization" in the X-ray astronomy literatur
 #### Density Contrast Profile
 
 Many **ExpCGM** users will want to know an atmosphere's predicted luminosity or $Y_{\rm SZ}$ value within a radius corresponding to a particular mass density contrast $\Delta_{\rm c}$ relative to the cosmological critical density $\rho_{\rm cr} (z) = 3 H^2 (z) / 8 \pi G$. For that purpose, the **ExpCGM** framework provides along with the atmosphere model output both a total mass profile      
-  $$M_{\rm tot} (r) = \frac {v_{\rm c}^2 r} {G}$$
+  $$M_{\rm tot} (r) = \frac {v_{\rm c}^2 (r) r} {G}$$
 and a density contrast profile 
-  $$\Delta_{\rm c} (r)  \frac {2 v_c^2 (r)} {H^2(z) r^2}$$ 
+  $$\Delta_{\rm c} (r) = \frac {2 v_c^2 (r)} {H^2(z) r^2}$$ 
 Both profiles include all of the mass components specified in the input parameter set. Having that information provides users with the flexibility to use their preferred value of $\Delta_{\rm c}$ and to convert among observable properties corresponding to different values of $\Delta_{\rm c}$.
 
 ### Summary of Model Output
