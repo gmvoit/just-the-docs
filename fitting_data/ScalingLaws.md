@@ -2,7 +2,7 @@
 title: Scaling Laws
 layout: default
 nav_order: 3
-parent: Fitting Data
+parent: Data Fitting
 ---
 
 <head>
