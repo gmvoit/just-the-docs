@@ -2,7 +2,7 @@
 title: Model Output
 layout: default
 nav_order: 2
-parent: Fitting Data
+parent: Data Fitting
 ---
 
 <head>
