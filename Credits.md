@@ -8,6 +8,7 @@ nav_order: 6
 
 ### Curators
 
+* Ben Oppenheimer
 * Viraj Pandya
 * Mark Voit
 
