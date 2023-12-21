@@ -1,8 +1,7 @@
 ---
 title: Fitting Data
 layout: default
-nav_order: 2
-parent: Description
+nav_order: 20
 ---
 
 <head>
