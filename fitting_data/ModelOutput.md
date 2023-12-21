@@ -1,4 +1,3 @@
-
 ---
 title: Model Output
 layout: default
