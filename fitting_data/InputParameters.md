@@ -2,7 +2,7 @@
 title: Input Parameters
 layout: default
 nav_order: 1
-parent: Fitting Data
+parent: Data Fitting
 ---
 
 <head>
