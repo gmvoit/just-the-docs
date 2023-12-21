@@ -33,6 +33,17 @@ One of the **ExpCGM** framework's primary purposes is to help constrain galactic
 
 The page describes the parametric models used to fit those scaling laws in the **ExpCGM** framework.
 
+{: .warning}
+This page is still under construction.
+
+<details closed markdown="block">
+  <summary>
+    Contents
+  </summary>
+   {: .text-delta}
+- TOC
+{:toc}  
+</details>
 
 ## Mass Dependence
 
