@@ -1,5 +1,5 @@
 ---
-title: Evolving Models
+title: Feedback Models
 layout: default
 nav_order: 3
 parent: Description
@@ -25,10 +25,10 @@ parent: Description
   </script>
 </head>
 
-# Evolving Models
+# Feedback Models
 {: .no_toc}
 
-This page outlines how to construct an evolving **ExpCGM** model for a galactic atmosphere shaped by both cosmological accretion and feedback from its central galaxy.
+This page outlines how galactic feedback models are coupled with atmosphere models in the **ExpCGM** framework.
 
 {: .warning}
 This page is still under construction.
