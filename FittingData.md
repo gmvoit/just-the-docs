@@ -7,4 +7,5 @@ has_children: true
 
 # Data Fitting
 
-These pages outline the input parameters for **ExpCGM** models, the output predictions for users wishing to fit those models to either observed or simulated galactic atmospheres, and the parameters describing how the properties of galactic atmospheres scale with mass and redshift.
+These pages assist users interested in fitting either observed or simulated galactic atmospheres with parametric **ExpCGM** models. 
+
