@@ -26,7 +26,7 @@ parent: Data Fitting
 </head>
 
 
-# Scaling Laws
+# Scaling Lawsz
 {: .no_toc}
 
 One of the **ExpCGM** framework's primary purposes is to help constrain galactic feedback models using multiple data sets that provide complementary information about how atmospheric properties scale with halo mass and redshift.
