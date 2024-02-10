@@ -28,7 +28,7 @@ parent: Description
 # Essentials
 {: .no_toc}
 
-This page outlines the essential elements of the **ExpCGM** framework, starting with force balance and atmospheric specific energy. It then provides a simple example illustrating how to produce an **ExpCGM** model atmosphere. Two sections following the example describe how **ExpCGM** accounts for turbulent support and thermalization of atmospheric energy. The page concludes with a section outlining how **ExpCGM** can be used to model atmospheric evolution.
+This page outlines the essential elements of the **ExpCGM** framework, starting with force balance and atmospheric specific energy. It then provides a simple example illustrating how to produce an **ExpCGM** model atmosphere. Descriptions of how **ExpCGM** accounts for turbulent support and thermalization of atmospheric energy follow the example. A concluding section then outlines how **ExpCGM** models evolution of a galaxy's atmosphere.
 
 <details closed markdown="block">
   <summary>
@@ -41,7 +41,7 @@ This page outlines the essential elements of the **ExpCGM** framework, starting 
 
 ## Force Balance 
 
-The core of **ExpCGM** is an efficient method for determining the steady-state configuration of a galactic atmosphere having a total gas mass $M_{\rm CGM}$ and a total energy $E_{\rm CGM}$. In this framework, the equilbrium radius $r_{\rm CGM}$ containing the atmospheric gas mass $M_{\rm CGM}$ is a function of $E_{\rm CGM}$. 
+The core of **ExpCGM** is an efficient method for determining the steady-state properties of a galactic atmosphere having a total gas mass $M_{\rm CGM}$ and a total energy $E_{\rm CGM}$. In this framework, the equilbrium radius $r_{\rm CGM}$ containing the atmospheric gas mass $M_{\rm CGM}$ is a function of $E_{\rm CGM}$. 
 
 ### Hydrostatic Equilibrium
 
