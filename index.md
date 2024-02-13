@@ -8,12 +8,15 @@ nav_order: 1
 
 # Introduction
 
-How does a gaseous galactic halo respond to energy input from the central galaxy?
+This website introduces and defines a framework for modeling the gaseous atmosphere around a galaxy, sometimes called its circumgalactic medium or CGM. 
 
-Some of the energy coming from a galaxy may enter the halo in thermal form. Another portion of it may enter in kinetic form, which later dissipates into thermal energy. Both kinds of energy injection produce a similar response: They cause the atmosphere to expand, converting excess kinetic or thermal energy into gravitational potential energy. Expansion then reduces both the atmosphere's pressure and density, and therefore also the rate at which radiative cooling allows gas to sink into the galaxy.
+The framework's name is **ExpCGM**, short for Expandable CGM, because it focuses on how gains and losses of atmospheric energy govern a galaxy's gas supply by driving expansion and contraction of the galaxy's atmosphere. Our goal is to bridge the gap between observations of the CGM and sophisticated numerical simulations of galaxy evolution, by connecting assumptions about how galactic feedback works with observable characteristics of galactic atmospheres.
 
-Those features of atmospheric expansion are what motivated development of **ExpCGM**, a modeling framework for a galaxy's circumgalactic medium (CGM) that explicitly accounts for atmospheric expansion as feedback energy converts into gravitational potential energy.
+**ExpCGM** undertakes that task by attempting to capture the essential features of galactic feedback using a system of differential equations that is as simple and general as possible. Various parametric models for a galaxy's feedback output and its atmosphere can then be inserted into that simple system and integrated to yield observable predictions, applicable to both numerical simulations and the real universe. Different *classes* of models can therefore be compared and assessed within this common framework. 
 
-This website defines the **ExpCGM** framework, which is a component of the [Galactic Atmospheres Project](https://galacticatmospheres.org) 
+The parametric atmosphere models that **ExpCGM** defines can also be used as purely descriptive fitting formulae. They do not assume hydrostatic equilibrium but rather a more generalized form of force balance capable of representing non-thermal forms of atmospheric support energy. They also apply to *all* the baryons initially associated with a halo's dark matter, extending beyond the halo's virial radius in order to track the large scale distribution of baryons around a galaxy, because that distribution reflects a galaxy's *cumulative* feedback energy output.
 
 Newcomers should begin with the [Essentials](descriptions/Essentials) page.
+
+The **ExpCGM** framework is a component of the [Galactic Atmospheres Project](https://galacticatmospheres.org) 
+
