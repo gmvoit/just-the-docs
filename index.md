@@ -10,7 +10,7 @@ nav_order: 1
 
 This website introduces and defines **ExpCGM**, a modeling framework for the gaseous atmosphere around a galaxy, sometimes called its circumgalactic medium or CGM. 
 
-The name **ExpCGM**, short for ***Expandable CGM***, reflects the framework's focus on how gains and losses of atmospheric energy govern a galaxy's gas supply by driving expansion and contraction of the galaxy's atmosphere. Its goal is to bridge the gap between observations of the CGM and sophisticated numerical simulations of galaxy evolution by clarifying how assumptions made when modeling galaxies affect the observable properties of galactic atmospheres.
+The name **ExpCGM**, short for ***Expandable CGM***, reflects the framework's focus on gains and losses of atmospheric energy and how they govern a galaxy's gas supply by driving atmospheric expansion and contraction. Its goal is to bridge the gap between observations of the CGM and sophisticated numerical simulations of galaxy evolution by clarifying how assumptions made when modeling galaxies affect the observable properties of galactic atmospheres.
 
 **ExpCGM** pursues that goal by representing the most crucial features of galactic feedback with a simple and general system of differential equations. Various parametric models for a galaxy's atmosphere and feedback output can be inserted into that simple system and integrated to yield observable predictions applying to both numerical simulations and the real universe. Different ***classes*** of models can then be compared and evaluated within a common framework. 
 
