@@ -18,5 +18,4 @@ The parametric atmosphere models that **ExpCGM** relies upon can also be used as
 
 Newcomers should begin with the [Essentials](descriptions/Essentials) page.
 
-The **ExpCGM** framework is a component of the [Galactic Atmospheres Project](https://galacticatmospheres.org) 
 
