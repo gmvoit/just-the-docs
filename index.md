@@ -8,13 +8,13 @@ nav_order: 1
 
 # Introduction
 
-This website introduces and defines a modeling framework for the gaseous atmosphere around a galaxy, sometimes called its circumgalactic medium or CGM. 
+This website introduces and defines **ExpCGM**, a modeling framework for the gaseous atmosphere around a galaxy, sometimes called its circumgalactic medium or CGM. 
 
-The framework's name is **ExpCGM**, short for ***Expandable CGM***, because it focuses on how gains and losses of atmospheric energy govern a galaxy's gas supply by driving expansion and contraction of the galaxy's atmosphere. Our goal is to bridge the gap between observations of the CGM and sophisticated numerical simulations of galaxy evolution by clarifying how assumptions made when modeling galaxies affect the observable properties of galactic atmospheres.
+The name **ExpCGM**, short for ***Expandable CGM***, reflects the framework's focus on how gains and losses of atmospheric energy govern a galaxy's gas supply by driving expansion and contraction of the galaxy's atmosphere. Its goal is to bridge the gap between observations of the CGM and sophisticated numerical simulations of galaxy evolution by clarifying how assumptions made when modeling galaxies affect the observable properties of galactic atmospheres.
 
-**ExpCGM** undertakes that task by attempting to represent the most crucial features of galactic feedback with a simple and general system of differential equations. Various parametric models for a galaxy's feedback output and its atmosphere can then be inserted into that simple system and integrated to yield observable predictions applying to both numerical simulations and the real universe. Different ***classes*** of models can therefore be compared and assessed within this common framework. 
+**ExpCGM** pursues that goal by representing the most crucial features of galactic feedback with a simple and general system of differential equations. Various parametric models for a galaxy's atmosphere and feedback output can be inserted into that simple system and integrated to yield observable predictions applying to both numerical simulations and the real universe. Different ***classes*** of models can then be compared and evaluated within a common framework. 
 
-The parametric atmosphere models that **ExpCGM** defines can also be used as purely descriptive fitting formulae. They do not assume hydrostatic equilibrium but rather a more general force-balance condition including non-thermal forms of atmospheric support energy. They also apply to ***all*** the baryons initially associated with a halo's dark matter, including the baryons beyond the halo's virial radius, in order to track their large scale distribution, because the gravitational potential energy of that baryon distribution reflects a galaxy's ***cumulative*** feedback energy output.
+The parametric atmosphere models that **ExpCGM** relies upon can also be used as purely descriptive fitting formulae for both observations and simulations. They do not assume hydrostatic equilibrium but rather a more general force-balance condition including non-thermal forms of atmospheric support energy. They also apply to ***all*** the baryons initially associated with a halo's dark matter, including baryons that feedback has pushed beyond the halo's virial radius, because the gravitational potential energy of the large-scale baryon distribution around a galaxy reflects its ***cumulative*** feedback energy output.
 
 Newcomers should begin with the [Essentials](descriptions/Essentials) page.
 
