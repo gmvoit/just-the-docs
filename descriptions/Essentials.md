@@ -28,7 +28,7 @@ parent: Description
 # Essentials
 {: .no_toc}
 
-This page outlines the essential elements of a steady-state galactic atmosphere model within the **ExpCGM** framework. It starts with the principles of force balance and atmospheric specific energy, then provides a simple example illustrating how an **ExpCGM** model atmosphere emerges from those principles. Descriptions of how **ExpCGM** accounts for turbulent support and thermalization of atmospheric energy follow the example. The concluding section outlines how the characteristics of steady-state atmosphere models enter into **ExpCGM** models for atmospheric evolution.
+This page outlines the essential elements of a steady-state galactic atmosphere model within the **ExpCGM** framework. It introduces the principles of force balance and atmospheric specific energy, then provides a simple example illustrating how an **ExpCGM** model atmosphere emerges from those principles. Descriptions of how **ExpCGM** accounts for turbulent support and thermalization of atmospheric energy follow the example. A concluding section outlines how the characteristics of steady-state atmosphere models enter into **ExpCGM** models for atmospheric evolution.
 
 <details closed markdown="block">
   <summary>
@@ -53,26 +53,26 @@ where $P$ is thermal pressure, $\rho$ is gas density, and $\varphi$ is a spheric
 
 Direct integration of the hydrostatic equilbrium equation is possible if both the pressure profile's ***shape function***
   $$\alpha (r) \equiv - \frac {d \ln P} {d \ln r}$$
-and the gravitational potential $\varphi (r)$ are known functions of radius. Integrating the shape function leads to a dimensionless pressure profile
+and the gravitational potential are known functions of radius. Integrating the shape function leads to a dimensionless pressure profile normalized to unity at a reference radius $r_0$:
   $$f_P(r) \equiv \exp \left[ - \int_1^{r/r_0} \frac {\alpha (x)} {x}  d x \right]$$ 
-that is normalized to unity at a reference radius $r_0$. Providing a pressure normalization $P_0$ at $r_0$ then specifies the atmosphere's equilibrium pressure profile:
+Providing a pressure normalization $P_0$ at $r_0$ then specifies the atmosphere's equilibrium pressure profile:
   $$P(r) = P_0 f_P(r)$$
 
 {: .note}
-Many details of an **ExpCGM** atmosphere model hinge on a user's choice for the pressure shape function $\alpha(r)$. That choice represents an assumption about the physical processes responsible for maintaining the pressure profile. See the [Pressure Profiles](PressureProfiles) page for more detail.
+Many details of an **ExpCGM** atmosphere model hinge on a user's choice for the shape function $\alpha(r)$. That choice represents an assumption about the physical processes responsible for maintaining the pressure profile. See the [Pressure Profiles](PressureProfiles) page for more detail.
 
 ### Temperature Profile
 
-A spherical atmosphere in hydrostatic equilibrium has the temperature profile
+A spherical atmosphere supported by thermal pressure in hydrostatic equilibrium has the temperature profile
   $$T(r) = \frac {2 T_\varphi (r) } {\alpha (r)}$$
-in which the function $T_\varphi (r) \equiv \mu m_p v_{\rm c}^2(r) / 2k$ represents a ***gravitational temperature profile***. It comes from solving the hydrostatic equilibrium equation while assuming $P \propto r^{-2}$, a mean mass per atmospheric particle $\mu m_p$, and a gravitational potential with a circular velocity profile $v_{\rm c} (r) = ( r \cdot d \varphi / dr)^{1/2}$. It is normalized so that $T(r) = T_\varphi (r)$ in an isothermal potential well (constant $v_{\rm c}$) that confines an atmosphere with a constant ratio of gas density to total mass density.
+The function $T_\varphi (r) \equiv \mu m_p v_{\rm c}^2(r) / 2k$ represents a ***gravitational temperature profile***. It comes from solving the hydrostatic equilibrium equation while assuming $P \propto r^{-2}$, a mean mass per atmospheric particle $\mu m_p$, and a gravitational potential with a circular velocity profile $v_{\rm c} (r) = ( r \cdot d \varphi / dr)^{1/2}$. It is normalized so that $T(r) = T_\varphi (r)$ for a hydrostatic atmosphere with $P \propto r^{-2}$ in an isothermal potential well that has constant $v_{\rm c}$. In that special case, both the atmospheric temperature and the ratio of gas density to total mass density remain constant.
 
 {: .note}
-The astronomical literature often calls something like $T_\varphi$ a *virial temperature*. However, a galactic atmosphere can have $T \neq T_\varphi$ without violating the virial theorem, because the virial theorem applies to an *entire* self-gravitating system, not just the gaseous component on its own. Also, an atmosphere with $T \ll T_\varphi$ can satisfy the virial theorem on its own as long as its total kinetic energy provides enough support to balance gravity. That is why **ExpCGM** calls $T_\varphi$ a *gravitational temperature*, not a virial temperature.
+The astronomical literature often calls something like $T_\varphi$ a *virial temperature*. However, a galactic atmosphere can have $T \neq T_\varphi$ without violating the virial theorem, because the virial theorem applies to an *entire* self-gravitating system, not just the gaseous component on its own. Also, a self-gravitating atmosphere with $T \ll T_\varphi$ can satisfy the virial theorem on its own as long as its total kinetic energy provides enough support to balance gravity. That is why **ExpCGM** calls $T_\varphi$ a *gravitational temperature*, not a virial temperature.
 
 ### Density Profile
 
-Given those pressure and temperature profiles, an equilibrium atmosphere's density profile becomes
+Given those pressure and temperature profiles, the gas density profile of an equilibrium **ExpCGM** atmosphere model becomes
   $$\rho (r) = P_0 \frac {\alpha (r) f_P (r)} {v_{\rm c}^2(r)}$$
 For example, the gas mass density at the reference radius $r_0$ is simply $\rho_0 = P_0 / (v_c^2 / 2)$ in an equilibrium atmosphere with $\alpha = 2$.
 
@@ -89,13 +89,13 @@ Here, the function
 is a ***generalized shape function*** for atmospheric support, to be used if $f_{\rm th}$ depends on radius. It is also possible for $f_\varphi$ to depend on radius.
 
 {: .note}
-Some other formulations of atmospheric force balance express resistance to gravity in terms of a total pressure $P_{\rm tot} = P / f_{\rm th}$. However, **ExpCGM** explicitly accounts for the thermal pressure contribution using the $f_{\rm th}$ factor so that an equilibrium atmosphere's temperature profile can be directly inferred from just force balance considerations and the thermalization fraction $f_{\rm th}$.
+Other formulations of atmospheric force balance sometimes express resistance to gravity in terms of a total pressure $P_{\rm tot} = P / f_{\rm th}$. However, **ExpCGM** explicitly accounts for the thermal pressure contribution using the $f_{\rm th}$ factor so that an equilibrium atmosphere's temperature profile can be directly inferred from just force balance considerations and the thermalization fraction $f_{\rm th}$.
 
 ## Specific Energy
 
-A galactic atmosphere of total mass $M_{\rm CGM}$ expands if its total energy $E_{\rm CGM}$ increases, and it contracts if its total energy declines. The **ExpCGM** framework therefore links a galactic atmosphere's equilibrium radius $r_{\rm CGM}$ to its ***mean specific energy***
+A galactic atmosphere of total mass $M_{\rm CGM}$ expands if its total energy $E_{\rm CGM}$ increases, and it contracts if its total energy declines. A galactic atmosphere's equilibrium radius $r_{\rm CGM}$ therefore depends on its ***mean specific energy***
   $$\varepsilon_{\rm CGM} = \frac {E_{\rm CGM}} {M_{\rm CGM}}$$
-The dependence of specific energy on radius can be inverted to obtain the dependence of radius on specific energy. However, several integrals are needed to derive $r_{\rm CGM} ( \varepsilon_{\rm CGM} )$ from the equilibrium profiles of pressure, temperature, and density. 
+The dependence of $\varepsilon_{\rm CGM}$ on $r_{\rm CGM}$ can be inverted to obtain the dependence of $r_{\rm CGM}$ on $\varepsilon_{\rm CGM}$. However, several integrals are needed to derive $r_{\rm CGM} ( \varepsilon_{\rm CGM} )$ from the equilibrium profiles of pressure, temperature, and density. 
 
 ### Gas Mass
 
