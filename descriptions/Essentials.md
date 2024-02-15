@@ -249,11 +249,9 @@ This equation for how atmospheric thermalization changes with time does not depe
 
 ## Atmospheric Evolution 
 
-Evolution of a galactic atmosphere in the **ExpCGM** framework proceeds through a series of force-balanced states. They are the states the atmosphere would settle into on a dynamical timescale ($t_{\rm dyn} = r / v_c$) in the absence of heating or cooling. A series of those states is therefore a valid approximation for atmospheric evolution as long as the timescales for energy injection ($t_{\rm inj}$) and radiative cooling ($t_{\rm cool}$) are not short compared to the atmosphere's dynamical time at the radii of interest. 
+Evolution of a galactic atmosphere in the **ExpCGM** framework proceeds through a series of force-balanced states. They are the states the atmosphere would settle into on a dynamical timescale ($t_{\rm dyn} = r / v_c$) in the absence of heating or cooling. A series of those states is therefore a valid approximation for atmospheric evolution as long as the timescales for energy injection ($t_{\rm inj}$) and radiative cooling ($t_{\rm cool}$) are not short compared to the atmosphere's dynamical time at the radii of interest. A dissipation timescale ($t_{\rm diss}$) shorter than $t_{\rm dyn}$ simply ensures that $f_{\rm th}$ remains close to unity, as long as both $t_{\rm cool}$ and $t_{\rm inj}$ are longer than $t_{\rm dyn}$.
 
-A dissipation timescale ($t_{\rm diss}$) shorter than $t_{\rm dyn}$ simply ensures that $f_{\rm th}$ remains close to unity, if $t_{\rm cool}$ and $t_{\rm inj}$ are both longer than $t_{\rm dyn}$.
-
-In the **ExpCGM** framework, force-balanced atmosphere models are used to calculate how quickly $E_{\rm CGM}$ and $M_{\rm CGM}$ change with time. The rest of this section outlines how a force-balanced **ExpCGM** atmosphere model provides the necessary information.
+In the **ExpCGM** framework, force-balanced atmosphere models are used to calculate how quickly $E_{\rm CGM}$ and $M_{\rm CGM}$ change with time. The rest of this section outlines how a force-balanced **ExpCGM** atmosphere model provides the information necessary to model atmospheric evolution.
 
 ### Radiative Cooling 
 
@@ -266,7 +264,11 @@ For notational compactness, the **ExpCGM** documentation sometimes uses the cool
 
 ### Galactic Gas Supply
 
-In the **ExpCGM** framework, $\dot{M}\_{\rm in}$ represents the ***gas-supply rate*** at which baryons flow from a galaxy's atmosphere (i.e. the CGM) into its interstellar medium (ISM). That rate is considered *cooling limited* if $t_{\rm cool} \gg t_{\rm dyn}$. In that case, $\dot{M}\_{\rm in}$ is set equal to the atmosphere's cooling-flow rate $\dot{M}\_{\rm cool}$ evaluated at the galaxy's outer radius $r_{\rm gal}$:
+In the **ExpCGM** framework, $\dot{M}\_{\rm in}$ represents the ***gas-supply rate*** at which baryons flow from a galaxy's atmosphere (i.e. the CGM) into its interstellar medium (ISM). 
+
+#### Cooling-Limited Gas Supply
+
+That rate is considered *cooling limited* if $t_{\rm cool} \gg t_{\rm dyn}$. In that case, $\dot{M}\_{\rm in}$ is set equal to the atmosphere's cooling-flow rate $\dot{M}\_{\rm cool}$ evaluated at the galaxy's outer radius $r_{\rm gal}$:
 
 <p> 
   $$\dot{M}_{\rm in} = \dot{M}_{\rm cool}(r_{\rm gal}) = \frac {4 \pi r_{\rm gal}^3 \, \rho (r_{\rm gal})} {t_{\rm cool} (r_{\rm gal})}$$ 
