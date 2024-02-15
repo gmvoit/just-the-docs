@@ -266,20 +266,21 @@ For notational compactness, the **ExpCGM** documentation sometimes uses the cool
 
 ### Galactic Gas Supply
 
-In the **ExpCGM** framework, $\dot{M}\_{\rm in}$ represents the ***gas-supply rate*** at which baryons flows from a galaxy's atmosphere (i.e. the CGM) into its interstellar medium (ISM). That rate is *cooling limited* if $t_{\rm cool} \gg t_{\rm dyn}$. In that case, $\dot{M}\_{\rm in}$ is set equal to the pure cooling-flow rate evaluated at the galaxy's outer radius $r_{\rm gal}$:
+In the **ExpCGM** framework, $\dot{M}\_{\rm in}$ represents the ***gas-supply rate*** at which baryons flow from a galaxy's atmosphere (i.e. the CGM) into its interstellar medium (ISM). That rate is considered *cooling limited* if $t_{\rm cool} \gg t_{\rm dyn}$. In that case, $\dot{M}\_{\rm in}$ is set equal to the atmosphere's cooling-flow rate $\dot{M}\_{\rm cool}$ evaluated at the galaxy's outer radius $r_{\rm gal}$:
 
 <p> 
-  $$\dot{M}_{\rm cool}(r_{\rm gal}) = \frac {4 \pi r_{\rm gal}^3 \, \rho (r_{\rm gal})} {t_{\rm cool} (r_{\rm gal})}$$ 
+  $$\dot{M}_{\rm in} = \dot{M}_{\rm cool}(r_{\rm gal}) = \frac {4 \pi r_{\rm gal}^3 \, \rho (r_{\rm gal})} {t_{\rm cool} (r_{\rm gal})}$$ 
 </p> 
 
-However, galactic atmospheres with $t_{\rm cool} \ll t_{\rm dyn}$ can cool more rapidly than they are able to fall into a halo's central galaxy.... 
+However, the pure cooling-flow rate overestimates $\dot{M}\_{\rm in}$ if atmospheric gas can lose thermal energy more quickly than it is able to fall into the central galaxy. 
+
+An **ExpCGM** atmosphere with $t_{\rm cool} \ll t_{\rm dyn}$ is considered *dissipation limited*. can cool more rapidly than they are able to fall into a halo's central galaxy.... 
 
 The gas mass flowing into the galaxy is subtracted from $M_{\rm CGM}$, and its energy content is subtracted from $E_{\rm CGM}$. 
 
 ### Galactic Feedback
 
-[OMIT?]
-A galactic atmosphere gains support energy when it incorporates feedback energy released from the central galaxy. The time-averaged rate of energy input depends on how rapidly a galaxy's atmosphere can supply the galaxy with fuel for star formation. It may also depend on how much of the galaxy's gas accretes onto its central black hole ...
+An **ExpCGM** galactic atmosphere recovers at least some of the support energy lost to radiation when energy released from the central galaxy couples with the CGM. The time-averaged rate of energy input depends on how rapidly a galaxy's atmosphere can supply the galaxy with fuel for star formation. It may also depend on how much of the galaxy's gas accretes onto its central black hole ...
 
 ... A user-defined galactic feedback model then determines the resulting supply of feedback energy $\dot{E}\_{\rm fb}$ and outflowing gas mass $\dot{M}\_{\rm fb}$ ...
 
