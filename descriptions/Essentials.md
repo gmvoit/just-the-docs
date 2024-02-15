@@ -259,30 +259,33 @@ In the **ExpCGM** framework, force-balanced atmosphere models are used to calcul
 
 A galactic atmosphere loses thermal energy through two-body collisions that produce photons. The cooling rate per unit volume is therefore proportional to $\rho^2$ and a temperature-dependent cooling function $\Lambda_\rho (T)$ that accounts for the atmosphere's ionization state, the speeds of colliding particles, and the cross-sections for excitation of photon emission. At radius $r$, the atmosphere loses thermal energy on a timescale
   $$t_{\rm cool} = \frac {3 k T} {2 \rho \Lambda_\rho (T)}$$ 
-That timescale can be computed using an **ExpCGM** model that gives $T(r)$ and $\rho(r)$ as functions of $\varepsilon_{\rm CGM}$ and $M_{\rm CGM}$. The [Cooling](Cooling) page provides more detail.
+That timescale can be computed using a force-balanced **ExpCGM** model that gives $T(r)$ and $\rho(r)$ as functions of $\varepsilon_{\rm CGM}$ and $M_{\rm CGM}$. The [Cooling](Cooling) page provides more detail.
 
 {: .note}
 For notational compactness, the **ExpCGM** documentation sometimes uses the cooling function $\Lambda_\rho (T)$ instead of the more familiar cooling function $\Lambda (T)$ defined with respect to electron density $n_e$ and ion density $n_i$. Those two cooling functions are related to each other through $\Lambda_\rho = (\mu m_p n_e n_i / \rho^2) \Lambda$.  
 
 ### Galactic Gas Supply
 
-Cooling of a galactic atmosphere cannot supply gas to the central galaxy on a timescale shorter than the dynamical time ...  
-
-### Galactic Feedback
-
-[OMIT?]
-A galactic atmosphere gains support energy when it incorporates feedback energy released from the central galaxy. The time-averaged rate of energy input depends on how rapidly a galaxy's atmosphere can supply the galaxy with fuel for star formation. It may also depend on how much of the galaxy's gas accretes onto its central black hole. 
-
-According to the **ExpCGM** framework, the atmosphere supplies its central galaxy with gas at a rate no greater than the pure cooling-flow rate evaluated at the galaxy's outer radius $r_{\rm gal}$:
+In the **ExpCGM** framework, $\dot{M}\_{\rm in}$ represents the ***gas-supply rate*** at which baryons flows from a galaxy's atmosphere (i.e. the CGM) into its interstellar medium (ISM). That rate is *cooling limited* if $t_{\rm cool} \gg t_{\rm dyn}$. In that case, $\dot{M}\_{\rm in}$ is set equal to the pure cooling-flow rate evaluated at the galaxy's outer radius $r_{\rm gal}$:
 
 <p> 
   $$\dot{M}_{\rm cool}(r_{\rm gal}) = \frac {4 \pi r_{\rm gal}^3 \, \rho (r_{\rm gal})} {t_{\rm cool} (r_{\rm gal})}$$ 
 </p> 
 
-The gas mass flowing into the galaxy is subtracted from $M_{\rm CGM}$, and its energy content is subtracted from $E_{\rm CGM}$. A user-defined galactic feedback model then determines the resulting supply of feedback energy $\dot{E}\_{\rm fb}$ and outflowing gas mass $\dot{M}\_{\rm fb}$. 
+However, galactic atmospheres with $t_{\rm cool} \ll t_{\rm dyn}$ can cool more rapidly than they are able to fall into a halo's central galaxy.... 
+
+The gas mass flowing into the galaxy is subtracted from $M_{\rm CGM}$, and its energy content is subtracted from $E_{\rm CGM}$. 
+
+### Galactic Feedback
+
+[OMIT?]
+A galactic atmosphere gains support energy when it incorporates feedback energy released from the central galaxy. The time-averaged rate of energy input depends on how rapidly a galaxy's atmosphere can supply the galaxy with fuel for star formation. It may also depend on how much of the galaxy's gas accretes onto its central black hole ...
+
+... A user-defined galactic feedback model then determines the resulting supply of feedback energy $\dot{E}\_{\rm fb}$ and outflowing gas mass $\dot{M}\_{\rm fb}$ ...
 
 {: .important}
 In the **ExpCGM** framework, radiative cooling can continue to supply gas to the galaxy even if $\dot{E}\_{\rm fb} > \dot{E}\_{\rm rad}$. Feedback energy therefore limits $\dot{M}\_{\rm cool}$ by reducing $\rho (r_{\rm gal})/t_{\rm cool} (r_{\rm gal})$ rather than by shutting off the galaxy's gas supply when it exceeds radiative cooling.
+
 
 ### Cosmic Accretion
 
