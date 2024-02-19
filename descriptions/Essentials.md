@@ -53,7 +53,7 @@ where $P$ is thermal pressure, $\rho$ is gas density, and $\varphi$ is a spheric
 
 Direct integration of the hydrostatic equilbrium equation is possible if both the pressure profile's ***shape function***
   $$\alpha (r) \equiv - \frac {d \ln P} {d \ln r}$$
-and the gravitational potential are known functions of radius. Integrating the shape function leads to a dimensionless pressure profile normalized to unity at a reference radius $r_0$:
+and the gravitational potential $\varphi(r)$ are known functions of radius. Integrating the shape function leads to a dimensionless pressure profile normalized to unity at a reference radius $r_0$:
   $$f_P(r) \equiv \exp \left[ - \int_1^{r/r_0} \frac {\alpha (x)} {x}  d x \right]$$ 
 Providing a pressure normalization $P_0$ at $r_0$ then specifies the atmosphere's equilibrium pressure profile:
   $$P(r) = P_0 f_P(r)$$
@@ -65,7 +65,7 @@ Many details of an **ExpCGM** atmosphere model hinge on a user's choice for the 
 
 A spherical atmosphere supported by thermal pressure in hydrostatic equilibrium has the temperature profile
   $$T(r) = \frac {2 T_\varphi (r) } {\alpha (r)}$$
-The function $T_\varphi (r) \equiv \mu m_p v_{\rm c}^2(r) / 2k$ represents a ***gravitational temperature profile***. It comes from solving the hydrostatic equilibrium equation while assuming $P \propto r^{-2}$, a mean mass per atmospheric particle $\mu m_p$, and a gravitational potential with a circular velocity profile $v_{\rm c} (r) = ( r \cdot d \varphi / dr)^{1/2}$. It is normalized so that $T(r) = T_\varphi (r)$ for a hydrostatic atmosphere with $P \propto r^{-2}$ in an isothermal potential well that has constant $v_{\rm c}$. In that special case, both the atmospheric temperature and the ratio of gas density to total mass density are independent of radius.
+The function $T_\varphi (r) \equiv \mu m_p v_{\rm c}^2(r) / 2k$ represents a ***gravitational temperature profile***. It comes from solving the hydrostatic equilibrium equation while assuming $P \propto r^{-2}$, a mean mass per atmospheric particle $\mu m_p$, and a gravitational potential with the circular velocity profile $v_{\rm c} (r) = ( r \cdot d \varphi / dr)^{1/2}$. It is normalized so that $T(r) = T_\varphi (r)$ for a hydrostatic atmosphere with $P \propto r^{-2}$ in an isothermal potential well that has constant $v_{\rm c}$. In that special case, both the atmospheric temperature and the ratio of gas density to total mass density are independent of radius.
 
 {: .note}
 The astronomical literature often calls something like $T_\varphi$ a *virial temperature*. However, a galactic atmosphere can have $T \neq T_\varphi$ without violating the virial theorem, because the virial theorem applies to an *entire* self-gravitating system, not just the gaseous component on its own. Also, a self-gravitating atmosphere with $T \ll T_\varphi$ can satisfy the virial theorem on its own as long as its total kinetic energy provides enough support to balance gravity. That is why **ExpCGM** calls $T_\varphi$ a *gravitational temperature*, not a virial temperature.
@@ -183,7 +183,9 @@ The relationship between $r_{\rm CGM}$ and $\varepsilon_{\rm CGM}$ would be pure
 
 ## Turbulent Support 
 
-The **ExpCGM** framework was intentionally designed to model galactic atmospheres jointly supported by both thermal energy and non-thermal gas motions usually called "turbulence" even though they do not necessarily arise from a classic Kolmogorov cascade of eddies. For simplicity, **ExpCGM** treats those gas motions as isotropic, with a one-dimensional velocity dispersion $\sigma_{\rm 1D}$, so that the atmosphere's thermalization fraction is
+The **ExpCGM** framework was intentionally designed to model galactic atmospheres jointly supported by both thermal energy and non-thermal gas motions usually called "turbulence" even though they do not necessarily arise from a classic Kolmogorov cascade of eddies. For simplicity, **ExpCGM** treats those gas motions as isotropic, with a one-dimensional velocity dispersion $\sigma_{\rm 1D}$. The atmosphere's specfic energy at radius $r$ is then 
+  $$\varepsilon = \varphi + \frac {3} {2} \left( \frac {P} {\rho} + \sigma_{\rm 1D}^2 \right = \varphi (r) + \frac {3 v_{\rm c}^2} {2 \alpha_{\rm eff}})$$
+and its thermalization fraction is
   $$f_{\rm th} = \frac {P} {P + \rho \sigma_{\rm 1D}^2}$$
 Conveniently, the ratio of turbulent energy density to turbulent pressure support is the same as the thermal ratio, corresponding to $\gamma_{\rm nt} = 5/3$. Summing the cumulative thermal and turbulent energy profiles gives
   $$4 \pi r_0^3 P_0 \left[ J_{\rm th} (x) + J_{\rm nt} (x) \right] =  4 \pi r_0^3 \int_0^x \frac {3} {2} \frac {P (x)} {f_{\rm th}(x)} x^2 dx$$
