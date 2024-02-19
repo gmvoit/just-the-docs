@@ -261,26 +261,18 @@ In **ExpCGM**, the cooling function $\Lambda_\rho$ is defined so that the radiat
   $$\dot{E}_{\rm rad}(r) = \int_0^{M_{\rm gas}(r)} \langle \rho \Lambda_\rho \rangle d M_{\rm gas}$$
 </p>
 
-in which $\langle \rho \Lambda_\rho \rangle$ is a mass-averaged value of $\rho \Lambda_\rho$ within the shell at radius $r$ that accounts for inhomogeneity. The atmosphere's total radiative losses are then $\dot{E}\_{\rm rad}(r_{\rm CGM})$, usually represented by just $\dot{E}\_{\rm rad}$ in the **ExpCGM** documention. 
+in which $\langle \rho \Lambda_\rho \rangle$ is a mass-averaged value of $\rho \Lambda_\rho$ within the shell at radius $r$ that accounts for inhomogeneity. The atmosphere's total radiative losses are then $\dot{E}\_{\rm rad}(r_{\rm CGM})$, usually represented by just $\dot{E}\_{\rm rad}$ in the **ExpCGM** documentation. 
 
-Evolution of a galactic atmosphere in the **ExpCGM** framework proceeds through a series of force-balanced states. They are the states the atmosphere would settle into on a dynamical timescale $(t_{\rm dyn} = r / v_c)$ in the absence of heating or cooling. A series of those states is therefore a valid approximation for atmospheric evolution as long as the timescales for energy injection ($t_{\rm inj}$) and radiative cooling $(t_{\rm cool})$ are not short compared to the atmosphere's dynamical time at the radii of interest. A dissipation timescale $(t_{\rm diss})$ shorter than $t_{\rm dyn}$ simply ensures that $f_{\rm th}$ remains close to unity, as long as both $t_{\rm cool}$ and $t_{\rm inj}$ are longer than $t_{\rm dyn}$.
-
-In the **ExpCGM** framework, force-balanced atmosphere models are used to calculate how quickly $E_{\rm CGM}$ and $M_{\rm CGM}$ change with time. The rest of this section outlines how a force-balanced **ExpCGM** atmosphere model provides the information necessary to model atmospheric evolution.
-
-### Radiative Cooling 
-
-A galactic atmosphere loses thermal energy through two-body collisions that produce photons. The cooling rate per unit volume is therefore proportional to $\rho^2$ and a temperature-dependent cooling function $\Lambda_\rho (T)$ that accounts for the atmosphere's ionization state, the speeds of colliding particles, and the cross-sections for excitation of photon emission. At radius $r$, the atmosphere loses thermal energy on a timescale
+At radius $r$, the atmosphere loses thermal energy on a timescale
   $$t_{\rm cool} = \frac {3 k T} {2 \rho \Lambda_\rho (T)}$$ 
 That timescale can be computed using a force-balanced **ExpCGM** model that gives $T(r)$ and $\rho(r)$ as functions of $\varepsilon_{\rm CGM}$ and $M_{\rm CGM}$. The [Cooling](Cooling) page provides more detail.
 
 {: .note}
-For notational compactness, the **ExpCGM** documentation sometimes uses the cooling function $\Lambda_\rho (T)$ instead of the more familiar cooling function $\Lambda (T)$ defined with respect to electron density $n_e$ and ion density $n_i$. Those two cooling functions are related to each other through $\Lambda_\rho = (\mu m_p n_e n_i / \rho^2) \Lambda$.  
+The cooling function $\Lambda_\rho (T)$ is related to the more familiar cooling function $\Lambda (T)$ defined with respect to electron density $n_e$ and ion density $n_i$ via the expression $\Lambda_\rho = (\mu m_p n_e n_i / \rho^2) \Lambda$. It is used here to help keep the notation representing the specific cooling rate compact and intuitive.
 
 ### Galactic Gas Supply
 
 In the **ExpCGM** framework, $\dot{M}\_{\rm in}$ represents the ***gas-supply rate*** at which baryons flow from a galaxy's atmosphere (i.e. the CGM) into its interstellar medium (ISM). 
-
-#### Cooling-Limited Gas Supply
 
 That rate is considered *cooling limited* if $t_{\rm cool} \gg t_{\rm dyn}$. In that case, $\dot{M}\_{\rm in}$ is set equal to the atmosphere's cooling-flow rate $\dot{M}\_{\rm cool}$ evaluated at the galaxy's outer radius $r_{\rm gal}$:
 
