@@ -258,10 +258,10 @@ Radiative losses happen when two-body collisions produce photons that are not re
 In **ExpCGM**, the cooling function $\Lambda_\rho$ is defined so that the radiative loss rate per unit volume is $\rho^2 \Lambda_\rho$ and the ***specific cooling rate*** is $\rho \Lambda_\rho$. Integration over gas mass shells gives the cumulative radiative loss profile
 
 <p>
-  $$\dot{E}\_{\rm rad}(r) = \int_0^{M_{\rm gas}(r)} \langle \rho \Lambda_\rho \rangle d M_{\rm gas}$$
+  $$\dot{E}_{\rm rad}(r) = \int_0^{M_{\rm gas}(r)} \langle \rho \Lambda_\rho \rangle d M_{\rm gas}$$
 </p>
 
-in which $$\langle \rho \Lambda_\rho \rangle$$ is a mass-averaged value of $\rho \Lambda_\rho$ within the shell at radius $r$ that accounts for inhomogeneity. The atmosphere's total radiative losses are then $\dot{E}\_{\rm rad}(r_{\rm CGM})$, usually represented by just $\dot{E}\_{\rm rad}$ in the **ExpCGM** documention. 
+in which $\langle \rho \Lambda_\rho \rangle$ is a mass-averaged value of $\rho \Lambda_\rho$ within the shell at radius $r$ that accounts for inhomogeneity. The atmosphere's total radiative losses are then $\dot{E}\_{\rm rad}(r_{\rm CGM})$, usually represented by just $\dot{E}\_{\rm rad}$ in the **ExpCGM** documention. 
 
 Evolution of a galactic atmosphere in the **ExpCGM** framework proceeds through a series of force-balanced states. They are the states the atmosphere would settle into on a dynamical timescale $(t_{\rm dyn} = r / v_c)$ in the absence of heating or cooling. A series of those states is therefore a valid approximation for atmospheric evolution as long as the timescales for energy injection ($t_{\rm inj}$) and radiative cooling $(t_{\rm cool})$ are not short compared to the atmosphere's dynamical time at the radii of interest. A dissipation timescale $(t_{\rm diss})$ shorter than $t_{\rm dyn}$ simply ensures that $f_{\rm th}$ remains close to unity, as long as both $t_{\rm cool}$ and $t_{\rm inj}$ are longer than $t_{\rm dyn}$.
 
