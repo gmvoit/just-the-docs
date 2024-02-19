@@ -183,8 +183,8 @@ The relationship between $r_{\rm CGM}$ and $\varepsilon_{\rm CGM}$ would be pure
 
 ## Turbulent Support 
 
-The **ExpCGM** framework was intentionally designed to model galactic atmospheres jointly supported by both thermal energy and non-thermal gas motions usually called "turbulence" even though they do not necessarily arise from a classic Kolmogorov cascade of eddies. For simplicity, **ExpCGM** treats those gas motions as isotropic, with a one-dimensional velocity dispersion $\sigma_{\rm 1D}$. The atmosphere's specfic energy at radius $r$ is then 
-  $$\varepsilon = \varphi + \frac {3} {2} \left( \frac {P} {\rho} + \sigma_{\rm 1D}^2 \right = \varphi (r) + \frac {3 v_{\rm c}^2} {2 \alpha_{\rm eff}})$$
+The **ExpCGM** framework was intentionally designed to model galactic atmospheres jointly supported by both thermal energy and non-thermal gas motions usually called "turbulence" even though they do not necessarily arise from a classic Kolmogorov cascade of eddies. For simplicity, **ExpCGM** treats those gas motions as isotropic, with a one-dimensional velocity dispersion $\sigma_{\rm 1D}$. The atmosphere's specific energy at radius $r$ is then 
+  $$\varepsilon = \varphi + \frac {3} {2} \frac {P} {\rho} + \frac {3} {2} \sigma_{\rm 1D}^2 = \varphi (r) + \frac {3 v_{\rm c}^2} {2 \alpha_{\rm eff}})$$
 and its thermalization fraction is
   $$f_{\rm th} = \frac {P} {P + \rho \sigma_{\rm 1D}^2}$$
 Conveniently, the ratio of turbulent energy density to turbulent pressure support is the same as the thermal ratio, corresponding to $\gamma_{\rm nt} = 5/3$. Summing the cumulative thermal and turbulent energy profiles gives
