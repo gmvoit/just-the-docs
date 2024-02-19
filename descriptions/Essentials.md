@@ -183,15 +183,17 @@ The relationship between $r_{\rm CGM}$ and $\varepsilon_{\rm CGM}$ would be pure
 
 ## Turbulent Support 
 
-The **ExpCGM** framework was intentionally designed to model galactic atmospheres jointly supported by both thermal energy and non-thermal gas motions usually called "turbulence" even though they do not necessarily arise from a classic Kolmogorov cascade of eddies. For simplicity, **ExpCGM** treats those gas motions as isotropic, with a one-dimensional velocity dispersion $\sigma_{\rm 1D}$. The atmosphere's specific energy at radius $r$ is then 
+The **ExpCGM** framework was intentionally designed to model galactic atmospheres jointly supported by both thermal energy and non-thermal gas motions usually called "turbulence" even though they do not necessarily arise from a classic Kolmogorov cascade of eddies. For simplicity, **ExpCGM** treats those gas motions as isotropic, with a one-dimensional velocity dispersion $\sigma_{\rm 1D}$. 
+
+The specific energy of a force-balanced atmosphere at radius $r$ is then 
   $$\varepsilon = \varphi + \frac {3} {2} \left( \frac {P} {\rho} + \sigma_{\rm 1D}^2 \right) = \varphi + \frac {3 v_{\rm c}^2} {2 \alpha_{\rm eff}}$$
 and its thermalization fraction is
   $$f_{\rm th} = \frac {P} {P + \rho \sigma_{\rm 1D}^2}$$
-Notice that the sum of thermal and turbulent energy density depends only on $v_{\rm c}^2$ and $\alpha_{\rm eff}$, through the principle of force balance, and not on $f_{\rm th}$. 
+Notice that the sum of thermal and turbulent energy density depends only on $v_{\rm c}^2$ and $\alpha_{\rm eff}$, and does not depend on $f_{\rm th}$. 
 
 ## Thermalization 
 
-Dissipation of turbulent support energy does not change the radius or density profile of a galactic atmosphere in force balance because the combined density of turbulent plus thermal energy is independent of $f_{\rm th}$. Turbulent dissipation simply increases $f_{\rm th}$ without altering a force-balanced atmosphere's overall structure. **ExpCGM** therefore tracks thermalization of turbulence as dissipation proceeds using a differential equation for $f_{\rm th}$ that applies to a force-balanced atmosphere jointly supported by turbulence and thermal energy. 
+Dissipation of turbulent support energy does not change the radius of a force-balanced galactic atmosphere because the total support jointly provided by turbulent and thermal energy is independent of $f_{\rm th}$. Turbulent dissipation simply increases $f_{\rm th}$ without altering a force-balanced atmosphere's overall structure. **ExpCGM** therefore tracks thermalization of turbulence as dissipation proceeds using a differential equation for $f_{\rm th}$ appropriate for atmosphere jointly supported by turbulence and thermal energy. 
 
 ### Energy Injection
 
