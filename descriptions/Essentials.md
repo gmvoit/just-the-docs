@@ -257,13 +257,15 @@ Whether or not the atmosphere is expanding or contracting depends on how energy 
 
 Radiative losses happen when two-body collisions produce photons that are not reabsorbed. A galactic atmosphere's radiative cooling rate per unit volume is therefore proportional to $\rho^2$ and a temperature-dependent cooling function $\Lambda_\rho (T)$ accounting for the atmosphere's ionization state, the relative speeds of colliding particles, and the cross-sections for excitation of photon emission.
 
-In **ExpCGM**, the cooling function $\Lambda_\rho$ is defined so that the radiative loss rate per unit volume is $\rho^2 \Lambda_\rho$ and the ***specific cooling rate*** is $\rho \Lambda_\rho$. Integration over gas mass shells gives the atmosphere's cooling rate
+In **ExpCGM**, the cooling function $\Lambda_\rho$ is defined so that the radiative loss rate per unit volume is $\rho^2 \Lambda_\rho$ and the ***specific cooling rate*** is $\rho \Lambda_\rho$. Integration over shells of radius $r$ gives the atmosphere's cooling rate
 
 <p>
-  $$\dot{E}_{\rm rad} = \int_0^{M_{\rm CGM}} \langle \rho \Lambda_\rho \rangle_r ~d M_{\rm gas}$$
+  $$\dot{E}_{\rm rad} = \int_0^{r_{\rm CGM}} 4 \pi r^2 \rho \langle \bar{\rho} \Lambda_\rho \rangle ~dr$$
 </p>
 
-in which $\langle \rho \Lambda_\rho \rangle_r$ represents the mass-averaged value of $\rho \Lambda_\rho$ within a gas shell at radius $r$. That mass-averaged specific cooling rate enables **ExpCGM** to account for inhomogeneities that can make the cooling rate at $r$ dramatically different from the cooling rate of a homogeneous gas shell with mean density $\bar{\rho}$. 
+in which $\langle \rho \Lambda_\rho \rangle$ represents the mass-averaged value of $\rho \Lambda_\rho$ within a gas shell of mean density
+  $$\bar{\rho}(r) = \frac {\alpha_{\rm eff}(r) P(r)} {v_{\rm c}(r) f_{\rm th}}$$
+This approach enables **ExpCGM** to account for inhomogeneities that can make the cooling rate of the gas shell dramatically different from the cooling rate of a homogeneous gas shell with $\rho = \bar{\rho}$. 
 
 At radius $r$, the atmosphere loses thermal energy on a timescale
   $$t_{\rm cool} = \frac {3 k T} {2 \rho \Lambda_\rho (T)}$$ 
