@@ -260,19 +260,15 @@ Radiative losses happen when two-body collisions produce photons that are not re
 In **ExpCGM**, the cooling function $\Lambda_\rho$ is defined so that the radiative loss rate per unit volume is $\rho^2 \Lambda_\rho$ and the ***specific cooling rate*** is $\rho \Lambda_\rho$. Integration over shells of radius $r$ gives the atmosphere's cooling rate
 
 <p>
-  $$\dot{E}_{\rm rad} = \int_0^{r_{\rm CGM}} 4 \pi r^2 \rho \langle \bar{\rho} \Lambda_\rho \rangle ~dr$$
+  $$\dot{E}_{\rm rad} = \int_0^{r_{\rm CGM}}  \langle \rho \Lambda_\rho \rangle ~4 \pi r^2 \bar{\rho} ~dr$$
 </p>
 
 in which $\langle \rho \Lambda_\rho \rangle$ represents the mass-averaged value of $\rho \Lambda_\rho$ within a gas shell of mean density
-  $$\bar{\rho}(r) = \frac {\alpha_{\rm eff}(r) P(r)} {v_{\rm c}(r) f_{\rm th}}$$
-This approach enables **ExpCGM** to account for inhomogeneities that can make the cooling rate of the gas shell dramatically different from the cooling rate of a homogeneous gas shell with $\rho = \bar{\rho}$. 
-
-At radius $r$, the atmosphere loses thermal energy on a timescale
-  $$t_{\rm cool} = \frac {3 k T} {2 \rho \Lambda_\rho (T)}$$ 
-That timescale can be computed using a force-balanced **ExpCGM** model that gives $T(r)$ and $\rho(r)$ as functions of $\varepsilon_{\rm CGM}$ and $M_{\rm CGM}$. The [Cooling](Cooling) page provides more detail.
+  $$\bar{\rho}(r) = \frac {P(r)} {f_{\rm th}} \frac {\alpha_{\rm eff}(r)} {f_\varphi v_{\rm c}(r)}$$
+This approach enables **ExpCGM** to account for inhomogeneities that can make the cooling rate of a multiphase gas shell dramatically different from the cooling rate of a homogeneous gas shell with $\rho = \bar{\rho}$. The [Cooling](Cooling) page provides more detail.
 
 {: .note}
-The cooling function $\Lambda_\rho (T)$ is related to the more familiar cooling function $\Lambda (T)$ defined with respect to electron density $n_e$ and ion density $n_i$ via the expression $\Lambda_\rho = (\mu m_p n_e n_i / \rho^2) \Lambda$. It is used here to help keep the notation representing the specific cooling rate compact and intuitive.
+The cooling function $\Lambda_\rho (T)$ used here is related to the more familiar cooling function $\Lambda (T)$ via the expression $\Lambda_\rho = (\mu m_p n_e n_i / \rho^2) \Lambda$, in which $n_e$ is the electron density and $n_i$ ion density. Using $\Lambda_\rho (T)$ instead of $\Lambda (T)$ helps to make the notation representing the specific cooling rate more compact and intuitive.
 
 ### Galactic Gas Supply
 
