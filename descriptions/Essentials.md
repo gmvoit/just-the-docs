@@ -28,7 +28,7 @@ parent: Description
 # Essentials
 {: .no_toc}
 
-This page introduces the essential elements of the most basic building block of **ExpCGM**: a steady-state galactic atmosphere model. It explains how **ExpCGM** applies the principles of force balance and atmospheric specific energy, then provides a simple example illustrating how an **ExpCGM** model atmosphere emerges from those principles. Descriptions of how **ExpCGM** accounts for turbulent support and thermalization of atmospheric energy follow the example. A concluding section outlines how the characteristics of steady-state atmosphere models inform **ExpCGM** models for evolving atmospheres.
+This page introduces the most basic building block of **ExpCGM**: a steady-state galactic atmosphere model. It explains how **ExpCGM** applies the principles of force balance and atmospheric specific energy to build such a model, then provides a simple example. Descriptions of how **ExpCGM** accounts for turbulent support and thermalization of atmospheric energy follow the example. A concluding section outlines how the characteristics of steady-state atmosphere models inform **ExpCGM** methods for evolving those models.
 
 <details closed markdown="block">
   <summary>
@@ -89,7 +89,7 @@ Here, the function
 is a ***generalized shape function*** for atmospheric support, to be used if $f_{\rm th}$ depends on radius. It is also possible for $f_\varphi$ to depend on radius.
 
 {: .note}
-Other formulations of atmospheric force balance sometimes express resistance to gravity in terms of a total pressure $P_{\rm tot} = P / f_{\rm th}$. However, **ExpCGM** explicitly accounts for the thermal pressure contribution using the $f_{\rm th}$ factor so that a model atmosphere's temperature profile can be directly inferred from just force balance considerations and the thermalization fraction $f_{\rm th}$.
+While other formulations of atmospheric force balance sometimes express resistance to gravity in terms of a total pressure $P_{\rm tot} = P / f_{\rm th}$, **ExpCGM** explicitly accounts for the thermal pressure contribution using the $f_{\rm th}$ factor. A model atmosphere's temperature profile can then be directly inferred from just force balance considerations and the thermalization fraction $f_{\rm th}$. Furthermore, $f_{\rm th}$ can be treated as a dynamical variable, as described below in the Thermalization section.
 
 ## Specific Energy
 
@@ -99,8 +99,8 @@ Several integrals are needed to determine how $\varepsilon_{\rm CGM}$ depends on
 
 ### Gas Mass
 
-Integrating the gas mass density $\rho(r)$ of an atmosphere in a potential well with maximum circular velocity $v_\varphi \equiv \max (v_{\rm c})$ gives its gas mass profile
-  $$M_{\rm CGM} (r) = \frac {4 \pi r_0^3 P_0} {v_\varphi^2} I \left( \frac {r} {r_0} \right) ~~~~~~,~~~~~~I (x) \equiv v_\varphi^2 \int_0^{r/r_0} \frac {\alpha_{\rm eff} (x) f_P (x)} { f_{\rm th} f_\varphi v_{\rm c}^2 (x) } x^2 dx$$
+Integrating the gas mass density $\rho(r)$ of an atmosphere in a spherical potential well with maximum circular velocity $v_\varphi \equiv \max (v_{\rm c})$ gives its gas mass profile
+  $$M_{\rm gas} (r) = \frac {4 \pi r_0^3 P_0} {v_\varphi^2} I \left( \frac {r} {r_0} \right) ~~~~~~,~~~~~~I (x) \equiv v_\varphi^2 \int_0^{r/r_0} \frac {\alpha_{\rm eff} (x) f_P (x)} { f_{\rm th} f_\varphi v_{\rm c}^2 (x) } x^2 dx$$
 
 ### Gravitational Energy
 
@@ -114,13 +114,13 @@ Integrating $3 P(r)/2$ gives its cumulative thermal energy profile
 
 ### Non-Thermal Energy
 
-If there are non-thermal pressure components, the cumulative non-thermal support energy profile is
+If non-thermal energy components contribute to pressure support, the cumulative non-thermal energy profile is
   $$E_{\rm nt} (r) = 4 \pi r_0^3 P_0 J_{\rm nt} \left( \frac {r} {r_0} \right) ~~~~~~,~~~~~~J_{\rm nt} (x) \equiv \int_0^x \frac {(1 - f_{\rm th}) f_P (x)} {f_{\rm th} (\gamma_{\rm nt} - 1)} x^2  dx$$
-The factor $\gamma_{\rm nt} - 1$ in the integral's denominator is the local ratio of non-thermal pressure support to non-thermal energy density, which can be different from 2/3. 
+The factor $\gamma_{\rm nt} - 1$ in the integral's denominator is the local ratio of non-thermal pressure support to non-thermal energy density, and it can be different from 2/3. 
 
 ### Total Specific Energy
 
-To obtain a galactic atmosphere's total specific energy, the **ExpCGM** framework adds up the energy integrals to make the function 
+To obtain a galactic atmosphere's mean specific energy, the **ExpCGM** framework adds up the energy integrals to make the function 
   $$F(x) = \frac { J_\varphi (x) + J_{\rm th}(x) + J_{\rm nt}(x)} {I(x)}$$
 It is defined so that the equation
   $$\varepsilon_{\rm CGM} = v_\varphi^2 F \left( \frac {r_{\rm CGM}} {r_0} \right)$$
@@ -169,17 +169,17 @@ There is no need to compute $J_{\rm nt} (x)$ because all of the support energy i
 
 ### Energy and Expansion
 
-The figure below shows the relationship between atmospheric radius and specific energy that follows from these integrals. A solid red line represents how the atmosphere's equilibrium radius $r_{\rm CGM} = x_{\rm CGM} r_{\rm s}$ depends on its mean specific energy $\varepsilon_{\rm CGM} = E_{\rm CGM} / M_{\rm CGM}$ for a case with $\alpha = 3/2$. The equilibrium radius starts at zero for $\varepsilon_{\rm CGM} = 0$ and rises through $r_{\rm CGM} \approx 6 r_{\rm s}$ at $\varepsilon_{\rm CGM} \approx 3 v_\varphi^2$. The atmosphere's radius then formally approaches infinity as $\varepsilon_{\rm CGM}$ approaches $A_{\rm NFW} v_\varphi^2$ because atmospheric gas with specific energy exceeding $A_{\rm NFW} v_\varphi^2$ is unbound. A dashed blue line shows how the normalization $P_0 \propto 1/ I(x_{\rm CGM})$ of the atmosphere's pressure profile declines as $\varepsilon_{\rm CGM}$ rises and the atmosphere expands.
+The figure below shows the relationship between mean specific energy and atmospheric radius that follows from these integrals. A solid red line represents how the atmosphere's equilibrium radius $r_{\rm CGM} = x_{\rm CGM} r_{\rm s}$ depends on its mean specific energy $\varepsilon_{\rm CGM} = E_{\rm CGM} / M_{\rm CGM}$ for a case with $\alpha = 3/2$. The equilibrium radius starts at zero for $\varepsilon_{\rm CGM} = 0$ and rises through $r_{\rm CGM} \approx 6 r_{\rm s}$ at $\varepsilon_{\rm CGM} \approx 3 v_\varphi^2$. The atmosphere's radius then formally approaches infinity as $\varepsilon_{\rm CGM}$ approaches $A_{\rm NFW} v_\varphi^2$ because atmospheric gas with specific energy exceeding $A_{\rm NFW} v_\varphi^2$ is unbound. A dashed blue line shows how the normalization $P_0 \propto 1/ I(x_{\rm CGM})$ of the atmosphere's pressure profile declines as $\varepsilon_{\rm CGM}$ rises and the atmosphere expands.
 
 <figure>
     <img src="../epsCGM_xCGM_plot.jpg"
          alt="epsCGM_xCGM_plot">
 </figure>
 
-Dotted lines in the figure illustrate relationships that are exponentially sensitive to the scaled specific energy $\varepsilon_{\rm CGM} / v_\varphi^2$. They are similar to the solid and dashed lines within the range $v_\varphi^2 \lesssim \varepsilon_{\rm CGM} \lesssim 4 v_\varphi^2$. However, the functions describing the atmosphere's equilibrium radius and pressure normalization become even more sensitive than those exponential relationships as $\varepsilon_{\rm CGM}$ surpasses $4 v_\varphi^2$. Consequently, feedback mechanisms capable of boosting the atmosphere's mean specific energy anove $4 v_\varphi^2$ drastically reduce its density and radiative cooling rate.
+Dotted lines in the figure illustrate relationships that are exponentially sensitive to the scaled specific energy $\varepsilon_{\rm CGM} / v_\varphi^2$. They are similar to the solid and dashed lines within the range $v_\varphi^2 \lesssim \varepsilon_{\rm CGM} \lesssim 4 v_\varphi^2$. However, the functions describing the atmosphere's equilibrium radius and pressure normalization become even more sensitive than those exponential relationships as $\varepsilon_{\rm CGM}$ surpasses $4 v_\varphi^2$. Consequently, feedback mechanisms capable of boosting the atmosphere's mean specific energy above $4 v_\varphi^2$ drastically reduce its density and radiative cooling rate.
 
 {:.note}
-The relationship between $r_{\rm CGM}$ and $\varepsilon_{\rm CGM}$ would be purely exponential for an atmosphere with constant $\alpha$ in a gravitational potential with constant $v_{\rm c}$. The relationships in the figure are consequently *nearly* exponential in the portion of an NFW potential well in which $v_{\rm c}$ is *nearly* constant. 
+The relationship between $r_{\rm CGM}$ and $\varepsilon_{\rm CGM}$ would be purely exponential for an atmosphere with constant $\alpha$ in a gravitational potential with constant $v_{\rm c}$. That is why the relationships in the figure are *nearly* exponential in the portion of an NFW potential well in which $v_{\rm c}$ is *nearly* constant. 
 
 ## Turbulent Support 
 
@@ -193,11 +193,11 @@ is identical to the gas density profile of a purely hydrostatic atmosphere with 
 
 ## Thermalization 
 
-The previous section showed why dissipation of turbulent support energy does not change the radius or density profile of a galactic atmosphere in force balance. Turbulent dissipation simply increases $f_{\rm th}$ without altering a force-balanced atmosphere's overall structure. **ExpCGM** therefore tracks thermalization of turbulence as dissipation proceeds using a differential equation for $f_{\rm th}$ that applies to a force-balanced atmosphere jointly supported by turbulence and thermal energy. 
+Dissipation of turbulent support energy does not change the radius or density profile of a galactic atmosphere in force balance because the combined density of turbulent plus thermal energy is independent of $f_{\rm th}$. Turbulent dissipation simply increases $f_{\rm th}$ without altering a force-balanced atmosphere's overall structure. **ExpCGM** therefore tracks thermalization of turbulence as dissipation proceeds using a differential equation for $f_{\rm th}$ that applies to a force-balanced atmosphere jointly supported by turbulence and thermal energy. 
 
 ### Energy Injection
 
-User-specified models provide the total rate of non-gravitational energy injection $\dot{E}\_{\rm inj}$ from cosmological accretion and galactic feedback. That energy input branches into a user-specified fraction $f_{\rm inj,th}$ going directly into heat and a complementary fraction $1 - f_{\rm inj,th}$ initially going into turbulence. Those proportions can depend on the relative contributions of cosmological accretion and feedback to the overall energy injection rate $\dot{E}\_{\rm inj}$. 
+User-specified models provide the total rate at which cosmological accretion and galactic feedback inject non-gravitational energy into a galaxy's atmosphere: $\dot{E}\_{\rm inj}$. That energy input branches into a user-specified fraction $f_{\rm inj,th}$ going directly into heat and a complementary fraction $1 - f_{\rm inj,th}$ initially going into turbulence. Those proportions can depend on the relative contributions of cosmological accretion and feedback to $\dot{E}\_{\rm inj}$. 
 
 ### Dissipation Timescale
 
