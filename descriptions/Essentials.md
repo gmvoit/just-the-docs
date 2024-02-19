@@ -184,14 +184,10 @@ The relationship between $r_{\rm CGM}$ and $\varepsilon_{\rm CGM}$ would be pure
 ## Turbulent Support 
 
 The **ExpCGM** framework was intentionally designed to model galactic atmospheres jointly supported by both thermal energy and non-thermal gas motions usually called "turbulence" even though they do not necessarily arise from a classic Kolmogorov cascade of eddies. For simplicity, **ExpCGM** treats those gas motions as isotropic, with a one-dimensional velocity dispersion $\sigma_{\rm 1D}$. The atmosphere's specific energy at radius $r$ is then 
-  $$\varepsilon = \varphi + \frac {3} {2} \frac {P} {\rho} + \frac {3} {2} \sigma_{\rm 1D}^2 = \varphi (r) + \frac {3 v_{\rm c}^2} {2 \alpha_{\rm eff}})$$
+  $$\varepsilon = \varphi + \frac {3} {2} \left( \frac {P} {\rho} + \sigma_{\rm 1D}^2 \right) = \varphi + \frac {3 v_{\rm c}^2} {2 \alpha_{\rm eff}}$$
 and its thermalization fraction is
   $$f_{\rm th} = \frac {P} {P + \rho \sigma_{\rm 1D}^2}$$
-Conveniently, the ratio of turbulent energy density to turbulent pressure support is the same as the thermal ratio, corresponding to $\gamma_{\rm nt} = 5/3$. Summing the cumulative thermal and turbulent energy profiles gives
-  $$4 \pi r_0^3 P_0 \left[ J_{\rm th} (x) + J_{\rm nt} (x) \right] =  4 \pi r_0^3 \int_0^x \frac {3} {2} \frac {P (x)} {f_{\rm th}(x)} x^2 dx$$
-The equilibrium radius of an atmosphere jointly supported by thermal and turbulent energy therefore depends only on the total density of support energy ($3P/2 f_{\rm th}$) and not the separate proportions of thermal and turbulent energy. The ratio of turbulent to thermal support does not matter because the force-balanced gas density profile
-  $$\rho (r) = \frac {P_0 f_P (r)} {f_{\rm th}(r)} \frac {\alpha_{\rm eff}(r)} {v_{\rm c}^2 (r)}$$
-is identical to the gas density profile of a purely hydrostatic atmosphere with $\alpha (r) = \alpha_{\rm eff} (r)$ and $f_{\rm th} = 1$.
+Notice that the sum of thermal and turbulent energy density depends only on $v_{\rm c}^2$ and $\alpha_{\rm eff}$, through the principle of force balance, and not on $f_{\rm th}$. 
 
 ## Thermalization 
 
@@ -251,19 +247,17 @@ This equation for how atmospheric thermalization changes with time does not depe
 
 ## Atmospheric Evolution 
 
-An **ExpCGM** model atmosphere evolves as $E_{\rm CGM}$ and $M_{\rm CGM}$ evolve. At each moment in time, **ExpCGM** assumes that the atmosphere is in a force-balanced configuration that depends on $E_{\rm CGM}$, $M_{\rm CGM}$, $v_{\rm c}(r)$, $f_{\rm th}(r)$, and $\alpha_{\rm eff}(r)$, as described above. Whether or not the atmosphere is expanding or contracting at that moment depends on how energy input compares with radiative cooling.
+An **ExpCGM** model atmosphere evolves as $E_{\rm CGM}$ and $M_{\rm CGM}$ evolve. At each moment in time, **ExpCGM** assumes that the atmosphere is in a force-balanced configuration that depends on $E_{\rm CGM}$, $M_{\rm CGM}$, $v_{\rm c}(r)$, and $\alpha_{\rm eff}(r)$, as described above. 
 
-To determine the atmosphere's heating and cooling rates, **ExpCGM** uses a force-balanced atmosphere model to calculate the rate $\dot{E}\_{\rm rad}$ at which radiative energy leaves the atmosphere and the rate $\dot{M}\_{\rm in}$ at which atmospheric gas flows into the central galaxy. A buildup of galactic gas leads to star formation, supernova explosions, and galactic outflows that return gas and energy to the atmosphere. When integrated over sufficiently long time periods, that energy input is proportional to the time-averaged value of $\dot{M}\_{\rm in}$...
+Whether or not the atmosphere is expanding or contracting depends on how energy input compares with radiative cooling. To determine the atmosphere's heating and cooling rates, **ExpCGM** uses the force-balanced atmosphere model to calculate the ***cooling rate*** $\dot{E}\_{\rm rad}$ at which radiative energy leaves the atmosphere and the ***gas supply rate*** $\dot{M}\_{\rm in}$ at which atmospheric gas flows into the central galaxy. That inflow feeds a buildup of galactic gas leading to star formation, supernova explosions, and galactic outflows that return gas and energy to the atmosphere. When integrated over sufficiently long time periods, that energy input is proportional to the time-averaged value of $\dot{M}\_{\rm in}$.
 
 ### Radiative Cooling
 
 Radiative losses happen when two-body collisions produce photons that are not reabsorbed. A galactic atmosphere's radiative cooling rate per unit volume is therefore proportional to $\rho^2$ and a temperature-dependent cooling function $\Lambda_\rho (T)$ accounting for the atmosphere's ionization state, the relative speeds of colliding particles, and the cross-sections for excitation of photon emission.
 
-The atmosphere's radiative cooling rate $\dot{E}\_{\rm rad}$ is computed using the density profile $\rho(r)$ and temperature profile $T(r)$ from a force-balanced model. If the atmosphere is thermally supported and homogeneous at each radius, then its radiative energy loss rate is
-
-<p> 
-  $$\dot{E}_{\rm rad} = \int_0^{r_{\rm CGM}} 4 \pi r^2 n_e n_p \Lambda(T) dr$$ 
-</p> 
+In **ExpCGM**, the cooling function $\Lambda_\rho$ is defined so that the radiative loss rate per unit volume is $\rho^2 \Lambda_\rho$ and the ***specific cooling rate*** is $\rho \Lambda_\rho$. Integration over gas mass shells gives the cumulative radiative loss profile
+  $$\dot{E}\_{\rm rad}(r) = \int_0^{M_{\rm gas}(r)} \langle \rho \Lambda_\rho \rangle d M_{\rm gas}$$
+in which $$\langle \rho \Lambda_\rho \rangle$$ is a mass-averaged value of $\rho \Lambda_\rho$ within the shell at radius $r$, to account for inhomogeneity...
 
 Evolution of a galactic atmosphere in the **ExpCGM** framework proceeds through a series of force-balanced states. They are the states the atmosphere would settle into on a dynamical timescale $(t_{\rm dyn} = r / v_c)$ in the absence of heating or cooling. A series of those states is therefore a valid approximation for atmospheric evolution as long as the timescales for energy injection ($t_{\rm inj}$) and radiative cooling $(t_{\rm cool})$ are not short compared to the atmosphere's dynamical time at the radii of interest. A dissipation timescale $(t_{\rm diss})$ shorter than $t_{\rm dyn}$ simply ensures that $f_{\rm th}$ remains close to unity, as long as both $t_{\rm cool}$ and $t_{\rm inj}$ are longer than $t_{\rm dyn}$.
 
