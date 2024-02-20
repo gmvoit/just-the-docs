@@ -197,7 +197,7 @@ Dissipation of turbulent support energy does not change the radius of a force-ba
 
 ### Energy Injection
 
-User-specified models provide the total rate at which cosmological accretion and galactic feedback inject non-gravitational energy into a galaxy's atmosphere: $\dot{E}\_{\rm inj}$. That energy input branches into a user-specified fraction $f_{\rm inj,th}$ going directly into heat and a complementary fraction $1 - f_{\rm inj,th}$ initially going into turbulence. Those proportions can depend on the relative contributions of cosmological accretion and feedback to $\dot{E}\_{\rm inj}$. 
+User-specified models provide the total energy injection rate $\dot{E}\_{\rm inj}$ at which cosmological accretion and galactic feedback add non-gravitational energy to a galaxy's atmosphere. That energy input branches into a fraction $f_{\rm inj,th}$ going directly into heat and a complementary fraction $1 - f_{\rm inj,th}$ initially going into turbulence. An **ExpCGM** user can specify the value of the parameter $f_{\rm inj,th}$. That parameter can also depend on the relative contributions of cosmological accretion and feedback to $\dot{E}\_{\rm inj}$. 
 
 ### Dissipation Timescale
 
@@ -213,7 +213,7 @@ Energy injection, dissipation, and radiative cooling all affect the fraction $f_
   
 * Radiative cooling happens on a timescale $t_{\rm cool} \equiv E_{\rm th} / \dot{E}\_{\rm rad}$, where $\dot{E}\_{\rm rad}$ is a radiative loss rate computed from the atmosphere model. 
 
-The rate of change in $f_{\rm th}$ in **ExpCGM** is derived from the overall rate of change in total atmospheric support energy
+The rate at which $f_{\rm th}$ changes in **ExpCGM** is derived from the overall rate of change in total atmospheric support energy
 
 <p>
   $$\frac {d} {dt} \frac {E_{\rm th}} {f_{\rm th}} = \dot{E}_{\rm inj} - \dot{E}_{\rm rad} - \dot{E}_{\varphi,{\rm exp}}$$
@@ -245,13 +245,13 @@ The time derivative of $f_{\rm th}$ can therefore be expressed as
 which explicitly connects changes in $f_{\rm th}$ to the three timescales for energy exchange.
 
 {: .important}
-This equation for how atmospheric thermalization changes with time does not depend on the volume of gas being considered. It can be applied to a global value of $f_{\rm th}$ characterizing the entire atmosphere. It can also be applied to individual subsets of the atmosphere with differing values of $t_{\rm diss}$, $t_{\rm cool}$, $t_{\rm inj}$, and $f_{\rm inj,th}$. 
+This equation for how atmospheric thermalization changes with time does not depend on the volume of gas being considered. It can be applied to a global value of $f_{\rm th}$ characterizing the entire atmosphere. It can also be applied to individual shells of atmospheric gas with differing values of $t_{\rm diss}$, $t_{\rm cool}$, $t_{\rm inj}$, and $f_{\rm inj,th}$. 
 
 ## Atmospheric Evolution 
 
 An **ExpCGM** model atmosphere evolves as $E_{\rm CGM}$ and $M_{\rm CGM}$ evolve. At each moment in time, **ExpCGM** assumes that the atmosphere is in a force-balanced configuration that depends on $E_{\rm CGM}$, $M_{\rm CGM}$, $v_{\rm c}(r)$, and $\alpha_{\rm eff}(r)$, as described above. Whether or not the atmosphere is expanding or contracting depends on how energy input compares with radiative cooling. 
 
-To determine the atmosphere's heating and cooling rates, **ExpCGM** uses a force-balanced atmosphere model to calculate the ***radiative cooling rate*** $\dot{E}\_{\rm rad}$ at which energy leaves the atmosphere and the ***gas supply rate*** $\dot{M}\_{\rm in}$ at which gas flows from the CGM into a halo's central galaxy. That inflow feeds a buildup of galactic gas leading to star formation, supernova explosions, and galactic outflows that return gas and energy to the atmosphere. When integrated over sufficiently long time periods, the energy input from stars is proportional to the time-averaged value of $\dot{M}\_{\rm in}$.
+To determine the atmosphere's heating and cooling rates, **ExpCGM** uses a force-balanced atmosphere model to calculate the ***radiative cooling rate*** $\dot{E}\_{\rm rad}$ at which energy leaves the atmosphere and the ***gas supply rate*** $\dot{M}\_{\rm in}$ at which gas flows from the CGM into a halo's central galaxy. That inflow feeds a buildup of galactic gas leading to star formation, supernova explosions, and galactic outflows that return gas and energy to the atmosphere. When averaged over sufficiently long time periods, the rate of energy input from stars is proportional to the time-averaged value of $\dot{M}\_{\rm in}$.
 
 ### Radiative Cooling
 
@@ -274,16 +274,16 @@ The cooling function $\Lambda_\rho (T)$ used here is related to the more familia
 
 The gas supply rate $\dot{M}\_{\rm in}$ is a customizable feature of **ExpCGM**. In many cases, the simplest physically motivated approach is to assume steady-state inflow at an inflow speed
   $$v_{\rm in} \frac {\partial \varepsilon} {\partial r} = \langle \rho \Lambda_\rho \rangle$$ 
-Radiative cooling then offsets the energy gains owing to gravitational compression of each atmospheric shell as gas flows inward, allowing the gas supply rate to be
+Radiative cooling then offsets the energy gains owing to gravitational compression as atmospheric gas flows inward, and the corresponding gas supply rate is
 
 <p>  
-  $$\dot{M}\_{\rm in} \approx 4 \pi r^2 \bar{\rho} v_{\rm in}$$ 
+  $$\dot{M}_{\rm in} \approx 4 \pi r^2 \bar{\rho} v_{\rm in}$$ 
 </p> 
 
 evaluated at a user-specified radius $r_{\rm gal}$ separating galactic gas from circumgalactic gas.
 
 {: .important}
-According to this approach, atmospheric heating does not directly affect the gas supply rate $\dot{M}_{\rm in}$. Instead, its effects are indirect
+According to this approach, atmospheric heating does not directly affect the gas supply rate $\dot{M}\_{\rm in}$. Instead, atmospheric heating reduces a galaxy's gas supply by expanding its atmosphere, which lowers both the mean density $\bar{\rho}$ and specific cooling rate $\langle \rho \Lambda_\rho \rangle$ of atmospheric gas at $r_{\rm gal}$. Conceptually, this role for atmospheric heating corresponds to an energy supply that flows outward along directions different from the directions along which inflow is occuring, without significantly inhibiting the inflow.
 
 ### Cooling-Limited Inflow
 
