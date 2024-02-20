@@ -288,7 +288,7 @@ According to this approach, atmospheric heating does not directly affect the gas
 ### Cooling-Limited Inflow
 
 One specific example of this approach, appropriate in the rapid-dissipation limit $(t_{\rm cool} \gg t_{\rm diss})$, is a steady cooling flow. In a force-balanced **ExpCGM** atmosphere model, the cooling time of a particular gas shell is
-  $$t_{\rm cool} ~=~ \frac {3 P} {2 \bar{\rho} \langle \rho \Lambda_\rho \rangle ~=~ \frac {3 f_\varphi f_{\rm th} v_{\rm c}^2} {2 \alpha_{\rm eff} \langle \rho \Lambda_\rho \rangle}$$
+  $$t_{\rm cool} ~=~ \frac {3 P} {2 \bar{\rho} \langle \rho \Lambda_\rho \rangle} ~=~ \frac {3 f_\varphi f_{\rm th} v_{\rm c}^2} {2 \alpha_{\rm eff} \langle \rho \Lambda_\rho \rangle}$$
 Rapid dissipation quickly converts turbulent energy into thermal energy, and so we can assume $f_{\rm th} \approx 1$ and $\alpha_{\rm eff} \approx \alpha$, as long as rotational support is insignificant. We will also assume that $f_\varphi \approx 1$ and that $\partial \varepsilon / \partial r \approx v_{\rm c}^2 / r$, which will be the case if both $\alpha$ and $v_{\rm c}$ remain approximately constant. The cooling-limited inflow rate is then
 
 <p>  
@@ -298,6 +298,13 @@ Rapid dissipation quickly converts turbulent energy into thermal energy, and so 
 and the cooling-limited gas supply rate is $\dot{M}\_{\rm in} = \dot{M}\_{\rm cool} (r_{\rm gal})$.
 
 ### Dissipation-Limited Inflow
+
+An inflow that cools more rapidly ($t_{\rm cool} \ll t_{\rm diss}$) may be dissipation limited ...
+
+### Freefall-Limited Inflow
+
+A key assumption that goes into deriving $\dot{M}\_{\rm cool}$ and $\dot{M}\_{\rm diss}$ breaks down as $v_{\rm in}$ approaches $v_{\rm c}$. 
+
 
 ### Galactic Feedback
 
