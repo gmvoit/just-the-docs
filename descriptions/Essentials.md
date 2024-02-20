@@ -59,7 +59,7 @@ Providing a pressure normalization $P_0$ at $r_0$ then specifies the atmosphere'
   $$P(r) = P_0 f_P(r)$$
 
 {: .note}
-Many details of an **ExpCGM** atmosphere model hinge on a user's choice for the shape function $\alpha(r)$. That choice represents an assumption about the physical processes responsible for maintaining the pressure profile. See the [Pressure Profiles](../Essentials/PressureProfiles.md) page for more detail.
+Many details of an **ExpCGM** atmosphere model hinge on a user's choice for the shape function $\alpha(r)$. That choice represents an assumption about the physical processes responsible for maintaining the pressure profile. See the [Pressure Profiles](../Extensions/PressureProfiles.md) page for more detail.
 
 ### Temperature Profile
 
