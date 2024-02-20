@@ -304,11 +304,11 @@ The cooling-limited inflow rate is then
 and the cooling-limited gas supply rate is $\dot{M}\_{\rm in} = \dot{M}\_{\rm cool} (r_{\rm gal})$.
 
 {: .note}
-In general, $\dot{M}\_{\rm cool}$ depends on radius, and so a user's choice of $r_{\rm gal}$ can affect the inferred gas supply rate. However, an isothermal atmosphere with $\alpha = 3/2$ in a potential well with constant $v_{\rm c}$ has $\bar{\rho} \propto r^{-3/2}$ and $t_{\rm cool} \propto r^{3/2}$. In that case, $\dot{M}\_{\rm cool}$ is independent of radius and corresponds to steady-state isothermal cooling flow.
+In general, $\dot{M}\_{\rm cool}$ depends on radius, and so a user's choice of $r_{\rm gal}$ can affect the inferred gas supply rate. However, an isothermal atmosphere with $\alpha = 3/2$ in a potential well with constant $v_{\rm c}$ has $\bar{\rho} \propto r^{-3/2}$ and $t_{\rm cool} \propto r^{3/2}$. That case corresponds to steady-state isothermal cooling flow, in which $\dot{M}\_{\rm cool}$ is independent of radius and $\dot{M}\_{\rm in}$ does not depend on the choice of $r_{\rm gal}$.
 
 ### Dissipation-Limited Inflow
 
-An inflow that cools more rapidly ($t_{\rm cool} \ll t_{\rm diss}$) may be dissipation limited ...
+An inflow that cools more rapidly than turbulence dissipates ($t_{\rm cool} \ll t_{\rm diss}$) may be dissipation limited. It is also likely to be inhomogeneous, for reasons discussed on the [MultiphaseGas]{MultiphaseGas} page ...
 
 ### Freefall-Limited Inflow
 
