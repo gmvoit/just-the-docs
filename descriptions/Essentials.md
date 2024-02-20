@@ -265,7 +265,7 @@ In **ExpCGM**, the cooling function $\Lambda_\rho$ is defined so that the radiat
 
 in which $\langle \rho \Lambda_\rho \rangle$ represents the mass-averaged value of the specific cooling rate within a gas shell of mean density
   $$\bar{\rho}(r) = \frac {P(r)} {f_{\rm th}} \frac {\alpha_{\rm eff}(r)} {f_\varphi v_{\rm c}^2 (r)}$$
-This approach enables **ExpCGM** to account for inhomogeneities that can make the cooling rate of a multiphase gas shell dramatically different from the cooling rate of a homogeneous gas shell with $\rho = \bar{\rho}$. (See the [Cooling](Cooling) page provides more detail.)
+This approach enables **ExpCGM** to account for inhomogeneities that can make the cooling rate of a multiphase gas shell dramatically different from the cooling rate of a homogeneous gas shell with $\rho = \bar{\rho}$. (See the [Cooling](Cooling) page for more detail.)
 
 {: .note}
 The cooling function $\Lambda_\rho (T)$ used here is related to the more familiar cooling function $\Lambda (T)$ via the expression $\Lambda_\rho = (\mu m_p n_e n_i / \rho^2) \Lambda$, in which $n_e$ is the electron density and $n_i$ is the ion density. Using $\Lambda_\rho (T)$ instead of $\Lambda (T)$ helps to make the notation representing the specific cooling rate more compact and intuitive.
@@ -288,7 +288,11 @@ According to this approach, atmospheric heating does not directly affect the gas
 ### Cooling-Limited Inflow
 
 One specific example of this approach, appropriate in the rapid-dissipation limit $(t_{\rm cool} \gg t_{\rm diss})$, is a steady cooling flow. In a force-balanced **ExpCGM** atmosphere model, the cooling time of a particular gas shell is
+
+<p>
   $$t_{\rm cool} ~=~ \frac {3 P} {2 \bar{\rho} \langle \rho \Lambda_\rho \rangle} ~=~ \frac {3 f_\varphi f_{\rm th} v_{\rm c}^2} {2 \alpha_{\rm eff} \langle \rho \Lambda_\rho \rangle}$$
+</p>
+
 Rapid dissipation quickly converts turbulent energy into thermal energy, and so we can assume $f_{\rm th} \approx 1$ and $\alpha_{\rm eff} \approx \alpha$, as long as rotational support is insignificant. We will also assume that $f_\varphi \approx 1$ and that $\partial \varepsilon / \partial r \approx v_{\rm c}^2 / r$, which will be the case if both $\alpha$ and $v_{\rm c}$ remain approximately constant. The cooling-limited inflow rate is then
 
 <p>  
