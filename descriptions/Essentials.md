@@ -272,20 +272,30 @@ The cooling function $\Lambda_\rho (T)$ used here is related to the more familia
 
 ### Galactic Gas Supply
 
-The gas supply rate $\dot{M}\_{\rm in}$ is a customizable feature of **ExpCGM**. In many cases, the simplest physically motivated approach is to assume steady-state inflow at an inflow speed
+The gas supply rate $\dot{M}\_{\rm in}$ is a customizable feature of **ExpCGM**. In many cases, the simplest physically motivated approach is to assume steady-state inflow at an inflow speed $v_{\rm in}$ that satisfies
   $$v_{\rm in} \frac {\partial \varepsilon} {\partial r} = \langle \rho \Lambda_\rho \rangle$$ 
-Radiative cooling then offsets the energy gains owing to gravitational compression as atmospheric gas flows inward, and the corresponding gas supply rate is
+Radiative cooling then offsets the energy gains owing to gravitational compression as atmospheric gas flows inward. The corresponding gas supply rate is
 
 <p>  
-  $$\dot{M}_{\rm in} \approx 4 \pi r^2 \bar{\rho} v_{\rm in}$$ 
+  $$\dot{M}_{\rm in} = 4 \pi r^2 \bar{\rho} v_{\rm in}$$ 
 </p> 
 
 evaluated at a user-specified radius $r_{\rm gal}$ separating galactic gas from circumgalactic gas.
 
 {: .important}
-According to this approach, atmospheric heating does not directly affect the gas supply rate $\dot{M}\_{\rm in}$. Instead, atmospheric heating reduces a galaxy's gas supply by expanding its atmosphere, which lowers both the mean density $\bar{\rho}$ and specific cooling rate $\langle \rho \Lambda_\rho \rangle$ of atmospheric gas at $r_{\rm gal}$. Conceptually, this role for atmospheric heating corresponds to an energy supply that flows outward along directions different from the directions along which inflow is occuring, without significantly inhibiting the inflow.
+According to this approach, atmospheric heating does not directly affect the gas supply rate $\dot{M}\_{\rm in}$. Instead, atmospheric heating indirectly reduces a galaxy's gas supply by expanding its atmosphere, which lowers both the mean density $\bar{\rho}$ and specific cooling rate $\langle \rho \Lambda_\rho \rangle$ of the atmospheric gas at $r_{\rm gal}$. Conceptually, this role for atmospheric heating corresponds to an energy supply that flows outward along directions different from the directions along which inflow is occuring, without significantly inhibiting the inflow.
 
 ### Cooling-Limited Inflow
+
+One specific example of this approach, appropriate in the rapid-dissipation limit $(t_{\rm cool} \gg t_{\rm diss})$, is a steady cooling flow. In a force-balanced **ExpCGM** atmosphere model, the cooling time of a particular gas shell is
+  $$t_{\rm cool} ~=~ \frac {3 P} {2 \bar{\rho} \langle \rho \Lambda_\rho \rangle ~=~ \frac {3 f_\varphi f_{\rm th} v_{\rm c}^2} {2 \alpha_{\rm eff} \langle \rho \Lambda_\rho \rangle}$$
+Rapid dissipation quickly converts turbulent energy into thermal energy, and so we can assume $f_{\rm th} \approx 1$ and $\alpha_{\rm eff} \approx \alpha$, as long as rotational support is insignificant. We will also assume that $f_\varphi \approx 1$ and that $\partial \varepsilon / \partial r \approx v_{\rm c}^2 / r$, which will be the case if both $\alpha$ and $v_{\rm c}$ remain approximately constant. The cooling-limited inflow rate is then
+
+<p>  
+  $$\dot{M}_{\rm cool}(r) \approx \left( \frac {3} {2 \alpha} \right) \frac {4 \pi r^3 \bar{\rho}(r)} {t_{\rm cool}(r)}$$ 
+</p> 
+
+and the cooling-limited gas supply rate is $\dot{M}\_{\rm in} = \dot{M}\_{\rm cool} (r_{\rm gal})$.
 
 ### Dissipation-Limited Inflow
 
