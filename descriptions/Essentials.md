@@ -265,7 +265,7 @@ In **ExpCGM**, the cooling function $\Lambda_\rho$ is defined so that the radiat
 
 in which $\langle \rho \Lambda_\rho \rangle$ represents the mass-averaged value of the specific cooling rate within a gas shell of mean density
   $$\bar{\rho}(r) = \frac {P(r)} {f_{\rm th}} \frac {\alpha_{\rm eff}(r)} {f_\varphi v_{\rm c}^2 (r)}$$
-This approach enables **ExpCGM** to account for inhomogeneities that can make the cooling rate of a multiphase gas shell dramatically different from the cooling rate of a homogeneous gas shell with $\rho = \bar{\rho}$. (See the [Cooling](Cooling) page for more detail.)
+This approach enables **ExpCGM** to account for inhomogeneities that can make the cooling rate of a multiphase gas shell dramatically different from the cooling rate of a homogeneous gas shell with $\rho = \bar{\rho}$. (See the [Cooling](Extensions/Cooling) page for more detail.)
 
 {: .note}
 The cooling function $\Lambda_\rho (T)$ used here is related to the more familiar cooling function $\Lambda (T)$ via the expression $\Lambda_\rho = (\mu m_p n_e n_i / \rho^2) \Lambda$, in which $n_e$ is the electron density and $n_i$ is the ion density. Using $\Lambda_\rho (T)$ instead of $\Lambda (T)$ helps to make the notation representing the specific cooling rate more compact and intuitive.
@@ -308,7 +308,7 @@ In general, $\dot{M}\_{\rm cool}$ depends on radius, and so a user's choice of $
 
 ### Dissipation-Limited Inflow
 
-An inflow that cools more rapidly than turbulence dissipates ($t_{\rm cool} \ll t_{\rm diss}$) may be dissipation limited. It is also likely to be inhomogeneous, for reasons discussed on the [MultiphaseGas](MultiphaseGas) page ...
+An inflow that cools more rapidly than turbulence dissipates ($t_{\rm cool} \ll t_{\rm diss}$) may be dissipation limited. It is also likely to be inhomogeneous, for reasons discussed on the [Multiphase Gas](MultiphaseGas) page ...
 
 ### Freefall-Limited Inflow
 
