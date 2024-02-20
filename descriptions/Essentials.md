@@ -308,7 +308,7 @@ In general, $\dot{M}\_{\rm cool}$ depends on radius, and so a user's choice of $
 
 ### Dissipation-Limited Inflow
 
-An inflow that cools more rapidly than turbulence dissipates ($t_{\rm cool} \ll t_{\rm diss}$) may be dissipation limited. It is also likely to be inhomogeneous, for reasons discussed on the [MultiphaseGas]{MultiphaseGas} page ...
+An inflow that cools more rapidly than turbulence dissipates ($t_{\rm cool} \ll t_{\rm diss}$) may be dissipation limited. It is also likely to be inhomogeneous, for reasons discussed on the [MultiphaseGas](MultiphaseGas) page ...
 
 ### Freefall-Limited Inflow
 
