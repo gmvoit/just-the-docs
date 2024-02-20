@@ -293,13 +293,18 @@ One specific example of this approach, appropriate in the rapid-dissipation limi
   $$t_{\rm cool} ~=~ \frac {3 P} {2 \bar{\rho} \langle \rho \Lambda_\rho \rangle} ~=~ \frac {3 f_\varphi f_{\rm th} v_{\rm c}^2} {2 \alpha_{\rm eff} \langle \rho \Lambda_\rho \rangle}$$
 </p>
 
-Rapid dissipation quickly converts turbulent energy into thermal energy, and so we can assume $f_{\rm th} \approx 1$ and $\alpha_{\rm eff} \approx \alpha$, as long as rotational support is insignificant. We will also assume that $f_\varphi \approx 1$ and that $\partial \varepsilon / \partial r \approx v_{\rm c}^2 / r$, which will be the case if both $\alpha$ and $v_{\rm c}$ remain approximately constant. The cooling-limited inflow rate is then
+Rapid dissipation quickly converts turbulent energy into thermal energy, and so we can assume $f_{\rm th} \approx 1$ and $\alpha_{\rm eff} \approx \alpha$, as long as rotational support is insignificant. We will also assume that $f_\varphi \approx 1$ and that $\partial \varepsilon / \partial r \approx v_{\rm c}^2 / r$, which will be the case if both $\alpha$ and $v_{\rm c}$ remain approximately constant. 
+
+The cooling-limited inflow rate is then
 
 <p>  
   $$\dot{M}_{\rm cool}(r) \approx \left( \frac {3} {2 \alpha} \right) \frac {4 \pi r^3 \bar{\rho}(r)} {t_{\rm cool}(r)}$$ 
 </p> 
 
 and the cooling-limited gas supply rate is $\dot{M}\_{\rm in} = \dot{M}\_{\rm cool} (r_{\rm gal})$.
+
+{: .note}
+In general, $\dot{M}\_{\rm cool}$ depends on radius, and so a user's choice of $r_{\rm gal}$ can affect the inferred gas supply rate. However, an isothermal atmosphere with $\alpha = 3/2$ in a potential well with constant $v_{\rm c}$ has $\bar{\rho} \propto r^{-3/2}$ and $t_{\rm cool} \propto r^{3/2}$. In that case, $\dot{M}\_{\rm cool}$ is independent of radius and corresponds to steady-state isothermal cooling flow.
 
 ### Dissipation-Limited Inflow
 
