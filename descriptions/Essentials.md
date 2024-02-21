@@ -280,14 +280,14 @@ Radiative cooling then offsets the energy gains owing to gravitational compressi
   $$\dot{M}_{\rm in} = 4 \pi r^2 \bar{\rho} v_{\rm in}$$ 
 </p> 
 
-evaluated at a user-specified radius $r_{\rm gal}$ separating galactic gas from circumgalactic gas.
+evaluated at a user-specified radius $r_{\rm gal}$ marking the boundary between galactic gas and circumgalactic gas.
 
 {: .important}
-According to this approach, atmospheric heating does not directly affect the gas supply rate $\dot{M}\_{\rm in}$. Instead, atmospheric heating indirectly reduces a galaxy's gas supply by expanding its atmosphere, which lowers both the mean density $\bar{\rho}$ and specific cooling rate $\langle \rho \Lambda_\rho \rangle$ of the atmospheric gas at $r_{\rm gal}$. Conceptually, this role for atmospheric heating corresponds to an energy supply that flows outward along directions different from the directions along which inflow is occuring, without significantly inhibiting the inflow.
+According to this approach, atmospheric heating does not directly affect the gas supply rate. Instead, atmospheric heating *indirectly* reduces $\dot{M}\_{\rm in}$ by expanding a galaxy's atmosphere, thereby lowering both the mean density $\bar{\rho}$ and specific cooling rate $\langle \rho \Lambda_\rho \rangle$ of atmospheric gas at $r_{\rm gal}$. Conceptually, this treatment of atmospheric heating corresponds to an energy supply that flows outward along directions different from the ones along which inflow is occuring, without significantly inhibiting the inflow.
 
 ### Cooling-Limited Inflow
 
-One specific example of this approach, appropriate in the rapid-dissipation limit $(t_{\rm cool} \gg t_{\rm diss})$, is a steady cooling flow. In a force-balanced **ExpCGM** atmosphere model, the cooling time of a particular gas shell is
+One specific example of this approach is a steady cooling flow. In a force-balanced **ExpCGM** atmosphere model, the cooling time of a particular gas shell is
 
 <p>
   $$t_{\rm cool} ~=~ \frac {3 P} {2 \bar{\rho} \langle \rho \Lambda_\rho \rangle} ~=~ \frac {3 f_\varphi f_{\rm th} v_{\rm c}^2} {2 \alpha_{\rm eff} \langle \rho \Lambda_\rho \rangle}$$
