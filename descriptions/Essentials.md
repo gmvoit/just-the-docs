@@ -249,15 +249,15 @@ This equation for how atmospheric thermalization changes with time does not depe
 
 ## Atmospheric Evolution 
 
-An **ExpCGM** model atmosphere evolves as $E_{\rm CGM}$ and $M_{\rm CGM}$ evolve. At each moment in time, **ExpCGM** assumes that the atmosphere is in a force-balanced configuration that depends on $E_{\rm CGM}$, $M_{\rm CGM}$, $v_{\rm c}(r)$, and $\alpha_{\rm eff}(r)$, as described above. Whether or not the atmosphere is expanding or contracting depends on how energy input compares with radiative cooling. 
+An **ExpCGM** model atmosphere evolves as $E_{\rm CGM}$ and $M_{\rm CGM}$ evolve. At each moment in time, **ExpCGM** assumes that the atmosphere is in a force-balanced configuration that depends on $E_{\rm CGM}$, $M_{\rm CGM}$, $v_{\rm c}(r)$, and $\alpha_{\rm eff}(r)$, as described above. Whether or not the atmosphere is expanding or contracting depends on how $\varepsilon_{\rm CGM}$ is changing and therefore hinges on how energy input compares with radiative cooling. 
 
-To determine the atmosphere's heating and cooling rates, **ExpCGM** uses a force-balanced atmosphere model to calculate the ***radiative cooling rate*** $\dot{E}\_{\rm rad}$ at which energy leaves the atmosphere and the ***gas supply rate*** $\dot{M}\_{\rm in}$ at which gas flows from the CGM into a halo's central galaxy. That inflow feeds a buildup of galactic gas leading to star formation, supernova explosions, and galactic outflows that return gas and energy to the atmosphere. When averaged over sufficiently long time periods, the rate of energy input from stars is proportional to the time-averaged value of $\dot{M}\_{\rm in}$.
+To determine the atmosphere's heating and cooling rates, **ExpCGM** uses a steady-state atmosphere model to calculate the ***radiative cooling rate*** $\dot{E}\_{\rm rad}$ at which energy leaves the atmosphere and the ***gas supply rate*** $\dot{M}\_{\rm in}$ at which gas flows from the CGM into a halo's central galaxy. That inflow feeds a buildup of galactic gas leading to star formation, supernova explosions, and galactic outflows that return gas and energy to the atmosphere. When averaged over sufficiently long time periods, the rate of energy input from stars is proportional to the time-averaged value of $\dot{M}\_{\rm in}$.
 
 ### Radiative Cooling
 
 Radiative losses happen when two-body collisions produce photons that are not reabsorbed. A galactic atmosphere's radiative cooling rate per unit volume is therefore proportional to $\rho^2$ and a temperature-dependent cooling function $\Lambda_\rho (T)$ accounting for the atmosphere's ionization state, the relative speeds of colliding particles, and the cross-sections for excitation of photon emission.
 
-In **ExpCGM**, the cooling function $\Lambda_\rho$ is defined so that the radiative loss rate per unit volume is $\rho^2 \Lambda_\rho$ and the ***specific cooling rate*** is $\rho \Lambda_\rho$. Integration over shells of radius $r$ gives the atmosphere's total radiative cooling rate
+In **ExpCGM**, the cooling function $\Lambda_\rho$ is defined so that the radiative energy loss rate per unit volume is $\rho^2 \Lambda_\rho$ and the ***specific cooling rate*** is $\rho \Lambda_\rho$. Integration over shells of radius $r$ gives the atmosphere's total radiative cooling rate
 
 <p>
   $$\dot{E}_{\rm rad} = \int_0^{r_{\rm CGM}}  \langle \rho \Lambda_\rho \rangle ~4 \pi r^2 \bar{\rho} ~dr$$
@@ -265,7 +265,7 @@ In **ExpCGM**, the cooling function $\Lambda_\rho$ is defined so that the radiat
 
 in which $\langle \rho \Lambda_\rho \rangle$ represents the mass-averaged value of the specific cooling rate within a gas shell of mean density
   $$\bar{\rho}(r) = \frac {P(r)} {f_{\rm th}} \frac {\alpha_{\rm eff}(r)} {f_\varphi v_{\rm c}^2 (r)}$$
-This approach enables **ExpCGM** to account for inhomogeneities that can make the cooling rate of a multiphase gas shell dramatically different from the cooling rate of a homogeneous gas shell with $\rho = \bar{\rho}$. (See the [Cooling](../Extensions/Cooling) page for more detail.)
+This approach enables **ExpCGM** to account for inhomogeneities that can make the cooling rate of a multiphase gas shell dramatically different from the cooling rate of a homogeneous gas shell with $\rho = \bar{\rho}$. (See the [Cooling](Cooling) and [Multiphase Gas](MultiphaseGas) pages for more detail.)
 
 {: .note}
 The cooling function $\Lambda_\rho (T)$ used here is related to the more familiar cooling function $\Lambda (T)$ via the expression $\Lambda_\rho = (\mu m_p n_e n_i / \rho^2) \Lambda$, in which $n_e$ is the electron density and $n_i$ is the ion density. Using $\Lambda_\rho (T)$ instead of $\Lambda (T)$ helps to make the notation representing the specific cooling rate more compact and intuitive.
@@ -274,7 +274,7 @@ The cooling function $\Lambda_\rho (T)$ used here is related to the more familia
 
 The gas supply rate $\dot{M}\_{\rm in}$ is a customizable feature of **ExpCGM**. In many cases, the simplest physically motivated approach is to assume steady-state inflow at an inflow speed $v_{\rm in}$ that satisfies
   $$v_{\rm in} \frac {\partial \varepsilon} {\partial r} = \langle \rho \Lambda_\rho \rangle$$ 
-Radiative cooling then offsets the energy gains owing to gravitational compression as atmospheric gas flows inward. The corresponding gas supply rate is
+Radiative cooling then offsets the internal energy gains coming from gravitational compression as atmospheric gas flows inward. The corresponding gas supply rate is
 
 <p>  
   $$\dot{M}_{\rm in} = 4 \pi r^2 \bar{\rho} v_{\rm in}$$ 
@@ -282,37 +282,45 @@ Radiative cooling then offsets the energy gains owing to gravitational compressi
 
 evaluated at a user-specified radius $r_{\rm gal}$ marking the boundary between galactic gas and circumgalactic gas.
 
+A useful estimate, applicable when $v_{\rm c}^2$ and $\alpha_{\rm eff}$ are nearly independent of $r$, comes from assuming
+  $$\frac {\partial \varepsilon} {\partial r} = \frac {d \varphi} {dr} = \frac {v_{\rm c}^2} {r}$$
+The inflow speed and gas supply rate are then
+
+<p>
+  $$v_{\rm in} = \frac {r \langle \rho \Lambda_\rho \rangle} {v_{\rm c}^2} ~~~~~,~~~~~ \dot{M}_{\rm in} = 4 \pi r^3 \bar{\rho} \frac {\langle \rho \Lambda_\rho \rangle} {v_{\rm c}^2}
+</p>
+
+as given by the force-balanced atmosphere model at $r_{\rm gal}$.
+
 {: .important}
-According to this approach, atmospheric heating does not directly affect the gas supply rate. Instead, atmospheric heating *indirectly* reduces $\dot{M}\_{\rm in}$ by expanding a galaxy's atmosphere, thereby lowering both the mean density $\bar{\rho}$ and specific cooling rate $\langle \rho \Lambda_\rho \rangle$ of atmospheric gas at $r_{\rm gal}$. Conceptually, this treatment of atmospheric heating corresponds to an energy supply that flows outward along directions different from the ones along which inflow is occuring, without significantly inhibiting the inflow.
+According to this approach, atmospheric heating does not directly affect the gas supply rate to the central galaxy. Instead, atmospheric heating *indirectly* reduces $\dot{M}\_{\rm in}$ by expanding a galaxy's atmosphere, thereby lowering both the mean density $\bar{\rho}$ and specific cooling rate $\langle \rho \Lambda_\rho \rangle$ of atmospheric gas at $r_{\rm gal}$. Conceptually, this treatment of atmospheric heating corresponds to an energy supply that flows outward along directions different from the ones along which inflow is occuring, without significantly inhibiting the inflow.
 
-### Cooling-Limited Inflow
+### Cooling Time
 
-One specific example of this approach is a steady cooling flow. In a force-balanced **ExpCGM** atmosphere model, the cooling time of a particular gas shell is
+Rewriting the expressions for $v_{\rm in}$ and $\dot{M}\_{\rm in}$ in terms of colling time helps to make them more intuitive. In a force-balanced **ExpCGM** atmosphere moidel, the cooling time of a particular gas shell is 
 
 <p>
   $$t_{\rm cool} ~=~ \frac {3 P} {2 \bar{\rho} \langle \rho \Lambda_\rho \rangle} ~=~ \frac {3 f_\varphi f_{\rm th} v_{\rm c}^2} {2 \alpha_{\rm eff} \langle \rho \Lambda_\rho \rangle}$$
 </p>
 
-Rapid dissipation quickly converts turbulent energy into thermal energy, and so we can assume $f_{\rm th} \approx 1$ and $\alpha_{\rm eff} \approx \alpha$, as long as rotational support is insignificant. We will also assume that $f_\varphi \approx 1$ and that $\partial \varepsilon / \partial r \approx v_{\rm c}^2 / r$, which will be the case if both $\alpha$ and $v_{\rm c}$ remain approximately constant. 
+The approximations for inflow speed and gas supply can therefore be expressed as
 
-The cooling-limited inflow rate is then
+<p>
+  $$v_{\rm in} = \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) \frac {r f_{\rm th}} {t_{\rm cool}} ~~~~~,~~~~~ \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) \dot{M}_{\rm in} = \frac( 4 \pi r^3 \bar{\rho}} {t_{\rm cool}} 
+</p>
 
-<p>  
-  $$\dot{M}_{\rm cool}(r) \approx \left( \frac {3} {2 \alpha} \right) \frac {4 \pi r^3 \bar{\rho}(r)} {t_{\rm cool}(r)}$$ 
-</p> 
+There are two characteristic limiting cases:
+* **Radiative Inflow** $(t_{\rm cool} \ll t_{\rm diss} \ll t_{\rm inj})$**.**
+* **Dissipative Inflow** $(t_{\rm diss} \ll t_{\rm cool} \ll t_{\rm inj})$**.**
 
-and the cooling-limited gas supply rate is $\dot{M}\_{\rm in} = \dot{M}\_{\rm cool} (r_{\rm gal})$.
+Traching how $f_{\rm th}$ evolves with time enables **ExpCGM** to transition from one limit to the other and also to remain balanced between them.
 
 {: .note}
 In general, $\dot{M}\_{\rm cool}$ depends on radius, and so a user's choice of $r_{\rm gal}$ can affect the inferred gas supply rate. However, an isothermal atmosphere with $\alpha = 3/2$ in a potential well with constant $v_{\rm c}$ has $\bar{\rho} \propto r^{-3/2}$ and $t_{\rm cool} \propto r^{3/2}$. That case corresponds to steady-state isothermal cooling flow, in which $\dot{M}\_{\rm cool}$ is independent of radius and $\dot{M}\_{\rm in}$ does not depend on the choice of $r_{\rm gal}$.
 
-### Dissipation-Limited Inflow
-
-An inflow that cools more rapidly than turbulence dissipates ($t_{\rm cool} \ll t_{\rm diss}$) may be dissipation limited. It is also likely to be inhomogeneous, for reasons discussed on the [Multiphase Gas](MultiphaseGas) page ...
-
 ### Freefall-Limited Inflow
 
-A key assumption that goes into deriving $\dot{M}\_{\rm cool}$ and $\dot{M}\_{\rm diss}$ breaks down as $v_{\rm in}$ approaches $v_{\rm c}$. 
+The assumptions that **ExpCGM** is built on break down when both $t_{\rm cool}$ and $t_{\rm diss}$ are short enoough to make $v_{\rm in}$ faster than $v_{\rm c}$. In that limit, both thermal and non-thermal support fail to keep the atmosphere close to force balance ....
 
 
 ### Galactic Feedback
