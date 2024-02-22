@@ -201,7 +201,7 @@ User-specified models provide the total energy injection rate $\dot{E}\_{\rm inj
 
 ### Dissipation Timescale
 
-Turbulence dissipates into heat on a timescale $t_{\rm diss} = \lambda_{\rm d} / \sigma_{\rm 1D}$, in which $\lambda_{\rm d}$ is a length scale characterizing the driving of turbulence. An **ExpCGM** user can specify the value of $\lambda_{\rm d}$ relating $\sigma_{\rm 1D}$ to $t_{\rm diss}$.
+Turbulence dissipates into heat on a timescale $t_{\rm diss} = \lambda_{\rm diss} / \sigma_{\rm 1D}$, in which $\lambda_{\rm diss}$ is a length scale characterizing the driving of turbulence. An **ExpCGM** user can specify the value of $\lambda_{\rm diss}$ relating $\sigma_{\rm 1D}$ to $t_{\rm diss}$.
 
 ### Evolution of Thermalization
 
@@ -310,6 +310,8 @@ The approximations for inflow speed and gas supply can therefore be expressed as
 </p>
 
 In other words, atmospheric gas flows inward on a timescale comparable to $t_{\rm cool} / f_{\rm th}$.
+
+### Radiative and Dissipative Limits
 
 There are two characteristic limiting cases:
 * **Radiative Inflow** $(t_{\rm diss} \ll t_{\rm cool} \ll t_{\rm inj})$**.** When dissipation is rapid compared to radiative cooling, turbulence quickly converts into heat, ensuring that $f_{\rm th} \approx 1$. The central galaxy's gas supply therefore flows inward on a timescale $\sim t_{\rm cool}$...
