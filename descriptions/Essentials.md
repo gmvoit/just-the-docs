@@ -185,15 +185,19 @@ The relationship between $r_{\rm CGM}$ and $\varepsilon_{\rm CGM}$ would be pure
 
 The **ExpCGM** framework was intentionally designed to model galactic atmospheres jointly supported by both thermal energy and non-thermal gas motions usually called "turbulence" even though they do not necessarily arise from a classic Kolmogorov cascade of eddies. For simplicity, **ExpCGM** treats those gas motions as isotropic, with a one-dimensional velocity dispersion $\sigma_{\rm 1D}$. 
 
-The specific energy of a force-balanced atmosphere at radius $r$ is then 
-  $$\varepsilon ~=~ \varphi + \frac {3} {2} \left( \frac {P} {\rho} + \sigma_{\rm 1D}^2 \right) ~=~ \varphi + \frac {3 f_\varphi v_{\rm c}^2} {2 \alpha_{\rm eff}}$$
+The specific energy of a force-balanced atmosphere at radius $r$ is then
+
+<p>
+  $$\varepsilon(r) ~=~ \varphi(r) + \frac {3} {2} \left( \frac {P} {\rho} + \sigma_{\rm 1D}^2 \right) ~=~ \varphi(r) + \frac {3 f_\varphi v_{\rm c}^2} {2 \alpha_{\rm eff}}$$
+</p>
+  
 and its thermalization fraction is
   $$f_{\rm th} = \frac {P} {P + \rho \sigma_{\rm 1D}^2}$$
 Notice that the sum of thermal and turbulent energy density depends only on $f_\varphi v_{\rm c}^2$ and $\alpha_{\rm eff}$, and does not depend on $f_{\rm th}$. 
 
 ## Thermalization 
 
-Dissipation of turbulent support energy does not change the radius of a force-balanced galactic atmosphere because the total support jointly provided by turbulent and thermal energy is independent of $f_{\rm th}$. Turbulent dissipation simply increases $f_{\rm th}$ without altering a force-balanced atmosphere's overall structure. **ExpCGM** therefore tracks thermalization of turbulence as dissipation proceeds using a differential equation for $f_{\rm th}$ appropriate for atmosphere jointly supported by turbulence and thermal energy. 
+Dissipation of turbulent support energy does not change the radius of a force-balanced galactic atmosphere because the total support jointly provided by turbulent and thermal energy is independent of $f_{\rm th}$. Turbulent dissipation simply increases $f_{\rm th}$ without altering a force-balanced atmosphere's overall structure. **ExpCGM** therefore tracks thermalization of turbulence as dissipation proceeds using a differential equation for $f_{\rm th}$ appropriate for an atmosphere jointly supported by turbulence and thermal energy. 
 
 ### Energy Injection
 
@@ -201,7 +205,7 @@ User-specified models provide the total energy injection rate $\dot{E}\_{\rm inj
 
 ### Dissipation Timescale
 
-Turbulence dissipates into heat on a timescale $t_{\rm diss} = \lambda_{\rm diss} / \sigma_{\rm 1D}$, in which $\lambda_{\rm diss}$ is a length scale characterizing the driving of turbulence. An **ExpCGM** user can specify the value of $\lambda_{\rm diss}$ relating $\sigma_{\rm 1D}$ to $t_{\rm diss}$.
+In **ExpCGM**, turbulence dissipates into heat on a timescale $t_{\rm diss} = \lambda_{\rm diss} / \sigma_{\rm 1D}$, in which $\lambda_{\rm diss}$ is a length scale characterizing the driving of turbulence. An **ExpCGM** user can specify the value of $\lambda_{\rm diss}$ relating $\sigma_{\rm 1D}$ to $t_{\rm diss}$.
 
 ### Evolution of Thermalization
 
@@ -268,7 +272,7 @@ in which $\langle \rho \Lambda_\rho \rangle$ represents the mass-averaged value 
 This approach enables **ExpCGM** to account for inhomogeneities that can make the cooling rate of a multiphase gas shell dramatically different from the cooling rate of a homogeneous gas shell with $\rho = \bar{\rho}$. (See the [Cooling](Cooling) and [Multiphase Gas](MultiphaseGas) pages for more detail.)
 
 {: .note}
-The cooling function $\Lambda_\rho (T)$ used here is related to the more familiar cooling function $\Lambda (T)$ via the expression $\Lambda_\rho = (\mu m_p n_e n_i / \rho^2) \Lambda$, in which $n_e$ is the electron density and $n_i$ is the ion density. Using $\Lambda_\rho (T)$ instead of $\Lambda (T)$ helps to make the notation representing the specific cooling rate more compact and intuitive.
+The cooling function $\Lambda_\rho (T)$ used here is related to the more familiar cooling function $\Lambda (T)$ via the expression $\rho^2 \Lambda_\rho = n_e n_i \Lambda$, in which $n_e$ is the electron density and $n_i$ is the ion density. Using $\Lambda_\rho (T)$ instead of $\Lambda (T)$ helps to make the notation representing the specific cooling rate more compact and intuitive.
 
 ### Galactic Gas Supply
 
@@ -306,21 +310,23 @@ Rewriting the expressions for $v_{\rm in}$ and $\dot{M}\_{\rm in}$ in terms of c
 The approximations for inflow speed and gas supply can therefore be expressed as
 
 <p>
-  $$v_{\rm in} = \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) \frac {r f_{\rm th}} {t_{\rm cool}} ~~~~~,~~~~~  \dot{M}_{\rm in} = \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) \frac {4 \pi r^3 \bar{\rho}} {t_{\rm cool}}$$ 
+  $$v_{\rm in} = \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) \frac {r f_{\rm th}} {t_{\rm cool}} ~~~~~,~~~~~  \dot{M}_{\rm in} = \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) \frac {4 \pi r^3 \bar{\rho} f_{\rm th}} {t_{\rm cool}}$$ 
 </p>
 
 In other words, atmospheric gas flows inward on a timescale comparable to $t_{\rm cool} / f_{\rm th}$, because the model-dependent quantity $3 f_\varphi / 2 \alpha_{\rm eff}$ is generally close to unity.
 
 ### Radiative and Dissipative Limits
 
-There are two characteristic limiting cases:
-* **Radiative Inflow** $(t_{\rm diss} \ll t_{\rm cool} \ll t_{\rm inj})$**.** When dissipation is rapid compared to radiative cooling, turbulence quickly converts into heat, ensuring that $f_{\rm th} \approx 1$. The central galaxy's gas supply therefore flows inward on a timescale $\sim t_{\rm cool}$...
-* **Dissipative Inflow** $(t_{\rm cool} \ll t_{\rm diss} \ll t_{\rm inj})$**.** When radiative cooling is rapid compared to dissipation, an atmosphere's thermal support rapidly vanishes, meaning that turbulence needs to supply more of the support. According to the equation for $d f_{\rm th} / dt$, the atmosphere's thermal support fraction converges toward $f_{\rm th} \approx t_{\rm cool} / t_{\rm diss}$ in this limit, and so the central galaxy's gas supply flows inward on a timescale $\sim t_{\rm diss} ...
+This approach has two characteristic limiting cases:
 
-Because **ExpCGM** tracks how $f_{\rm th}$ evolves with time, it can smoothly transition from one limit to the other and also remain balanced between those limiting cases.
+* **Radiative Inflow** $(t_{\rm diss} \ll t_{\rm cool} \ll t_{\rm inj})$**.** When dissipation is rapid compared to radiative cooling, turbulence quickly converts into heat, ensuring that $f_{\rm th} \approx 1$. The central galaxy's gas supply therefore flows inward on a timescale $\sim t_{\rm cool}$. If the atmosphere remains sufficiently homogeneous and nearly isothermal, then $t_{\rm cool}(r)$ is proportional to $1/\bar{\rho}(r)$. The value of $\dot{M}_{\rm in}$ is then independent of radius for $\bar{\rho} \propto r^{-3/2}$, corresponding to $\alpha = 3/2$, which is the classic power-law profile of a steady cooling flow.
+  
+* **Dissipative Inflow** $(t_{\rm cool} \ll t_{\rm diss} \ll t_{\rm inj})$**.** When radiative cooling is rapid compared to dissipation, an atmosphere's thermal support is quickly lost. Turbulence then needs to supply most of the atmosphere's support. According to the equation for $d f_{\rm th} / dt$, the atmosphere's thermal support fraction converges toward $f_{\rm th} \approx t_{\rm cool} / t_{\rm diss}$, and so the central galaxy's gas supply flows inward on a timescale $\sim t_{\rm diss}$. Furthermore, the density profile that makes $\dot{M}\_{\rm in}$ independent of $r$ for $t_{\rm diss} \propto r$ is $\bar{\rho} \propto r^{-2}$, corresponding to $\alpha_{\rm eff} = 2$. That is the classic power-law profile of a steady dissipative inflow that proceeds inward at constant speed.
+
+Because **ExpCGM** tracks how $f_{\rm th}$ evolves with time, its atmosphere models can smoothly transition from one limit to the other and can also remain balanced between those limiting cases.
 
 {: .note}
-In general, $\dot{M}\_{\rm cool}$ depends on radius, and so a user's choice of $r_{\rm gal}$ can affect the inferred gas supply rate. However, an isothermal atmosphere with $\alpha = 3/2$ in a potential well with constant $v_{\rm c}$ has $\bar{\rho} \propto r^{-3/2}$ and $t_{\rm cool} \propto r^{3/2}$. That case corresponds to steady-state isothermal cooling flow, in which $\dot{M}\_{\rm cool}$ is independent of radius and $\dot{M}\_{\rm in}$ does not depend on the choice of $r_{\rm gal}$.
+The gas supply rate $\dot{M}\_{\rm in}$ obtained with this approach depends somewhat on a user's choice of $r_{\rm gal}$, except for the two special cases mentioned above: $\alpha \approx 3/2$ for a radiative inflow and $\alpha_{\rm eff} \approx $ for a dissipative inflow. However, the feedback fueled by $\dot{M}\_{\rm in}$ in an evolving **ExpCGM** model adjusts the atmosphere's pressure normalization ($P_0$) so that $\dot{M}\_{\rm in}$ approaches a steady-state value that is nearly independent of $r_{\rm gal}$.
 
 ### Freefall-Limited Inflow
 
