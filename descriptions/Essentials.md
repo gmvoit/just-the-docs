@@ -287,7 +287,7 @@ A useful estimate, applicable when $v_{\rm c}^2$ and $\alpha_{\rm eff}$ are near
 The inflow speed and gas supply rate are then
 
 <p>
-  $$v_{\rm in} = \frac {r \langle \rho \Lambda_\rho \rangle} {v_{\rm c}^2} ~~~~~,~~~~~ \dot{M}_{\rm in} = 4 \pi r^3 \bar{\rho} \frac {\langle \rho \Lambda_\rho \rangle} {v_{\rm c}^2}$$
+  $$v_{\rm in} = \frac {r \langle \rho \Lambda_\rho \rangle} {v_{\rm c}^2} ~~~~~,~~~~~ \dot{M}_{\rm in} = \frac {4 \pi r^3 \bar{\rho} \langle \rho \Lambda_\rho \rangle} {v_{\rm c}^2}$$
 </p>
 
 as given by the force-balanced atmosphere model at $r_{\rm gal}$.
@@ -306,7 +306,7 @@ Rewriting the expressions for $v_{\rm in}$ and $\dot{M}\_{\rm in}$ in terms of c
 The approximations for inflow speed and gas supply can therefore be expressed as
 
 <p>
-  $$v_{\rm in} = \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) \frac {r f_{\rm th}} {t_{\rm cool}} ~~~~~,~~~~~ \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) \dot{M}_{\rm in} = \frac( 4 \pi r^3 \bar{\rho}} {t_{\rm cool}}$$ 
+  $$v_{\rm in} = \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) \frac {r f_{\rm th}} {t_{\rm cool}} ~~~~~,~~~~~ \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) \dot{M}_{\rm in} = \frac {4 \pi r^3 \bar{\rho}} {t_{\rm cool}}$$ 
 </p>
 
 There are two characteristic limiting cases:
