@@ -297,7 +297,7 @@ According to this approach, atmospheric heating does not directly affect the gas
 
 ### Cooling Time
 
-Rewriting the expressions for $v_{\rm in}$ and $\dot{M}\_{\rm in}$ in terms of colling time helps to make them more intuitive. In a force-balanced **ExpCGM** atmosphere moidel, the cooling time of a particular gas shell is 
+Rewriting the expressions for $v_{\rm in}$ and $\dot{M}\_{\rm in}$ in terms of cooling time helps to make them more intuitive. In a force-balanced **ExpCGM** atmosphere moidel, the cooling time of a particular gas shell is 
 
 <p>
   $$t_{\rm cool} ~=~ \frac {3 P} {2 \bar{\rho} \langle \rho \Lambda_\rho \rangle} ~=~ \frac {3 f_\varphi f_{\rm th} v_{\rm c}^2} {2 \alpha_{\rm eff} \langle \rho \Lambda_\rho \rangle}$$
@@ -306,14 +306,16 @@ Rewriting the expressions for $v_{\rm in}$ and $\dot{M}\_{\rm in}$ in terms of c
 The approximations for inflow speed and gas supply can therefore be expressed as
 
 <p>
-  $$v_{\rm in} = \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) \frac {r f_{\rm th}} {t_{\rm cool}} ~~~~~,~~~~~ \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) \dot{M}_{\rm in} = \frac {4 \pi r^3 \bar{\rho}} {t_{\rm cool}}$$ 
+  $$v_{\rm in} = \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) \frac {r f_{\rm th}} {t_{\rm cool}} ~~~~~,~~~~~  \dot{M}_{\rm in} = \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) \frac {4 \pi r^3 \bar{\rho}} {t_{\rm cool}}$$ 
 </p>
 
-There are two characteristic limiting cases:
-* **Radiative Inflow** $(t_{\rm cool} \ll t_{\rm diss} \ll t_{\rm inj})$**.**
-* **Dissipative Inflow** $(t_{\rm diss} \ll t_{\rm cool} \ll t_{\rm inj})$**.**
+In other words, atmospheric gas flows inward on a timescale comparable to $t_{\rm cool} / f_{\rm th}$.
 
-Tracking how $f_{\rm th}$ evolves with time enables **ExpCGM** to transition from one limit to the other and also to remain balanced between them.
+There are two characteristic limiting cases:
+* **Radiative Inflow** $(t_{\rm diss} \ll t_{\rm cool} \ll t_{\rm inj})$**.** When dissipation is rapid compared to radiative cooling, turbulence quickly converts into heat, ensuring that $f_{\rm th} \approx 1$. The central galaxy's gas supply therefore flows inward on a timescale $\sim t_{\rm cool}$...
+* **Dissipative Inflow** $(t_{\rm cool} \ll t_{\rm diss} \ll t_{\rm inj})$**.** When radiative cooling is rapid compared to dissipation, an atmosphere's thermal support rapidly vanishes, meaning that turbulence needs to supply more of the support. According to the equation for $d f_{\rm th} / dt$, the atmosphere's thermal support fraction converges toward $f_{\rm th} \approx t_{\rm cool} / t_{\rm diss}$ in this limit, and so the central galaxy's gas supply flows inward on a timescale $\sim t_{\rm diss} ...
+
+Tracking how $f_{\rm th}$ evolves with time therefore enables **ExpCGM** to transition from one limit to the other and also to remain balanced between those limiting cases.
 
 {: .note}
 In general, $\dot{M}\_{\rm cool}$ depends on radius, and so a user's choice of $r_{\rm gal}$ can affect the inferred gas supply rate. However, an isothermal atmosphere with $\alpha = 3/2$ in a potential well with constant $v_{\rm c}$ has $\bar{\rho} \propto r^{-3/2}$ and $t_{\rm cool} \propto r^{3/2}$. That case corresponds to steady-state isothermal cooling flow, in which $\dot{M}\_{\rm cool}$ is independent of radius and $\dot{M}\_{\rm in}$ does not depend on the choice of $r_{\rm gal}$.
