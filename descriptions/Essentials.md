@@ -317,7 +317,7 @@ There are two characteristic limiting cases:
 * **Radiative Inflow** $(t_{\rm diss} \ll t_{\rm cool} \ll t_{\rm inj})$**.** When dissipation is rapid compared to radiative cooling, turbulence quickly converts into heat, ensuring that $f_{\rm th} \approx 1$. The central galaxy's gas supply therefore flows inward on a timescale $\sim t_{\rm cool}$...
 * **Dissipative Inflow** $(t_{\rm cool} \ll t_{\rm diss} \ll t_{\rm inj})$**.** When radiative cooling is rapid compared to dissipation, an atmosphere's thermal support rapidly vanishes, meaning that turbulence needs to supply more of the support. According to the equation for $d f_{\rm th} / dt$, the atmosphere's thermal support fraction converges toward $f_{\rm th} \approx t_{\rm cool} / t_{\rm diss}$ in this limit, and so the central galaxy's gas supply flows inward on a timescale $\sim t_{\rm diss} ...
 
-Tracking how $f_{\rm th}$ evolves with time therefore enables **ExpCGM** to transition from one limit to the other and also to remain balanced between those limiting cases.
+Because **ExpCGM** tracks how $f_{\rm th}$ evolves with time, it can smoothly transition from one limit to the other and also remain balanced between those limiting cases.
 
 {: .note}
 In general, $\dot{M}\_{\rm cool}$ depends on radius, and so a user's choice of $r_{\rm gal}$ can affect the inferred gas supply rate. However, an isothermal atmosphere with $\alpha = 3/2$ in a potential well with constant $v_{\rm c}$ has $\bar{\rho} \propto r^{-3/2}$ and $t_{\rm cool} \propto r^{3/2}$. That case corresponds to steady-state isothermal cooling flow, in which $\dot{M}\_{\rm cool}$ is independent of radius and $\dot{M}\_{\rm in}$ does not depend on the choice of $r_{\rm gal}$.
