@@ -249,15 +249,15 @@ This equation for how atmospheric thermalization changes with time does not depe
 
 ## Atmospheric Evolution 
 
-An **ExpCGM** model atmosphere evolves as $E_{\rm CGM}$ and $M_{\rm CGM}$ evolve. At each moment in time, **ExpCGM** assumes that the atmosphere is in a force-balanced configuration that depends on $E_{\rm CGM}$, $M_{\rm CGM}$, $v_{\rm c}(r)$, and $\alpha_{\rm eff}(r)$, as described above. Whether or not the atmosphere is expanding or contracting depends on how $\varepsilon_{\rm CGM}$ is changing and therefore hinges on how energy input compares with radiative cooling. 
+An **ExpCGM** atmosphere model evolves as $E_{\rm CGM}$ and $M_{\rm CGM}$ evolve. At each moment in time, **ExpCGM** assumes that the atmosphere is in a force-balanced configuration that depends on $E_{\rm CGM}$, $M_{\rm CGM}$, $v_{\rm c}(r)$, and $\alpha_{\rm eff}(r)$, as described above. Whether or not the atmosphere is expanding or contracting depends on how $\varepsilon_{\rm CGM}$ is changing and therefore hinges on how energy input compares with radiative cooling. 
 
 To determine the atmosphere's heating and cooling rates, **ExpCGM** uses a steady-state atmosphere model to calculate the ***radiative cooling rate*** $\dot{E}\_{\rm rad}$ at which energy leaves the atmosphere and the ***gas supply rate*** $\dot{M}\_{\rm in}$ at which gas flows from the CGM into a halo's central galaxy. That inflow feeds a buildup of galactic gas leading to star formation, supernova explosions, and galactic outflows that return gas and energy to the atmosphere. When averaged over sufficiently long time periods, the rate of energy input from stars is proportional to the time-averaged value of $\dot{M}\_{\rm in}$.
 
 ### Radiative Cooling
 
-Radiative losses happen when two-body collisions produce photons that are not reabsorbed. A galactic atmosphere's radiative cooling rate per unit volume is therefore proportional to $\rho^2$ and a temperature-dependent cooling function $\Lambda_\rho (T)$ accounting for the atmosphere's ionization state, the relative speeds of colliding particles, and the cross-sections for excitation of photon emission.
+Radiative losses happen when two-body collisions produce photons that are not reabsorbed. A galactic atmosphere's radiative cooling rate per unit volume is therefore proportional to $\rho^2$ and a temperature-dependent cooling function accounting for the atmosphere's ionization state, the relative speeds of colliding particles, and the cross-sections for excitation of photon emission.
 
-In **ExpCGM**, the cooling function $\Lambda_\rho$ is defined so that the radiative energy loss rate per unit volume is $\rho^2 \Lambda_\rho$ and the ***specific cooling rate*** is $\rho \Lambda_\rho$. Integration over shells of radius $r$ gives the atmosphere's total radiative cooling rate
+In **ExpCGM**, the cooling function $\Lambda_\rho (T)$ is defined so that the radiative energy loss rate per unit volume is $\rho^2 \Lambda_\rho$ and the ***specific cooling rate*** is $\rho \Lambda_\rho$. Integration over shells of radius $r$ then gives the atmosphere's total radiative cooling rate
 
 <p>
   $$\dot{E}_{\rm rad} = \int_0^{r_{\rm CGM}}  \langle \rho \Lambda_\rho \rangle ~4 \pi r^2 \bar{\rho} ~dr$$
@@ -300,7 +300,7 @@ According to this approach, atmospheric heating does not directly affect the gas
 Rewriting the expressions for $v_{\rm in}$ and $\dot{M}\_{\rm in}$ in terms of cooling time helps to make them more intuitive. In a force-balanced **ExpCGM** atmosphere moidel, the cooling time of a particular gas shell is 
 
 <p>
-  $$t_{\rm cool} ~=~ \frac {3 P} {2 \bar{\rho} \langle \rho \Lambda_\rho \rangle} ~=~ \frac {3 f_\varphi f_{\rm th} v_{\rm c}^2} {2 \alpha_{\rm eff} \langle \rho \Lambda_\rho \rangle}$$
+  $$t_{\rm cool} ~=~ \frac {3 P} {2 \bar{\rho} \langle \rho \Lambda_\rho \rangle} ~=~ \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) \frac {f_{\rm th} v_{\rm c}^2} {\langle \rho \Lambda_\rho \rangle}$$
 </p>
 
 The approximations for inflow speed and gas supply can therefore be expressed as
@@ -309,7 +309,7 @@ The approximations for inflow speed and gas supply can therefore be expressed as
   $$v_{\rm in} = \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) \frac {r f_{\rm th}} {t_{\rm cool}} ~~~~~,~~~~~  \dot{M}_{\rm in} = \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) \frac {4 \pi r^3 \bar{\rho}} {t_{\rm cool}}$$ 
 </p>
 
-In other words, atmospheric gas flows inward on a timescale comparable to $t_{\rm cool} / f_{\rm th}$.
+In other words, atmospheric gas flows inward on a timescale comparable to $t_{\rm cool} / f_{\rm th}$, because the model-dependent quantity $3 f_\varphi / 2 \alpha_{\rm eff}$ is generally close to unity.
 
 ### Radiative and Dissipative Limits
 
