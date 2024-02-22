@@ -287,7 +287,7 @@ A useful estimate, applicable when $v_{\rm c}^2$ and $\alpha_{\rm eff}$ are near
 The inflow speed and gas supply rate are then
 
 <p>
-  $$v_{\rm in} = \frac {r \langle \rho \Lambda_\rho \rangle} {v_{\rm c}^2} ~~~~~,~~~~~ \dot{M}_{\rm in} = 4 \pi r^3 \bar{\rho} \frac {\langle \rho \Lambda_\rho \rangle} {v_{\rm c}^2}
+  $$v_{\rm in} = \frac {r \langle \rho \Lambda_\rho \rangle} {v_{\rm c}^2} ~~~~~,~~~~~ \dot{M}_{\rm in} = 4 \pi r^3 \bar{\rho} \frac {\langle \rho \Lambda_\rho \rangle} {v_{\rm c}^2}$$
 </p>
 
 as given by the force-balanced atmosphere model at $r_{\rm gal}$.
@@ -306,14 +306,14 @@ Rewriting the expressions for $v_{\rm in}$ and $\dot{M}\_{\rm in}$ in terms of c
 The approximations for inflow speed and gas supply can therefore be expressed as
 
 <p>
-  $$v_{\rm in} = \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) \frac {r f_{\rm th}} {t_{\rm cool}} ~~~~~,~~~~~ \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) \dot{M}_{\rm in} = \frac( 4 \pi r^3 \bar{\rho}} {t_{\rm cool}} 
+  $$v_{\rm in} = \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) \frac {r f_{\rm th}} {t_{\rm cool}} ~~~~~,~~~~~ \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) \dot{M}_{\rm in} = \frac( 4 \pi r^3 \bar{\rho}} {t_{\rm cool}}$$ 
 </p>
 
 There are two characteristic limiting cases:
 * **Radiative Inflow** $(t_{\rm cool} \ll t_{\rm diss} \ll t_{\rm inj})$**.**
 * **Dissipative Inflow** $(t_{\rm diss} \ll t_{\rm cool} \ll t_{\rm inj})$**.**
 
-Traching how $f_{\rm th}$ evolves with time enables **ExpCGM** to transition from one limit to the other and also to remain balanced between them.
+Tracking how $f_{\rm th}$ evolves with time enables **ExpCGM** to transition from one limit to the other and also to remain balanced between them.
 
 {: .note}
 In general, $\dot{M}\_{\rm cool}$ depends on radius, and so a user's choice of $r_{\rm gal}$ can affect the inferred gas supply rate. However, an isothermal atmosphere with $\alpha = 3/2$ in a potential well with constant $v_{\rm c}$ has $\bar{\rho} \propto r^{-3/2}$ and $t_{\rm cool} \propto r^{3/2}$. That case corresponds to steady-state isothermal cooling flow, in which $\dot{M}\_{\rm cool}$ is independent of radius and $\dot{M}\_{\rm in}$ does not depend on the choice of $r_{\rm gal}$.
