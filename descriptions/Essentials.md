@@ -332,7 +332,7 @@ The gas supply rate $\dot{M}\_{\rm in}$ obtained with this approach depends some
 
 The assumptions that **ExpCGM** is built on break down when both $t_{\rm cool}$ and $t_{\rm diss}$ are short enough to make $r f_{\rm th} / t_{\rm cool}$ faster than $v_{\rm c}$. In that limit, both thermal and non-thermal support fail to keep the atmosphere close to force balance. Halo gas then falls nearly freely into the central galaxy, unless rotation can support it. 
 
-To prevent unphysically large gas supply rates, **ExpCGM** limits $\dot{M}\_{\rm in}$ to be no greater than 
+To prevent unphysically large gas supply rates, **ExpCGM** therefore limits $\dot{M}\_{\rm in}$ to be no greater than 
 
 <p>
   $$\dot{M}_{\rm max} = 4 \pi r_{\rm gal}^2 \bar{\rho}(r_{\rm gal}) v_{\rm c} (r_{\rm gal})$$
