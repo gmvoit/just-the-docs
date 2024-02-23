@@ -330,7 +330,13 @@ The gas supply rate $\dot{M}\_{\rm in}$ obtained with this approach depends some
 
 ### Freefall-Limited Inflow
 
-The assumptions that **ExpCGM** is built on break down when both $t_{\rm cool}$ and $t_{\rm diss}$ are short enoough to make $v_{\rm in}$ faster than $v_{\rm c}$. In that limit, both thermal and non-thermal support fail to keep the atmosphere close to force balance ....
+The assumptions that **ExpCGM** is built on break down when both $t_{\rm cool}$ and $t_{\rm diss}$ are short enough to make $r f_{\rm th} t_{\rm cool}$ faster than $v_{\rm c}$. In that limit, both thermal and non-thermal support fail to keep the atmosphere close to force balance. **ExpCGM** therefore limits the gas supply rate to be no greater than 
+
+<p>
+  $$\dot{M}_{\rm max} = 4 \pi r_{\rm gal}^2 \bar{\rho}(r_{\rm gal}) v_{\rm c} (r_{\rm gal})
+</p>
+
+so that circumgalactic gas does not fall into a halo's central galaxy faster than gravity can accelerate it. 
 
 
 ### Galactic Feedback
