@@ -343,9 +343,11 @@ With this restriction, circumgalactic gas cannot fall into a halo's central gala
 
 ### Galactic Feedback
 
-An **ExpCGM** galactic atmosphere recovers at least some of the support energy lost to radiation when energy released from the central galaxy couples with the CGM. The time-averaged rate of energy input depends on how rapidly a galaxy's atmosphere supplies the galaxy with fuel for star formation. It may also depend on how much of the galaxy's gas accretes onto its central black hole.
+An **ExpCGM** galactic atmosphere recovers at least some of the support energy it has lost to radiation when energy released from the central galaxy couples with the CGM. The time-averaged rate of feedback energy input depends on how much star formation results from the central galaxy's gas supply. It may also depend on how much of the galaxy's gas accretes onto its central black hole.
 
-A major goal of **ExpCGM** is to emulate how those interactions between galaxies and their atmospheres become a self-regulating feedback loop. The [Regulation](Regulation) page explains how **ExpCGM** does that.
+A major goal of **ExpCGM** is to emulate how those interactions between galaxies and their atmospheres become a self-regulating feedback loop. 
+
+The [Regulation](Regulation) page explains how **ExpCGM** does that.
 
 ### Cosmic Accretion
 
