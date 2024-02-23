@@ -89,13 +89,13 @@ Here, the function
 is a ***generalized shape function*** for atmospheric support, to be used if $f_{\rm th}$ depends on radius. It is also possible for $f_\varphi$ to depend on radius.
 
 {: .note}
-While other formulations of atmospheric force balance sometimes express resistance to gravity in terms of a total pressure $P_{\rm tot} = P / f_{\rm th}$, **ExpCGM** explicitly accounts for the thermal pressure contribution using the $f_{\rm th}$ factor. A model atmosphere's temperature profile can then be directly inferred from just force balance considerations and the thermalization fraction $f_{\rm th}$. Furthermore, $f_{\rm th}$ can be treated as a dynamical variable, as described below in the Thermalization section.
+While other formulations of atmospheric force balance sometimes express resistance to gravity in terms of a total pressure $P_{\rm tot} = P / f_{\rm th}$, **ExpCGM** explicitly accounts for the thermal pressure contribution using the $f_{\rm th}$ factor. A model atmosphere's temperature profile can then be directly inferred from just force balance considerations and the thermalization fraction $f_{\rm th}$. Furthermore, $f_{\rm th}$ can be treated as a dynamical variable, as described below in the *Thermalization* section.
 
 ## Specific Energy
 
 A galactic atmosphere of total mass $M_{\rm CGM}$ expands if its total energy $E_{\rm CGM}$ increases, and it contracts if its total energy declines. A galactic atmosphere's equilibrium radius $r_{\rm CGM}$ therefore depends on its ***mean specific energy***
   $$\varepsilon_{\rm CGM} = \frac {E_{\rm CGM}} {M_{\rm CGM}}$$
-Several integrals are needed to determine how $\varepsilon_{\rm CGM}$ depends on $r_{\rm CGM}$ in a force-balanced **ExpCGM** atmosphere. Inverting that relationship then gives the dependence of $r_{\rm CGM}$ on $\varepsilon_{\rm CGM}$.
+Several integrals are needed to determine how $\varepsilon_{\rm CGM}$ depends on $r_{\rm CGM}$ in a force-balanced **ExpCGM** atmosphere. Inverting that relationship gives the dependence of $r_{\rm CGM}$ on $\varepsilon_{\rm CGM}$.
 
 ### Gas Mass
 
@@ -232,7 +232,7 @@ and the rate of change in thermal support energy
 In both of these equations, $\dot{E}\_{\varphi,{\rm exp}}$ is the conversion rate of atmospheric support energy into gravitational energy. The value of $\dot{E}\_{\varphi,{\rm exp}}$ is positive in an expanding atmosphere and negative in a contracting atmosphere.
 
 {: .note}
-The equation for $\dot{E}\_{\rm th}$ assumes that expansion and contraction are slow enough to have no effect on $f_{\rm th}$. This assumption is based on both thermal energy and turbulent energy having the same ratio of energy density to pressure, which gives them the same polytropic equation of state. However, an expanding or contracting atmosphere that is settling into an force-balanced state in a fully hydrodynamical model may be converting the kinetic energy of bulk flow into a combination of turbulent and thermal energy with a ratio different from $(1 - f_{\rm th}) / f_{\rm th}$. In principle, **ExpCGM** users can account for such differences through adjustments to the branching ratio $f_{\rm inj,th}$ for thermal energy injection.
+The equation for $\dot{E}\_{\rm th}$ assumes that expansion and contraction are slow enough to have no effect on $f_{\rm th}$. This assumption is based on both thermal energy and turbulent energy having the same ratio of energy density to pressure, which gives them the same polytropic equation of state. However, an expanding or contracting atmosphere that is rapidly settling into a force-balanced state may be converting the kinetic energy of bulk flow into a combination of turbulent and thermal energy with a ratio different from $(1 - f_{\rm th}) / f_{\rm th}$. In principle, **ExpCGM** users can account for such differences through adjustments to the branching ratio $f_{\rm inj,th}$ for thermal energy injection.
 
 Combining the **ExpCGM** equations for the rates of change in $E_{\rm th} / f_{\rm th}$ and $E_{\rm th}$ leads to
 
@@ -319,9 +319,9 @@ In other words, atmospheric gas flows inward on a timescale comparable to $t_{\r
 
 This approach has two characteristic limiting cases:
 
-* **Radiative Inflow** $(t_{\rm diss} \ll t_{\rm cool} \ll t_{\rm inj})$**.** When dissipation is rapid compared to radiative cooling, turbulence quickly converts into heat, ensuring that $f_{\rm th} \approx 1$. The central galaxy's gas supply therefore flows inward on a timescale $\sim t_{\rm cool}$. If the atmosphere remains sufficiently homogeneous and nearly isothermal, then $t_{\rm cool}(r)$ is proportional to $1/\bar{\rho}(r)$. The value of $\dot{M}_{\rm in}$ is then independent of radius for $\bar{\rho} \propto r^{-3/2}$, corresponding to $\alpha = 3/2$, which is the classic power-law profile of a steady cooling flow.
+* **Radiative Inflow** $(t_{\rm diss} \ll t_{\rm cool} \ll t_{\rm inj})$**.** When dissipation is rapid compared to radiative cooling, turbulence quickly converts into heat, ensuring that $f_{\rm th} \approx 1$. The central galaxy's gas supply therefore flows inward on a timescale similar to $t_{\rm cool}$. If the atmosphere remains sufficiently homogeneous and nearly isothermal, then $t_{\rm cool}(r)$ is proportional to $1/\bar{\rho}(r)$. The value of $\dot{M}_{\rm in}$ is then independent of radius for $\bar{\rho} \propto r^{-3/2}$, corresponding to $\alpha = 3/2$, which is the classic power-law profile of a steady cooling flow.
   
-* **Dissipative Inflow** $(t_{\rm cool} \ll t_{\rm diss} \ll t_{\rm inj})$**.** When radiative cooling is rapid compared to dissipation, an atmosphere's thermal support is quickly lost. Turbulence then needs to supply most of the atmosphere's support. According to the equation for $d f_{\rm th} / dt$, the atmosphere's thermal support fraction converges toward $f_{\rm th} \approx t_{\rm cool} / t_{\rm diss}$, and so the central galaxy's gas supply flows inward on a timescale $\sim t_{\rm diss}$. Furthermore, the density profile that makes $\dot{M}\_{\rm in}$ independent of $r$ for $t_{\rm diss} \propto r$ is $\bar{\rho} \propto r^{-2}$. That corresponds to $\alpha_{\rm eff} = 2$ and is the classic power-law profile of a steady dissipative inflow that proceeds inward at constant speed.
+* **Dissipative Inflow** $(t_{\rm cool} \ll t_{\rm diss} \ll t_{\rm inj})$**.** When radiative cooling is rapid compared to dissipation, an atmosphere's thermal support is quickly lost. Turbulence then needs to supply most of the atmosphere's support. According to the equation for $d f_{\rm th} / dt$, the atmosphere's thermal support fraction converges toward $f_{\rm th} \approx t_{\rm cool} / t_{\rm diss}$, and so the central galaxy's gas supply flows inward on a timescale similar to $t_{\rm diss}$. Furthermore, the density profile that makes $\dot{M}\_{\rm in}$ independent of $r$ for $t_{\rm diss} \propto r$ is $\bar{\rho} \propto r^{-2}$. That corresponds to $\alpha_{\rm eff} = 2$ and is the classic power-law profile of a steady dissipative inflow proceeding inward at constant speed.
 
 Evolving **ExpCGM** atmosphere models can smoothly transition from one limit to the other, and can also remain balanced between those limiting cases, because of how **ExpCGM** tracks changes in $f_{\rm th}$ over time.
 
@@ -332,10 +332,10 @@ The gas supply rate $\dot{M}\_{\rm in}$ obtained with this approach depends some
 
 The assumptions that **ExpCGM** is built on break down when both $t_{\rm cool}$ and $t_{\rm diss}$ are short enough to make $r f_{\rm th} / t_{\rm cool}$ faster than $v_{\rm c}$. In that limit, both thermal and non-thermal support fail to keep the atmosphere close to force balance. Halo gas then falls nearly freely into the central galaxy, unless rotation can support it. 
 
-To prevent unphysically large gas supply rates, **ExpCGM** therefore limits $\dot{M}\_{\rm in}$ to be no greater than 
+To prevent unphysically large gas supply rates, **ExpCGM** limits $\dot{M}\_{\rm in}$ to be no greater than 
 
 <p>
-  $$\dot{M}_{\rm max} = 4 \pi r_{\rm gal}^2 \bar{\rho}(r_{\rm gal}) v_{\rm c} (r_{\rm gal})$$
+  $$\dot{M}_{\rm in,max} = 4 \pi r_{\rm gal}^2 \bar{\rho}(r_{\rm gal}) v_{\rm c} (r_{\rm gal})$$
 </p>
 
 With this restriction, circumgalactic gas cannot fall into a halo's central galaxy faster than gravity can accelerate it. 
@@ -353,19 +353,21 @@ In the **ExpCGM** framework, radiative cooling can continue to supply gas to the
 
 ### Cosmic Accretion
 
-Cosmological structure formation also supplies both mass and energy to the galaxy's atmosphere. The rate at which it adds energy to the atmosphere is
+Cosmological structure formation also supplies both mass and energy to a galaxy's atmosphere. The rate at which it adds energy is
 
 <p> 
   $$\dot{E}_{\rm acc} = \left[ \varphi(R_{\rm halo}) + \frac {v_{\rm c}^2} {2} (R_{\rm halo}) \right] \dot{M}_{\rm acc}$$ 
 </p>
 
-where $R_{\rm halo}$ is a user-defined radius for the galaxy's dark matter halo and $\dot{M}\_{\rm acc}$ is a cosmologically determined gas-mass accretion rate. Usually, $\dot{M}\_{\rm acc}$ is directly proportional to the halo's total cosmological mass accretion rate $\dot{M}\_{\rm halo}$. Cosmological structure formation can also change both the maximum circular velocity ($v_\varphi$) and scale radius ($r_{\rm s}$) of the gravitational potential, thereby changing the gravitational potential energy of gas that has already accreted at the rate
+where $R_{\rm halo}$ is a user-defined radius for the galaxy's dark matter halo, and $\dot{M}\_{\rm acc}$ is the rate at which cosmological accretion adds gas mass accretion rate. Usually, $\dot{M}\_{\rm acc}$ is directly proportional to the halo's total cosmological mass accretion rate $\dot{M}\_{\rm halo}$. 
+
+Cosmological structure formation can also change both the maximum circular velocity ($v_\varphi$) and scale radius ($r_{\rm s}$) of the gravitational potential, thereby changing the gravitational potential energy of gas that has already accreted at the rate
 
 <p> 
   $$\dot{E}_{\varphi,{\rm cos}} = 4 \pi \int_0^{r_{\rm CGM}} \dot{\varphi} (r) \rho(r) r^2 dr$$ 
 </p>
 
-This rate depends on both the rate $\dot{\varphi} (r)$ at which the gravitational potential changes and the atmosphere's mass density profile $\rho(r)$. The [Accretion](Accretion) page provides more detail.
+Notice that this rate depends on both the rate $\dot{\varphi} (r)$ at which the gravitational potential changes and the atmosphere's mass density profile $\rho(r)$. The [Accretion](Accretion) page provides more detail.
 
 ### Total Energy Input
 
