@@ -301,7 +301,7 @@ According to this approach, atmospheric heating does not directly affect the gas
 
 ### Cooling Time
 
-Rewriting the expressions for $v_{\rm in}$ and $\dot{M}\_{\rm in}$ in terms of cooling time helps to make them more intuitive. In a force-balanced **ExpCGM** atmosphere moidel, the cooling time of a particular gas shell is 
+Rewriting the expressions for $v_{\rm in}$ and $\dot{M}\_{\rm in}$ in terms of cooling time helps to make them more intuitive. In a force-balanced **ExpCGM** atmosphere model, the cooling time of a particular gas shell is 
 
 <p>
   $$t_{\rm cool} ~=~ \frac {3 P} {2 \bar{\rho} \langle \rho \Lambda_\rho \rangle} ~=~ \left( \frac {3 f_\varphi} {2 \alpha_{\rm eff}} \right) \frac {f_{\rm th} v_{\rm c}^2} {\langle \rho \Lambda_\rho \rangle}$$
@@ -345,9 +345,7 @@ With this restriction, circumgalactic gas cannot fall into a halo's central gala
 
 An **ExpCGM** galactic atmosphere recovers at least some of the support energy it has lost to radiation when energy released from the central galaxy couples with the CGM. The time-averaged rate of feedback energy input depends on how much star formation results from the central galaxy's gas supply. It may also depend on how much of the galaxy's gas accretes onto its central black hole.
 
-A major goal of **ExpCGM** is to emulate how those interactions between galaxies and their atmospheres become a self-regulating feedback loop. 
-
-The [Regulation](Regulation) page explains how **ExpCGM** does that.
+A major goal of **ExpCGM** is to emulate how those interactions between galaxies and their atmospheres become a self-regulating feedback loop. The [Regulation](Regulation) page explains how **ExpCGM** does that.
 
 ### Cosmic Accretion
 
