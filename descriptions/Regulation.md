@@ -86,13 +86,7 @@ The minimalist regulator model comprises these three differential equations for 
 
 ### Steady Star Formation
 
-If both the galaxy's gas supply $\dot{M}\_{\rm in}$ and the star formation timescale $t_{\rm SF}$ remain sufficiently steady, then the galaxy's star-formation rate converges toward the steady-state value 
-
-<p>
-  $$\dot{M}_* = \frac {\dot{M}_{\rm in}} {1 + \eta_M}$$
-</p>
-
-Under those conditions, the minimalist regulator model reduces to a system of just two differential equations, with evolution of $M_{\rm CGM}$ determined by 
+If both the galaxy's gas supply $\dot{M}\_{\rm in}$ and the star formation timescale $t_{\rm SF}$ remain sufficiently steady, then the star formation converges toward the steady-state rate $\dot{M}\_\* = \dot{M}\_{\rm in} / (1 + \eta_M)$. In that limit, the minimalist regulator model reduces to a system of just two differential equations, with evolution of $M_{\rm CGM}$ determined by 
 
 <p>
   $$\dot{M}_{\rm CGM} = \dot{M}_{\rm acc} - \frac {\dot{M}_{\rm in}} {1 + \eta_M}$$
