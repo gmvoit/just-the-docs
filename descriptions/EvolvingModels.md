@@ -1,5 +1,5 @@
 ---
-title: Feedback Models
+title: Regulation
 layout: default
 nav_order: 3
 parent: Description
