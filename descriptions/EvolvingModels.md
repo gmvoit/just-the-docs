@@ -25,7 +25,7 @@ parent: Description
   </script>
 </head>
 
-# Feedback Models
+# Regulation
 {: .no_toc}
 
 This page outlines how galactic feedback models are coupled with atmosphere models in the **ExpCGM** framework.
