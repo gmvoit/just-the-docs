@@ -80,11 +80,24 @@ Cosmological accretion adds energy at a rate $\dot{E}\_{\rm acc}$ given by a use
   $$\dot{E}_{\rm fb} = \eta_E \varepsilon_{\rm SB} \dot{M}_*$$
 </p>
 
-in which $\varepsilon_{\rm SN} \dot{M}\_*$ is the rate at which supernovae produce kinetic energy and the ***energy loading factor*** $\eta_E$ is the fraction that couples with the CGM. Finally, $\dot{E}\_{\varphi,{\rm cos}}$ is the change in atmospheric energy stemming from changes in the gravitational potential (see the [Essentials](Essentials) page).
+in which $\varepsilon_{\rm SN} \dot{M}_\*$ is the rate at which supernovae produce kinetic energy and the ***energy loading factor*** $\eta_E$ is the fraction that couples with the CGM. Finally, $\dot{E}\_{\varphi,{\rm cos}}$ is the change in atmospheric energy stemming from changes in the gravitational potential (see the [Essentials](Essentials) page).
 
 The minimalist regulator model comprises these three differential equations for $\dot{E}\_{\rm CGM}$, $\dot{M}\_{\rm CGM}$, and $\dot{M}\_{\rm ISM}$. An **ExpCGM** atmosphere model provides $\dot{M}\_{\rm in}$ and $\dot{E}\_{\rm rad}$ as functions of $E_{\rm CGM}$, $M_{\rm CGM}$, and model parameters. A cosmological halo model provides $\dot{M}\_{\rm acc}$ and $\dot{E}\_{\rm acc}$. 
 
-### Reduced Version
+### Steady Star Formation
+
+If both the galaxy's gas supply $\dot{M}\_{\rm in}$ and the star formation timescale $t_{\rm SF}$ remain sufficiently steady, then the galaxy's star-formation rate converges toward the steady-state value 
+
+<p>
+  $$\dot{M}_* = \frac {\dot{M}_{\rm in}} {1 + \eta_M}$$
+</p>
+
+Under those conditions, the minimalist regulator model reduces to a system of just two differential equations, with evolution of $M_{\rm CGM}$ determined by 
+
+<p>
+  $$\dot{M}_{\rm CGM} = \dot{M}_{\rm acc} - \frac {\dot{M}_{\rm in}} {1 + \eta_M}$$
+</p>
+
 
 ### Interstellar Recycling
 
