@@ -1,7 +1,7 @@
 ---
 title: Fitting Data
 layout: default
-nav_order: 20
+nav_exclude: true
 ---
 
 <head>
