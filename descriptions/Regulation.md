@@ -77,7 +77,7 @@ Closure of this set of equations requires an expression for $\dot{M}\_{\rm in}$,
 Cosmological accretion adds energy at a rate $\dot{E}\_{\rm acc}$ given by a user-supplied model for halo growth. The radiative loss rate $\dot{E}\_{\rm rad}$ comes from a spatial integration over the atmosphere model, as described on the [Essentials](Essentials) page. Gas flowing from the CGM into the ISM removes energy from the CGM at a rate $\dot{E}\_{\rm in}$ equal to the product of $\dot{M}\_{\rm in}$ and $\varepsilon_{\rm in} = \varepsilon (r_{\rm gal})$ of atmospheric gas at the transitional radius $r_{\rm gal}$. In the case of purely stellar feedback, the feedback energy supply is 
 
 <p>
-  $$\dot{E}_{\rm fb} = \eta_E \varepsilon_{\rm SB} \dot{M}_*
+  $$\dot{E}_{\rm fb} = \eta_E \varepsilon_{\rm SB} \dot{M}_*$$
 </p>
 
 in which $\varepsilon_{\rm SN} \dot{M}_*$ is the rate at which supernovae produce kinetic energy and the ***energy loading factor*** $\eta_E$ is the fraction that couples with the CGM. Finally, $\dot{E}\_{\varphi,{\rm cos}}$ is the change in atmospheric energy stemming from changes in the gravitational potential (see the [Essentials](Essentials) page).
