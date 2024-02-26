@@ -56,7 +56,7 @@ See the [Essentials](Essentials) page for explanations of how **ExpCGM** uses a 
 
 Evolution of an **ExpCGM** galactic atmosphere depends on how $E_{\rm CGM}$ and $M_{\rm CGM}$ change with time, and possibly also on time-dependent changes in the halo's gravitational potential $\varphi(r)$, the atmosphere's thermalization fraction $f_{\rm th}(r)$, anad the pressure profile's shape function $\alpha(r)$. To evolve the atmosphere model, a set of equations coupling atmospheric evolution to galaxy evolution is needed. The simplest approach within **ExpCGM** is the ***minimalist regulator model*** outlined here.
 
-In the minimalist regulator model, cosmological accretion supplies atmospheric baryons at the rate $\dot{M}\_{\rm acc}$, and the atmosphere supplie the central galaxy's ISM with baryons at the rate $\dot{M}\_{\rm in}$. Star formation proceeds at the rate $\dot{M}_* = M_{\rm ISM} / t_{\rm SF}$, in which the ***star-formation timescale*** $t_{\rm SF}$ is a model parameter. The energy released by that stellar population drives a baryonic outflow into the CGM at the rate $\eta_M \dot{M}_*$, where $\eta_M$ is ***mass loading parameter***. Mass conservation then implies
+In the minimalist regulator model, cosmological accretion supplies atmospheric baryons at the rate $\dot{M}\_{\rm acc}$, and the atmosphere supplie the central galaxy's ISM with baryons at the rate $\dot{M}\_{\rm in}$. Star formation proceeds at the rate $\dot{M}_* = M_{\rm ISM} / t_{\rm SF}$, in which the ***star-formation timescale*** $t_{\rm SF}$ is a model parameter. The energy released by that stellar population drives a baryonic outflow into the CGM at the rate $\eta_M \dot{M}_*$, where $\eta_M$ is a ***mass loading parameter***. Mass conservation then implies
 
 <p>
   $$\dot{M}_{\rm CGM} = \dot{M}_{\rm acc} - \dot{M}_{\rm in} + \eta_M \frac {M_{\rm ISM}} {t_{\rm SF}}$$
@@ -71,9 +71,18 @@ The most basic version of the minimalist regulator model does not track recyclin
 Closure of this set of equations requires an expression for $\dot{M}\_{\rm in}$, which is a function of both $M_{\rm CGM}$ and $E_{\rm CGM}$, according to **ExpCGM**. A third equation tracking the evolution of $E_{\rm CGM}$ is therefore needed:
 
 <p>
-  $$\dot{M}_{\rm CGM} = \dot{M}_{\rm acc} - \dot{M}_{\rm in} + \eta_M \frac {M_{\rm ISM}} {t_{\rm SF}}$$
+  $$\dot{E}_{\rm CGM} = \dot{E}_{\rm acc} - \dot{E}_{\rm rad} - \dot{E}_{\rm in} + \dot{E}_{\rm fb} + \dot{E}_{\varphi,{\rm cos}}$$
 </p>
 
+Cosmological accretion adds energy at a rate $\dot{E}\_{\rm acc}$ given by a user-supplied model for halo growth. The radiative loss rate $\dot{E}\_{\rm rad}$ comes from a spatial integration over the atmosphere model, as described on the [Essentials](Essentials) page. Gas flowing from the CGM into the ISM removes energy from the CGM at a rate $\dot{E}\_{\rm in}$ equal to the product of $\dot{M}\_{\rm in}$ and $\varepsilon_{\rm in} = \varepsilon (r_{\rm gal})$ of atmospheric gas at the transitional radius $r_{\rm gal}$. In the case of purely stellar feedback, the feedback energy supply is 
+
+<p>
+  $$\dot{E}_{\rm fb} = \eta_E \varepsilon_{\rm SB} \dot{M}_*
+</p>
+
+in which $\varepsilon_{\rm SN} \dot{M}_*$ is the rate at which supernovae produce kinetic energy and the ***energy loading factor*** $\eta_E$ is the fraction that couples with the CGM. Finally, $\dot{E}\_{\varphi,{\rm cos}}$ is the change in atmospheric energy stemming from changes in the gravitational potential (see the [Essentials](Essentials) page).
+
+The minimalist regulator model comprises these three differential equations for $\dot{E}\_{\rm CGM}$, $\dot{M}\_{\rm CGM}$, and $\dot{M}\_{\rm ISM}$. An **ExpCGM** atmosphere model provides $\dot{M}\_{\rm in}$ and $\dot{E}\_{\rm rad}$ as functions of $E_{\rm CGM}$, $M_{\rm CGM}$, and model parameters. A cosmological halo model provides $\dot{M}\_{\rm acc}$ and $\dot{E}\_{\rm acc}$. 
 
 ### Reduced Version
 
