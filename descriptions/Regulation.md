@@ -56,6 +56,8 @@ See the [Essentials](Essentials) page for explanations of how **ExpCGM** uses a 
 
 Evolution of an **ExpCGM** galactic atmosphere depends on how $E_{\rm CGM}$ and $M_{\rm CGM}$ change with time, and possibly also on time-dependent changes in the halo's gravitational potential $\varphi(r)$, the atmosphere's thermalization fraction $f_{\rm th}(r)$, anad the pressure profile's shape function $\alpha(r)$. To evolve the atmosphere model, a set of equations coupling atmospheric evolution to galaxy evolution is needed. The simplest approach within **ExpCGM** is the ***minimalist regulator model*** outlined here.
 
+### Mass Conservation
+
 In the minimalist regulator model, cosmological accretion supplies atmospheric baryons at the rate $\dot{M}\_{\rm acc}$, and the atmosphere supplies the central galaxy's ISM with baryons at the rate $\dot{M}\_{\rm in}$. Star formation proceeds at the rate $\dot{M}\_* = M_{\rm ISM} / t_{\rm SF}$, in which the ***star-formation timescale*** $t_{\rm SF}$ is a model parameter. The energy released by that stellar population drives a baryonic outflow into the CGM at the rate $\eta_M \dot{M}_\*$, where $\eta_M$ is a ***mass loading parameter***. Mass conservation then implies
 
 <p>
@@ -68,6 +70,8 @@ In the minimalist regulator model, cosmological accretion supplies atmospheric b
 
 The most basic version of the minimalist regulator model does not track recycling of baryonic mass from stars into the ISM, but it can be included as described in the *Interstellar Recycling* section below.
 
+### Energy Conservation
+
 Closure of this set of equations requires an expression for $\dot{M}\_{\rm in}$, which is a function of both $M_{\rm CGM}$ and $E_{\rm CGM}$, according to **ExpCGM**. A third equation tracking the evolution of $E_{\rm CGM}$ is therefore needed:
 
 <p>
@@ -77,7 +81,7 @@ Closure of this set of equations requires an expression for $\dot{M}\_{\rm in}$,
 Cosmological accretion adds energy at a rate $\dot{E}\_{\rm acc}$ given by a user-supplied model for halo growth. The radiative loss rate $\dot{E}\_{\rm rad}$ comes from a spatial integration over the atmosphere model, as described on the [Essentials](Essentials) page. Gas flowing from the CGM into the ISM removes energy from the CGM at a rate $\dot{E}\_{\rm in}$ equal to the product of $\dot{M}\_{\rm in}$ and $\varepsilon_{\rm in} = \varepsilon (r_{\rm gal})$ of atmospheric gas at the transitional radius $r_{\rm gal}$. In the case of purely stellar feedback, the feedback energy supply is 
 
 <p>
-  $$\dot{E}_{\rm fb} = \eta_E \varepsilon_{\rm SB} \dot{M}_*$$
+  $$\dot{E}_{\rm fb} = \eta_E \varepsilon_{\rm SN} \dot{M}_*$$
 </p>
 
 in which $\varepsilon_{\rm SN} \dot{M}_\*$ is the rate at which supernovae produce kinetic energy and the ***energy loading factor*** $\eta_E$ is the fraction that couples with the CGM. Finally, $\dot{E}\_{\varphi,{\rm cos}}$ is the change in atmospheric energy stemming from changes in the gravitational potential (see the [Essentials](Essentials) page).
@@ -86,13 +90,18 @@ The minimalist regulator model comprises these three differential equations for 
 
 ### Steady Star Formation
 
-If both the galaxy's gas supply $\dot{M}\_{\rm in}$ and the star formation timescale $t_{\rm SF}$ remain sufficiently steady, then the star formation converges toward the steady-state rate $\dot{M}\_\* = \dot{M}\_{\rm in} / (1 + \eta_M)$. In that limit, the minimalist regulator model reduces to a system of just two differential equations, with evolution of $M_{\rm CGM}$ determined by 
+If both the galaxy's gas supply $\dot{M}\_{\rm in}$ and the star formation timescale $t_{\rm SF}$ remain sufficiently steady, then the star formation converges toward the steady-state rate $\dot{M}\_\* = \dot{M}\_{\rm in} / (1 + \eta_M)$. In that limit, the minimalist regulator model reduces to a system of just two differential equations,  
 
 <p>
   $$\dot{M}_{\rm CGM} = \dot{M}_{\rm acc} - \frac {\dot{M}_{\rm in}} {1 + \eta_M}$$
 </p>
 
 
+<p>
+  $$\dot{E}_{\rm CGM} = \dot{E}_{\rm acc} - \dot{E}_{\rm rad} + \left( \frac {\eta_E \varepsilon_{\rm SN}} {1 + \eta_M} - \varepsilon_{\rm rad} - \varepsilon_{\rm in} \right) \dot{M}_{\rm in}$$
+</p>
+
+in which $\varepsilon_{\rm rad} \equiv \dot{E}\_{\rm rad} / \dot{M}\_{\rm in}$ and all of the feedback is assumed to come from stars. In the parlance of **ExpCGM**, this system is the *reduced version* of the minimalist regulator model.
 ### Interstellar Recycling
 
 ## Regulator with Enrichment
