@@ -126,7 +126,7 @@ The cooling functions ($\Lambda$ or $\Lambda_\rho$) that **ExpCGM** uses to calc
 </p>
 
 <p>
-  $$\dot{M}_{{\rm Z},*} = \dot{M}_{\rm in} - ( 1 + \eta_M - f_{\rm rec}) \frac {M_{\rm ISM}} {t_{\rm SF}}$$
+  $$\dot{M}_{\rm Z,stars} = \dot{M}_{\rm in} - ( 1 + \eta_M - f_{\rm rec}) \frac {M_{\rm ISM}} {t_{\rm SF}}$$
 </p>
 
 
