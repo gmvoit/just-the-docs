@@ -105,6 +105,14 @@ in which $\varepsilon_{\rm rad} \equiv \dot{E}\_{\rm rad} / \dot{M}\_{\rm in}$ a
 
 ### Interstellar Recycling
 
+A stellar population eventually returns some of the baryons originally in stars back to the ISM. An **ExpCGM** user may wish to account for that recycling channel by evolving $M_{\rm ISM}$ using the equation
+
+<p>
+  $$\dot{M}_{\rm ISM} = \dot{M}_{\rm in} - ( 1 + \eta_M - f_{\rm rec}$) \frac {M_{\rm ISM}} {t_{\rm SF}}$$
+</p>
+
+The parameter $f_{\rm rec}$ represents the fraction of stellar baryons that return to the ISM. According to this equation, those baryons return immediately, meaning that the galaxy's *cumulative* stellar feedback output is $\eta_E \varepsilon_{\rm SN} M_\* / (1 - f_{\rm rec})$.
+
 ## Regulator with Enrichment
 
 ## Black Hole Feedback
