@@ -98,7 +98,7 @@ If both the galaxy's gas supply $\dot{M}\_{\rm in}$ and the star formation times
 
 
 <p>
-  $$\dot{E}_{\rm CGM} = \dot{E}_{\rm acc} + \left( \frac {\eta_E \varepsilon_{\rm SN}} {1 + \eta_M} - \varepsilon_{\rm rad} - \varepsilon_{\rm in} \right) \dot{M}_{\rm in}$$
+  $$\dot{E}_{\rm CGM} = \dot{E}_{\rm acc} + \left( \frac {\eta_E \varepsilon_{\rm SN}} {1 + \eta_M} - \varepsilon_{\rm rad} - \varepsilon_{\rm in} \right) \dot{M}_{\rm in} + \dot{E}_{\varphi,{\rm cos}}$$
 </p>
 
 in which $\varepsilon_{\rm rad} \equiv \dot{E}\_{\rm rad} / \dot{M}\_{\rm in}$ and all of the feedback is assumed to come from stars. **ExpCGM** calls this system of two equations the *reduced version* of the minimalist regulator model.
@@ -115,8 +115,24 @@ The parameter $f_{\rm rec}$ represents the fraction of stellar baryons that retu
 
 ## Regulator with Enrichment
 
+The cooling functions ($\Lambda$ or $\Lambda_\rho$) that **ExpCGM** uses to calculate $\dot{M}\_{\rm in}$ and $\dot{E}\_{\rm rad}$ depends strongly on enrichment of the CGM, brought about by galactic winds ...
+
+<p>
+  $$\dot{M}_{\rm Z,CGM} = \dot{M}_{\rm in} - ( 1 + \eta_M - f_{\rm rec}) \frac {M_{\rm ISM}} {t_{\rm SF}}$$
+</p>
+
+<p>
+  $$\dot{M}_{\rm Z,ISM} = \dot{M}_{\rm in} - ( 1 + \eta_M - f_{\rm rec}) \frac {M_{\rm ISM}} {t_{\rm SF}}$$
+</p>
+
+<p>
+  $$\dot{M}_{{\rm Z},*} = \dot{M}_{\rm in} - ( 1 + \eta_M - f_{\rm rec}) \frac {M_{\rm ISM}} {t_{\rm SF}}$$
+</p>
+
+
 ## Black Hole Feedback
 
+There is not currently an **ExpCGM** implementation of black hole feedback, but there ought to be one in the near future.
 
 
 
