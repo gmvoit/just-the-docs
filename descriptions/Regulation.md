@@ -98,7 +98,7 @@ If both the galaxy's gas supply $\dot{M}\_{\rm in}$ and the star formation times
 
 
 <p>
-  $$\dot{E}_{\rm CGM} = \dot{E}_{\rm acc} - \dot{E}_{\rm rad} + \left( \frac {\eta_E \varepsilon_{\rm SN}} {1 + \eta_M} - \varepsilon_{\rm rad} - \varepsilon_{\rm in} \right) \dot{M}_{\rm in}$$
+  $$\dot{E}_{\rm CGM} = \dot{E}_{\rm acc} + \left( \frac {\eta_E \varepsilon_{\rm SN}} {1 + \eta_M} - \varepsilon_{\rm rad} - \varepsilon_{\rm in} \right) \dot{M}_{\rm in}$$
 </p>
 
 in which $\varepsilon_{\rm rad} \equiv \dot{E}\_{\rm rad} / \dot{M}\_{\rm in}$ and all of the feedback is assumed to come from stars. In the parlance of **ExpCGM**, this system is the *reduced version* of the minimalist regulator model.
