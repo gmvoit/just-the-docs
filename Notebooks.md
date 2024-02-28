@@ -7,7 +7,7 @@ has_children: true
 
 # Notebooks
 
-These pages present Python notebooks useful for producing **ExpCGM** atmosphere models.
+This section of the **ExpCGM** website will eventually present notebooks that provide and illustrate the framework's building blocks in the form of Python code.
 
 {: .warning}
 There are not yet any notebooks in this section of the website.
