@@ -74,7 +74,7 @@ is less than one percent. Neglecting that factor and assuming $R_{\rm halo} \app
 for the specific kinetic energy of infalling matter at time $t$.
 
 {: .note}
-Accounting for the gravitational potential energy of incoming matter requires a more subtle approach because the **ExpCGM** framework places the zero point of the gravitational potential in the vicinity of the central galaxy. For instance, the simple example on the [Essentials](Essentials) page puts it at $r=0$ in an NFW gravitational potential. The specific gravitational potential energy of incoming matter, $\varphi(R_{\rm halo})$, then depends on the relationship between $R_{\rm halo}$ and the potential well's scale radius $r_{\rm s}$. See the [Confinement](Confinement) page for more detail on how **ExpCGM** handles an atmosphere's gravitational potential energy.
+Accounting for the gravitational potential energy of incoming matter requires a more subtle approach because the **ExpCGM** framework places the zero point of the gravitational potential in the vicinity of the central galaxy. For instance, the simple example on the [Essentials](descriptions/Essentials.md) page puts it at $r=0$ in an NFW gravitational potential. The specific gravitational potential energy of incoming matter, $\varphi(R_{\rm halo})$, then depends on the relationship between $R_{\rm halo}$ and the potential well's scale radius $r_{\rm s}$. See the [Confinement](Confinement) page for more detail on how **ExpCGM** handles an atmosphere's gravitational potential energy.
 
 ## Adiabatic Compression
 
