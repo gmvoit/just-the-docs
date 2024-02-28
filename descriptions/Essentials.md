@@ -373,7 +373,7 @@ The total input rate for atmospheric energy is therefore
   $$\dot{E}_{\rm inj} = \dot{E}_{\rm fb} + \dot{E}_{\rm acc} + \dot{E}_{\varphi,{\rm cos}}$$ 
 </p>
 
-Supplementary models can be implemented to determine how energy input changes $f_{\rm th}(r)$ and perhaps also $\alpha (r)$. The [Pressure Profiles](/ExpCGM/extensions/PressureProfiles) page discusses various physically motivated options for the shape function $\alpha (r)$ and the gravitational potential correction factor $f_\varphi (r)$. The [Rotation](/ExpCGM/extensions/Rotation) page elaborates on the relationship between $f_\varphi (r)$ and atmospheric rotation.
+Supplementary models can be implemented to determine how energy input changes $f_{\rm th}(r)$ and perhaps also $\alpha (r)$. The [Pressure Profiles](/ExpCGM/extensions/PressureProfiles) page discusses various physically motivated options for the shape function $\alpha (r)$ and the gravitational potential correction factor $f_\varphi (r)$. (A future *Rotation* page, not yet developed, will elaborate on the relationship between $f_\varphi (r)$ and atmospheric rotation.)
 
 {: .note}
 The **ExpCGM** framework splits the total rate of change in atmospheric gravitational energy $E_\varphi$ into a component $\dot{E}\_{\varphi,{\rm cos}}$ corresponding to the cosmological evolution of $\varphi(r)$ and a component $\dot{E}\_{\varphi,{\rm exp}}$ corresponding to the hydrodynamic evolution of $r_{\rm CGM}$. Only the cosmological component changes the atmosphere's total energy, because $\dot{E}\_{\varphi,{\rm exp}}$ represents *internal* conversion of support energy into gravitational energy and vice versa.
