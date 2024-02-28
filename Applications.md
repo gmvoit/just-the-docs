@@ -1,14 +1,12 @@
 ---
 title: Applications
 layout: default
-nav_order: 6
-has_children: true
 nav_exclude: true
 ---
 
 # Applications
 
-These pages present applications of the **ExpCGM** framework for modeling galactic atmospheres.
+This section of the **ExpCGM** website will eventually present applications framework demonstrating how it has been used for modeling galactic atmospheres.
 
 {: .warning}
 There are not yet any applications presented in this section of the website.
