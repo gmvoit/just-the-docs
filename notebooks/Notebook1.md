@@ -2,7 +2,6 @@
 title: Notebook 1
 layout: default
 nav_exclude: true
-parent: Notebooks
 ---
 
 # Notebook 1
