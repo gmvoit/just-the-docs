@@ -59,7 +59,7 @@ Providing a pressure normalization $P_0$ at $r_0$ then specifies the atmosphere'
   $$P(r) = P_0 f_P(r)$$
 
 {: .note}
-Many details of an **ExpCGM** atmosphere model hinge on a user's choice for the shape function $\alpha(r)$. That choice represents an assumption about the physical processes responsible for maintaining the pressure profile. See the [Pressure Profiles](../extensions/PressureProfiles.md) page for more detail.
+Many details of an **ExpCGM** atmosphere model hinge on a user's choice for the shape function $\alpha(r)$. That choice represents an assumption about the physical processes responsible for maintaining the pressure profile. See the [Pressure Profiles](/ExpCGM/extensions/PressureProfiles) page for more detail.
 
 ### Temperature Profile
 
@@ -269,7 +269,7 @@ In **ExpCGM**, the cooling function $\Lambda_\rho (T)$ is defined so that the ra
 
 in which $\langle \rho \Lambda_\rho \rangle$ represents the mass-averaged value of the specific cooling rate within a gas shell of mean density
   $$\bar{\rho}(r) = \frac {P(r)} {f_{\rm th}} \frac {\alpha_{\rm eff}(r)} {f_\varphi v_{\rm c}^2 (r)}$$
-This approach enables **ExpCGM** to account for inhomogeneities that can make the cooling rate of a multiphase gas shell dramatically different from the cooling rate of a homogeneous gas shell with $\rho = \bar{\rho}$. (See the [Cooling](Cooling) and [Multiphase Gas](MultiphaseGas) pages for more detail.)
+This approach enables **ExpCGM** to account for inhomogeneities that can make the cooling rate of a multiphase gas shell dramatically different from the cooling rate of a homogeneous gas shell with $\rho = \bar{\rho}$. (See the [Cooling](/ExpCGM/extensions/Cooling) and [Multiphase Gas](/ExpCGM/extensions/MultiphaseGas) pages for more detail.)
 
 {: .note}
 The cooling function $\Lambda_\rho (T)$ used here is related to the more familiar cooling function $\Lambda (T)$ via the expression $\rho^2 \Lambda_\rho = n_e n_i \Lambda$, in which $n_e$ is the electron density and $n_i$ is the ion density. Using $\Lambda_\rho (T)$ instead of $\Lambda (T)$ helps to make the notation representing the specific cooling rate more compact and intuitive.
@@ -363,7 +363,7 @@ Cosmological structure formation can also change both the maximum circular veloc
   $$\dot{E}_{\varphi,{\rm cos}} = 4 \pi \int_0^{r_{\rm CGM}} \dot{\varphi} (r) \rho(r) r^2 dr$$ 
 </p>
 
-Notice that this rate depends on both the rate $\dot{\varphi} (r)$ at which the gravitational potential changes and the atmosphere's mass density profile $\rho(r)$. The [Accretion](Accretion) page provides more detail.
+Notice that this rate depends on both the rate $\dot{\varphi} (r)$ at which the gravitational potential changes and the atmosphere's mass density profile $\rho(r)$. The [Accretion](/ExpCGM/extensions/Accretion) page provides more detail.
 
 ### Total Energy Input
 
@@ -373,7 +373,7 @@ The total input rate for atmospheric energy is therefore
   $$\dot{E}_{\rm inj} = \dot{E}_{\rm fb} + \dot{E}_{\rm acc} + \dot{E}_{\varphi,{\rm cos}}$$ 
 </p>
 
-Supplementary models can be implemented to determine how energy input changes $f_{\rm th}(r)$ and perhaps also $\alpha (r)$. The [Pressure Profiles](PressureProfiles) page discusses various physically motivated options for the shape function $\alpha (r)$ and the gravitational potential correction factor $f_\varphi (r)$. The [Rotation](Rotation) page elaborates on the relationship between $f_\varphi (r)$ and atmospheric rotation.
+Supplementary models can be implemented to determine how energy input changes $f_{\rm th}(r)$ and perhaps also $\alpha (r)$. The [Pressure Profiles](/ExpCGM/extensions/PressureProfiles) page discusses various physically motivated options for the shape function $\alpha (r)$ and the gravitational potential correction factor $f_\varphi (r)$. The [Rotation](/ExpCGM/extensions/Rotation) page elaborates on the relationship between $f_\varphi (r)$ and atmospheric rotation.
 
 {: .note}
 The **ExpCGM** framework splits the total rate of change in atmospheric gravitational energy $E_\varphi$ into a component $\dot{E}\_{\varphi,{\rm cos}}$ corresponding to the cosmological evolution of $\varphi(r)$ and a component $\dot{E}\_{\varphi,{\rm exp}}$ corresponding to the hydrodynamic evolution of $r_{\rm CGM}$. Only the cosmological component changes the atmosphere's total energy, because $\dot{E}\_{\varphi,{\rm exp}}$ represents *internal* conversion of support energy into gravitational energy and vice versa.
