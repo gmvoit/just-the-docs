@@ -1,7 +1,7 @@
 ---
 title: Notebook 1
 layout: default
-nav_order: 2
+nav_exclude: true
 parent: Notebooks
 ---
 
