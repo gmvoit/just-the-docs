@@ -141,7 +141,7 @@ Dividing $M_{\rm Z,CGM}$ by $M_{\rm CGM}$ gives the enrichment proportion $Z_{\r
 
 The total mass of heavy elements contained within stars is then
   $$M_{Z,*} = M_Z - M_{Z,{\rm CGM}} - M_{Z,{\rm ISM}}$$
-and does not need to be tracked with a separate differential equation.
+It does not need to be tracked with a separate differential equation.
 
 ## Black Hole Feedback
 
