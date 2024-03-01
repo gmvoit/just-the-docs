@@ -28,7 +28,7 @@ parent: Description
 # Regulation
 {: .no_toc}
 
-A galaxy's circumgalactic medium (CGM) supplies the gas that sustains star formation. Galaxies appears to regulate that supply by interacting with the CGM. Supernovae in galaxies less massive than the Milky Way can reduce inflows from the CGM by driving galactic winds that expand the atmospheres of those galaxies. Black hole accretion in higher-mass galaxies appears to provide enough atmospheric energy to quench star formation by shutting down the galaxy's supply of cold gas. This page explains how **ExpCGM** represents those interactions and models their effects on the CGM.
+A galaxy's circumgalactic medium (CGM) supplies the gas that sustains star formation. Galaxies appear to regulate that supply by interacting with the CGM. Supernovae in galaxies less massive than the Milky Way can reduce inflows from the CGM by driving galactic winds that expand the atmospheres of those galaxies. Black hole accretion in higher-mass galaxies appears to provide enough atmospheric energy to quench star formation by limiting a galaxy's supply of cold gas. This page explains how **ExpCGM** represents those interactions and models their effects on the CGM.
 
 <details closed markdown="block">
   <summary>
@@ -47,7 +47,7 @@ in which $f_{\rm b}$ is the cosmic mean baryon mass fraction.
 
 All baryons not within galaxies are assigned to the CGM, so that
   $$M_{\rm CGM} = M_{\rm acc} - M_* - M_{\rm ISM}$$
-where $M_*$ and $M_{\rm ISM}$ are the stellar mass and ISM mass of the halo's galaxies. For simplicity, this page treats the halo's central galaxy as the halo's only galaxy. A future extension of **ExpCGM** will include satellite galaxies and their contributions to the central galaxy's atmosphere.
+where $M_*$ and $M_{\rm ISM}$ are the stellar mass and ISM mass of the halo's galaxies. For simplicity, this page treats a halo's central galaxy as its only galaxy. A future extension of **ExpCGM** will include satellite galaxies and their contributions to the atmosphere.
 
 In **ExpCGM**, baryons that galactic feedback has pushed beyond a halo's virial radius are considered to remain part of a galaxy's atmosphere so it can be treated as a closed system that retains information about the cumulative input of feedback energy over cosmic time. The total energy associated with $M_{\rm CGM}$ is then the sum of gravitational, thermal, and non-thermal energy:
   $$E_{\rm CGM} = E_\varphi + E_{\rm th} + E_{\rm nt}$$
@@ -59,7 +59,7 @@ Evolution of an **ExpCGM** galactic atmosphere depends on how $E_{\rm CGM}$ and 
 
 ### Mass Conservation
 
-In the minimalist regulator model, cosmological accretion supplies atmospheric baryons at the rate $\dot{M}\_{\rm acc}$, and the atmosphere supplies the central galaxy's ISM with baryons at the rate $\dot{M}\_{\rm in}$. Star formation proceeds at the rate $\dot{M}\_* = M_{\rm ISM} / t_{\rm SF}$, in which the ***star-formation timescale*** $t_{\rm SF}$ is a model parameter. A fraction $f_{\rm rec}$ of the gas going into stars recycles back into the ISM. The energy released by stars drives a baryonic outflow into the CGM at the rate $\eta_M \dot{M}_\*$, where $\eta_M$ is a ***mass loading parameter***. Mass conservation therefore implies
+In the minimalist regulator model, cosmological accretion supplies atmospheric baryons at the rate $\dot{M}\_{\rm acc}$, and the atmosphere supplies the central galaxy's ISM with baryons at the rate $\dot{M}\_{\rm in}$. Star formation proceeds at the rate $M_{\rm ISM} / t_{\rm SF}$, in which the ***star-formation timescale*** $t_{\rm SF}$ is a model parameter. A fraction $f_{\rm rec}$ of the gas going into stars recycles back into the ISM. The energy released by stars drives a baryonic outflow into the CGM at the rate $\eta_M M_{\rm ISM} / t_{\rm SF}$, where $\eta_M$ is a ***mass loading parameter***. Mass conservation therefore implies
 
 <p>
   $$\dot{M}_{\rm CGM} = \dot{M}_{\rm acc} - \dot{M}_{\rm in} + \eta_M \frac {M_{\rm ISM}} {t_{\rm SF}}$$
@@ -69,7 +69,7 @@ In the minimalist regulator model, cosmological accretion supplies atmospheric b
   $$\dot{M}_{\rm ISM} = \dot{M}_{\rm in} - ( 1 + \eta_M - f_{\rm rec}) \frac {M_{\rm ISM}} {t_{\rm SF}}$$
 </p>
 
-According to this accounting system, the central galaxy's stellar mass increases as $\dot{M}\_\* = (1 - f_{\rm rec}) M_{\rm ISM} / t_{\rm SF}$ because the return of stellar gas to its ISM is effectively instantaneous. 
+According to this accounting system, the galaxy's stellar mass increases as $\dot{M}\_\* = (1 - f_{\rm rec}) M_{\rm ISM} / t_{\rm SF}$ because recycling of stellar gas back into the ISM is effectively instantaneous. 
 
 ### Energy Conservation
 
@@ -79,26 +79,26 @@ Closure of this set of equations requires an expression for $\dot{M}\_{\rm in}$,
   $$\dot{E}_{\rm CGM} = \dot{E}_{\rm acc} - \dot{E}_{\rm rad} - \dot{E}_{\rm in} + \dot{E}_{\rm fb} + \dot{E}_{\varphi,{\rm cos}}$$
 </p>
 
-Cosmological accretion adds atmospheric energy at a rate $\dot{E}\_{\rm acc}$ given by a user-supplied model for halo growth. The radiative loss rate $\dot{E}\_{\rm rad}$ comes from integration over the atmosphere model, as described on the [Essentials](Essentials) page. Gas flowing from the CGM into the ISM removes energy from the CGM at a rate $\dot{E}\_{\rm in}$ equal to the product of $\dot{M}\_{\rm in}$ and $\varepsilon_{\rm in} = \varepsilon (r_{\rm gal})$, which is the specific energy of atmospheric gas at the transitional radius $r_{\rm gal}$. If the feedback comes only from stellar sources, the feedback energy supply is 
+Cosmological accretion adds atmospheric energy at a rate $\dot{E}\_{\rm acc}$ given by a user-supplied model for halo growth (see the [Accretion](/ExpCGM/extensions/Accretion) page for more detail). The radiative loss rate $\dot{E}\_{\rm rad}$ comes from integration over the atmosphere model, as described on the [Essentials](Essentials) page. Gas flowing from the CGM into the ISM removes energy from the CGM at a rate $\dot{E}\_{\rm in}$ equal to the product of $\dot{M}\_{\rm in}$ and $\varepsilon_{\rm in} = \varepsilon (r_{\rm gal})$, which is the specific energy of atmospheric gas at the transitional radius $r_{\rm gal}$. If galactic feedback comes only from stellar sources, the feedback energy supply is 
 
 <p>
-  $$\dot{E}_{\rm fb} = \eta_E \varepsilon_{\rm SN} \dot{M}_*$$
+  $$\dot{E}_{\rm fb} = \eta_E \varepsilon_{\rm SN} \frac {M_{\rm ISM}} {t_{\rm SF}}$$
 </p>
 
-in which $\varepsilon_{\rm SN} \dot{M}_\*$ is the rate at which supernovae produce kinetic energy and the ***energy loading factor*** $\eta_E$ is the fraction that couples with the CGM. Finally, $\dot{E}\_{\varphi,{\rm cos}}$ is the change in atmospheric energy stemming from changes in the gravitational potential (see the [Essentials](Essentials) page).
+in which $\varepsilon_{\rm SN} M_{\rm ISM} / t_{\rm SF}$ is the rate at which supernovae produce kinetic energy and the ***energy loading factor*** $\eta_E$ is the fraction that couples with the CGM. Finally, $\dot{E}\_{\varphi,{\rm cos}}$ is the change in atmospheric energy stemming from changes in the gravitational potential (see the [Essentials](Essentials) page).
 
 These three differential equations for $\dot{E}\_{\rm CGM}$, $\dot{M}\_{\rm CGM}$, and $\dot{M}\_{\rm ISM}$ make up the minimalist regulator model. To integrate the model over time, an **ExpCGM** user needs to specify an atmosphere model that provides $\dot{M}\_{\rm in}$ and $\dot{E}\_{\rm rad}$ as functions of $E_{\rm CGM}$, $M_{\rm CGM}$, and model parameters. A user also needs to specify a cosmological halo model that provides $\dot{M}\_{\rm acc}$ and $\dot{E}\_{\rm acc}$. 
 
 ### Steady Star Formation
 
-If both the galaxy's gas supply $\dot{M}\_{\rm in}$ and the star formation timescale $t_{\rm SF}$ remain sufficiently steady, then star formation converges toward the steady-state rate $\dot{M}\_\* = \dot{M}\_{\rm in} / (1 + \eta_M)$. In that limit, the minimalist regulator model reduces to a system of just two differential equations,  
+If both the galaxy's gas supply $\dot{M}\_{\rm in}$ and the star formation timescale $t_{\rm SF}$ remain sufficiently steady, then star formation converges toward the steady-state rate $M_{\rm ISM} / t_{\rm SF} = = \dot{M}\_{\rm in} / (1 + \eta_M - f_{\rm rec})$. In that limit, the minimalist regulator model reduces to a system of just two differential equations,  
 
 <p>
   $$\dot{M}_{\rm CGM} = \dot{M}_{\rm acc} - \frac {\dot{M}_{\rm in}} {1 + \eta_M - f_{\rm rec}}$$
 </p>
 
 <p>
-  $$\dot{E}_{\rm CGM} = \dot{E}_{\rm acc} + \dot{E}_{\varphi,{\rm cos}} + \left( \frac {\eta_E \varepsilon_{\rm SN}} {1 + \eta_M} - \varepsilon_{\rm loss} \right) \dot{M}_{\rm in}$$
+  $$\dot{E}_{\rm CGM} = \dot{E}_{\rm acc} + \dot{E}_{\varphi,{\rm cos}} + \left( \frac {\eta_E \varepsilon_{\rm SN}} {1 + \eta_M - f_{\rm rec}} - \varepsilon_{\rm loss} \right) \dot{M}_{\rm in}$$
 </p>
 
 Here, the specific energy $\varepsilon_{\rm loss}$ is the sum of $\varepsilon_{\rm rad} \equiv \dot{E}\_{\rm rad} / \dot{M}\_{\rm in}$ and $\varepsilon_{\rm in}$, and all of the feedback is assumed to come from stars. **ExpCGM** calls this system of two equations the *reduced version* of the minimalist regulator model.
