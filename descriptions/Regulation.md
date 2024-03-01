@@ -79,7 +79,7 @@ Closure of this set of equations requires an expression for $\dot{M}\_{\rm in}$,
   $$\dot{E}_{\rm CGM} = \dot{E}_{\rm acc} - \dot{E}_{\rm rad} - \dot{E}_{\rm in} + \dot{E}_{\rm fb} + \dot{E}_{\varphi,{\rm cos}}$$
 </p>
 
-Cosmological accretion adds atmospheric energy at a rate $\dot{E}\_{\rm acc}$ given by a user-supplied model for halo growth (see the [Accretion](/ExpCGM/extensions/Accretion) page for more detail). The radiative loss rate $\dot{E}\_{\rm rad}$ comes from integration over the atmosphere model, as described on the [Essentials](Essentials) page. Gas flowing from the CGM into the ISM removes energy from the CGM at a rate $\dot{E}\_{\rm in}$ equal to the product of $\dot{M}\_{\rm in}$ and $\varepsilon_{\rm in} = \varepsilon (r_{\rm gal})$, which is the specific energy of atmospheric gas at the transitional radius $r_{\rm gal}$. If galactic feedback comes only from stellar sources, the feedback energy supply is 
+Cosmological accretion adds atmospheric energy at a rate $\dot{E}\_{\rm acc}$ given by a user-supplied model for halo growth (see the [Accretion](/ExpCGM/extensions/Accretion) page for more detail). The radiative loss rate $\dot{E}\_{\rm rad}$ comes from integration over the atmosphere model, as described on the [Essentials](Essentials) page. Gas flowing from the CGM into the ISM removes energy from the CGM at a rate $\dot{E}\_{\rm in}$ equal to the product of $\dot{M}\_{\rm in}$ and $\varepsilon_{\rm in} = \varepsilon (r_{\rm gal})$, which is the specific energy of atmospheric gas at the transitional radius $r_{\rm gal}$ separating the CGM from the ISM. If galactic feedback comes only from stellar sources, the feedback energy supply is 
 
 <p>
   $$\dot{E}_{\rm fb} = \eta_E \varepsilon_{\rm SN} \frac {M_{\rm ISM}} {t_{\rm SF}}$$
@@ -87,11 +87,17 @@ Cosmological accretion adds atmospheric energy at a rate $\dot{E}\_{\rm acc}$ gi
 
 in which $\varepsilon_{\rm SN} M_{\rm ISM} / t_{\rm SF}$ is the rate at which supernovae produce kinetic energy and the ***energy loading factor*** $\eta_E$ is the fraction that couples with the CGM. Finally, $\dot{E}\_{\varphi,{\rm cos}}$ is the change in atmospheric energy stemming from changes in the gravitational potential (see the [Essentials](Essentials) page).
 
-These three differential equations for $\dot{E}\_{\rm CGM}$, $\dot{M}\_{\rm CGM}$, and $\dot{M}\_{\rm ISM}$ make up the minimalist regulator model. To integrate the model over time, an **ExpCGM** user needs to specify an atmosphere model that provides $\dot{M}\_{\rm in}$ and $\dot{E}\_{\rm rad}$ as functions of $E_{\rm CGM}$, $M_{\rm CGM}$, and model parameters. A user also needs to specify a cosmological halo model that provides $\dot{M}\_{\rm acc}$ and $\dot{E}\_{\rm acc}$. 
+These three differential equations for $\dot{E}\_{\rm CGM}$, $\dot{M}\_{\rm CGM}$, and $\dot{M}\_{\rm ISM}$ make up the minimalist regulator model. To integrate the model over time, an **ExpCGM** user needs to specify an atmosphere model that provides $\dot{M}\_{\rm in}$ and $\dot{E}\_{\rm rad}$ as functions of $E_{\rm CGM}$, $M_{\rm CGM}$. A user also needs to specify the model parameters $\varepsilon_{\rm SN}$, $t_{\rm SF}$, $\eta_E$, $\eta_M$, and $f_{\rm rec}$, plus a cosmological halo model that provides $\dot{M}\_{\rm acc}$ and $\dot{E}\_{\rm acc}$. 
 
 ### Steady Star Formation
 
-If both the galaxy's gas supply $\dot{M}\_{\rm in}$ and the star formation timescale $t_{\rm SF}$ remain sufficiently steady, then star formation converges toward the steady-state rate $M_{\rm ISM} / t_{\rm SF} = = \dot{M}\_{\rm in} / (1 + \eta_M - f_{\rm rec})$. In that limit, the minimalist regulator model reduces to a system of just two differential equations,  
+If both the galaxy's gas supply $\dot{M}\_{\rm in}$ and the star formation timescale $t_{\rm SF}$ remain sufficiently steady, then star formation converges toward the steady-state rate 
+
+<p>
+  $$\frac {M_{\rm ISM}} {t_{\rm SF}} = \frac {\dot{M}_{\rm in}} {1 + \eta_M - f_{\rm rec}}$$ 
+</p>
+
+In that limit, the minimalist regulator model reduces to a system of just two differential equations,  
 
 <p>
   $$\dot{M}_{\rm CGM} = \dot{M}_{\rm acc} - \frac {\dot{M}_{\rm in}} {1 + \eta_M - f_{\rm rec}}$$
@@ -101,7 +107,7 @@ If both the galaxy's gas supply $\dot{M}\_{\rm in}$ and the star formation times
   $$\dot{E}_{\rm CGM} = \dot{E}_{\rm acc} + \dot{E}_{\varphi,{\rm cos}} + \left( \frac {\eta_E \varepsilon_{\rm SN}} {1 + \eta_M - f_{\rm rec}} - \varepsilon_{\rm loss} \right) \dot{M}_{\rm in}$$
 </p>
 
-Here, the specific energy $\varepsilon_{\rm loss}$ is the sum of $\varepsilon_{\rm rad} \equiv \dot{E}\_{\rm rad} / \dot{M}\_{\rm in}$ and $\varepsilon_{\rm in}$, and all of the feedback is assumed to come from stars. **ExpCGM** calls this system of two equations the *reduced version* of the minimalist regulator model.
+Here, the specific energy $\varepsilon_{\rm loss}$ is the sum of $\varepsilon_{\rm rad} \equiv \dot{E}\_{\rm rad} / \dot{M}\_{\rm in}$ and $\varepsilon_{\rm in}$, and all of the feedback is assumed to come from stars. **ExpCGM** calls this system of two differential equations the *reduced version* of the minimalist regulator model.
 
 
 ## Regulator with Enrichment
