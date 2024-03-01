@@ -123,7 +123,7 @@ Stars convert hydrogen and helium into heavier elements and return much of their
 The interstellar medium gains and loses heavy elements through several channels. There are two source channels. When stars eject heavy elements, a fraction $1 - \eta_Z$ mixes with the ISM, while a complementary fraction $\eta_Z$ passes into the CGM through a galactic wind. A galaxy's circumgalactic gas supply brings in additional heavy elements at the rate $Z_{\rm CGM} \dot{M}\_{\rm in}$. There are also two loss channels, both proportional to the star-formation rate. Heavy elements from the ISM are locked into stars at the rate $Z_{\rm ISM} (1 - f_{\rm rec}) M_{\rm ISM} / t_{\rm SF}$ and flow from the ISM into the CGM at the rate $Z_{\rm ISM} \eta_M M_{\rm ISM} / t_{\rm SF}$, where $Z_{\rm ISM} = M_{Z,{\rm ISM}} / M_{\rm ISM}$. The total mass $M_{Z,{\rm ISM}$ of heavy elements in the ISM therefore evolves according to 
 
 <p>
-  $$\dot{M}_{Z,{\rm ISM}} ~=~ Z_{\rm CGM} \dot{M}_{\rm in} ~+~ \left[ (1 - f_{\rm rec}) (1 - \eta_Z) y_Z - Z_{\rm ISM} (1 + \eta_M - f_{\rm rec}) \right] \frac {M_{\rm ISM}} {t_{\rm SF}}$$
+  $$\dot{M}_{Z,ISM} ~=~ Z_{\rm CGM} \dot{M}_{\rm in} ~+~ \left[ (1 - f_{\rm rec}) (1 - \eta_Z) y_Z - Z_{\rm ISM} (1 + \eta_M - f_{\rm rec}) \right] \frac {M_{\rm ISM}} {t_{\rm SF}}$$
 </p>
 
 ### CGM Enrichment
