@@ -101,7 +101,7 @@ If both the galaxy's gas supply $\dot{M}\_{\rm in}$ and the star formation times
 </p>
 
 <p>
-  $$\dot{E}_{\rm CGM} = \dot{E}_{\rm acc} + \left( \frac {\eta_E \varepsilon_{\rm SN}} {1 + \eta_M} - \varepsilon_{\rm loss} \right) \dot{M}_{\rm in} + \dot{E}_{\varphi,{\rm cos}}$$
+  $$\dot{E}_{\rm CGM} = \dot{E}_{\rm acc} + \dot{E}_{\varphi,{\rm cos}} + \left( \frac {\eta_E \varepsilon_{\rm SN}} {1 + \eta_M} - \varepsilon_{\rm loss} \right) \dot{M}_{\rm in}$$
 </p>
 
 in which $\varepsilon_{\rm loss}$ is the sum of $\varepsilon_{\rm in}$ and $\varepsilon_{\rm rad} \equiv \dot{E}\_{\rm rad} / \dot{M}\_{\rm in}$ and all of the feedback is assumed to come from stars. **ExpCGM** calls this system of two equations the *reduced version* of the minimalist regulator model.
@@ -124,7 +124,7 @@ Stars convert hydrogen and helium into heavier elements and return much of their
 The interstellar medium gains and loses heavy elements through several channels. When stars eject heavy elements, a fraction $1 - \eta_Z$ mixes with the ISM, while a complementary fraction $\eta_Z$ passes into the CGM. A galaxy's circumgalactic gas supply adds more heavy elements to the ISM at the rate $Z_{\rm CGM} \dot{M}\_{\rm in}$. There are also two loss channels, both proportional to the star-formation rate. Heavy elements from the ISM are locked into stars at the rate $Z_{\rm ISM} (1 - f_{\rm rec}) M_{\rm ISM} / t_{\rm SF}$ and flow from the ISM into the CGM at the rate $Z_{\rm ISM} \eta_M M_{\rm ISM} / t_{\rm SF}$, where $Z_{\rm ISM} = M_{\rm Z,ISM} / M_{\rm ISM}$. Enrichment of the ISM therefore evolves according to 
 
 <p>
-  $$\dot{M}_{\rm Z,ISM} ~=~ Z_{\rm CGM} \dot{M}_{\rm in} ~+~ (1 - f_{\rm rec}) (1 - \eta_Z) y_Z \frac {M_{\rm ISM}} {t_{\rm SF}} ~-~ Z_{\rm ISM} (1 + \eta_M - f_{\rm rec}) \frac {M_{\rm ISM}} {t_{\rm SF}}$$
+  $$\dot{M}_{\rm Z,ISM} ~=~ Z_{\rm CGM} \dot{M}_{\rm in} ~+~ \left[ (1 - f_{\rm rec}) (1 - \eta_Z) y_Z - Z_{\rm ISM} (1 + \eta_M - f_{\rm rec}) \right] \frac {M_{\rm ISM}} {t_{\rm SF}}$$
 </p>
 
 ### CGM Enrichment
@@ -132,7 +132,7 @@ The interstellar medium gains and loses heavy elements through several channels.
 Evolution of the mass $M_{\rm Z,CGM}$ of heavy elements in the CGM  can be expressed in terms of channels already described:
 
 <p>
-  $$\dot{M}_{\rm Z,CGM} ~=~ Z_{\rm acc} \dot{M}_{\rm acc} ~-~ Z_{\rm CGM} \dot{M}_{\rm in} + Z_{\rm ISM} \eta_M \frac {M_{\rm ISM}} {t_{\rm SF}} ~+~ (1 - f_{\rm rec}) \eta_Z y_Z \frac {M_{\rm ISM}} {t_{\rm SF}}$$
+  $$\dot{M}_{\rm Z,CGM} ~=~ Z_{\rm acc} \dot{M}_{\rm acc} ~-~ Z_{\rm CGM} \dot{M}_{\rm in} ~+~ \left[ Z_{\rm ISM} \eta_M + (1 - f_{\rm rec}) \eta_Z y_Z \right] \frac {M_{\rm ISM}} {t_{\rm SF}}$$
 </p>
 
 Dividing $M_{\rm Z,CGM}$ by $M_{\rm CGM}$ gives the enrichment proportion $Z_{\rm CGM}$ needed to compute radiative losses from the CGM.
