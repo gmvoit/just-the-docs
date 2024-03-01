@@ -28,9 +28,7 @@ parent: Description
 # Regulation
 {: .no_toc}
 
-A galaxy's circumgalactic medium (CGM) supplies the gas that sustains star formation. Galaxies appears to regulate that supply by interacting with the CGM. Supernovae in galaxies less massive than the Milky Way can reduce inflows from the CGM by driving galactic winds that expand the atmospheres of those galaxies. Black hole accretion in higher-mass galaxies appears to provide enough atmospheric energy to quench star formation by shutting down the galaxy's supply of cold gas. 
-
-This page explains how **ExpCGM** represents those interactions and models their effects on the CGM.
+A galaxy's circumgalactic medium (CGM) supplies the gas that sustains star formation. Galaxies appears to regulate that supply by interacting with the CGM. Supernovae in galaxies less massive than the Milky Way can reduce inflows from the CGM by driving galactic winds that expand the atmospheres of those galaxies. Black hole accretion in higher-mass galaxies appears to provide enough atmospheric energy to quench star formation by shutting down the galaxy's supply of cold gas. This page explains how **ExpCGM** represents those interactions and models their effects on the CGM.
 
 <details closed markdown="block">
   <summary>
