@@ -120,7 +120,7 @@ Standard **ExpCGM** models relate $\dot{M}\_{\rm acc}$ to the halo's cosmologica
 
 ### Asymmetric Accretion
 
-The difficulty with applying a boundary condition representing incoming momentum is cosmological accretion's lack of spherical symmetry. Much of the gas entering a galaxy's atmosphere streams in along cosmological filaments or plunges in along with merging subhalos. The gas associated with filaments and subhalos tends to be much denser than the ambient gas of a halo's outer atmosphere and is unimpeded by it. Meanwhile, ambient atmospheric gas that is rising outward can proceed along pathways posing less resistance. Nevertheless, the accreting gas must slow down somewhere in the atmosphere by shedding its infalling momentum and exert an inward force on the atmosphere in that deceleration zone.
+The difficulty with applying a boundary condition representing incoming momentum is cosmological accretion's lack of spherical symmetry. Much of the gas entering a galaxy's atmosphere streams in along cosmological filaments or plunges in along with merging subhalos. The gas associated with filaments and subhalos tends to be much denser than the ambient gas of a halo's outer atmosphere and is unimpeded by it. Meanwhile, ambient atmospheric gas that is rising outward can proceed along pathways posing less resistance. Nevertheless, the accreting gas must slow down *somewhere* in the atmosphere by shedding its infalling momentum, and it exerts an inward force where it decelerates.
 
 ### Force Balance Modification
 
@@ -206,7 +206,7 @@ To summarize how accretion of both gas mass and total mass affects the cosmologi
  for the specific kinetic energy of accreting gas.
 
 {: .note}
-At present, the **ExpCGM** framework does not account for any thermal energy that accreting gas might have prior to passing within $R_{\rm halo}$.
+At present, the **ExpCGM** framework does not account for any thermal energy that accreting gas might have had prior to passing through an accretion shock.
 
 * **Adiabatic Compression.**
  Changes in the halo's gravitational potential owing to cosmological accretion change the atmosphere's total energy $E_{\rm CGM}$ by the amount
