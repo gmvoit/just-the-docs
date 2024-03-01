@@ -121,19 +121,21 @@ Stars convert hydrogen and helium into heavier elements and return much of their
 
 ### ISM Enrichment
 
-The interstellar medium gains and loses heavy elements through several channels. When stars eject heavy elements, a fraction $1 - \eta_M$ mixes with the ISM, while a complementary fraction $\eta_M$ passes into the CGM. A galaxy's circumgalactic gas supply adds more heavy elements to the ISM at the rate $Z_{\rm CGM} \dot{M}\_{\rm in}$. There are also two loss channels, both proportional to the star-formation rate. Heavy elements from the ISM are locked into stars at the rate $Z_{\rm ISM} (1 - f_{\rm rec}) M_{\rm ISM} / t_{\rm SF}$ and flow from the ISM into the CGM at the rate $Z_{\rm ISM} \eta_M M_{\rm ISM} / t_{\rm SF}$, where $Z_{\rm ISM} = M_{\rm Z,ISM} / M_{\rm ISM}$. Enrichment of the ISM therefore evolves according to 
+The interstellar medium gains and loses heavy elements through several channels. When stars eject heavy elements, a fraction $1 - \eta_Z$ mixes with the ISM, while a complementary fraction $\eta_Z$ passes into the CGM. A galaxy's circumgalactic gas supply adds more heavy elements to the ISM at the rate $Z_{\rm CGM} \dot{M}\_{\rm in}$. There are also two loss channels, both proportional to the star-formation rate. Heavy elements from the ISM are locked into stars at the rate $Z_{\rm ISM} (1 - f_{\rm rec}) M_{\rm ISM} / t_{\rm SF}$ and flow from the ISM into the CGM at the rate $Z_{\rm ISM} \eta_M M_{\rm ISM} / t_{\rm SF}$, where $Z_{\rm ISM} = M_{\rm Z,ISM} / M_{\rm ISM}$. Enrichment of the ISM therefore evolves according to 
 
 <p>
-  $$\dot{M}_{\rm Z,ISM} ~=~ Z_{\rm CGM} \dot{M}_{\rm in} ~+~ (1 - f_{\rm rec}) (1 - \eta_M) y_Z \frac {M_{\rm ISM}} {t_{\rm SF}} ~-~ Z_{\rm ISM} (1 + \eta_M - f_{\rm rec}) \frac {M_{\rm ISM}} {t_{\rm SF}}$$
+  $$\dot{M}_{\rm Z,ISM} ~=~ Z_{\rm CGM} \dot{M}_{\rm in} ~+~ (1 - f_{\rm rec}) (1 - \eta_Z) y_Z \frac {M_{\rm ISM}} {t_{\rm SF}} ~-~ Z_{\rm ISM} (1 + \eta_M - f_{\rm rec}) \frac {M_{\rm ISM}} {t_{\rm SF}}$$
 </p>
 
 ### CGM Enrichment
 
-Evolution of the mass of heavy elements in the CGM ($M_{\rm Z,CGM}$) can be expressed in terms of channels already described:
+Evolution of the mass $M_{\rm Z,CGM}$ of heavy elements in the CGM  can be expressed in terms of channels already described:
 
 <p>
-  $$\dot{M}_{\rm Z,CGM} ~=~ Z_{\rm acc} \dot{M}_{\rm acc} ~-~ Z_{\rm CGM} \dot{M}_{\rm in} + Z_{\rm ISM} \eta_M \frac {M_{\rm ISM}} {t_{\rm SF}} ~+~ (1 - f_{\rm rec}) \eta_M y_Z \frac {M_{\rm ISM}} {t_{\rm SF}}$$
+  $$\dot{M}_{\rm Z,CGM} ~=~ Z_{\rm acc} \dot{M}_{\rm acc} ~-~ Z_{\rm CGM} \dot{M}_{\rm in} + Z_{\rm ISM} \eta_M \frac {M_{\rm ISM}} {t_{\rm SF}} ~+~ (1 - f_{\rm rec}) \eta_Z y_Z \frac {M_{\rm ISM}} {t_{\rm SF}}$$
 </p>
+
+Dividing $M_{\rm Z,CGM}$ by $M_{\rm CGM}$ gives the enrichment proportion $Z_{\rm CGM}$ needed to compute radiative losses from the CGM.
 
 ### Stellar Enrichment
 
