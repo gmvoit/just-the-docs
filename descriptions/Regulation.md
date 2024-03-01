@@ -126,13 +126,13 @@ The interstellar medium gains and loses heavy elements through several channels.
 
 ### CGM Enrichment
 
-Evolution of the mass $M_{Z,{\rm CGM}}$ of heavy elements in the CGM  can be expressed in terms of channels already described:
+Evolution of the mass $M_{Z,{\rm CGM}}$ of heavy elements in the CGM can be expressed in terms of channels already described. Cosmological accretion adds them at the rate $Z_{\rm acc} \dot{M}\_{\rm acc}$. Inflow into the central galaxy removes them at the rate $Z_{\rm CGM} \dot{M}\_{\rm in}$. Galactic outflows add them both directly from supernovae at the rate $(1 - f_{\rm rec}) \eta_Z y_Z M_{\rm ISM} / t_{\rm SF}$ and indirectly, via ISM ejection, at the rate $Z_{\rm ISM} \eta_M M_{\rm ISM} / t_{\rm SF}$. The result is
 
 <p>
   $$\dot{M}_{Z,{\rm CGM}} ~=~ Z_{\rm acc} \dot{M}_{\rm acc} ~-~ Z_{\rm CGM} \dot{M}_{\rm in} ~+~ \left[ Z_{\rm ISM} \eta_M + (1 - f_{\rm rec}) \eta_Z y_Z \right] \frac {M_{\rm ISM}} {t_{\rm SF}}$$
 </p>
 
-Dividing $M_{Z,{\rm CGM}}$ by $M_{\rm CGM}$ gives the enrichment proportion $Z_{\rm CGM}$ needed to compute radiative losses from the CGM.
+Dividing $M_{Z,{\rm CGM}}$ by $M_{\rm CGM}$ then gives the enrichment proportion $Z_{\rm CGM}$ needed to compute radiative losses from the CGM.
 
 ### Stellar Enrichment
 
