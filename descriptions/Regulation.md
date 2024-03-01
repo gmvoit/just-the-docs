@@ -145,7 +145,7 @@ It does not need to be tracked with a separate differential equation.
 
 ## Black Hole Feedback
 
-**ExpCGM** does not currently include an implementation of black hole feedback. Developing one is a high priority task for the collaboration.
+**ExpCGM** does not currently include an implementation of black hole feedback. Developing such algorithms is a high priority future task for the collaboration.
 
 
 
