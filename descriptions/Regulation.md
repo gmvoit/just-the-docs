@@ -109,11 +109,11 @@ in which $\varepsilon_{\rm loss}$ is the sum of $\varepsilon_{\rm in}$ and $\var
 
 ## Regulator with Enrichment
 
-The cooling functions ($\Lambda$ or $\Lambda_\rho$) that **ExpCGM** uses to calculate $\dot{M}\_{\rm in}$ and $\dot{E}\_{\rm rad}$ depends strongly on enrichment of the CGM, brought about by galactic winds. Tracking the evolution of enrichment can be done with the following three additional differential equations.
+The cooling functions ($\Lambda$ or $\Lambda_\rho$) that **ExpCGM** uses to calculate $\dot{M}\_{\rm in}$ and $\dot{E}\_{\rm rad}$ depends strongly on enrichment of the CGM, brought about by galactic winds. Tracking the evolution of enrichment can be done with the three additional differential equations, as follows.
 
 ### Overall Enrichment
 
-Stars convert hydrogen and helium into heavier elements and returns those heavier elements to the ISM. **ExpCGM** expresses that heavy element yield in terms of the parameter $y_Z = M_Z / M_*$, where $M_Z$ is the mass of newly made heavy elements added to the ISM during recycling and $M_*$ is the stellar mass remaining *after recycling*. While stars are adding newly made heavy elements, cosmological accretion can be adding elements to the CGM at the rate $Z_{\rm acc} \dot{M}\_{\rm acc}$, where $Z_{\rm acc}$ is the mass fraction of accreting gas that is not hydrogen or helium. The total mass in such elements therefore increases according to
+Stars convert hydrogen and helium into heavier elements and returns those heavier elements to the ISM. **ExpCGM** expresses that heavy element yield in terms of the parameter $y_Z = M_Z / M_\*$, where $M_Z$ is the mass of newly made heavy elements added to the ISM during recycling and $M_\*$ is the stellar mass remaining *after recycling*. While stars are adding newly made heavy elements, cosmological accretion can be adding elements to the CGM at the rate $Z_{\rm acc} \dot{M}\_{\rm acc}$, where $Z_{\rm acc}$ is the mass fraction of accreting gas that is not hydrogen or helium. The total mass in such elements therefore increases according to
 
 <p>
   $$\dot{M}_{\rm Z} = Z_{\rm acc} \dot{M}_{\rm acc} + (1 - f_{\rm rec}) y_Z \frac {M_{\rm ISM}} {t_{\rm SF}}$$
