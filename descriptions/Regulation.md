@@ -109,11 +109,11 @@ in which $\varepsilon_{\rm loss}$ is the sum of $\varepsilon_{\rm in}$ and $\var
 
 ## Regulator with Enrichment
 
-The cooling functions ($\Lambda$ or $\Lambda_\rho$) that **ExpCGM** uses to calculate $\dot{M}\_{\rm in}$ and $\dot{E}\_{\rm rad}$ depends strongly on enrichment of the CGM, brought about by galactic winds. Tracking the evolution of enrichment can be done with the three additional differential equations, as follows.
+The cooling functions that **ExpCGM** uses to calculate $\dot{M}\_{\rm in}$ and $\dot{E}\_{\rm rad}$ depend strongly on enrichment of the CGM with elements heavier than hydrogen or helium. Tracking of the proportion $Z_{\rm CGM}$ of those elements in the CGM can be done with three additional differential equations, as follows.
 
 ### Overall Enrichment
 
-Stars convert hydrogen and helium into heavier elements and returns much of their enriched mass to the ISM. **ExpCGM** expresses that heavy element yield in terms of the parameter $y_Z = M_Z / M_\*$, where $M_Z$ is the mass of newly made heavy elements ejected during recycling and $M_\*$ is the stellar mass remaining *after recycling*. While stars are adding newly made heavy elements to the ISM, cosmological accretion can be adding elements to the CGM at the rate $Z_{\rm acc} \dot{M}\_{\rm acc}$, where $Z_{\rm acc}$ is the mass fraction of accreting gas that is not hydrogen or helium. The total mass of heavy elements associated with a halo's baryons therefore increases according to
+Stars convert hydrogen and helium into heavier elements and return much of their enriched gas mass to the ISM and the CGM. **ExpCGM** expresses that heavy element yield in terms of the parameter $y_Z = M_Z / M_\*$, where $M_Z$ is the mass of newly made heavy elements ejected during recycling and $M_\*$ is the stellar mass remaining *after recycling*. While stars are adding newly made heavy elements to the ISM, cosmological accretion can be adding elements to the CGM at the rate $Z_{\rm acc} \dot{M}\_{\rm acc}$, where $Z_{\rm acc}$ is the mass fraction of accreting gas that is not hydrogen or helium. The total mass of heavy elements associated with a halo's baryons therefore increases according to
 
 <p>
   $$\dot{M}_{\rm Z} ~=~ Z_{\rm acc} \dot{M}_{\rm acc} ~+~ (1 - f_{\rm rec}) y_Z \frac {M_{\rm ISM}} {t_{\rm SF}}$$
@@ -121,10 +121,10 @@ Stars convert hydrogen and helium into heavier elements and returns much of thei
 
 ### ISM Enrichment
 
-The interstellar medium gains and loses heavy elements through several channels. It gains heavy elements through stellar recycling. A galaxy's circumgalactic gas supply adds more heavy elements at the rate $Z_{\rm CGM} \dot{M}\_{\rm in}$, where $Z_{\rm CGM} = M_{\rm Z,CGM} / M_{\rm CGM}$ is the heavy-element proportion of the CGM. The two loss channels are both proportional to the star-formation rate. Heavy elements go from the ISM into stars at the rate $Z_{\rm ISM} M_{\rm ISM} / t_{\rm SF}$ and from the ISM into the CGM at the rate $Z_{\rm ISM} \eta_M M_{\rm ISM} / t_{\rm SF}$, where $Z_{\rm ISM} = M_{\rm Z,ISM} / M_{\rm ISM}$. Enrichment of the ISM therefore evolves according to 
+The interstellar medium gains and loses heavy elements through several channels. When stars eject heavy elements, a fraction $\eta_M$ goes directly into the CGM, while a fraction $1-\eta_M$ remains in the ISM. A galaxy's circumgalactic gas supply adds more heavy elements at the rate $Z_{\rm CGM} \dot{M}\_{\rm in}$, where $Z_{\rm CGM} = M_{\rm Z,CGM} / M_{\rm CGM}$ is the heavy-element proportion of the CGM. The two loss channels are both proportional to the star-formation rate. Heavy elements from the ISM are therefore locked into stars at the rate $Z_{\rm ISM} (1 - f_{\rm rec}) M_{\rm ISM} / t_{\rm SF}$ and flow from the ISM into the CGM at the rate $Z_{\rm ISM} \eta_M M_{\rm ISM} / t_{\rm SF}$, where $Z_{\rm ISM} = M_{\rm Z,ISM} / M_{\rm ISM}$. Enrichment of the ISM therefore evolves according to 
 
 <p>
-  $$\dot{M}_{\rm Z,ISM} ~=~ Z_{\rm CGM} \dot{M}_{\rm in} ~+~ (1 - f_{\rm rec}) y_Z \frac {M_{\rm ISM}} {t_{\rm SF}} ~-~ Z_{\rm ISM} (1 + \eta_M) \frac {M_{\rm ISM}} {t_{\rm SF}}$$
+  $$\dot{M}_{\rm Z,ISM} ~=~ Z_{\rm CGM} \dot{M}_{\rm in} ~+~ (1 - f_{\rm rec}) (1 - \eta_M) y_Z \frac {M_{\rm ISM}} {t_{\rm SF}} ~-~ Z_{\rm ISM} (1 + \eta_M - f_{\rm rec}) \frac {M_{\rm ISM}} {t_{\rm SF}}$$
 </p>
 
 ### CGM Enrichment
@@ -132,7 +132,7 @@ The interstellar medium gains and loses heavy elements through several channels.
 Evolution of the mass of heavy elements in the CGM ($M_{\rm Z,CGM}$) can be expressed in terms of channels already described:
 
 <p>
-  $$\dot{M}_{\rm Z,CGM} ~=~ Z_{\rm acc} \dot{M}_{\rm acc} ~-~ Z_{\rm CGM} \dot{M}_{\rm in} + Z_{\rm ISM} \eta_M \frac {M_{\rm ISM}} {t_{\rm SF}}$$
+  $$\dot{M}_{\rm Z,CGM} ~=~ Z_{\rm acc} \dot{M}_{\rm acc} ~-~ Z_{\rm CGM} \dot{M}_{\rm in} + Z_{\rm ISM} \eta_M \frac {M_{\rm ISM}} {t_{\rm SF}} ~+~ (1 - f_{\rm rec}) \eta_M y_Z \frac {M_{\rm ISM}} {t_{\rm SF}}$$
 </p>
 
 ### Stellar Enrichment
