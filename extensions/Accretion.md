@@ -28,7 +28,7 @@ parent: Extensions
 # Accretion
 {: .no_toc}
 
-This page outlines how **ExpCGM** incorporates cosmic accretion of atmospheric mass and energy and presents an extension of the basic framework outlined on the [Essentials](/ExpCGM/descriptions/Essentials) page. Its first section explains the spherical collapse assumption that **ExpCGM** employs to estimate the specific energy of incoming gas. Its second section explains how **ExpCGM** accounts for gravitational compression of atmospheric gas as the confining halo's potential well deepens. Its third section describes how an **ExpCGM** user can extend the framework to account for atmospheric compression caused by the incoming flux of baryonic momentum. The page concludes with a summary of the effects that cosmological accretion has on galactic atmospheres.
+This page outlines how **ExpCGM** incorporates cosmic accretion of atmospheric mass and energy and presents an extension of the basic framework outlined on the [Essentials](/ExpCGM/descriptions/Essentials) page. Its first section explains the spherical collapse assumption that **ExpCGM** employs to quantify the specific energy of incoming gas. Its second section explains how **ExpCGM** accounts for gravitational compression of atmospheric gas as the confining halo's potential well deepens. Its third section describes how an **ExpCGM** user can extend the framework to account for atmospheric compression caused by the incoming flux of baryonic momentum. The page concludes with a summary of the effects that cosmological accretion has on a galactic atmosphere.
 
 <details closed markdown="block">
   <summary>
@@ -41,17 +41,17 @@ This page outlines how **ExpCGM** incorporates cosmic accretion of atmospheric m
 
 ## Spherical Collapse
 
-Cosmological accretion supplies energy to a galaxy's atmosphere both directly and through generation of turbulence. One of the energy sources responsible for both atmospheric heating and turbulence is cosmological accretion. The **ExpCGM** framework handles this contribution using the classic spherical collapse approximation.
+Cosmological accretion supplies energy to a galaxy's atmosphere both directly and through generation of turbulence. One of the energy sources responsible for both atmospheric heating and turbulence is cosmological accretion. The **ExpCGM** framework handles this contribution using a classic spherical collapse approximation.
 
 ### Equation of Motion
 
-The equation of motion for a cosmological spherical shell of radius $R$ surrounding a constant mass $M$ is
+The equation of motion for a spherical cosmological shell of radius $R$ encompassing a constant mass $M$ is
  $$\ddot{R} = - \frac {G M} {R^2} + H_0^2 \Omega_\Lambda R$$
-The first term on the right accounts for Newtonian gravity. The second one accounts for dark energy in an expanding universe with a Hubble constant $H_0$ at the present time. It assumes that dark energy has a constant energy density $\Omega_\Lambda c^2$ times the current cosmological critical density $\rho_{\rm cr,0} \equiv 3 H_0^2 / 8 \pi G$. 
+The first term on the right accounts for Newtonian gravity. The second one accounts for dark energy in an expanding universe with a Hubble constant $H_0$ at the present time, assuming that dark energy has a constant energy density $\Omega_\Lambda c^2$ times the current cosmological critical density $\rho_{\rm cr,0} \equiv 3 H_0^2 / 8 \pi G$. 
 
 Multiplying that equation of motion by $\dot{R}$ and integrating over time gives the specific kinetic energy of a cosmological shell of radius $R$:
  $$\frac {\dot{R}^2} {2} = \frac {G M} {R} \left( 1 - \frac {R} {R_{\rm ta}} \right) + \frac {H_0^2 \Omega_\Lambda} {2} R^2 \left( 1 - \frac {R_{\rm ta}^2} {R^2}  \right)$$
-The terms containing the shell's turnaround radius $R_{\rm ta}$ (at which $\dot{R} = 0$) come from the constant of integration. The shell expands until it reaches $R_{\rm ta}$ at a turnaround time $t_{\rm ta}$. It then falls inward until it accretes onto the galaxy's cosmological halo at a collapse time $t_{\rm coll} \approx 2 t_{\rm ta}$. 
+The two terms containing the shell's turnaround radius $R_{\rm ta}$ come from the constant of integration and combine to make $\dot{R} = 0$ at the turnaround radius $R_{\rm ta}$. The shell therefore expands until it reaches $R_{\rm ta}$ at a turnaround time $t_{\rm ta}$. It then falls inward until it accretes onto the galaxy's cosmological halo at a collapse time $t_{\rm coll} \approx 2 t_{\rm ta}$. 
 
 ### Incoming Kinetic Energy
 
@@ -61,11 +61,11 @@ The quantity $\rho_{\rm halo} \equiv 3 M_{\rm halo} / 4 \pi R_{\rm halo}^3$ in t
 
 ### Halo Radius
 
-A real cosmological halo does not have a distinct radius. Cosmological simulations show that gravitational scattering converts radial infall into randomly oriented orbital motion over a range of radii in the vicinity of $R_{\rm ta} / 2$. Consequently, there is some freedom to define $R_{\rm halo}$ so that it suits the situation of interest. 
+A real cosmological halo does not have a distinct radius. Cosmological simulations show that gravitational scattering converts radial infall into randomly oriented orbital motion over a range of radii in the vicinity of $R_{\rm ta} / 2$. There is consequently some freedom to define $R_{\rm halo}$ so that it suits the situation of interest. 
 
-Typically, a halo's radius (and consequently its mass) is defined in terms of a contrast factor
+Typically, a halo's radius and mass are defined in terms of a contrast factor relative to the universe's critical density $\rho_{\rm cr}(t) = 3 H^2 (t) / 8 \pi G$, in which $H(t)$ is the Hubble expansion parameter at time $t$. The contrast factor is
  $$\Delta_{\rm c} = \frac {\rho_{\rm halo}} {\rho_{\rm cr}(t)}$$
-relative to the universe's critical density $\rho_{\rm cr}(t) = 3 H^2 (t) / 8 \pi G$, in which $H(t)$ is the Hubble expansion parameter at time $t$. The standard value for **ExpCGM** models is $\Delta_{\rm c} = 200$.
+Its standard value for **ExpCGM** models is $\Delta_{\rm c} = 200$.
 
 For all suitable definitions of $\Delta_{\rm c}$, the dark-energy correction factor
  $$\frac {\Omega_\Lambda \rho_{\rm cr,0}} {\rho_{\rm cr}(t)} = \frac {\Omega_\Lambda} {\Delta_{\rm c}} \frac {H_0^2} {H^2 (t)}$$
@@ -74,22 +74,24 @@ is less than one percent. Neglecting that factor and assuming $R_{\rm halo} \app
 for the specific kinetic energy of infalling matter at time $t$.
 
 {: .note}
-Accounting for the gravitational potential energy of incoming matter requires a more subtle approach because the **ExpCGM** framework places the zero point of the gravitational potential in the vicinity of the central galaxy. For instance, the simple example on the [Essentials](/ExpCGM/descriptions/Essentials) page puts it at $r=0$ in an NFW gravitational potential. The specific gravitational potential energy of incoming matter, $\varphi(R_{\rm halo})$, then depends on the relationship between $R_{\rm halo}$ and the potential well's scale radius $r_{\rm s}$. See the [Confinement](Confinement) page for more detail on how **ExpCGM** handles an atmosphere's gravitational potential energy.
+The gravitational potential energy of incoming matter formally depends on the zero point of the gravitational potential. **ExpCGM** generally places the zero point of the gravitational potential in the vicinity of the central galaxy. For instance, the simple example on the [Essentials](/ExpCGM/descriptions/Essentials) page puts it at $r=0$ in an NFW gravitational potential. The specific gravitational potential energy of incoming matter, $\varphi(R_{\rm halo})$, then depends on the relationship between $R_{\rm halo}$ and the potential well's scale radius $r_{\rm s}$. See the [Confinement](Confinement) page for more detail on how **ExpCGM** quantifies an atmosphere's gravitational potential energy.
 
 ## Adiabatic Compression
 
-Another cosmological source of atmospheric heating is adiabatic gravitational compression. Mass that falls through a radius $r$ and remains at smaller radii increases the halo's circular velocity at $r$. None of the infalling matter needs to be baryonic but some of it may consist of baryonic mass in stars. The increase in gravitational force at $r$ compresses the atmospheric gas within $r$, thereby increasing both its temperature and turbulent velocity dispersion, if no support energy is added to offset compression.
+Gravitational compression stemming from cosmological structure formation can also heat a galaxy's atmosphere. Matter that falls through a shell of radius $r$ and remains at smaller radii increases the circular velocity at $r$. None of the infalling matter needs to be baryonic but some of it may consist of baryonic mass in stars. The increase in gravitational force at $r$ compresses the atmospheric gas within $r$, thereby increasing both its temperature and turbulent velocity dispersion, if no additional energy is added to that gas.
 
 To assess the contribution that adiabatic compression makes to the total atmospheric energy $E_{\rm CGM}$, consider the effects of a change $\Delta \varphi$ in the gravitational potential without a compensating change in the atmosphere's pressure, temperature, or density profiles. Cosmological accretion alone changes the atmosphere's total gravitational energy by
    $$\Delta E_{\varphi,{\rm cos}} = \int_0^{r_{\rm CGM}} \Delta \varphi \cdot 4 \pi r^2 \rho dr$$
-while $E_{\rm th}$, $E_{\rm nt}$, and $M_{\rm CGM}$ temporarily stay the same (see [Essentials](Essentials) for definitions of symbols). If the change in $\varphi$ comes from an increase of the total mass within $r_{\rm CGM}$, then it raises the circular velocity there and also at smaller radii. The resulting change in the atmosphere's scaled specific energy $\varepsilon_{\rm CGM}/v_\varphi^2$ is 
+while $E_{\rm th}$, $E_{\rm nt}$, and $M_{\rm CGM}$ temporarily stay the same (see the [Essentials](/ExpCGM/desriptions/Essentials) page for definitions of those symbols). If the change in $\varphi$ comes from an increase of the total mass within $r_{\rm CGM}$, then it raises the circular velocity there and also at smaller radii. The resulting change in the atmosphere's scaled specific energy $\varepsilon_{\rm CGM}/v_\varphi^2$ is 
    $$\Delta \left( \frac {\varepsilon_{\rm CGM}} {v_\varphi^2} \right) = \left[ \frac {\Delta E_{\varphi,{\rm
  cos}}} {E_\varphi} \frac {E_\varphi} {E_{\rm CGM}} - \frac {\Delta v_\varphi^2} {v_\varphi^2} \right] \frac {\varepsilon_{\rm CGM}} {v_\varphi^2}$$
 in which $v_\varphi$ is the normalization of the potential's circular velocity profile.
 
-A simple renormalization of the gravitational potential, proportional to $v_\varphi^2$, causes a decrease in $\varepsilon_{\rm CGM}/v_\varphi^2$. That happens because $\Delta E_{\varphi,{\rm cos}} / E_\varphi = \Delta v_\varphi^2 / v_\varphi^2$ and $E_\varphi / E_{\rm CGM} < 1$. A change in both the normalization $v_\varphi$ and scale radius $r_{\rm s}$ of the potential well is a slightly more complicated case, giving
+Changes in just the normalization $v_\varphi^2$ of the gravitatational potential cause $\varepsilon_{\rm CGM}/v_\varphi^2$ to decrease. That happens because $\Delta E_{\varphi,{\rm cos}} / E_\varphi = \Delta v_\varphi^2 / v_\varphi^2$ when just $v_\varphi$ changes, and $E_\varphi / E_{\rm CGM} < 1$. 
+
+Change in both the normalization $v_\varphi$ and scale radius $r_{\rm s}$ of the potential well cause the potential to change by an amount
    $$\Delta \varphi (x) = \varphi (x) \frac {\Delta v_\varphi^2} {v_\varphi^2} - v_c^2(x) \frac {\Delta r_{\rm s}} {r_{\rm s}}$$
-for the change in $\varphi(x)$ at $x = r / r_{\rm s}$. In that case one finds 
+In that case one finds 
    $$\frac {\Delta E_{\varphi,{\rm cos}}} {E_\varphi}  = \frac {\Delta v_\varphi^2} {v_\varphi^2} - \frac {\Delta r_{\rm s}} {r_{\rm s}} \int_0^{x_{\rm CGM}} \frac {\alpha (x) f_{\alpha} (x)} {J_\varphi(x_{\rm CGM}) f_{\rm th}(x)} x^2 dx$$ 
 when $\Delta \varphi$ is inserted into the integral for the cosmological change in $E_\varphi$. Therefore, increasing both $v_\varphi$ and $r_{\rm s}$ causes an even greater decrease in $\varepsilon_{\rm CGM} / v_\varphi^2$ than just an increase of $v_\varphi$. 
 
@@ -98,7 +100,7 @@ In the **ExpCGM** framework, a decrease in $\varepsilon_{\rm CGM}/v_\varphi^2$ l
 so that support energy and gravity come back into force balance. 
 
 {: .note}
-Thermal and turbulent energy input associated with mass accretion that deepens the potential well usually has little effect on the atmosphere's equilibrium temperature, because it is determined by $v_{\rm c}(r)$ and $\alpha(r)$. In the **ExpCGM** framework, support energy that accreting gas adds directly to the atmosphere instead offsets adiabatic contraction by increasing $\varepsilon_{\rm CGM}$ and $r_{\rm CGM}$. To produce a significant change in equilibrium temperature, energy input needs to change $\alpha (r)$.
+Thermal and turbulent energy input associated with mass accretion that deepens the potential well usually has little effect on the atmosphere's equilibrium temperature, because $T(r)$ is determined by $v_{\rm c}(r)$ and $\alpha(r)$, not by the total amount of atmospheric energy. In the **ExpCGM** framework, support energy that accreting gas adds directly to the atmosphere instead offsets adiabatic contraction by increasing $\varepsilon_{\rm CGM}$ and $r_{\rm CGM}$. However, changes in $\alpha (r)$ can produce a significant change in equilibrium temperature.
 
 ## Incoming Momentum
 
@@ -118,7 +120,7 @@ Standard **ExpCGM** models relate $\dot{M}\_{\rm acc}$ to the halo's cosmologica
 
 ### Asymmetric Accretion
 
-The difficulty with applying a boundary condition representing incoming momentum is cosmological accretion's lack of spherical symmetry. Much of the gas entering a galaxy's atmosphere streams in along cosmological filaments or plunges in along with merging subhalos. The gas associated with filaments and subhalos tends to be much denser than the ambient gas of a halo's outer atmosphere and is unimpeded by it. Meanwhile, ambient atmospheric gas that is rising outward can proceed along pathways posing less resistance. Nevertheless, the accreting gas must slow down somewhere in the atmosphere by shedding its infalling momentum and exerting an inward force.
+The difficulty with applying a boundary condition representing incoming momentum is cosmological accretion's lack of spherical symmetry. Much of the gas entering a galaxy's atmosphere streams in along cosmological filaments or plunges in along with merging subhalos. The gas associated with filaments and subhalos tends to be much denser than the ambient gas of a halo's outer atmosphere and is unimpeded by it. Meanwhile, ambient atmospheric gas that is rising outward can proceed along pathways posing less resistance. Nevertheless, the accreting gas must slow down somewhere in the atmosphere by shedding its infalling momentum and exert an inward force on the atmosphere in that deceleration zone.
 
 ### Force Balance Modification
 
@@ -149,13 +151,13 @@ A correction for incoming momentum is more important in low-density atmospheres 
 
 Implementation of a momentum transfer correction requires guidance from numerical simulations. What's needed is an approximate power-law dependence of the gas inflow rate $\dot{M}\_{\rm acc} = 4 \pi r^2 (\rho v)\_{\rm acc}$ on radius. 
 
-Suppose that $r_{\rm dec}$ is the outer radius of the deceleration zone, that $\dot{M}\_{\rm acc} \propto r^{\eta_{\rm dec}}$ within $r_{\rm dec}$, and that $v_{\rm acc} \approx v_{\rm c}$ is approximately constant with radius. In that case, we find
+Suppose that $r_{\rm dec}$ is the outer radius of the deceleration zone, that $\dot{M}\_{\rm acc} \propto r^{\eta_{\rm dec}}$ within $r_{\rm dec}$, and that $v_{\rm acc} \approx v_{\rm c}$ is approximately constant with radius. In that case, the force modification factor is
 
 <p>
    $$f_\varphi \approx 1 + {\eta_{\rm dec}} \left[ \frac { \dot{M}_{\rm acc} (R_{\rm acc})} {4 \pi r_{\rm dec}^2 \rho v_{\rm c}} \right] \left( \frac {r} {r_{\rm dec}} \right)^{\eta_{\rm dec}}$$
 </p>
 
-in which the magnitude of the factor in square brackets is similar to the ratio of the gas mass entering $r_{\rm dec}$ during a dynamical time $r_{\rm dec} / v_{\rm c}$ to the gas mass currently within $r_{\rm dec}$. If the atmosphere's state is quasi-steady, then $(\rho v^2)\_{\rm acc} \sim \rho v_{\rm c}^2$ corresponds to a situation in which ambient gas at $r_{\rm dec}$ is flowing outward at a speed similar to the inflow speed of accreting gas. A smaller correction to purely gravitational force balance corresponds to an outflow speed that is small compared with $v_{\rm c}$. 
+The magnitude of the factor in square brackets is similar to the ratio of the gas mass entering $r_{\rm dec}$ during a dynamical time $r_{\rm dec} / v_{\rm c}$ to the gas mass currently within $r_{\rm dec}$. If the atmosphere's state is quasi-steady, then $(\rho v^2)\_{\rm acc} \sim \rho v_{\rm c}^2$ corresponds to a situation in which ambient gas at $r_{\rm dec}$ is flowing outward at a speed similar to the inflow speed of accreting gas. A smaller correction to purely gravitational force balance corresponds to an outflow speed that is small compared with $v_{\rm c}$. 
 
 ### Accretion-Corrected Temperature
 
@@ -173,7 +175,7 @@ Some iteration may be needed to obtain a self-consistent solution for $T(r)$, be
 
 ### Pressure Jump
 
-If the accreting gas decelerates over a narrow range of radii, then its confining effects on the pressure profile may better represented as a discontinuity in the pressure profile at $r_{\rm dec}$:
+If the accreting gas decelerates over a narrow range of radii, then its confining effects on the pressure profile may be better represented as a discontinuity in the pressure profile at $r_{\rm dec}$:
 
 <p>
      $$\Delta \left( \frac {P} {f_{\rm th}} \right) \approx - \frac {\dot{M}_{\rm acc} v_{\rm acc}} { 4 \pi r_{\rm dec}^2}$$
