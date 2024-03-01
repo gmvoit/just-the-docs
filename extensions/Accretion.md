@@ -28,7 +28,7 @@ parent: Extensions
 # Accretion
 {: .no_toc}
 
-This page outlines how the **ExpCGM** framework incorporates cosmic accretion of atmospheric mass and energy. It employs a spherical collapse assumption to estimate the specific energy of incoming gas. It also accounts for gravitational compression of atmospheric gas as the confining halo's potential well deepens. A user may also wish to account for atmospheric compression caused by the incoming momentum flux. After describing these three aspects of **ExpCGM**, the page concludes with a summary of cosmological atmospheric evolution.
+This page outlines how **ExpCGM** incorporates cosmic accretion of atmospheric mass and energy and presents an extension of the basic framework outlined on the [Essentials](/ExpCGM/descriptions/Essentials) page. Its first section explains the spherical collapse assumption that **ExpCGM** employs to estimate the specific energy of incoming gas. Its second section explains how **ExpCGM** accounts for gravitational compression of atmospheric gas as the confining halo's potential well deepens. Its third section describes how an **ExpCGM** user can extend the framework to account for atmospheric compression caused by the incoming flux of baryonic momentum. The page concludes with a summary of the effects that cosmological accretion has on galactic atmospheres.
 
 <details closed markdown="block">
   <summary>
@@ -41,7 +41,7 @@ This page outlines how the **ExpCGM** framework incorporates cosmic accretion of
 
 ## Spherical Collapse
 
-One of the energy sources responsible for both atmospheric heating and turbulence is cosmological accretion. The **ExpCGM** framework handles this contribution using the classic spherical collapse approximation.
+Cosmological accretion supplies energy to a galaxy's atmosphere both directly and through generation of turbulence.... One of the energy sources responsible for both atmospheric heating and turbulence is cosmological accretion. The **ExpCGM** framework handles this contribution using the classic spherical collapse approximation.
 
 ### Equation of Motion
 
