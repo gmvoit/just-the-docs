@@ -41,7 +41,7 @@ This page outlines how **ExpCGM** incorporates cosmic accretion of atmospheric m
 
 ## Spherical Collapse
 
-Cosmological accretion supplies energy to a galaxy's atmosphere both directly and through generation of turbulence.... One of the energy sources responsible for both atmospheric heating and turbulence is cosmological accretion. The **ExpCGM** framework handles this contribution using the classic spherical collapse approximation.
+Cosmological accretion supplies energy to a galaxy's atmosphere both directly and through generation of turbulence. One of the energy sources responsible for both atmospheric heating and turbulence is cosmological accretion. The **ExpCGM** framework handles this contribution using the classic spherical collapse approximation.
 
 ### Equation of Motion
 
