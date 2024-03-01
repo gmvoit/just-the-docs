@@ -138,7 +138,7 @@ Dividing $M_{Z,{\rm CGM}}$ by $M_{\rm CGM}$ gives the enrichment proportion $Z_{
 
 ### Stellar Enrichment
 
-The total mass of heavy elements contained within stars is then
+The total mass of heavy elements contained within stars is
   $$M_{Z,*} = M_Z - M_{Z,{\rm CGM}} - M_{Z,{\rm ISM}}$$
 It does not need to be tracked with a separate differential equation.
 
