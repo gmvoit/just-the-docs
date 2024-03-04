@@ -119,7 +119,7 @@ for an atmosphere in pressure equilibrium.
 
 ### Cooling-Time Fluctuations
 
-Those fluctuations can result in inhomogenous cooling that spurs development of a multiphase medium. For example, consider an atmospheric layer with density fluctuations having a log-normal dispersion $\sigma_{\ln \rho} \approx 0.8$. The cooling-time fluctuations in that layer generally have a greater amplitude than the density fluctuations. They are particularly pronounced in the temperature range $10^5 \, {\rm K} < T < 10^7 \, {\rm K}$, in which $\lambda$ approaches $-1$, giving
+Density fluctuations can result in inhomogenous cooling that spurs development of a multiphase medium. For example, consider an atmospheric layer with density fluctuations having a log-normal dispersion $\sigma_{\ln \rho} \approx 0.8$. The cooling-time fluctuations in that layer generally have a greater amplitude than the density fluctuations. They are particularly pronounced in the temperature range $10^5 \, {\rm K} < T < 10^7 \, {\rm K}$, in which $\lambda$ approaches $-1$, giving
   $$\delta \ln t_{\rm cool} \approx - 3 \, ( \delta \ln \rho )$$
 Density fluctuations with $\sigma_{\ln \rho} \approx 0.8$ then correspond to cooling-time fluctuations with $\sigma_{\ln t_{\rm cool}} \approx 2.4$, meaning that $t_{\rm cool}$ in the densest regions is more than an order of magnitude shorter than the layer's mean value of $t_{\rm cool}$. Those regions therefore lose entropy much faster than the more diffuse regions, causing the contrast between the layer's high and low density regions to increase, no matter what the mean heating rate, unless the heat input is somehow strongly skewed toward the layer's denser and cooler regions.
 
@@ -133,12 +133,13 @@ In the **ExpCGM** framework, the total radiative loss rate of thermal energy wit
   $$\dot{E}_{\rm rad} ~=~ \int_0^{M_{\rm CGM}} \rho \Lambda_\rho ~dM_{\rm gas} ~=~ \frac {3} {2} \int_0^{r_{\rm CGM}} \frac {P(r)} {t_{\rm cool} (r)} 4 \pi r^2 dr $$
 </p>
 
-with 
+In the latter integral, the cooling time
 
 <p>
  $$t_{\rm cool} (r) = \frac {3} {2} \frac {P(r)} {\bar{\rho}(r) \langle \rho \Lambda_\rho \rangle}$$
 </p>
 
+is an average cooling time based on the mean density $\bar{\rho}(r)$ and specific cooling rate $\langle \rho \Lammbda_\rho \rangle$ of the atmospheric shell at radius $r$.
 
 ### Homogenous Atmosphere
 
@@ -148,9 +149,9 @@ Simple **ExpCGM** models assume homogeneous gas. Making the substitutions $P(r) 
   $$\dot{E}_{\rm rad} =  \frac {3} {2} \cdot \frac {4 \pi P_0 r_0^3} {t_{\rm cool}(r_0)} \cdot \int_0^{x_{\rm CGM}} \left[ \frac {\Lambda (r) / T^2 (r)}  { \Lambda (r_0) / T^2(r_0)} \right] x^2 f_P^2 (x)  dx$$
 </p>
 
-for a homogeneous atmosphere. The temperature-dependent factor in square brackets is approximately constant with radius in a nearly isothermal potential well. Therefore, the pressure profile's shape function $\alpha (r)$, from which $f_P (x)$ is derived, determines how radiative losses are distributed as a function of radius. (See the [Essentials](Essentials) page for definitions of symbols used here.)
+for a homogeneous atmosphere. The temperature-dependent factor in square brackets is approximately constant with radius in a nearly isothermal potential well. Therefore, the pressure profile's shape function $\alpha (r)$, from which $f_P (x)$ is derived, determines how radiative losses are distributed as a function of radius. (See the [Essentials](Essentials) page for definitions of the symbols used here.)
 
-Notice that the integral for $\dot{E}\_{\rm rad}$ diverges at small $r$ for $f_P (x) = x^{-\alpha}$ and $\alpha \geq 3/2$, if the factor in square brackets is a constant or declining function of radius. In that case, something needs to be done to truncate the integral at small radii. One option is to truncate the integral at $r_{\rm gal}$. Another is to use a shape function with some curvature, so that $\alpha < 3/2$ at $r \ll r_0$ and $\alpha > 3/2$ at $r \gg r_0$. (See the [Pressure Profiles](PressureProfiles) page for some physically motivated shape function options.) 
+Notice that the integral for $\dot{E}\_{\rm rad}$ diverges at small $r$ with $f_P (x) = x^{-\alpha}$ and $\alpha \geq 3/2$, if the factor in square brackets is a constant or declining function of radius. In that case, something needs to be done to truncate the integral at small radii. One option is to truncate the integral at $r_{\rm gal}$. Another is to use a shape function with some curvature, so that $\alpha < 3/2$ at $r \ll r_0$ and $\alpha > 3/2$ at $r \gg r_0$. (See the [Pressure Profiles](PressureProfiles) page for some physically motivated shape function options.) 
 
 Observations of galaxy clusters and groups show that their pressure profiles do indeed have shape functions with the curvature properties necessary for $\dot{E}_{\rm rad}$ in a homogeneous atmosphere to converge at both small and large $r$.
 
@@ -170,6 +171,6 @@ A multiphase medium with embedded clouds orders of magnitude denser than the amb
 
 Users of **ExpCGM** who wish to incorporate additional radiative losses from a multiphase medium need to supply an algorithm that determines the boost factor
   $$f_{\rm rad} = \frac {\langle \rho \Lambda_\rho \rangle} {\bar{\rho} \Lambda_\rho(T)}$$
-This factor represents how the specific radiative loss rate of a multiphase gas sample of mean density $\bar{\rho}$ compares with the specific radiative loss rate of homogeneous gas with the same pressure $P$ and a temperature $T = \mu m_p P / k \bar{\rho}$. 
+This factor represents how the specific radiative loss rate of a multiphase gas sample of mean density $\bar{\rho}$ compares with the specific radiative loss rate of homogeneous gas with the same pressure $P$ and therefore a temperature $T = \mu m_p P / k \bar{\rho}$. 
 
 Such an algorithm should be informed by high-resolution numerical simulations of turbulent radiative mixing layers in thermally unstable gas. It may depend on the local pressure and temperature of the volume-filling gas that presumably confines the denser clouds. It may also depend on the fraction $f_{\rm cool}$ of the gas mass with $T \ll T_\varphi$ and the velocity dispersion $\sigma_{\rm 1D,cool}$ of the cool-cloud population. (See the [Multiphase Gas](MultiphaseGas) page for more on how $f_{\rm cool}$ and $\sigma_{\rm 1D,cool}$ are related to the atmosphere's thermalization fraction $f_{\rm th})$. 
