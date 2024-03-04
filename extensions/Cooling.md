@@ -27,9 +27,9 @@ parent: Extensions
 # Cooling
 {: .no_toc}
 
-Radiative cooling causes the spatial distribution of baryons in a comological halo to deviate from what purely cosmological structure formation would produce. Emission of photons removes the original cosmological specific energy of the baryons, allowing cold gas to accumulate at the halo's center. There it can form stars and give birth to a galaxy. Some of the galaxy's baryons may accrete onto a central black hole. The resulting feedback energy released as supernovae explode and the black hole grows then further alters the atmosphere.
+Radiative cooling causes the spatial distribution of baryons in a cosmological halo to deviate from what purely cosmological structure formation would produce. Emission of photons removes the original cosmological specific energy of the baryons, allowing cold gas to accumulate at the halo's center. There it can form stars and give birth to a galaxy. Some of the galaxy's baryons may accrete onto a central black hole. The resulting feedback energy supply from supernova explosions and black-hole accretion then further alters the atmosphere.
 
-This page describes how the **ExpCGM** framework treats radiative cooling and proposes some extensions of the basic framework. Its first section discusses the cooling time of atmospheric gas. Its second section outlines how cooling is related to specific entropy, which determines an atmosphere's structure as discussed on the [Pressure Profiles](PresureProfiles) page. Its third section quantifies how losses of specific entropy result in cooling flows. The fourth section considers extensions of **ExpCGM** that account for atmospheric inhomogeneity and how it alters cooling and inflow rates. A concluding section summarizes how **ExpCGM** determines an atmosphere's total radiative cooling rate $\dot{E}\_{\rm rad}$.
+This page describes how the **ExpCGM** framework treats radiative cooling and proposes some extensions of the basic framework. Its first section discusses the cooling time of atmospheric gas. Its second section outlines how cooling is related to specific entropy, which determines an atmosphere's structure as discussed on the [Pressure Profiles](PressureProfiles) page. Its third section quantifies how losses of specific entropy result in cooling flows. The fourth section considers extensions of **ExpCGM** that account for atmospheric inhomogeneity and how it alters cooling and inflow rates. A concluding section summarizes how **ExpCGM** determines an atmosphere's total radiative cooling rate $\dot{E}\_{\rm rad}$.
 
 <details closed markdown="block">
   <summary>
@@ -52,7 +52,7 @@ defined so that $\rho \Lambda_\rho (T)$ is the emission rate of radiative energy
 
 Steady emission radiates an amount of energy equivalent to an atmosphere's thermal  energy on a timescale
   $$t_{\rm cool} = \frac {3} {2} \frac {P} {\rho^2 \Lambda_\rho} = \frac {3} {2} \frac {P} {n_e n_i \Lambda (T)} \approx \frac {3kT} {n_e \Lambda (T)}$$
-called a ***cooling time***. However, an atmosphere's temperature does not necessarily decline on that timescale because of gravitational compression. Its temperature remains approximately constant if $t_{\rm cool}$ is longer than the atmosphere's dynamical timescale $t_{\rm dyn} = r / v_{\rm c})$, staying close to
+called a ***cooling time***. However, an atmosphere's temperature does not necessarily decline on that timescale because of gravitational compression. Its temperature remains approximately constant if $t_{\rm cool}$ is longer than the atmosphere's dynamical timescale $t_{\rm dyn} = r / v_{\rm c}$, staying close to
   $$T \approx \left( \frac {2 f_{\rm th}} {\alpha_{\rm eff}} \right) T_\varphi  = \left( \frac {2  f_{\rm th}} {\alpha_{\rm eff}} \right) \frac {\mu m_p v_{\rm c}^2} {2k}$$
 (See the [Essentials](Essentials) page for an explanation and definitions of symbols.) 
 
@@ -64,22 +64,22 @@ A galactic atmosphere's cooling function $\Lambda (T)$ may also depend on densit
 When gravitational compression is acting, radiative losses reduce an atmosphere's specific entropy more directly than they reduce its temperature. According to the first law of thermodynamics, the total entropy $S$ within a volume $V$ of radiatively cooling atmospheric gas with thermal energy $U$ declines as 
   $$T \frac {dS} {dt} ~=~ \frac {dU} {dt} +  P \frac {dV} {dt} ~=~ - \frac {U} {t_{\rm cool}}$$
 The thermal energy of an atmosphere consisting of non-relativistic particles with no internal degrees of freedom is $U = 3PV/2$. Dividing the first law by $PV$ therefore yields 
-  $$\frac {T} {PV} \frac {dS} {dt} ~=~ \frac {5} {2} \frac {1} {V} \frac {dV} {dt} + \frac {3} {2} \frac {1} {P} \frac {dP} {dt} ~=~ \frac {3} {2} \frac {d} {dt} \ln (P V^{5/3} ) ~=~ - \frac {3} {2} \frac {1} {t_{\rm cool}}$$
+  $$\frac {T} {PV} \frac {dS} {dt} ~=~ \frac {5} {2} \frac {1} {V} \frac {dV} {dt} + \frac {3} {2} \frac {1} {P} \frac {dP} {dt} ~=~ - \frac {3} {2} \frac {1} {t_{\rm cool}}$$
 which implies
-  $$\frac {3} {2} \frac {d} {dt} \ln (P V^{5/3} ) ~=~ - \frac {3} {2} \frac {1} {t_{\rm cool}}$$
+  $$\frac {d} {dt} \ln (P V^{5/3} ) ~=~ - \frac {1} {t_{\rm cool}}$$
 The quantity $K = P \rho^{-5/3}$ in an atmospheric gas sample of mass $\rho V$ then does not change if $t_{\rm cool}$ is large, giving the gas a polytropic equation of state
   $$P = K \rho^{\gamma}$$
 with $\gamma = 5/3$. 
 
 Changes in the logarithm of the constant of proportionality $K$ in this equation of state are directly proportional to changes in the specific entropy $S / (nV)$:
   $$\Delta \ln K = \frac {2} {3} \frac {\Delta S} {k(nV)}$$
-The value of $K$ therefore specifies the *adiabat* of a sample of atmospheric gas, and radiative cooling changes the adiabat of that sample according to the entropy equation
+The value of $K$ therefore specifies the *adiabat* of a sample of atmospheric gas. Uncompensated radiative cooling changes the adiabat of that sample according to the entropy equation
   $$\frac {d \ln K} {dt} = - \frac {1} {t_{\rm cool}}$$
 
 {: .note}
 In the scientific literature on galactic atmospheres, the quantity $K$ is often loosely called the "entropy" of atmospheric gas, when in fact it is logarithm of specific entropy. It is also specified using a variety of units that may seem to be incompatible with each other. However, the units of $K$ have no operational significance, because they correspond to a normalization factor that vanishes when differences in $\ln K$ are assessed. Only *changes* in $\ln K$ have physical meaning. One is therefore free to choose units for $K$ that reflect the observations used to measure it.  
 
-## Homogeneous Cooling Flows
+## Homogeneous Cooling Flow
 
 Uncompensated cooling causes a galactic atmosphere to contract, resulting in a ***cooling flow*** with an inward mass flux
 
@@ -89,8 +89,8 @@ Uncompensated cooling causes a galactic atmosphere to contract, resulting in a *
 
 in which $t_{\rm flow} = r / v_{\rm in}$ is the inflow timescale corresponding to the inflow speed $v_{\rm in} = - dr/dt$. The ratio of flow time to cooling time is related to gradient of specific entropy via
   $$\alpha_K ~\equiv~ \frac {d \ln K} {d \ln r} ~=~ r \left( \frac {dt} {dr} \right)^{-1} \frac {d \ln K} {d t} ~=~ \frac {t_{\rm flow}} {t_{\rm cool}}$$
-Therefore, the inflow speed of a pure cooling flow is
-  $$v_{\rm in} (r) = \frac {r} {\alpha_K t_{\rm cool} (r)$$
+Therefore, the inflow speed of a pure homogeneous cooling flow is
+  $$v_{\rm in} (r) = \frac {r} {\alpha_K t_{\rm cool} (r)}$$
 and atmospheric gas flows inward at the rate
 <p>
   $$\dot{M}_{\rm cool} (r) = \frac {4 \pi r^3 \rho (r)} {\alpha_K t_{\rm cool}(r)}$$
@@ -98,11 +98,11 @@ and atmospheric gas flows inward at the rate
 
 ## Inhomogeneous Cooling
 
-Observations show that inhomogeneity is commonplace in galactic atmospheres, with adjacent regions having densities and temperatures that can differ by orders of magnitude. Therefore, the local cooling time of atmospheric gas can greatly differ from the value of $t_{\rm cool}$ derived by averaging $\rho$ and $T$ over the atmospheric shell at radius $r$. This section examines how **ExpCGM** can be extended to account for inhomogeneity.
+Observations show that inhomogeneity is commonplace in galactic atmospheres, with adjacent regions having densities and temperatures that can differ by orders of magnitude. Therefore, the local cooling time of atmospheric gas can greatly differ from the value of $t_{\rm cool}$ derived by averaging $\rho$ and $T$ over the atmospheric shell at radius $r$. This section discusses extensions of **ExpCGM** that can account for inhomogeneity.
 
 ### Log-Normal Distributions
 
-The **ExpCGM** framework presumes that inhomogeneous atmospheric gas is in pressure equilibrium and represents moderate inhomogeneity in terms of log-normal distributions. Isobaric density, temperature, and entropy fluctuation amplitudes relative to the mean are therefore related through
+The **ExpCGM** framework presumes that inhomogeneous atmospheric gas is in pressure equilibrium and can be extended to represent moderate inhomogeneity in terms of log-normal distributions. Isobaric density, temperature, and entropy fluctuation amplitudes relative to the mean are therefore related through
   $$\delta \ln \rho = - \delta \ln T = - \frac {3} {5} \, \delta \ln K$$
 and the standard deviations of those fluctuation amplitudes are related through
   $$\sigma_{\ln \rho} = - \sigma_{\ln T} = - \frac {3} {5} \sigma_{\ln K}$$
@@ -129,9 +129,12 @@ The situation just described is a classic astrophysical thermal instability. How
 In the **ExpCGM** framework, the total radiative loss rate of thermal energy within the bounding radius $r_{\rm CGM}$ of a galaxy's atmosphere is
 
 <p>
-  $$\dot{E}_{\rm rad} ~=~ \frac {3} {2} \int_0^{r_{\rm CGM}} \left( \frac {P} {t_{\rm cool}} \right) 4 \pi r^2 dr ~=~ \int_0^{M_{\rm CGM}} \rho \Lambda_\rho ~dM_{\rm gas}$$
+  $$\dot{E}_{\rm rad} ~=~ \int_0^{M_{\rm CGM}} \rho \Lambda_\rho ~dM_{\rm gas} ~=~ \frac {3} {2} \int_0^{r_{\rm CGM}} \frac {P(r)} {t_{\rm cool} (r)} 4 \pi r^2 dr $$
 </p>
 
+with 
+
+ $$t_{\rm cool} (r) = \frac {3} {2} \frac {P(r)} {\bar{\rho}(r) \langle \rho \Lambda_\rho \rangle}$$
 
 ### Homogenous Atmosphere
 
@@ -140,7 +143,6 @@ Simple **ExpCGM** models assume homogeneous gas. Making the substitutions $P(r) 
 <p>
   $$\dot{E}_{\rm rad} =  \frac {3} {2} \cdot \frac {4 \pi P_0 r_0^3} {t_{\rm cool}(r_0)} \cdot \int_0^{x_{\rm CGM}} \left[ \frac {\Lambda (r) / T^2 (r)}  { \Lambda (r_0) / T^2(r_0)} \right] x^2 f_P^2 (x)  dx$$
 </p>
-
 
 for a homogeneous atmosphere. The temperature-dependent factor in square brackets is approximately constant with radius in a nearly isothermal potential well. Therefore, the pressure profile's shape function $\alpha (r)$, from which $f_P (x)$ is derived, determines how radiative losses are distributed as a function of radius. (See the [Essentials](Essentials) page for definitions of symbols used here.)
 
