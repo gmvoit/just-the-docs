@@ -52,12 +52,12 @@ defined so that $\rho \Lambda_\rho (T)$ is the emission rate of radiative energy
 
 Steady emission radiates an amount of energy equivalent to an atmosphere's thermal  energy on a timescale
   $$t_{\rm cool} = \frac {3} {2} \frac {P} {\rho^2 \Lambda_\rho} = \frac {3} {2} \frac {P} {n_e n_i \Lambda (T)} \approx \frac {3kT} {n_e \Lambda (T)}$$
-called a ***cooling time***. However, an atmosphere's temperature does not necessarily decline on that timescale because of gravitational compression. Its temperature remains approximately constant if $t_{\rm cool}$ is longer than the atmosphere's dynamical timescale $t_{\rm dyn} = r / v_{\rm c}$, staying close to
+called a ***cooling time***. However, an atmosphere's temperature does not necessarily decline on that timescale because of gravitational compression. Its temperature remains approximately constant if $t_{\rm cool}$ is longer than the atmosphere's dynamical timescale $t_{\rm dyn} = r / v_{\rm c}$ and stays close to
   $$T \approx \left( \frac {2 f_{\rm th}} {\alpha_{\rm eff}} \right) T_\varphi  = \left( \frac {2  f_{\rm th}} {\alpha_{\rm eff}} \right) \frac {\mu m_p v_{\rm c}^2} {2k}$$
 (See the [Essentials](Essentials) page for an explanation and definitions of symbols.) 
 
 {: .note} 
-A galactic atmosphere's cooling function $\Lambda (T)$ may also depend on density, if the atmosphere's density is low enough for ionizing background radiation to alter its ionization state. Atmosphere models for low-mass galaxies or early eras when the ionizing background is particularly intense may need to account for this change in the cooling function.
+A galactic atmosphere's cooling function $\Lambda (T)$ may also depend on density if the atmosphere's density is low enough for ionizing background radiation to alter its ionization state. Atmosphere models for low-mass galaxies or early eras when the ionizing background is particularly intense may need to account for this change in the cooling function.
 
 ## Specific Entropy
 
@@ -67,19 +67,19 @@ The thermal energy of an atmosphere consisting of non-relativistic particles wit
   $$\frac {T} {PV} \frac {dS} {dt} ~=~ \frac {5} {2} \frac {1} {V} \frac {dV} {dt} + \frac {3} {2} \frac {1} {P} \frac {dP} {dt} ~=~ - \frac {3} {2} \frac {1} {t_{\rm cool}}$$
 which implies
   $$\frac {d} {dt} \ln (P V^{5/3} ) ~=~ - \frac {1} {t_{\rm cool}}$$
-The quantity $K = P \rho^{-5/3}$ in an atmospheric gas sample of mass $\rho V$ then does not change if $t_{\rm cool}$ is large, giving the gas a polytropic equation of state
+The quantity $K = P \rho^{-5/3}$ in an atmospheric gas sample of constant mass $\rho V$ then does not change if $t_{\rm cool}$ is large, giving the gas a polytropic equation of state
   $$P = K \rho^{\gamma}$$
 with $\gamma = 5/3$. 
 
-Changes in the logarithm of the constant of proportionality $K$ in this equation of state are directly proportional to changes in the specific entropy $S / (nV)$:
-  $$\Delta \ln K = \frac {2} {3} \frac {\Delta S} {k(nV)}$$
-The value of $K$ therefore specifies the *adiabat* of a sample of atmospheric gas. Uncompensated radiative cooling changes the adiabat of that sample according to the entropy equation
+Changes in the logarithm of the constant of proportionality $K$ in this equation of state are directly proportional to changes in the specific entropy $S / (\rho V)$:
+  $$\Delta \ln K = \frac {2} {3} \frac {\Delta S} {k(\rho V)}$$
+The value of $K$ therefore specifies the *adiabat* of a sample of atmospheric gas. Uncompensated radiative cooling changes the adiabat of that sample according to the entropy equation:
   $$\frac {d \ln K} {dt} = - \frac {1} {t_{\rm cool}}$$
 
 {: .note}
-In the scientific literature on galactic atmospheres, the quantity $K$ is often loosely called the "entropy" of atmospheric gas, when in fact it is logarithm of specific entropy. It is also specified using a variety of units that may seem to be incompatible with each other. However, the units of $K$ have no operational significance, because they correspond to a normalization factor that vanishes when differences in $\ln K$ are assessed. Only *changes* in $\ln K$ have physical meaning. One is therefore free to choose units for $K$ that reflect the observations used to measure it.  
+In the scientific literature on galactic atmospheres, the quantity $K$ is often loosely called the "entropy" of atmospheric gas. It is in fact the *logarithm* of specific entropy and is specified using a variety of units that may seem to be incompatible with each other. However, the units of $K$ have no operational significance, because they correspond to a normalization factor that vanishes when differences in $\ln K$ are assessed. Only *changes* in $\ln K$ have physical meaning. One is therefore free to choose units for $K$ that reflect the observations used to measure it.  
 
-## Homogeneous Cooling Flow
+## Homogeneous Cooling Flows
 
 Uncompensated cooling causes a galactic atmosphere to contract, resulting in a ***cooling flow*** with an inward mass flux
 
@@ -87,7 +87,7 @@ Uncompensated cooling causes a galactic atmosphere to contract, resulting in a *
   $$\dot{M}_{\rm cool} = 4 \pi r^2 \rho v_{\rm in} = \frac {4 \pi r^3 \rho} {t_{\rm flow}}$$
 </p>
 
-in which $t_{\rm flow} = r / v_{\rm in}$ is the inflow timescale corresponding to the inflow speed $v_{\rm in} = - dr/dt$. The ratio of flow time to cooling time is related to gradient of specific entropy via
+in which $t_{\rm flow} = r / v_{\rm in}$ is the inflow timescale corresponding to the inflow speed $v_{\rm in} = - dr/dt$. The ratio of flow time to cooling time is related to the gradient of specific entropy via
   $$\alpha_K ~\equiv~ \frac {d \ln K} {d \ln r} ~=~ r \left( \frac {dt} {dr} \right)^{-1} \frac {d \ln K} {d t} ~=~ \frac {t_{\rm flow}} {t_{\rm cool}}$$
 Therefore, the inflow speed of a pure homogeneous cooling flow is
   $$v_{\rm in} (r) = \frac {r} {\alpha_K t_{\rm cool} (r)}$$
@@ -95,10 +95,11 @@ and atmospheric gas flows inward at the rate
 <p>
   $$\dot{M}_{\rm cool} (r) = \frac {4 \pi r^3 \rho (r)} {\alpha_K t_{\rm cool}(r)}$$
 </p>
+An isothermal steady-state cooling flow in which $t_{\rm cool} \propto 1 / \rho$ therefore has a density profile with $\rho \propto r^{-3/2}$, implying $\alpha = 3/2$ and $\alpha_K = 1$. 
 
 ## Inhomogeneous Cooling
 
-Observations show that inhomogeneity is commonplace in galactic atmospheres, with adjacent regions having densities and temperatures that can differ by orders of magnitude. Therefore, the local cooling time of atmospheric gas can greatly differ from the value of $t_{\rm cool}$ derived by averaging $\rho$ and $T$ over the atmospheric shell at radius $r$. This section discusses extensions of **ExpCGM** that can account for inhomogeneity.
+Observations show that inhomogeneity is commonplace in galactic atmospheres, with adjacent regions having densities and temperatures that can differ by orders of magnitude. Therefore, the local cooling time of atmospheric gas can greatly differ from a value of $t_{\rm cool}$ derived by averaging $\rho$ and $T$ over the atmospheric shell at radius $r$. This section discusses extensions of **ExpCGM** that can account for those inhomogeneities.
 
 ### Log-Normal Distributions
 
@@ -134,7 +135,10 @@ In the **ExpCGM** framework, the total radiative loss rate of thermal energy wit
 
 with 
 
+<p>
  $$t_{\rm cool} (r) = \frac {3} {2} \frac {P(r)} {\bar{\rho}(r) \langle \rho \Lambda_\rho \rangle}$$
+</p>
+
 
 ### Homogenous Atmosphere
 
@@ -146,7 +150,7 @@ Simple **ExpCGM** models assume homogeneous gas. Making the substitutions $P(r) 
 
 for a homogeneous atmosphere. The temperature-dependent factor in square brackets is approximately constant with radius in a nearly isothermal potential well. Therefore, the pressure profile's shape function $\alpha (r)$, from which $f_P (x)$ is derived, determines how radiative losses are distributed as a function of radius. (See the [Essentials](Essentials) page for definitions of symbols used here.)
 
-Notice that the integral for $\dot{E}\_{\rm rad}$ diverges at small $r$ for $f_P (x) = x^{-\alpha}$ and $\alpha \geq 3/2$, if the factor in square brackets is a constant or declining function of radius. In that case, something needs to be done to truncate the integral at small radii. One option is to truncate the integral at $r_{\rm gal}$. Another is to use a shape function with some curvature, so that $\alpha < 3/2$ at $r \ll r_0$ and $\alpha > 3/2$ at $r \gg r_0$ (see the [Pressure Profiles](PressureProfiles) page for some physically motivated shape function options). 
+Notice that the integral for $\dot{E}\_{\rm rad}$ diverges at small $r$ for $f_P (x) = x^{-\alpha}$ and $\alpha \geq 3/2$, if the factor in square brackets is a constant or declining function of radius. In that case, something needs to be done to truncate the integral at small radii. One option is to truncate the integral at $r_{\rm gal}$. Another is to use a shape function with some curvature, so that $\alpha < 3/2$ at $r \ll r_0$ and $\alpha > 3/2$ at $r \gg r_0$. (See the [Pressure Profiles](PressureProfiles) page for some physically motivated shape function options.) 
 
 Observations of galaxy clusters and groups show that their pressure profiles do indeed have shape functions with the curvature properties necessary for $\dot{E}_{\rm rad}$ in a homogeneous atmosphere to converge at both small and large $r$.
 
