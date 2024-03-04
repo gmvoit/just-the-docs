@@ -72,7 +72,7 @@ The quantity $K = P \rho^{-5/3}$ in an atmospheric gas sample of constant mass $
 with $\gamma = 5/3$. 
 
 Changes in the logarithm of the constant of proportionality $K$ in this equation of state are directly proportional to changes in the specific entropy $S / (\rho V)$:
-  $$\Delta \ln K = \frac {2} {3} \frac {\Delta S} {k(\rho V)}$$
+  $$\Delta \ln K = \frac {2 \mu m_p} {3k} \frac {\Delta S} {\rho V}$$
 The value of $K$ therefore specifies the *adiabat* of a sample of atmospheric gas. Uncompensated radiative cooling changes the adiabat of that sample according to the entropy equation:
   $$\frac {d \ln K} {dt} = - \frac {1} {t_{\rm cool}}$$
 
