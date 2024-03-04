@@ -27,9 +27,9 @@ parent: Extensions
 # Cooling
 {: .no_toc}
 
-Radiative cooling is what causes a galactic atmosphere to deviate from what purely cosmological structure formation would produce. Emission of photons removes some of the atmosphere's cosmological specific energy, allowing cold gas to accumulate at the halo's center, where it can form stars and accrete onto a central black hole. The resulting feedback energy released by supernova explosions and black-hole growth then further alters the atmosphere.
+Radiative cooling causes the spatial distribution of baryons in a comological halo to deviate from what purely cosmological structure formation would produce. Emission of photons removes the original cosmological specific energy of the baryons, allowing cold gas to accumulate at the halo's center. There it can form stars and give birth to a galaxy. Some of the galaxy's baryons may accrete onto a central black hole. The resulting feedback energy released as supernovae explode and the black hole grows then further alters the atmosphere.
 
-This page describes how the **ExpCGM** framework accounts for radiative cooling. Its first section defines the cooling time of atmospheric gas. Its second section outlines the relationship between cooling and specific entropy. Radiative cooling limits the central galaxy's gas supply as discussed in the third section. The fourth section considers atmospheric inhomogeneity and how to account for it. The concluding section explains how **ExpCGM** computes the atmosphere's total radiative cooling rate $\dot{E}\_{\rm rad}$.
+This page describes how the **ExpCGM** framework treats radiative cooling and proposes some extensions of the basic framework. Its first section discusses the cooling time of atmospheric gas. Its second section outlines how cooling is related to specific entropy, which determines an atmosphere's structure as discussed on the [Pressure Profiles](PresureProfiles) page. Its third section quantifies how losses of specific entropy result in cooling flows. The fourth section considers extensions of **ExpCGM** that account for atmospheric inhomogeneity and how it alters cooling and inflow rates. A concluding section summarizes how **ExpCGM** determines an atmosphere's total radiative cooling rate $\dot{E}\_{\rm rad}$.
 
 <details closed markdown="block">
   <summary>
@@ -42,41 +42,44 @@ This page describes how the **ExpCGM** framework accounts for radiative cooling.
 
 ## Cooling Time
 
-Collisional excitation of photons removes thermal energy from a galaxy's atmosphere, allowing it to contract. The rate of energy emission per unit volume is proportional to $\rho^2$, because collisional excitation depends on two-particle collisions. In an atmosphere with a well-defined temperature, it is also proportional to $\Lambda (T)$, a ***cooling function*** that depends on temperature, because $T$ determines both the ionization state of the atmosphere and the speeds of the colliding particles.
+Collisional excitation of photons removes thermal energy from a galaxy's atmosphere, allowing it to contract. The rate of energy emission per unit volume is proportional to $\rho^2$, because collisional excitation depends on two-particle interactions. In an atmosphere with a well-defined temperature, it is also proportional to $\Lambda (T)$, a ***cooling function*** that depends on temperature, because $T$ determines both the ionization state of the atmosphere and the speeds of the colliding particles.
 
-Astrophysical cooling functions are usually defined in terms of electron density $n_e$ and ion density $n_i$ (or proton density $n_p$), so that 
+Astrophysical cooling functions are typically defined in terms of electron density $n_e$ and ion density $n_i$ (or proton density $n_p$), so that 
  $$n_e n_i \Lambda (T)$$
-represents the emission rate of radiative energy per unit volume. An alternative cooling function sometimes used in **ExpCGM** documentation is $\Lambda_\rho$, defined so that $\rho \Lambda_\rho (T)$ is the rate of energy emission per gas particle.
+represents the emission rate of radiative energy per unit volume. Sometimes, the **ExpCGM** documentation uses an alternative cooling function
+  $$\Lambda_\rho (T) \equiv \frac {n_e n_i} {\rho^2} \Lambda (T)$$
+defined so that $\rho \Lambda_\rho (T)$ is the emission rate of radiative energy per unit mass, also known as the ***specific cooling rate***.
 
 Steady emission radiates an amount of energy equivalent to an atmosphere's thermal  energy on a timescale
-  $$t_{\rm cool} = \frac {3} {2} \frac {kT} {\rho \Lambda_\rho} = \frac {3} {2} \frac {P} {n_e n_i \Lambda (T)} \approx \frac {3kT} {n_e \Lambda (T)}$$
-called the ***cooling time***. However, the atmosphere's temperature does not necessarily decline on that timescale. Gravitational compression keeps the atmosphere's temperature approximately constant if $t_{\rm cool}$ is longer than the atmosphere's dynamical timescale ($\sim r / v_{\rm c})$. It therefore remains close to
+  $$t_{\rm cool} = \frac {3} {2} \frac {P} {\rho^2 \Lambda_\rho} = \frac {3} {2} \frac {P} {n_e n_i \Lambda (T)} \approx \frac {3kT} {n_e \Lambda (T)}$$
+called a ***cooling time***. However, an atmosphere's temperature does not necessarily decline on that timescale because of gravitational compression. Its temperature remains approximately constant if $t_{\rm cool}$ is longer than the atmosphere's dynamical timescale $t_{\rm dyn} = r / v_{\rm c})$, staying close to
   $$T \approx \left( \frac {2 f_{\rm th}} {\alpha_{\rm eff}} \right) T_\varphi  = \left( \frac {2  f_{\rm th}} {\alpha_{\rm eff}} \right) \frac {\mu m_p v_{\rm c}^2} {2k}$$
 (See the [Essentials](Essentials) page for an explanation and definitions of symbols.) 
 
 {: .note} 
-Be aware that ionizing background radiation can alter $\Lambda (T)$ by further raising the atmosphere's ionization state if the atmosphere's density is low enough. Atmosphere models for low-mass galaxies or early eras when the ionizing background is particularly intense may need to account for this change in the cooling function.
+A galactic atmosphere's cooling function $\Lambda (T)$ may also depend on density, if the atmosphere's density is low enough for ionizing background radiation to alter its ionization state. Atmosphere models for low-mass galaxies or early eras when the ionizing background is particularly intense may need to account for this change in the cooling function.
 
 ## Specific Entropy
 
-Radiative losses reduce an atmosphere's specific entropy more directly than they reduce its temperature. According to the first law of thermodynamics, the total entropy $S$ within a volume $V$ of radiatively cooling atmospheric gas with thermal energy $U$ declines as 
+When gravitational compression is acting, radiative losses reduce an atmosphere's specific entropy more directly than they reduce its temperature. According to the first law of thermodynamics, the total entropy $S$ within a volume $V$ of radiatively cooling atmospheric gas with thermal energy $U$ declines as 
   $$T \frac {dS} {dt} ~=~ \frac {dU} {dt} +  P \frac {dV} {dt} ~=~ - \frac {U} {t_{\rm cool}}$$
 The thermal energy of an atmosphere consisting of non-relativistic particles with no internal degrees of freedom is $U = 3PV/2$. Dividing the first law by $PV$ therefore yields 
   $$\frac {T} {PV} \frac {dS} {dt} ~=~ \frac {5} {2} \frac {1} {V} \frac {dV} {dt} + \frac {3} {2} \frac {1} {P} \frac {dP} {dt} ~=~ \frac {3} {2} \frac {d} {dt} \ln (P V^{5/3} ) ~=~ - \frac {3} {2} \frac {1} {t_{\rm cool}}$$
+which implies
+  $$\frac {3} {2} \frac {d} {dt} \ln (P V^{5/3} ) ~=~ - \frac {3} {2} \frac {1} {t_{\rm cool}}$$
 The quantity $K = P \rho^{-5/3}$ in an atmospheric gas sample of mass $\rho V$ then does not change if $t_{\rm cool}$ is large, giving the gas a polytropic equation of state
   $$P = K \rho^{\gamma}$$
 with $\gamma = 5/3$. 
 
 Changes in the logarithm of the constant of proportionality $K$ in this equation of state are directly proportional to changes in the specific entropy $S / (nV)$:
   $$\Delta \ln K = \frac {2} {3} \frac {\Delta S} {k(nV)}$$
-The value of $K$ therefore specifies the *adiabat* of a sample of atmospheric gas, and the entropy equation
+The value of $K$ therefore specifies the *adiabat* of a sample of atmospheric gas, and radiative cooling changes the adiabat of that sample according to the entropy equation
   $$\frac {d \ln K} {dt} = - \frac {1} {t_{\rm cool}}$$
-determines how radiative cooling changes the adiabat of that sample.
 
 {: .note}
 In the scientific literature on galactic atmospheres, the quantity $K$ is often loosely called the "entropy" of atmospheric gas, when in fact it is logarithm of specific entropy. It is also specified using a variety of units that may seem to be incompatible with each other. However, the units of $K$ have no operational significance, because they correspond to a normalization factor that vanishes when differences in $\ln K$ are assessed. Only *changes* in $\ln K$ have physical meaning. One is therefore free to choose units for $K$ that reflect the observations used to measure it.  
 
-## Cooling Flows
+## Homogeneous Cooling Flows
 
 Uncompensated cooling causes a galactic atmosphere to contract, resulting in a ***cooling flow*** with an inward mass flux
 
@@ -84,43 +87,18 @@ Uncompensated cooling causes a galactic atmosphere to contract, resulting in a *
   $$\dot{M}_{\rm cool} = 4 \pi r^2 \rho v_{\rm in} = \frac {4 \pi r^3 \rho} {t_{\rm flow}}$$
 </p>
 
-
 in which $t_{\rm flow} = r / v_{\rm in}$ is the inflow timescale corresponding to the inflow speed $v_{\rm in} = - dr/dt$. The ratio of flow time to cooling time is related to gradient of specific entropy via
-$$\alpha_K ~\equiv~ \frac {d \ln K} {d \ln r} ~=~ r \left( \frac {dt} {dr} \right)^{-1} \frac {d \ln K} {d t} ~=~ - t_{\rm flow} \frac {d \ln K} {d t} ~=~ \frac {t_{\rm flow}} {t_{\rm cool}}$$
-Therefore, the equation
-
+  $$\alpha_K ~\equiv~ \frac {d \ln K} {d \ln r} ~=~ r \left( \frac {dt} {dr} \right)^{-1} \frac {d \ln K} {d t} ~=~ \frac {t_{\rm flow}} {t_{\rm cool}}$$
+Therefore, the inflow speed of a pure cooling flow is
+  $$v_{\rm in} (r) = \frac {r} {\alpha_K t_{\rm cool} (r)$$
+and atmospheric gas flows inward at the rate
 <p>
   $$\dot{M}_{\rm cool} (r) = \frac {4 \pi r^3 \rho (r)} {\alpha_K t_{\rm cool}(r)}$$
 </p>
 
-
-represents the expected cooling flow rate at radius $r$.
-
-### Steady Cooling
-
-The quantity $\dot{M}\_{\rm cool}$ is an *expected* cooling flow rate because we have not yet established whether it is a *steady* cooling flow rate. Its steadiness depends on whether $\dot{M}\_{\rm cool}$ is independent of radius. In an atmosphere with $P \propto r^{-\alpha}$, the local cooling flow rate $\dot{M}\_{\rm cool}$ is approximately constant with radius as long as the quantity
-  $$\frac {r^3 \rho} {t_{\rm cool}} ~\propto~ r^3 P^2 \left[ \frac {\Lambda (T)} {T^3} \right] ~\propto~ r^{3-2 \alpha} \left[ \frac {\Lambda (T)} {T^3} \right]$$
-is approximately constant with radius. A steady cooling flow in a nearly isothermal gravitational potential therefore has $\alpha \approx 3/2$, because gravitational compression assures that $T$ remains approximately constant with radius. Wherever those conditions apply, combining $K(r) \propto P^{-2/3} T^{5/3}$ and $\alpha \approx 3/2$ gives $\alpha_K \approx 1$ and a pure cooling flow rate
-
-<p>
-  $$\dot{M}_{\rm cool} (r) \approx \frac {4 \pi r^3 \rho (r)} {t_{\rm cool}(r)} = \frac {8 \pi r^3} {3 kT} \rho^2(r) \Lambda_\rho[T(r)]$$
-</p>
-
-
-### Cooling-Limited Gas Supply
-
-The steady-cooling equation relating $\dot{M}\_{\rm cool}$ to $r^3 \rho / t_{\rm cool}$ provides a useful upper limit on how quickly radiative cooling allows atmospheric gas to flow into a halo's central galaxy. **ExpCGM** implements that estimate. Users need to define a radius $r_{\rm gal}$ for the galaxy they are modeling. The framework then evaluates $\dot{M}\_{\rm cool} (r_{\rm gal})$ to determine the maximum gas supply that atmospheric cooling allows. 
-
-{: .important}
-Cooling gas can be flowing into a halo's central galaxy even if feedback energy input exceeds total radiative cooling. What matters more is how *local* heating compares to *local* cooling in the vicinity of $r_{\rm gal}$. If cooling locally exceeds heating in at least some atmospheric regions near $r_{\rm gal}$, then a global excess of heating does not immediately choke off the galaxy's gas supply. In the **ExpCGM** framework, excess heating instead limits the central galaxy's gas supply by expanding its atmosphere, resulting in a gradual decline in $\dot{M}\_{\rm cool}(r_{\rm gal})$ as expansion lowers the atmosphere's overall density.
-
-### Dissipation-Limited Gas Supply
-
-In galactic atmospheres with particularly short cooling times ($t_{\rm cool} \ll r / v_{\rm c}$), the pure cooling rate $\dot{M}\_{\rm cool}(r)$ overestimates how quickly atmospheric gas at radius $r$ can descend toward the central galaxy. The central galaxy's gas supply $\dot{M}\_{\rm in}$ then depends on how rapidly the atmosphere's kinetic energy can dissipate as gas falls inward. Its ultimate limit is the ballistic gravitational infall rate obtained by replacing $t_{\rm cool}$ with a free-fall timescale $t_{\rm ff}$. See the [Multiphase Gas](MultiphaseGas) page for more about how **ExpCGM** handles galactic atmospheres with short cooling times.
-
 ## Inhomogeneous Cooling
 
-The previous section applies to homogeneous cooling flows, but galactic atmospheres can be highly inhomogeneous. Observations show that inhomogeneity is commonplace, with adjacent regions having densities and temperatures that can differ by orders of magnitude. Therefore, the local cooling time of atmospheric gas can greatly differ from the value of $t_{\rm cool}$ derived by averaging $\rho$ and $T$ over the atmospheric shell at radius $r$. 
+Observations show that inhomogeneity is commonplace in galactic atmospheres, with adjacent regions having densities and temperatures that can differ by orders of magnitude. Therefore, the local cooling time of atmospheric gas can greatly differ from the value of $t_{\rm cool}$ derived by averaging $\rho$ and $T$ over the atmospheric shell at radius $r$. This section examines how **ExpCGM** can be extended to account for inhomogeneity.
 
 ### Log-Normal Distributions
 
@@ -133,10 +111,9 @@ Cooling time also has a log-normal distribution, as long as the cooling function
 In that case, one finds
 
 <p>
-  $$\delta \ln t_{\rm cool} ~=~ - (2 - \lambda) \delta \ln \rho ~=~ (2 - \lambda) \delta \ln T  ~=~ \frac {3 (2 - \lambda)} {5} \, \delta \ln K$$
+  $$\delta \ln t_{\rm cool} ~=~ - (2 - \lambda) \delta \ln \rho ~=~ \frac {3 (2 - \lambda)} {5} \, \delta \ln K$$
   </p>
 
-  
 for an atmosphere in pressure equilibrium.
 
 ### Cooling-Time Fluctuations
@@ -145,14 +122,14 @@ Those fluctuations can result in inhomogenous cooling that spurs development of 
   $$\delta \ln t_{\rm cool} \approx - 3 \, ( \delta \ln \rho )$$
 Density fluctuations with $\sigma_{\ln \rho} \approx 0.8$ then correspond to cooling-time fluctuations with $\sigma_{\ln t_{\rm cool}} \approx 2.4$, meaning that $t_{\rm cool}$ in the densest regions is more than an order of magnitude shorter than the layer's mean value of $t_{\rm cool}$. Those regions therefore lose entropy much faster than the more diffuse regions, causing the contrast between the layer's high and low density regions to increase, no matter what the mean heating rate, unless the heat input is somehow strongly skewed toward the layer's denser and cooler regions.
 
-The situation just described is a classic astrophysical thermal instability. However, when such an instability develops in a stratified galactic atmosphere, buoyancy produces complex consequences as the denser regions of each layer start to sink toward lower altitude. The [Thermal Instability](ThermalInstability) page describes the development and implications of such a multiphase atmosphere in greater depth.
+The situation just described is a classic astrophysical thermal instability. However, when such an instability develops in a stratified galactic atmosphere, buoyancy produces complex consequences as the denser regions of each layer start to sink toward lower altitude. A future *Thermal Instability* page will discuss the development and implications of such a multiphase atmosphere in greater depth.
 
 ## Radiative Losses
 
 In the **ExpCGM** framework, the total radiative loss rate of thermal energy within the bounding radius $r_{\rm CGM}$ of a galaxy's atmosphere is
 
 <p>
-  $$\dot{E}_{\rm rad} = \frac {3} {2} \int_0^{r_{\rm CGM}} \left( \frac {P} {t_{\rm cool}} \right) 4 \pi r^2 dr$$
+  $$\dot{E}_{\rm rad} ~=~ \frac {3} {2} \int_0^{r_{\rm CGM}} \left( \frac {P} {t_{\rm cool}} \right) 4 \pi r^2 dr ~=~ \int_0^{M_{\rm CGM}} \rho \Lambda_\rho ~dM_{\rm gas}$$
 </p>
 
 
@@ -182,13 +159,11 @@ Multiplying $\dot{E}\_{\rm rad}$ for the homogeneous case by this boost factor a
 A multiphase medium with embedded clouds orders of magnitude denser than the ambient gas may experience even greater radiative losses that require a more complex assessment of the boost factor. The radiative loss rate per unit mass from a multiphase gas sample of mass $M_{\rm gas}$ can be expressed as
 
 <p>
-  $$ \langle n \Lambda_\rho \rangle  = \frac {1} {M_{\rm gas}} \int_{M_{\rm gas}} n \Lambda_\rho ~d M_{\rm gas}$$
+  $$ \langle \rho \Lambda_\rho \rangle  = \frac {1} {M_{\rm gas}} \int_{M_{\rm gas}} \rho \Lambda_\rho ~d M_{\rm gas}$$
 </p>
 
-where $n = \rho / \mu m_p$ is the particle number density. 
-
 Users of **ExpCGM** who wish to incorporate additional radiative losses from a multiphase medium need to supply an algorithm that determines the boost factor
-  $$f_{\rm rad} = \frac {kT \langle n \Lambda_\rho \rangle} {P \Lambda_\rho(T)} $$
-representing how the specific radiative loss rate of multiphase gas compares with the specific radiative loss rate $P \Lambda_\rho (T) / kT$ of homogeneous gas. 
+  $$f_{\rm rad} = \frac {\langle \rho \Lambda_\rho \rangle} {\bar{\rho} \Lambda_\rho(T)}$$
+This factor represents how the specific radiative loss rate of a multiphase gas sample of mean density $\bar{\rho}$ compares with the specific radiative loss rate of homogeneous gas with the same pressure $P$ and a temperature $T = \mu m_p P / k \bar{\rho}$. 
 
-Such an algorithm should be informed by high-resolution numerical simulations of turbulent radiative mixing layers in thermally unstable gas. It may depend on the local pressure and temperature of the volume-filling gas that presumably confines the denser clouds. It may also depend on the fraction $f_{\rm cool}$ of the gas mass with $T \ll T_\varphi$ and the velocity dispersion $\sigma_{\rm 1D,cool}$ of the cool-cloud population. (See the [Multiphase Gas](MultiphaseGas) page for more on how $f_{\rm cool}$ and $\sigma_{\rm 1D,cool}$ are related to the atmosphere's thermalization fraction $f_{\rm th}$.) 
+Such an algorithm should be informed by high-resolution numerical simulations of turbulent radiative mixing layers in thermally unstable gas. It may depend on the local pressure and temperature of the volume-filling gas that presumably confines the denser clouds. It may also depend on the fraction $f_{\rm cool}$ of the gas mass with $T \ll T_\varphi$ and the velocity dispersion $\sigma_{\rm 1D,cool}$ of the cool-cloud population. (See the [Multiphase Gas](MultiphaseGas) page for more on how $f_{\rm cool}$ and $\sigma_{\rm 1D,cool}$ are related to the atmosphere's thermalization fraction $f_{\rm th})$. 
