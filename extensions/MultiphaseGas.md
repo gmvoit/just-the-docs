@@ -28,16 +28,13 @@ parent: Extensions
 # Multiphase Gas
 {: .no_toc}
 
-{: .warning}
-This page is still under development.
-
 The most basic **ExpCGM** models assume that a galactic atmosphere is homogeneous, with uniform pressure, gas density, and temperature at each radius. However, atmospheric gas with a radiative cooling time $t_{\rm cool}$ much shorter than the dissipation timescale $t_{\rm diss}$ of its non-thermal support energy is unlikely to remain homogeneous, as it is prone to thermal instability. 
 
-High-density perturbations within such an atmosphere typically cool more rapidly than low-density perturbations, and dissipation is not rapid enough to replenish those radiative losses. Differential cooling therefore enhances any density contrasts that arise, producing gas clumps much denser than their surroundings, as long as thermal instability can progress to nonlinear amplitudes. (See the [Thermal Instability](ThermalInstability) page for more detail.) 
+High-density perturbations within such an atmosphere typically radiate energy more rapidly than low-density perturbations. Dissipation is not rapid enough to replenish those radiative losses. Differential cooling therefore enhances any density contrasts that arise, eventually producing gas clumps much denser than their surroundings, as long as thermal instability can progress to nonlinear amplitudes. (A future *Thermal Instability* page will provide more detail.) 
 
-Astronomers often call gas with large density and temperature contrasts a *multiphase medium*. The properties of a multiphase galactic atmosphere can significantly differ from those of a homogeneous atmosphere with the same total mass $M_{\rm CGM}$ and total energy $E_{\rm CGM}$, altering both the gas supply to the central galaxy and the atmosphere's overall pattern of evolution. 
+Astronomers often call gas with large density and temperature contrasts a *multiphase medium*. The properties of a multiphase galactic atmosphere significantly differ from those of a homogeneous atmosphere with the same total mass $M_{\rm CGM}$ and total energy $E_{\rm CGM}$. Those difference alter both the gas supply to the central galaxy and the atmosphere's overall pattern of evolution. 
 
-This page outlines how algorithms representing those characteristics of a multiphase atmosphere can be incorporated into the **ExpCGM** modeling framework.
+This page outlines **ExpCGM** can be extended to include algorithms representing some important characteristics of a multiphase atmosphere.
 
 <details closed markdown="block">
   <summary>
@@ -50,13 +47,11 @@ This page outlines how algorithms representing those characteristics of a multip
 
 ## Objectives
 
-Multiphase gas algorithms in **ExpCGM** need to be modestly scoped, because detailed modeling of a multiphase medium requires computational methods far beyond the sophistication of the **ExpCGM** framework. Remember that the framework's primary objective is to represent the global structure of a galactic atmosphere so that its coupling with the central galaxy can be modeled. It tracks how cosmological accretion augments the atmosphere's total energy $E_{\rm CGM}$ and mass $M_{\rm CGM}$. It determines how radiative losses reduce $E_{\rm CGM}$, allowing some of the accreted gas to enter the central galaxy. And it accounts for the central galaxy's feedback response to that gas supply, which adds both energy and gas mass to its atmosphere. 
+Multiphase gas algorithms for **ExpCGM** need to be modestly scoped, because detailed modeling of a multiphase medium requires computational methods far beyond the sophistication of the **ExpCGM** framework. Remember that the framework's primary objective is to represent the global structure of a galactic atmosphere so that its coupling with the central galaxy can be modeled. It tracks how cosmological accretion augments the atmosphere's total energy $E_{\rm CGM}$ and mass $M_{\rm CGM}$. It determines how radiative losses reduce $E_{\rm CGM}$ and allows some of the accreted gas to enter the central galaxy. It also accounts for the central galaxy's feedback response to that gas supply, which adds both energy and gas mass to its atmosphere. 
 
-An **ExpCGM** algorithm for multiphase gas must therefore focus on how a galactic atmosphere's inhomogeneity affects $\dot{E}\_{\rm CGM}$ and $\dot{M}\_{\rm CGM}$. For example, atmospheric density contrasts can enhance radiative losses and raise the cooling-flow limit on the galaxy's gas supply. They can also alter how turbulent dissipation or shock fronts convert the atmosphere's kinetic energy into heat.
+An **ExpCGM** algorithm for multiphase gas must therefore focus on how a galactic atmosphere's inhomogeneity affects $\dot{E}\_{\rm CGM}$ and $\dot{M}\_{\rm CGM}$. For example, atmospheric density contrasts can enhance radiative losses and boost the galaxy's gas supply. They can also alter how turbulent dissipation or shock fronts convert the atmosphere's kinetic energy into heat.
 
-Different user-defined schemes for representing multiphase gas can be tested within the **ExpCGM** framework, to see how they affect $\dot{E}\_{\rm CGM}$ and $\dot{M}\_{\rm CGM}$ and alter the atmosphere's thermalization fraction $f_{\rm th}$. 
-
-We hope that using **ExpCGM** to experiment with different multiphase gas models and to identify how the assumptions inherent in those models affect various observable properties of galactic atmospheres will yield useful constraints on the astrophysical processes determining those properties.
+Different user-defined schemes for representing those effects can be tested within the **ExpCGM** framework, to see how they influence $\dot{E}\_{\rm CGM}$ and $\dot{M}\_{\rm CGM}$ and alter the atmosphere's thermalization fraction $f_{\rm th}$. Using **ExpCGM** to experiment with different multiphase gas models and to identify how the assumptions inherent in those models affect various observable properties of galactic atmospheres will hopefully yield useful constraints on the astrophysical processes determining those properties.
 
 ## Cool Gas Fraction
 
@@ -70,7 +65,7 @@ for a multiphase atmosphere, implying that
   $$f_{\rm th} = (1 - f_{\rm cool}) \left( \frac {\alpha_{\rm eff}} {2 f_\varphi} \right) \frac {T} {T_\varphi}$$
 According to this last equation, an atmosphere's thermalization fraction $f_{\rm th}$ is similar to the fraction $(1 - f_{\rm cool})$ of the atmospheric gas mass that remains hot, because the $\alpha_{\rm eff} / 2 f_\varphi$ factor is generally of order unity and the temperature $T$ of the hot phase is always similar to $T_\varphi$, because of how the hot phase is defined. 
 
-Including multiphase gas within **ExpCGM** models therefore necessitates a reinterpretation of the $f_{\rm th}$ parameter. For example, $f_{\rm th}$ in a homogenous **ExpCGM** model with $t_{\rm cool} \ll f_{\rm th} t_{\rm diss}$ declines in proportion to $T$. Meanwhile, the velocity dispersion $\sigma_{\rm 1D}^2$ of isotropic turbulence increases. A decline in $f_{\rm th}$ is linked to a complementary rise in $\sigma_{\rm 1D}^2$ because the force balance condition ensures that
+Including multiphase gas within **ExpCGM** models therefore necessitates a reinterpretation of the $f_{\rm th}$ parameter. For example, the thermalization fraction in a homogenous **ExpCGM** model with $t_{\rm cool} \ll f_{\rm th} t_{\rm diss}$ declines in proportion to $T$, and the velocity dispersion $\sigma_{\rm 1D}^2$ of isotropic turbulence increases. A decline in $f_{\rm th}$ is linked to a complementary rise in $\sigma_{\rm 1D}^2$ because the force balance condition ensures that
   $$\sigma_{\rm 1D}^2 = \left( 1 - f_{\rm th} \right) \frac {f_\varphi v_{\rm c}^2} {\alpha_{\rm eff}}$$
 However, the equivalent condition in a multiphase **ExpCGM** model is
   $$f_{\rm cool}\sigma_{\rm 1D,cool}^2 + \left( 1 - f_{\rm cool} \right) \sigma_{\rm 1D,hot}^2 = \left( 1 - f_{\rm th} \right) \frac {f_\varphi v_{\rm c}^2} {\alpha_{\rm eff}}$$
