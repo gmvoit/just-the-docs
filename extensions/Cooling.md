@@ -52,7 +52,7 @@ defined so that $\rho \Lambda_\rho (T)$ is the emission rate of radiative energy
 
 Steady emission radiates an amount of energy equivalent to an atmosphere's thermal  energy on a timescale
   $$t_{\rm cool} = \frac {3} {2} \frac {P} {\rho^2 \Lambda_\rho} = \frac {3} {2} \frac {P} {n_e n_i \Lambda (T)} \approx \frac {3kT} {n_e \Lambda (T)}$$
-called a ***cooling time***. However, an atmosphere's temperature does not necessarily decline on that timescale because of gravitational compression. Its temperature remains approximately constant if $t_{\rm cool}$ is longer than the atmosphere's dynamical timescale $t_{\rm dyn} = r / v_{\rm c}$, it and stays close to
+called a ***cooling time***. However, an atmosphere's temperature does not necessarily decline on that timescale because of gravitational compression. Its temperature remains approximately constant if $t_{\rm cool}$ is longer than the atmosphere's dynamical timescale $t_{\rm dyn} = r / v_{\rm c}$, and it stays close to
   $$T \approx \left( \frac {2 f_{\rm th}} {\alpha_{\rm eff}} \right) T_\varphi  = \left( \frac {2  f_{\rm th}} {\alpha_{\rm eff}} \right) \frac {\mu m_p v_{\rm c}^2} {2k}$$
 (See the [Essentials](Essentials) page for an explanation and definitions of symbols.) 
 
