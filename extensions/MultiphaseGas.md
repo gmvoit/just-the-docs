@@ -118,14 +118,14 @@ The details of how to model cloud-cloud collisions in a multiphase **ExpCGM** mo
 
 ## Mass Exchange
 
-Conversion of hot gas to cool gas and back again can happen through many different channels in a multiphase galactic atmosphere. The figure below schematically represents at least some of those channels. An **ExpCGM** atmospheric model cannot represent all of them.  
+Conversion of hot gas to cool gas and back again can happen through many different channels in a multiphase galactic atmosphere. The figure below schematically represents at least some of those channels. 
 
 <figure>
     <img src="../Multiphase_CGM.jpg"
          alt="Multiphase_CGM">
 </figure>
 
-Attempting to represent *all* of these channels would result in a complex parametric model with many degrees of freedom. The key questions to consider when choosing what to represent in an **ExpCGM** model are therefore: 
+An **ExpCGM** atmospheric model cannot realistically represent all of them.  The key questions to consider when choosing what's most important to represent in an **ExpCGM** model are therefore: 
 
 1. Which channels dominate the atmosphere's overall radiative energy loss rate ($\dot{E}\_{\rm rad}$)?
 2. Which channels feed the most gas into the central galaxy and therefore determine the rate ($\dot{E}\_{\rm fb}$) at which feedback adds energy to the atmosphere?
