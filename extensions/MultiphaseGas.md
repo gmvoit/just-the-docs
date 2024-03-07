@@ -125,14 +125,13 @@ Conversion of hot gas to cool gas and back again can happen through many differe
          alt="Multiphase_CGM">
 </figure>
 
-
-{: .note}
-In the figure, TRML stands for *turbulent radiative mixing layers*. 
-
 An **ExpCGM** atmospheric model cannot realistically represent all of these processes.  The key questions to consider when choosing what's most important to represent are therefore: 
 
 1. Which channels dominate the atmosphere's overall radiative energy loss rate $\dot{E}\_{\rm rad}$?
 2. Which channels feed the most gas into the central galaxy and therefore determine the rate $\dot{E}\_{\rm fb}$ at which feedback adds energy to the atmosphere?
+
+{: .note}
+In the figure, TRML stands for *turbulent radiative mixing layers*. 
 
 ### Condensation
 
