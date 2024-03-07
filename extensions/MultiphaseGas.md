@@ -124,7 +124,7 @@ The details of how to model the consequences of cloud-cloud collisions in a mult
 Conversion of hot gas to cool gas and back again can happen through many different channels in a multiphase galactic atmosphere. The figure below schematically represents many of those mass-exchange channels, but perhaps not all of them: 
 
 <figure>
-    <img src="../Multiphase_CGM.jpg"
+    <img src="../Multiphase_CGM_margins.jpg"
          alt="Multiphase_CGM">
 </figure>
 
