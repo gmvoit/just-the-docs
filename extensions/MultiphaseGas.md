@@ -47,17 +47,17 @@ This page outlines **ExpCGM** can be extended to include algorithms representing
 
 ## Objectives
 
-Multiphase gas algorithms for **ExpCGM** need to be modestly scoped, because detailed modeling of a multiphase medium requires computational methods far beyond the sophistication of the **ExpCGM** framework. Remember that the framework's primary objective is to represent the global structure of a galactic atmosphere so that its coupling with the central galaxy can be modeled. It tracks how cosmological accretion augments the atmosphere's total energy $E_{\rm CGM}$ and mass $M_{\rm CGM}$. It determines how radiative losses reduce $E_{\rm CGM}$ and allows some of the accreted gas to enter the central galaxy. It also accounts for the central galaxy's feedback response to that gas supply, which adds both energy and gas mass to its atmosphere. 
+Multiphase gas algorithms for **ExpCGM** need to be modestly scoped, because detailed modeling of a multiphase medium requires computational methods far beyond the sophistication of the **ExpCGM** framework. Remember that the framework's primary objective is to represent the global structure of a galactic atmosphere so that its coupling with the central galaxy can be modeled. It tracks how cosmological accretion augments the atmosphere's total energy $E_{\rm CGM}$ and mass $M_{\rm CGM}$. It determines how radiative losses reduce $E_{\rm CGM}$ and allow some of the accreted gas to enter the central galaxy. It also accounts for the central galaxy's feedback response to that gas supply. 
 
-An **ExpCGM** algorithm for multiphase gas must therefore focus on how a galactic atmosphere's inhomogeneity affects $\dot{E}\_{\rm CGM}$ and $\dot{M}\_{\rm CGM}$. For example, atmospheric density contrasts can enhance radiative losses and boost the galaxy's gas supply. They can also alter how turbulent dissipation or shock fronts convert the atmosphere's kinetic energy into heat.
+An **ExpCGM** algorithm for an evolving multiphase atmosphere should therefore focus on how the atmosphere's inhomogeneity affects $\dot{E}\_{\rm CGM}$ and $\dot{M}\_{\rm CGM}$. For example, atmospheric density contrasts can enhance radiative losses and boost the galaxy's gas supply. They can also alter how turbulent dissipation or shock fronts convert the atmosphere's kinetic energy into heat.
 
 Different user-defined schemes for representing those effects can be tested within the **ExpCGM** framework, to see how they influence $\dot{E}\_{\rm CGM}$ and $\dot{M}\_{\rm CGM}$ and alter the atmosphere's thermalization fraction $f_{\rm th}$. Using **ExpCGM** to experiment with different multiphase gas models and to identify how the assumptions inherent in those models affect various observable properties of galactic atmospheres will hopefully yield useful constraints on the astrophysical processes determining those properties.
 
 ## Cool Gas Fraction
 
-To represent multiphase gas, the **ExpCGM** framework defines an atmosphere's ***cool gas fraction*** $f_{\rm cool}$ to be the fraction of an atmosphere's gas mass that is "cool" compared to the atmosphere's gravitational temperature $T_\varphi$. The complementary "hot" gas fraction ($1-f_{\rm cool}$) has a pressure
+To represent multiphase gas, the **ExpCGM** framework defines an atmosphere's ***cool gas fraction*** $f_{\rm cool}$ to be the fraction of an atmosphere's gas mass that is "cool" compared to the atmosphere's gravitational temperature $T_\varphi$. The complementary "hot" gas fraction $(1-f_{\rm cool})$ has a pressure
  $$P(r) = (1 - f_{\rm cool}) \frac {kT} {\mu m_p} \bar{\rho} (r)$$
-where $\bar{\rho} (r)$ is the mean mass density of an atmosphere in which gas with $T \ll T_\varphi$ occupies a negligible fraction of the volume at radius $r$. 
+where $\bar{\rho} (r)$ is the mean mass density at radius $r$ of an atmosphere in which cool gas occupies a negligible fraction of the volume. 
 
 Applying the usual **ExpCGM** assumption of force balance then gives
   $$\frac {P} {f_{\rm th}} = \frac {\bar{\rho} f_\varphi v_{\rm c}^2} {\alpha_{\rm eff}}$$
@@ -65,11 +65,11 @@ for a multiphase atmosphere, implying that
   $$f_{\rm th} = (1 - f_{\rm cool}) \left( \frac {\alpha_{\rm eff}} {2 f_\varphi} \right) \frac {T} {T_\varphi}$$
 According to this last equation, an atmosphere's thermalization fraction $f_{\rm th}$ is similar to the fraction $(1 - f_{\rm cool})$ of the atmospheric gas mass that remains hot, because the $\alpha_{\rm eff} / 2 f_\varphi$ factor is generally of order unity and the temperature $T$ of the hot phase is always similar to $T_\varphi$, because of how the hot phase is defined. 
 
-Including multiphase gas within an **ExpCGM** atmosphere model therefore necessitates a reinterpretation of the $f_{\rm th}$ parameter. In a homogenous atmosphere model, the gas temperature is proportional to $f_{\rm th}$, and the complementary kinetic support energy is proportional to 
-  $$\sigma_{\rm 1D}^2 = \left( 1 - f_{\rm th} \right) \frac {f_\varphi v_{\rm c}^2} {\alpha_{\rm eff}}$$
-However, the equivalent force-balance condition in a multiphase atmosphere model is
+Including multiphase gas within an **ExpCGM** atmosphere model therefore necessitates a reinterpretation of the $f_{\rm th}$ parameter. The force-balance condition for a multiphase atmosphere jointly supported by thermal and turbulent energy gives 
+  $$\frac {kT} {\mu m_p} = \left( \frac {f_{\rm th}} {1 - f_{\rm cool}} \right) \frac {f_\varphi v_{\rm c}^2} {\alpha_{\rm eff}}$$
+for the thermal support component and 
   $$f_{\rm cool}\sigma_{\rm 1D,cool}^2 + \left( 1 - f_{\rm cool} \right) \sigma_{\rm 1D,hot}^2 = \left( 1 - f_{\rm th} \right) \frac {f_\varphi v_{\rm c}^2} {\alpha_{\rm eff}}$$
-Here, $\sigma_{\rm 1D, hot}$ and $\sigma_{\rm 1D, cool}$ are the respective velocity dispersions of the hot and cool components. A drop in $f_{\rm th}$ then corresponds to a rise in $f_{\rm cool}$ and a complementary decline in the hot gas fraction $(1 - f_{\rm cool})$ rather than a decline in $T$.
+for turbulent support from a cool component with velocity dispersion $\sigma_{\rm 1D, cool}$ and a hot component with velocity dispersion $\sigma_{\rm 1D, hot}$. A rise in $f_{\rm cool}$ can then compensate for a decline in $f_{\rm th}$ while the temperature $T$ of the hot component remains steady.
 
 ## Velocity Coupling
 
@@ -102,7 +102,7 @@ The force balance condition given above for cool gas assumes an isotropic veloci
 Sedimentation occurs in between the strong-coupling and weak-coupling limits. A small amount of drag gradually drains orbital energy from clouds that would otherwise be ballistic, causing them to sink toward the center. That radial drift speed can be a model parameter, or it can be estimated based on a user-defined model for the properties of cool clouds. 
 
 {: .note}
-A future *Cloud Survival* document could outline the conditions under which drifting clouds persist and the rate at which sedimentation supplies gas to the central galaxy.
+A future *Cloud Survival* document will discuss  the conditions under which drifting clouds persist and the rate at which sedimentation supplies gas to a halo's central galaxy.
 
 ### Dissipation of Turbulent Support
 
@@ -118,14 +118,14 @@ The details of how to model cloud-cloud collisions in a multiphase **ExpCGM** mo
 
 ## Mass Exchange
 
-Conversion of hot gas to cool gas and back again can happen through many different channels in a multiphase galactic atmosphere. The figure below schematically represents at least some of those mass-exchange channels: 
+Conversion of hot gas to cool gas and back again can happen through many different channels in a multiphase galactic atmosphere. The figure below schematically represents many of those mass-exchange channels, but perhaps not all of them: 
 
 <figure>
     <img src="../Multiphase_CGM.jpg"
          alt="Multiphase_CGM">
 </figure>
 
-An **ExpCGM** atmospheric model cannot realistically represent all of these processes.  The key questions to consider when choosing what's most important to represent are therefore: 
+An evolving **ExpCGM** atmospheric model cannot realistically represent all of these channels.  The key questions to consider when deciding the most important ones to represent are therefore: 
 
 1. Which channels dominate the atmosphere's overall radiative energy loss rate $\dot{E}\_{\rm rad}$?
 2. Which channels feed the most gas into the central galaxy and therefore determine the rate $\dot{E}\_{\rm fb}$ at which feedback adds energy to the atmosphere?
@@ -135,11 +135,7 @@ In the figure, TRML stands for *turbulent radiative mixing layers*.
 
 ### Condensation
 
-Consider first the timescale on which cooling converts hot gas into cool gas in an atmosphere with $t_{\rm cool} \ll f_{\rm th} t_{\rm diss}$. The cooling time of homogeneous hot gas with a mass density $\rho$ is
-  $$t_{\rm cool} = \left( \frac {3 kT} {2 \mu m_p} \right) \frac {1} {\rho \Lambda_\rho (T)}$$
-in which $\rho \Lambda_{\rho}(T)$ is the specific radiative loss rate for gas at temperature $T$.
-
-In a multiphase atmosphere with a mean mass density $\bar{\rho}$, the cooling time for *just the hot component* becomes
+Consider first the timescale on which cooling converts hot gas into cool gas in an atmosphere with $t_{\rm cool} \ll f_{\rm th} t_{\rm diss}$. In a multiphase atmosphere with a mean mass density $\bar{\rho}$, the cooling time for *just the hot component* becomes
   $$t_{\rm cool} = \left( \frac {3 kT} {2 \mu m_p} \right) \frac {1} { (1 - f_{\rm cool}) \bar{\rho} \Lambda_\rho (T)}$$
 Mass transfer from the hot phase to the cool phase while $\bar{\rho}$ remains constant therefore causes the hot-gas cooling time to rise and slows this particular channel for mass exchange, which asymptotically abates as $t_{\rm cool}$ approaches the universe's age.
 
@@ -159,7 +155,7 @@ because the thermal support fraction $f_{\rm th}$ then stabilizes on a timescale
 
 ### Turbulent Heating
 
-How to model an atmosphere with $t_{\rm cool} \gg f_{\rm th} t_{\rm diss}$ is less clear. According to the thermalization equation, the thermal support fraction $f_{\rm th}$ should rise, because dissipation is generating thermal energy faster than radiative losses can shed it. If dissipation is indeed reducing $f_{\rm cool}$ in proportion to $1 - f_{\rm th}$, then the hot-gas mass fraction of a multiphase galactic atmosphere evolves toward 
+How to model a multiphase atmosphere with $t_{\rm cool} \gg f_{\rm th} t_{\rm diss}$ is less clear. According to the thermalization equation, the atmosphere's thermal support fraction $f_{\rm th}$ should rise, because dissipation is generating thermal energy faster than radiative losses can shed it. If dissipation is indeed reducing $f_{\rm cool}$ in proportion to $1 - f_{\rm th}$, then the hot-gas mass fraction of a multiphase galactic atmosphere evolves toward 
   $$1 - f_{\rm cool}  = \left( \frac {2 f_\varphi} {\alpha_{\rm eff}} \frac {T_\varphi} {T} \right) \left[ 1 + \left( \frac {f_{\rm in,th} - f_{\rm th}} {1 - f_{\rm th}} \right)\frac {t_{\rm diss}} {t_{\rm in}} \right]\frac {t_{\rm cool}} {t_{\rm diss}}$$
 on a timescale $\sim t_{\rm cool}$. In that case, multiphase galactic atmospheres in the **ExpCGM** framework converge toward a hot-gas mass fraction $(1 - f_{\rm cool}) \sim t_{\rm cool} / t_{\rm diss}$.
 
