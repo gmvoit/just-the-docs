@@ -181,9 +181,9 @@ In this equation, the factor $\dot{f}\_{\rm cool}$ represents evolution of the c
 Given the complexity of the overall mass-exchange network, future development of the **ExpCGM** framework will need to focus on individual channels for changing $f_{\rm cool}$. In the meantime, it may be possible to explore whether the schematic thermalization model presented here is consistent with observations.
 
 For example, in the limit $f_{\rm th} \ll 1$ the model predicts an equilibrium hot-gas fraction
-  $$1 - f_{\rm cool} \approx \frac {\mu m_p \sigma_{\rm 1D}^2} {kT} \left( \frac {t_{\rm cool}}  {t_{\rm ff}} + f_{\rm th,in} \frac {t_{\rm cool}} {t_{\rm in}} \right)$$
+  $$1 - f_{\rm cool} \approx \frac {\mu m_p \sigma_{\rm 1D}^2} {kT} \left( \frac {t_{\rm cool}}  {t_{\rm diss}} + f_{\rm th,in} \frac {t_{\rm cool}} {t_{\rm in}} \right)$$
 In principle, the leading factor can be constrained with observations. If not, it should be of order unity in this limit, giving
-  $$1 - f_{\rm cool} \sim \left( \frac {t_{\rm ff}} {t_{\rm diss}} \right) \frac {t_{\rm cool}}  {t_{\rm diss}} + f_{\rm th,in} \frac {t_{\rm cool}} {t_{\rm in}}$$
+  $$1 - f_{\rm cool} \sim \left( \frac {t_{\rm ff}} {t_{\rm diss}} \right) \frac {t_{\rm cool}}  {t_{\rm ff}} + f_{\rm th,in} \frac {t_{\rm cool}} {t_{\rm in}}$$
 Here, the ratio $t_{\rm cool} / t_{\rm diss}$ has been separated into a ratio relating the dissipation timescale to the local freefall timescale $t_{\rm ff}$ and a ratio relating the cooling timescale to $t_{\rm ff}$. For this purpose, **ExpCGM** defines the local freefall time to be $t_{\rm ff} \equiv (2 r / g)^{1/2} = 2^{1/2} (r/ v_{\rm c})$, where $g$ is the local gravitational acceleration.
 
 When expressed like this, the first term in the estimate for the hot-gas fraction corresponds to what that fraction would be in the absence of energy input and the second term corrects the estimate to account for the fraction $f_{\rm th,in}$ of atmospheric energy input going directly into heat. In an atmosphere supported primarily by turbulence driven on a length scale similar to $r$, then the ratio $t_{\rm ff} / t_{\rm diss}$ will be of order unity. It will be greater for driving on a length scale smaller than $r$.
