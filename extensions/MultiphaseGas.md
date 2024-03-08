@@ -171,7 +171,7 @@ One approach to representing such a situation is to define a thermal support fra
 That definition then leads to the evolution equation
 
 <p>
-  $$\frac {d f_{\rm th, hot}} {dt} = \frac {\dot{f}_{\rm th}  - f_{\rm th,hot} \dot{f}_{\rm cool}}{ 1 - f_{\rm cool}}$$
+  $$\frac {d f_{\rm th, hot}} {dt} = \frac {\dot{f}_{\rm th} - f_{\rm th,hot} \dot{f}_{\rm cool}}{ 1 - f_{\rm cool}}$$
 </p>
 
 In this equation, the factor $\dot{f}\_{\rm cool}$ represents evolution of the cool gas mass fraction. To apply this approach, an **ExpCGM** user would need to specify a model for $f_{\rm cool}$ that evolves according to some combination of the processes schematically pictured in the complicated figure above. 
@@ -183,7 +183,7 @@ Given the complexity of the overall mass-exchange network, future development of
 For example, in the limit $f_{\rm th} \ll 1$ the model predicts an equilibrium hot-gas fraction
   $$1 - f_{\rm cool} \approx \frac {\mu m_p \sigma_{\rm 1D}^2} {kT} \left( \frac {t_{\rm cool}}  {t_{\rm diss}} + f_{\rm th,in} \frac {t_{\rm cool}} {t_{\rm in}} \right)$$
 In principle, the leading factor can be constrained with observations. If not, it should be of order unity in this limit, giving
-  $$1 - f_{\rm cool} \sim \left( \frac {t_{\rm ff}} {t_{\rm diss}} \right) {t_{\rm cool}}  {t_{\rm diss}} + f_{\rm th_in} \frac {t_{\rm cool}} {t_{\rm in}}$$
+  $$1 - f_{\rm cool} \sim \left( \frac {t_{\rm ff}} {t_{\rm diss}} \right) \frac {t_{\rm cool}}  {t_{\rm diss}} + f_{\rm th,in} \frac {t_{\rm cool}} {t_{\rm in}}$$
 Here, the ratio $t_{\rm cool} / t_{\rm diss}$ has been separated into a ratio relating the dissipation timescale to the local freefall timescale $t_{\rm ff}$ and a ratio relating the cooling timescale to $t_{\rm ff}$. For this purpose, **ExpCGM** defines the local freefall time to be $t_{\rm ff} \equiv (2 r / g)^{1/2} = 2^{1/2} (r/ v_{\rm c})$, where $g$ is the local gravitational acceleration.
 
 When expressed like this, the first term in the estimate for the hot-gas fraction corresponds to what that fraction would be in the absence of energy input and the second term corrects the estimate to account for the fraction $f_{\rm th,in}$ of atmospheric energy input going directly into heat. In an atmosphere supported primarily by turbulence driven on a length scale similar to $r$, then the ratio $t_{\rm ff} / t_{\rm diss}$ will be of order unity. It will be greater for driving on a length scale smaller than $r$.
