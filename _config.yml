@@ -4,7 +4,7 @@ theme: just-the-docs
 
 url: https://gmvoit.github.io/ExpCGM
 
-logo: "GalAt-SMLbanner_150x40p-Color.png"
+# logo: "GalAt-SMLbanner_150x40p-Color.png"
 
 callouts_level: quiet # or loud
 callouts:
