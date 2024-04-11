@@ -4,7 +4,7 @@ theme: just-the-docs
 
 url: https://gmvoit.github.io/ExpCGM
 
-logo: "ExpCGM-Color_Site300x80p.png"
+# logo: "ExpCGM-Color_Site300x80p.png"
 
 callouts_level: quiet # or loud
 callouts:
