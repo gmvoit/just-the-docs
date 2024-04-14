@@ -58,7 +58,7 @@ Dividing $v_{\rm c}^2 (r)$ by $\alpha(r)$ gives the temperature profile for a th
   $$kT(r) = \frac {\mu m_p v_{\rm c}^2(r)} {\alpha(r)}$$
 The atmosphere's density profile then depends on just $\varphi(r)$, $\alpha(r)$, and $P_0$:
   $$\rho(r) = \frac {\alpha(r) P(r)} {v_{\rm c}^2(r)}$$
-However, $T(r)$ and $\rho(r)$ may also depend on two additional parametric functions representing the atmosphere's thermalization fraction $f_{\rm th}$ and force modification factor $f_\varphi$ (see the [Essentials](Essentials) page for definitions).
+However, $T(r)$ and $\rho(r)$ may also depend on two additional parametric functions representing the atmosphere's thermalization fraction $f_{\rm th}$ and force modification factor $f_\varphi$. (See the [Essentials](Essentials) page for the definitions of $f_{\rm th}$ and $f_\varphi$.)
 
 ### Isothermal Atmosphere
 
@@ -86,7 +86,10 @@ Cosmological structure formation also produces halo potential wells that are not
 with $x =  r / r_{\rm s}$ and $A_{\rm NFW} = 4.625$. 
 
 The [Essentials](Essentials) page presents a simple example with four degrees of freedom $(P_0,v_\varphi,r_{\rm s}, \alpha)$ describing a power-law atmosphere in an NFW potential well. Expanding that example using all four parameters of a double power-law atmosphere yields a model with seven degrees of freedom $(P_0,v_\varphi,r_{\rm s},\alpha_{\rm in},\alpha_{\rm out},\alpha_{\rm tr},r_\alpha)$. Users can reduce those degrees of freedom to five by keeping $\alpha_{\rm tr}$ fixed and by choosing to make $r_\alpha$ a constant multiple of $r_{\rm s}$.
- 
+
+{: .note}
+The double power-law atmosphere model given above is equivalent to what the astronomical literature sometimes calls a "generalized NFW model."
+
 ### NFW Halo + Central Galaxy
 
 An NFW halo model coupled with a shape function model that has $\alpha_{\rm in} > 0$ results in an atmospheric temperature that formally approaches zero at small radii. Adding a central galaxy to the gravitational potential model helps to mitigate that potentially problematic issue.
