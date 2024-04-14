@@ -88,7 +88,7 @@ with $x =  r / r_{\rm s}$ and $A_{\rm NFW} = 4.625$.
 The [Essentials](Essentials) page presents a simple example with four degrees of freedom $(P_0,v_\varphi,r_{\rm s}, \alpha)$ describing a power-law atmosphere in an NFW potential well. Expanding that example using all four parameters of a double power-law atmosphere yields a model with seven degrees of freedom $(P_0,v_\varphi,r_{\rm s},\alpha_{\rm in},\alpha_{\rm out},\alpha_{\rm tr},r_\alpha)$. Users can reduce those degrees of freedom to five by keeping $\alpha_{\rm tr}$ fixed and by choosing to make $r_\alpha$ a constant multiple of $r_{\rm s}$.
 
 {: .note}
-The double power-law atmosphere model given above is equivalent to what the astronomical literature sometimes calls a "generalized NFW model."
+The double power-law atmosphere model is equivalent to what the astronomical literature sometimes calls a "generalized NFW model."
 
 ### NFW Halo + Central Galaxy
 
