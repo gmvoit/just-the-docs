@@ -30,10 +30,10 @@ parent: Data Fitting
 
 Each **ExpCGM** model for a galactic atmosphere depends on a user-specified gravitational potential function $\varphi(\mathbf{r})$ and a user-specified shape function $\alpha(\mathbf{r})$ for the atmosphere's pressure profile. Both functions can depend on a three-dimensional position vector $\mathbf{r}$. However, spherically symmetric models depending only on $r = \| \mathbf{r} \|$ are often sufficient. 
 
-This introductory page focuses on just spherically symmetric models. The **ExpCGM** framework will eventually include triaxial models among the [Extensions](Extensions).
+This introductory page focuses on spherically symmetric models. The **ExpCGM** framework will eventually include triaxial models among the [Extensions](Extensions).
 
 {: .warning}
-This page is still under construction.
+This page is still preliminary. If you have suggestions, please send them to <galacticatmospheres@gmail.com>.
 
 <details closed markdown="block">
   <summary>
@@ -172,7 +172,7 @@ The output of an **ExpCGM** model may contain predictions for observable feature
 | :-------: | ----------- |
 |  $z$  | Halo redshift |
 |  $Z$  | Heavy-element abundance in units of $Z_\odot$ (default: 1) |
-|  $\nu_{\rm min}$  | Minimum frequency of band (default: 0) |
-|  $\nu_{\rm max}$  | Maximum frequency of band (default: $\infty$) |
+|  $\nu_{\rm min}$  | Minimum frequency of spectral band (default: 0) |
+|  $\nu_{\rm max}$  | Maximum frequency of spectral band (default: $\infty$) |
 
 
