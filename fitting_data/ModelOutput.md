@@ -33,7 +33,7 @@ A variety of potentially observable atmospheric characteristics can be used to t
 This page describes the observational predictions provided with the output of an **ExpCGM** model.
 
 {: .warning}
-This page is still under construction.
+This page is still preliminary because the project has not yet released codes providing the model output. For the time being, consider it a wish list for the project and feel free to send suggestions to <galacticatmospheres@gmail.com>.
 
 <details closed markdown="block">
   <summary>
@@ -50,7 +50,7 @@ An **ExpCGM** model's radial profiles of thermal pressure, temperature, and gas 
 
 ## Projected Profiles
 
-Projected **ExpCGM** models provide many observable predictions that can be compared more directly with observational data and combined to obtain joint constraints on a model's input parameters.
+Projected **ExpCGM** models provide many observable predictions that can be compared with projected observational data and combined to obtain joint constraints on a model's input parameters.
 
 ### Surface Mass Density
 
@@ -125,7 +125,7 @@ In the special case of an isothermal power-law atmosphere, the structure-factor 
 and reduces to $\pi/2$ for $\alpha = 2$. 
 
 {: .note}
-Be aware the integral of $n_e n_{\rm H}$ over volume (rather along a line of sight) is sometimes called an "emission measure." That volume integral is called an "emission normalization" in the **ExpCGM** framework and is defined among the *Cumulative Profiles* described below.
+Be aware that the integral of $n_e n_{\rm H}$ over volume (rather along a line of sight) is sometimes called an "emission measure." In the **ExpCGM** framework, the volume integral of $n_e n_{\rm H}$ is called an "emission normalization" and is defined among the *Cumulative Profiles* described below.
 
 
 ### Line Intensity
@@ -245,7 +245,7 @@ Both profiles include all of the mass components specified in the input paramete
 |  ${\rm EM}(r_\perp)$  | Emission measure profile |
 |  $I_\nu(r_\perp \| Z)$  | Spectral intensity profile |
 |  $I_{\rm bol}(r_\perp \| Z)$  | Bolometric intensity profile |
-|  $I_{\rm band}(r_\perp \| Z , \nu_{\rm min} , \nu_{\rm max})$  | Band intensity profile |
+|  $I_{\rm band}(r_\perp \| Z , \nu_{\rm min} , \nu_{\rm max})$  | Spectral band intensity profile |
 
 ### Cumulative Profiles
 
