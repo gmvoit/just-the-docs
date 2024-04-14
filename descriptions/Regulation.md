@@ -109,6 +109,10 @@ In that limit, the minimalist regulator model reduces to a system of just two di
 
 Here, the specific energy $\varepsilon_{\rm loss}$ is the sum of $\varepsilon_{\rm rad} \equiv \dot{E}\_{\rm rad} / \dot{M}\_{\rm in}$ and $\varepsilon_{\rm in}$, and all of the feedback is assumed to come from stars. **ExpCGM** calls this system of two differential equations the *reduced version* of the minimalist regulator model.
 
+<figure>
+    <img src="../MinimalismCartoon.jpg"
+         alt="MinimalismCartoon">
+</figure>
 
 ## Regulator with Enrichment
 
