@@ -60,7 +60,7 @@ Fits to observations of thermal pressure profiles in galaxy clusters give an inn
 {: .note}
 This shape function produces what is sometimes called a *generalized NFW profile*. Integrating it after defining $x \equiv r / r_\alpha$ gives a pressure profile with the form
   $$P(r) \propto x^{-\alpha_{\rm in}} (1 + x^{\alpha_{\rm tr}})^{-(\alpha_{\rm out} - \alpha_{\rm in})/\alpha_{\rm tr}}$$
-Choosing $\alpha_{\rm in} = 1$, $\alpha_{\rm in} = 3$, and $\alpha_{\rm tr} = 1$ then makes this pressure profile like an NFW matter density profile, which has the form $\rho(r) \propto x^{-1} (1 + x)^{-3}$.
+Choosing $\alpha_{\rm in} = 1$, $\alpha_{\rm out} = 3$, and $\alpha_{\rm tr} = 1$ then makes this pressure profile like an NFW matter density profile, which has the form $\rho(r) \propto x^{-1} (1 + x)^{-3}$.
 
 
 ## Entropy-Based Profiles
