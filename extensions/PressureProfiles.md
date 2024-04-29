@@ -53,10 +53,13 @@ For many applications, a power-law pressure profile with constant $\alpha$ might
 
 Cosmological structure formation produces pressure profiles in which $\alpha (r)$ increases with radius. Both observations and numerical simulations of galaxy clusters show that their pressure profiles are flatter than $\alpha = 3/2$ at small radii and steeper than $\alpha = 3/2$ at large radii. As a result, the cosmological pressure profiles of galaxy clusters are often represented with a fitting formula equivalent to the shape function
   $$\alpha (r) = \alpha_{\rm in} + \left( \alpha_{\rm out} - \alpha_{\rm in} \right) \left[ \frac {(r / r_\alpha)^{\alpha_{\rm tr}}} { 1 +(r / r_\alpha)^{\alpha_{\rm tr}}} \right]$$
-The parameter $r_\alpha$ is a transitional radius for the profile's slope that is approximately twice the scale radius $r_{\rm s}$ of an NFW fit to the halo's gravitational potential. The other parameters represent the pressure profile's power-law slope in the appropriate limits. Fits to observations of thermal pressure profiles in galaxy clusters give an inner slope $\alpha_{\rm in} \approx 0.3$, an outer slope $\alpha_{\rm out} \approx 4.3$, and $\alpha_{\rm tr} \approx 1.1$. 
+The parameter $r_\alpha$ is a transitional radius for the profile's slope that is approximately twice the scale radius $r_{\rm s}$ of an NFW fit to the halo's gravitational potential. The other parameters represent the pressure profile's power-law slope in the appropriate limits. Fits to observations of thermal pressure profiles in galaxy clusters give an inner slope $\alpha_{\rm in} \approx 0.3$, an outer slope $\alpha_{\rm out} \approx 4.3$, and $\alpha_{\rm tr} \approx 1.1$, with more dispersion in $\alpha_{\rm in}$ than in $\alpha_{\rm out}$, because the inner parts of a galaxy cluster's atmosphere respond more strongly to radiative cooling and outbursts of feedback energy from the central galaxy.
 
 {: .note}
-Observations of galaxy clusters show more dispersion in $\alpha_{\rm in}$ than in $\alpha_{\rm out}$, presumably because the inner parts of a galaxy cluster's atmosphere respond more strongly to radiative cooling and outbursts of feedback energy from the central galaxy.
+This shape function produces what is sometimes called a *generalized NFW profile*. Integrating it gives a pressure profile with the form
+  $$P(r) \propto x^{-\alpha_{\rm in}} (1 + x^{\alpha_{\rm tr}})^{-(\alpha_{\rm out} - \alpha_{\rm in})/\alpha_{\rm tr}}$$
+for $x = r / r_\alpha$. Choosing $\alpha_{\rm in} = 1$, $\alpha_{\rm in} = 3$, and $\alpha_{\rm tr} = 1$ makes this pressure profile like an NFW matter density profile, which has the form $\rho(r) \propto x^{-1} (1 + x)^{-3}$.
+
 
 ## Entropy-Based Profiles
 
