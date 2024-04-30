@@ -53,9 +53,9 @@ For many applications, a power-law pressure profile with constant $\alpha$ might
 
 Cosmological structure formation produces pressure profiles in which $\alpha (r)$ increases with radius. Both observations and numerical simulations of galaxy clusters show that their pressure profiles are flatter than $\alpha = 3/2$ at small radii and steeper than $\alpha = 3/2$ at large radii. As a result, the cosmological pressure profiles of galaxy clusters are often represented with a fitting formula equivalent to the shape function
   $$\alpha (r) = \alpha_{\rm in} + \left( \alpha_{\rm out} - \alpha_{\rm in} \right) \left[ \frac {(r / r_\alpha)^{\alpha_{\rm tr}}} { 1 +(r / r_\alpha)^{\alpha_{\rm tr}}} \right]$$
-The parameter $r_\alpha$ is a transitional radius for the profile's slope that is approximately twice the scale radius $r_{\rm s}$ of an NFW fit to the halo's gravitational potential. The other parameters represent the pressure profile's power-law slope in the appropriate limits. 
+The parameter $r_\alpha$ is a transitional radius for the profile's slope that is approximately twice the scale radius $r_{\rm s}$ of an NFW fit to the halo's gravitational potential. The other parameters represent the pressure profile's power-law slope in the appropriate limits: $\alpha_{\rm in}$ is the inner slope, $\alpha_{\rm out}$ is the outer slope, and $\alpha_{\rm tr}$ describes the sharpness of the transition from inner to outer. 
 
-Fits to observations of thermal pressure profiles in galaxy clusters give an inner slope $\alpha_{\rm in} \approx 0.3$, an outer slope $\alpha_{\rm out} \approx 4.3$, and $\alpha_{\rm tr} \approx 1.1$, with more dispersion in $\alpha_{\rm in}$ than in $\alpha_{\rm out}$, because the inner parts of a galaxy cluster's atmosphere respond more strongly to radiative cooling and outbursts of feedback energy from the central galaxy.
+Fits to observations of thermal pressure profiles in galaxy clusters give an inner slope $\alpha_{\rm in} \approx 0.3$, an outer slope $\alpha_{\rm out} \approx 4.3$, and $\alpha_{\rm tr} \approx 1.1$, with greater dispersion in $\alpha_{\rm in}$ than in $\alpha_{\rm out}$. 
 
 {: .note}
 This shape function produces what is sometimes called a *generalized NFW profile*. Integrating it after defining $x \equiv r / r_\alpha$ gives a pressure profile with the form
